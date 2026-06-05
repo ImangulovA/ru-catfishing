@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Русский Catfishing</title>
+<style>
+  :root{
+    --bg:#0a0e1a; --card:#151d30; --card2:#1c2740; --text:#e7ecf5; --muted:#8b97b0;
+    --accent:#1877F2; --green:#02e2ac; --orange:#f59e0b; --purple:#a855f7; --red:#ff5a7a;
+    --border:#26324d; --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  [data-theme="light"]{
+    --bg:#eef2f9; --card:#ffffff; --card2:#f3f6fc; --text:#13203a;
+    --muted:#5a6a86; --border:#dce3f0; --shadow:0 10px 30px rgba(20,40,80,.10);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:radial-gradient(1200px 600px at 50% -10%, rgba(24,119,242,.10), transparent),var(--bg);
+    color:var(--text); min-height:100vh; line-height:1.5;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:20px 16px 64px}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:.2px}
+  .brand .fish{font-size:24px}
+  .day{color:var(--muted);font-size:13px;font-weight:600}
+  .iconbtn{background:var(--card);border:1px solid var(--border);color:var(--text);
+    border-radius:10px;padding:8px 10px;cursor:pointer;font-size:16px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;
+    padding:20px;box-shadow:var(--shadow)}
+  .dots{display:flex;gap:6px;justify-content:center;margin:0 0 14px}
+  .dot{width:22px;height:10px;border-radius:6px;background:var(--card2);border:1px solid var(--border)}
+  .dot.win{background:var(--green);border-color:var(--green)}
+  .dot.lose{background:var(--red);border-color:var(--red);opacity:.7}
+  .dot.cur{outline:2px solid var(--accent);outline-offset:1px}
+  .round{color:var(--muted);font-size:13px;font-weight:700;text-align:center;margin-bottom:6px;text-transform:uppercase;letter-spacing:.6px}
+  .lead{text-align:center;color:var(--muted);font-size:14px;margin:0 0 14px}
+  .cats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0 4px}
+  .cat{background:var(--card2);border:1px solid var(--border);border-radius:999px;
+    padding:7px 13px;font-size:14px}
+  .row{display:flex;gap:8px;margin-top:16px}
+  input[type=text]{flex:1;background:var(--bg);border:1px solid var(--border);color:var(--text);
+    border-radius:12px;padding:13px 14px;font-size:16px;outline:none}
+  input[type=text]:focus{border-color:var(--accent)}
+  .btn{border:none;border-radius:12px;padding:13px 16px;font-size:15px;font-weight:700;cursor:pointer}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.ghost{background:var(--card2);color:var(--text);border:1px solid var(--border)}
+  .subrow{display:flex;gap:8px;justify-content:center;margin-top:10px}
+  .link{background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px;text-decoration:underline}
+  .feedback{min-height:22px;text-align:center;margin-top:12px;font-weight:700;font-size:14px}
+  .feedback.bad{color:var(--red)}
+  .feedback.good{color:var(--green)}
+  .reveal{margin-top:14px;text-align:center}
+  .reveal .ans{font-size:20px;font-weight:800;margin:6px 0}
+  .reveal a{color:var(--accent);text-decoration:none;font-size:14px}
+  .tries{color:var(--muted);font-size:12px;text-align:center;margin-top:8px}
+  .shake{animation:shake .3s}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+  .hidden{display:none}
+  .end h2{text-align:center;margin:4px 0 2px;font-size:26px}
+  .score{text-align:center;font-size:40px;font-weight:900;margin:6px 0}
+  .grid{text-align:center;font-size:26px;letter-spacing:4px;margin:10px 0}
+  .end .row{justify-content:center}
+  .foot{color:var(--muted);font-size:12px;text-align:center;margin-top:22px}
+  .foot a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><span class="fish">🐟</span> Русский Catfishing</div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <span class="day" id="dayLabel"></span>
+      <button class="iconbtn" id="themeBtn" title="Тема">🌙</button>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <div class="card" id="intro">
+    <div class="round">Как играть</div>
+    <p class="lead">Тебе показывают список категорий Википедии, к которым относится статья.
+       Угадай, что это за статья. Сегодня <b>10</b> загадок. Сложность: топчик.</p>
+    <div class="row"><button class="btn primary" style="flex:1" id="startBtn">Играть</button></div>
+  </div>
+
+  <!-- GAME -->
+  <div class="card hidden" id="game">
+    <div class="dots" id="dots"></div>
+    <div class="round" id="round"></div>
+    <p class="lead">Статья дня относится к категориям:</p>
+    <div class="cats" id="cats"></div>
+    <div class="row">
+      <input type="text" id="guess" placeholder="Название статьи…" autocomplete="off" />
+      <button class="btn primary" id="guessBtn">Угадать</button>
+    </div>
+    <div class="feedback" id="feedback"></div>
+    <div class="subrow">
+      <button class="link" id="skipBtn">Пропустить →</button>
+      <button class="link" id="giveBtn">Сдаться</button>
+    </div>
+    <div class="tries" id="tries"></div>
+
+    <!-- REVEAL -->
+    <div class="reveal hidden" id="reveal">
+      <div class="round" id="revLabel"></div>
+      <div class="ans" id="revAns"></div>
+      <a id="revLink" target="_blank" rel="noopener">Открыть в Википедии ↗</a>
+      <div class="row"><button class="btn primary" style="flex:1" id="nextBtn">Дальше →</button></div>
+    </div>
+  </div>
+
+  <!-- END -->
+  <div class="card hidden end" id="end">
+    <h2>Готово!</h2>
+    <div class="score" id="finalScore"></div>
+    <div class="grid" id="finalGrid"></div>
+    <p class="lead" id="endLine"></p>
+    <div class="row">
+      <button class="btn primary" id="shareBtn">Поделиться результатом</button>
+      <button class="btn ghost" id="replayBtn">Заново</button>
+    </div>
+    <div id="endList" style="margin-top:18px"></div>
+  </div>
+
+  <div class="foot">Прототип v0 · данные из <a href="https://ru.wikipedia.org" target="_blank" rel="noopener">Википедии</a> (GFDL) ·
+     игра-угадайка в духе catfishing (Sumana Harihareswara, 2006)</div>
+</div>
+
+<script id="day-data" type="application/json">{
+  "day": 1,
+  "title": "Русский Catfishing",
+  "puzzles": [
+    {
+      "title": "Бойцовский клуб (фильм)",
+      "categories": [
+        "Криминальные драмы США",
+        "Множественная личность в популярной культуре",
+        "Тайные общества в литературе",
+        "Цензурирование кинематографа в Китае",
+        "Экранизации произведений Чака Паланика",
+        "Экранизации романов США"
+      ],
+      "wiki": "https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B9%D1%86%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D0%BB%D1%83%D0%B1_%28%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%29",
+      "accept": [
+        "бойцовский клуб"
+      ],
+      "answer_sha256": "3069767ac327805755325c8fa4c5b1b9a82e58bfd8ef042c274b43bd31339abd"
+    },
+    {
+      "title": "Ведьмак 3: Дикая Охота",
+      "categories": [
+        "Action RPG",
+        "Игры для Nintendo Switch",
+        "Игры для PlayStation 4",
+        "Игры для PlayStation 5",
+        "Игры для Windows",
+        "Игры для Xbox One",
+        "Игры для Xbox Series X/S",
+        "Игры, использующие PhysX",
+        "Компьютерные игры 2015 года",
+        "Компьютерные игры в жанре славянского фэнтези",
+        "Компьютерные игры по мотивам книг",
+        "Компьютерные игры с альтернативными концовками",
+        "Компьютерные игры с открытым миром",
+        "Компьютерные игры с трёхмерной графикой",
+        "Компьютерные игры — лауреаты Game Developers Choice Awards",
+        "Компьютерные игры — лауреаты Golden Joystick Awards",
+        "Компьютерные игры — лауреаты Steam Awards",
+        "Компьютерные игры — лауреаты The Game Awards",
+        "Компьютерные игры, изданные Bandai Namco",
+        "Компьютерные игры, разработанные CD Projekt RED",
+        "Компьютерные игры, разработанные в Польше",
+        "Однопользовательские игры",
+        "Продолжения компьютерных игр"
+      ],
+      "wiki": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%B4%D1%8C%D0%BC%D0%B0%D0%BA_3%3A_%D0%94%D0%B8%D0%BA%D0%B0%D1%8F_%D0%9E%D1%85%D0%BE%D1%82%D0%B0",
+      "accept": [
+        "ведьмак",
+        "ведьмак 3",
+        "ведьмак 3 дикая охота"
+      ],
+      "answer_sha256": "604123b727ab049d14d7e2016701b4286be9bc3d80d667fe8aabbfb3afe0c4f2"
+    },
+    {
+      "title": "Бурлаки на Волге",
+      "categories": [
+        "Водный транспорт в изобразительном искусстве",
+        "Волга в живописи",
+        "Жанровые картины",
+        "Картины 1873 года",
+        "Картины Ильи Репина",
+        "Картины из собраний Русского музея",
+        "Труд в живописи"
+      ],
+      "wiki": "https://ru.wikipedia.org/wiki/%D0%91%D1%83%D1%80%D0%BB%D0%B0%D0%BA%D0%B8_%D0%BD%D0%B0_%D0%92%D0%BE%D0%BB%D0%B3%D0%B5",
+      "accept": [
+        "бурлаки",
+        "бурлаки на волге"
+      ],
+      "answer_sha256": "43f25ec29688d58f23eec4847e482fc92f9cba0ae550def85531634a2d23afb2"
+    },
+    {
+      "title": "Времена года (Вивальди)",
+      "categories": [
+        "Концерты для скрипки",
+        "Музыкальные произведения 1720-х годов",
+        "Программная музыка",
+        "Тетралогии"
+      ],
+      "wiki": "https://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B0_%D0%B3%D0%BE%D0%B4%D0%B0_%28%D0%92%D0%B8%D0%B2%D0%B0%D0%BB%D1%8C%D0%B4%D0%B8%29",
+      "accept": [
+        "времена года",
+        "времена года вивальди"
+      ],
+      "answer_sha256": "b1b9cd8d169b764075d03096aed2d37abfff39fcd937d5333a850641b0e84062"
+    },
+    {
+      "title": "Выборг",
+      "categories": [
+        "Города Ленинградской области",
+        "Города воинской славы",
+        "Города, основанные в XIII веке",
+        "Городские поселения Ленинградской области",
+        "Исторические поселения России",
+        "Крепости Российской империи",
+        "Населённые пункты, основанные в 1293 году",
+        "Районные центры Ленинградской области",
+        "Серебряное кольцо России"
+      ],
+      "wiki": "https://ru.wikipedia.org/wiki/%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D0%B3",
+      "accept": [
+        "выборг"
+      ],
+      "answer_sha256": "1271f3e634fd28032c60b27df487443953847397a278814070f9250e7ebdc7bd"
+    },
+    {
+      "title": "Берроуз, Уильям Сьюард",
+      "categories": [
+        "Английские писатели",
+        "Антипрогибиционизм в сфере наркотиков и ПАВ в США",
+        "Бит-поколение",
+        "Выпускники Гарвардского университета",
+        "Женоубийцы",
+        "Кавалеры французского ордена Искусств и литературы",
+        "Командоры французского ордена Искусств и литературы",
+        "Наркокультура",
+        "Писатели США XX века",
+        "Родившиеся 5 февраля",
+        "Родившиеся в 1914 году",
+        "Родившиеся в Сент-Луисе",
+        "Умершие 2 августа",
+        "Умершие в 1997 году",
+        "Умершие в Лоренсе (Канзас)",
+        "Умершие от инфаркта миокарда",
+        "Члены Американской академии искусств и литературы",
+        "Эссеисты XX века",
+        "Эссеисты США"
+      ],
+      "wiki": "https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D1%80%D0%BE%D1%83%D0%B7%2C_%D0%A3%D0%B8%D0%BB%D1%8C%D1%8F%D0%BC_%D0%A1%D1%8C%D1%8E%D0%B0%D1%80%D0%B4",
+      "accept": [
+        "берроуз",
+        "берроуз уильям",
+        "берроуз уильям сьюард",
+        "уильям берроуз",
+        "уильям сьюард берроуз"
+      ],
+      "answer_sha256": "a73c0e10529f93cc2e7fc2b16c96fc0a983c68e6f5e0d4e3b34acf02077510f0"
+    },
+    {
+      "title": "Битва народов",
+      "categories": [
+        "История Лейпцига",
+        "Октябрь 1813 года",
+        "События 16 октября",
+        "Сражения 1813 года",
+        "Сражения Австрии",
+        "Сражения Войны шестой коалиции",
+        "Сражения Вюртемберга",
+        "Сражения Польши",
+        "Сражения Пруссии",
+        "Сражения Российской империи",
+        "Сражения Саксонии",
+        "Сражения Франции",
+        "Сражения Швеции",
+        "Сражения в Германии"
+      ],
+      "wiki": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BE%D0%B2",
+      "accept": [
+        "битва народов",
+        "битва под лейпцигом",
+        "лейпцигское сражение"
+      ],
+      "answer_sha256": "dbd36cfbdbcf6ea9b12ff7a0f3c186789a355c15c7e0f860946a8d66d4db2838"
+    },
+    {
+      "title": "Бальмонт, Константин Дмитриевич",
+      "categories": [
+        "Выпускники Владимирской гимназии",
+        "Выпускники МГУ",
+        "Заключённые Бутырской тюрьмы",
+        "Иммигрировавшие во Францию из Российской империи",
+        "Номинанты Нобелевской премии по литературе",
+        "Переводчики XIX века",
+        "Переводчики XX века",
+        "Переводчики Адама Мицкевича",
+        "Переводчики Джорджа Гордона Байрона",
+        "Переводчики Омара Хайяма",
+        "Переводчики России",
+        "Переводчики Российской империи",
+        "Переводчики поэзии на русский язык",
+        "Переводчики прозы и драматургии на русский язык",
+        "Переводчики с английского языка",
+        "Переводчики с болгарского языка",
+        "Переводчики с испанского языка",
+        "Переводчики с сербского языка",
+        "Переводчики с хорватского языка",
+        "Переводчики с чешского языка",
+        "Переводчики с японского языка",
+        "Переводчики со словацкого языка",
+        "Персоналии:Демидовский юридический лицей",
+        "Похороненные в департаменте Сен-Сен-Дени",
+        "Похороненные во Франции",
+        "Поэты России XIX века",
+        "Поэты России XX века",
+        "Поэты Российской империи",
+        "Родившиеся 15 июня",
+        "Родившиеся в 1867 году",
+        "Родившиеся в Шуйском районе",
+        "Родившиеся в Шуйском уезде",
+        "Русские поэты",
+        "Русские поэты первой волны эмиграции",
+        "Русские поэты-символисты",
+        "Русские эмигранты первой волны во Франции",
+        "Сосланные в Шую",
+        "Умершие 23 декабря",
+        "Умершие в 1942 году",
+        "Умершие в Нуази-ле-Гране",
+        "Умершие от пневмонии"
+      ],
+      "wiki": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D0%BB%D1%8C%D0%BC%D0%BE%D0%BD%D1%82%2C_%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD_%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B5%D0%B2%D0%B8%D1%87",
+      "accept": [
+        "бальмонт",
+        "бальмонт константин",
+        "бальмонт константин дмитриевич",
+        "константин бальмонт"
+      ],
+      "answer_sha256": "30bacb1c55be0869f7fdb0f6ed034b412b5a70c414a345854449bb93ff1a559c"
+    },
+    {
+      "title": "Гамильтон, Уильям Роуэн",
+      "categories": [
+        "Астрономы XIX века",
+        "Выпускники Тринити-колледжа (Дублин)",
+        "Иностранные члены Национальной академии наук США",
+        "Королевские астрономы Ирландии",
+        "Математики XIX века",
+        "Математики Ирландии",
+        "Механики XIX века",
+        "Механики Ирландии",
+        "Награждённые Королевской медалью",
+        "Награждённые медалью Каннингема",
+        "Президенты Ирландской королевской академии",
+        "Родившиеся 4 августа",
+        "Родившиеся в 1805 году",
+        "Родившиеся в Дублине",
+        "Умершие 2 сентября",
+        "Умершие в 1865 году",
+        "Умершие в Дублине",
+        "Физики-теоретики XIX века",
+        "Физики-теоретики Ирландии",
+        "Члены Американской академии искусств и наук",
+        "Члены Ирландской королевской академии",
+        "Члены Прусской академии наук",
+        "Члены-корреспонденты Петербургской академии наук",
+        "Члены-корреспонденты Французской академии наук",
+        "Эндрюсовский профессор астрономии в Тринити-колледже (Дублин)"
+      ],
+      "wiki": "https://ru.wikipedia.org/wiki/%D0%93%D0%B0%D0%BC%D0%B8%D0%BB%D1%8C%D1%82%D0%BE%D0%BD%2C_%D0%A3%D0%B8%D0%BB%D1%8C%D1%8F%D0%BC_%D0%A0%D0%BE%D1%83%D1%8D%D0%BD",
+      "accept": [
+        "гамильтон",
+        "гамильтон уильям",
+        "гамильтон уильям роуэн",
+        "уильям гамильтон",
+        "уильям роуэн гамильтон"
+      ],
+      "answer_sha256": "df0a25d61a9efb7450fe633f6708cb1898ae52dbf25a7be94a0433b19ef0b310"
+    },
+    {
+      "title": "Английский сад (Мюнхен)",
+      "categories": [
+        "Спортивные сооружения летних Олимпийских игр 1972",
+        "Стрельба из лука на летних Олимпийских играх 1972",
+        "Швабинг"
+      ],
+      "wiki": "https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D1%81%D0%B0%D0%B4_%28%D0%9C%D1%8E%D0%BD%D1%85%D0%B5%D0%BD%29",
+      "accept": [
+        "английский сад",
+        "английский сад мюнхен"
+      ],
+      "answer_sha256": "132711b259efaa02d4c79f9832ddbe679de921394fb3bb6f2b7b2e8ce1c56a26"
+    }
+  ]
+}</script>
+<script>
+const DAY = JSON.parse(document.getElementById('day-data').textContent);
+const MAX_TRIES = 3;
+const KEY = 'rucatfish_day' + DAY.day;
+
+function norm(s){
+  return (s||'').toLowerCase().replace(/ё/g,'е')
+    .replace(/\([^)]*\)/g,' ')
+    .replace(/[^а-яa-z0-9 ]/g,' ')
+    .replace(/\s+/g,' ').trim();
+}
+
+let state = load();
+function load(){
+  try{ const s = JSON.parse(localStorage.getItem(KEY)); if(s&&s.results) return s; }catch(e){}
+  return { i:0, results:new Array(DAY.puzzles.length).fill(null), tries:0, done:false };
+}
+function save(){ localStorage.setItem(KEY, JSON.stringify(state)); }
+
+// theme
+const themeBtn=document.getElementById('themeBtn');
+function applyTheme(t){ document.documentElement.dataset.theme=t; themeBtn.textContent = t==='dark'?'🌙':'☀️'; localStorage.setItem('rucatfish_theme',t); }
+applyTheme(localStorage.getItem('rucatfish_theme')||'dark');
+themeBtn.onclick=()=>applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+
+document.getElementById('dayLabel').textContent='День '+DAY.day;
+
+const $=id=>document.getElementById(id);
+const views={intro:$('intro'),game:$('game'),end:$('end')};
+function show(v){ for(const k in views) views[k].classList.toggle('hidden',k!==v); }
+
+$('startBtn').onclick=()=>{ if(state.done){show('end');renderEnd();} else {show('game');renderPuzzle();} };
+
+function renderDots(){
+  const d=$('dots'); d.innerHTML='';
+  DAY.puzzles.forEach((_,k)=>{
+    const el=document.createElement('div'); el.className='dot';
+    if(state.results[k]==='win')el.classList.add('win');
+    else if(state.results[k]==='lose')el.classList.add('lose');
+    if(k===state.i && !state.done)el.classList.add('cur');
+    d.appendChild(el);
+  });
+}
+
+function renderPuzzle(){
+  renderDots();
+  const p=DAY.puzzles[state.i];
+  $('round').textContent='Раунд '+(state.i+1)+' из '+DAY.puzzles.length;
+  const c=$('cats'); c.innerHTML='';
+  p.categories.forEach(cat=>{ const s=document.createElement('span'); s.className='cat'; s.textContent=cat; c.appendChild(s); });
+  $('guess').value=''; $('feedback').textContent=''; $('feedback').className='feedback';
+  $('reveal').classList.add('hidden');
+  $('guess').disabled=false; $('guessBtn').disabled=false; $('skipBtn').style.visibility='visible'; $('giveBtn').style.visibility='visible';
+  state.tries=0; updateTries();
+  $('guess').focus();
+}
+function updateTries(){ $('tries').textContent='Попыток осталось: '+(MAX_TRIES-state.tries); }
+
+function check(){
+  const g=norm($('guess').value);
+  if(!g)return;
+  const p=DAY.puzzles[state.i];
+  if(p.accept.includes(g)){ win(); return; }
+  state.tries++;
+  if(state.tries>=MAX_TRIES){ reveal('lose','Не угадал. Правильный ответ:'); }
+  else { const f=$('feedback'); f.textContent='Не то, попробуй ещё ('+(MAX_TRIES-state.tries)+')'; f.className='feedback bad';
+    $('game').classList.remove('shake'); void $('game').offsetWidth; $('game').classList.add('shake'); }
+  updateTries(); save();
+}
+function win(){ const f=$('feedback'); f.textContent='✅ Верно!'; f.className='feedback good'; reveal('win','Это:'); }
+function reveal(result,label){
+  state.results[state.i]=result; state.done? null : null; save();
+  const p=DAY.puzzles[state.i];
+  $('guess').disabled=true; $('guessBtn').disabled=true; $('skipBtn').style.visibility='hidden'; $('giveBtn').style.visibility='hidden';
+  $('revLabel').textContent=label;
+  $('revAns').textContent=p.title;
+  $('revLink').href=p.wiki;
+  $('reveal').classList.remove('hidden');
+  renderDots();
+}
+
+$('guessBtn').onclick=check;
+$('guess').addEventListener('keydown',e=>{ if(e.key==='Enter')check(); });
+$('skipBtn').onclick=()=>reveal('lose','Пропущено. Это:');
+$('giveBtn').onclick=()=>reveal('lose','Сдался. Это:');
+$('nextBtn').onclick=()=>{
+  if(state.i<DAY.puzzles.length-1){ state.i++; save(); renderPuzzle(); }
+  else { state.done=true; save(); show('end'); renderEnd(); }
+};
+
+function gridStr(){ return state.results.map(r=>r==='win'?'🟩':'⬜').join(''); }
+function renderEnd(){
+  renderDots();
+  const wins=state.results.filter(r=>r==='win').length;
+  $('finalScore').textContent=wins+' / '+DAY.puzzles.length;
+  $('finalGrid').textContent=gridStr();
+  $('endLine').textContent = wins>=9?'Шпион среди нас 🕵️':wins>=7?'Отличный улов 🎣':wins>=4?'Неплохо!':'Рыбка сорвалась 🐟';
+  const list=$('endList'); list.innerHTML='';
+  DAY.puzzles.forEach((p,k)=>{
+    const row=document.createElement('div');
+    row.style.cssText='display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-top:1px solid var(--border);font-size:14px';
+    row.innerHTML='<span>'+(state.results[k]==='win'?'🟩':'⬜')+' <a href="'+p.wiki+'" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none">'+p.title+'</a></span>';
+    list.appendChild(row);
+  });
+}
+$('shareBtn').onclick=()=>{
+  const wins=state.results.filter(r=>r==='win').length;
+  const txt='🐟 Русский Catfishing · день '+DAY.day+'\n'+gridStr()+'  '+wins+'/'+DAY.puzzles.length+'\n'+location.href;
+  navigator.clipboard.writeText(txt).then(()=>{ const b=$('shareBtn'); const o=b.textContent; b.textContent='Скопировано ✓'; setTimeout(()=>b.textContent=o,1500); });
+};
+$('replayBtn').onclick=()=>{ localStorage.removeItem(KEY); state=load(); show('game'); renderPuzzle(); };
+
+// resume
+if(state.done){ show('intro'); } else if(state.i>0||state.results.some(Boolean)){ show('intro'); }
+</script>
+</body>
+</html>
