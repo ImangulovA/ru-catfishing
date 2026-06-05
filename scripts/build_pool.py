@@ -124,6 +124,35 @@ def fetch_langlink(title, lang="en"):
     return lls[0]["title"] if lls else None
 
 
+def fetch_redirects(title):
+    """All ns0 redirect titles that point to `title`, as a list of strings.
+
+    Wikipedia redirects are the curated set of alternative names/spellings for an
+    article: real names ("Фаррух Булсара" -> "Фредди Меркьюри"), cross-language
+    forms ("Freddie Mercury"), Latin binomials ("Phascolarctos cinereus" ->
+    "Коала"), and common variants. We add each (after norm()) as an accepted
+    answer, so a player who knows any alias still scores. Non-article junk
+    (emoji-only redirects, etc.) normalizes to '' and is dropped by the caller.
+    """
+    out = []
+    cont = None
+    while True:
+        params = {
+            "action": "query", "prop": "redirects", "titles": title,
+            "rdnamespace": "0", "rdlimit": "max", "redirects": "1",
+        }
+        if cont:
+            params["rdcontinue"] = cont
+        data = api_get(params)
+        pages = data.get("query", {}).get("pages") or [{}]
+        out += [r["title"] for r in pages[0].get("redirects", [])]
+        cont = data.get("continue", {}).get("rdcontinue")
+        if not cont:
+            break
+        time.sleep(0.1)
+    return out
+
+
 # Common words that may appear in a title but are NOT giveaways (so birth/death
 # YEAR categories survive: "Времена года" must not nuke "Картины 1873 года").
 GIVEAWAY_STOPWORDS = {

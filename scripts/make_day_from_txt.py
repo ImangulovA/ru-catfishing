@@ -29,6 +29,7 @@ import sys
 from build_pool import (
     fetch_categories,
     fetch_langlink,
+    fetch_redirects,
     is_giveaway,
     is_service,
     title_tokens,
@@ -92,6 +93,12 @@ def build_puzzle(entry):
         if en_sn:
             forms.add(norm(en_sn))
 
+    # Redirect aliases: every ru.wiki redirect to the article is an accepted
+    # alternative name/spelling (real names, Latin binomials, variants).
+    for red in fetch_redirects(title):
+        forms.add(norm(red))
+
+    forms.discard("")  # drop empties (emoji/punctuation-only redirects, etc.)
     strict = {
         "categories": useful,
         "accept": sorted(sha256(f) for f in forms),

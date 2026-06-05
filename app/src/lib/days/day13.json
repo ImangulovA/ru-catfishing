@@ -30,7 +30,10 @@
       ],
       "accept": [
         "2511890dc910efa91a595ee88a2ea926e8186a5a4f380a49ff768d4f12aded72",
+        "25603479377454bcee67d02c6c5541a501bfed7bdcb93e771f6dd8c840606be2",
         "31369e0f588cfcdfd56f63b523da673eca8c005796751ddd02daba6cc1eb110e",
+        "3f0c928ec551035da299812be1275bc7c2effdcc259b5bbe9e0db21ca3b66e0f",
+        "6bd19370566c8c9125e3941f5468e22ddf97b15868d4a3f0937fe60ebeb458f4",
         "bccf7e154da9c0825bddce594eb2e1a313b8d8b1ec37584b64494abb99a3d407",
         "ed7a57b566b8c6e9aa55f94a5845fb462359a29c3ff2ac5efe370d5b27294eef"
       ],
@@ -54,6 +57,9 @@
         "Умершие в Балтиморе"
       ],
       "accept": [
+        "0609e2a21e4fa1501d4d3acef9a91a610842899bc0002ba4b7dc35c9690e2ed8",
+        "0688e36614d56c36a3b25b817861bc2a0f2527a9f740e240e64d1626029ef4bc",
+        "20512483177b5d2066f2f5d7dd25094d54660932447f9ac5a0fec87aec032006",
         "32d04ae1ee3340378c20fe3bd7c583de6c5130c2aec5e9dfe159a8e8fdc4b68f",
         "51ad1397c2255740f870b11d4eb9b6795e615aa8f2e38f217cde48eebec82cf5",
         "6db7636b5922f26c1eb855fda18da3c40913d6237e21a90fb155b85868b9bfde",
@@ -93,7 +99,12 @@
         "420b13ea704185e2fe60092f9f84cbc9d9cee5fd00e1afaf69c30aa9cf95e899",
         "67c0aec4c51fa4311768641cac1dac4e271e78f4c1c76e0889fdb26ab72afe32",
         "6e25fd2f00b9f2ec25a1d7ebca2e5c76f6ad434a879dfa29b7520b50aef91ef3",
-        "de6ee360878a39e2fc19410de1dce2a6fcd55de40ff4de13d0eaa39838f2bed1"
+        "91fee5f10e1ede41da4d505e7d9504d2d2c408093e90c6d0bd3cfc1416a6508e",
+        "9d4e34fbf85932ffdf40836706d0823d4019b3ea2a177833b229798fca84c6f0",
+        "d158880d8a66619b36268f5b464fed3815633e7de285c3237e42acb352179aca",
+        "d8b3fbfcea0e1470ac9a8a405d0b0d5b444ae16b5aba4a99f65416fddd5d97d3",
+        "de6ee360878a39e2fc19410de1dce2a6fcd55de40ff4de13d0eaa39838f2bed1",
+        "f807c0533d9371d903707bbeda0cfe93a83b22885f442c3c4be8ff14305a3ea3"
       ],
       "reveal": "0JDQu9GM0YTRgNC10LQg0KXQuNGH0LrQvtC6"
     },
@@ -140,7 +151,9 @@
         "Электронные игры"
       ],
       "accept": [
+        "5a0f477765b29d7efe9be989f7d5b51038e1fc809bf49ae0e9c56630ab5eb668",
         "9a9f1552f710c67b32c6d0ce2fea2a3431e28171153b0b59325ccfec3d82af84",
+        "e22a6e52e19c4562bc55cab189757993b7372f8af2cd05ff25d6a360264f0b6b",
         "fad8fac557f5a4f3f5d403d918f35e11e2f89bfdb9fd6c31341eacea7d8401ca"
       ],
       "reveal": "0KLQsNC80LDQs9C+0YfQuA=="
@@ -182,9 +195,12 @@
         "Семь чудес света"
       ],
       "accept": [
+        "2714551ed808f6e3cae112aeba9bf9a9e89c643f16fa3e07d6e70f01f53fc4d9",
         "329c6fe8ecfbfe74ea34e600970300dd3398428c25a5ce64760aef5674719fe3",
         "4c32ecff9d64963b56fa863ba6f108d6f83a519257dbed9c9b0205e5eceda15f",
-        "e5b29d19575f9d4007ea28469799d4ab2ac1d2481115231c111ee860429d68f4"
+        "5e6eedd17e5fa5d9e360273d98317371041b401154e91d16b7d4638ce08ed537",
+        "e5b29d19575f9d4007ea28469799d4ab2ac1d2481115231c111ee860429d68f4",
+        "ed5c09bba3426d63d9543d0660d032ad56bc913518c90d791a0ac15700571895"
       ],
       "reveal": "0J/QuNGA0LDQvNC40LTQsCDQpdC10L7Qv9GB0LA="
     },
@@ -200,7 +216,9 @@
       ],
       "accept": [
         "3db6f171221bcf2785b37e49a979585f08771efdae9999ff2f418265139c37ce",
-        "7a8c106a4cbc513d9075eb8b91058af2cef8f95c81b2937ad356444101cc3b91"
+        "760e53b26d93f7ec8f34a34f73320e5e6277e5a5f2e5f8133b88077b5469c40d",
+        "7a8c106a4cbc513d9075eb8b91058af2cef8f95c81b2937ad356444101cc3b91",
+        "eef8ce424f202fac7be74c1c2fbdd8f9a319de69675e35b0dc2c52ee4a447984"
       ],
       "reveal": "0JHQvtGB0YLQvtC90YHQutC+0LUg0YfQsNC10L/QuNGC0LjQtQ=="
     },
@@ -215,6 +233,7 @@
       ],
       "accept": [
         "0677309ea6ec80c91926563db24e46a0c6ba17e3a58bfb88fb97a0698e6440bf",
+        "42c05eb3cbd9a9ce20db242a8e02bd13e0bffb34f4f1b1486e0661f1ded40b07",
         "69da6e78477f0a1ee4ae8aeacb8c6c637a4008dfebb52b4d3a3fd56e03f28398",
         "d54cfc8348b34d8266a3c79985a8d6b6895298899e6fab8e285122d9bac6cf2a"
       ],

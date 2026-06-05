@@ -41,10 +41,17 @@
         "Члены Шведской королевской академии наук"
       ],
       "accept": [
+        "0c42e43cc85054a8d57c47e397b69987d20a22f2959472404d128c6097d4181b",
         "0f1324de378fb2e399bc66843abb736ca47eb638b6a05bacb23a82efb5ffd62b",
         "103af8c7b1712d7578f4e7f625f5ea0ba0e65181b3c268f48896e74e6a9d5d0b",
         "3449bc9e7fce9b474f4bb18f2c8acc796f5d23f9a24654d4c353a06b550a5d5f",
-        "80a19dbd5e296de15ff873994cf56a619d17ade46f3bbaf488d6249e46500b9e"
+        "37dc313667e2019c9320cbc86e5481e24643ec2acf0bd8444f435e9fba52869f",
+        "44b586cf4ea935108866fdc8994598467e069a2a60927f5cde635ae0769b0166",
+        "4fc0367158eefa35e55e0af6b3f6a737f45b53500d841202cacef699eb550832",
+        "80a19dbd5e296de15ff873994cf56a619d17ade46f3bbaf488d6249e46500b9e",
+        "a4881be9a857116396c716443a61f94f055530a444d4ebe48bda511b76f1edd8",
+        "a9ce43fae4ace6165e9e4ac9b535d968b34be9e91793272b263561cbce51f1dc",
+        "c453cb8f411a371aab90d5253b662c657581f3933e284a3eefe6bddb25df1000"
       ],
       "reveal": "0KLQvtC80LDRgSDQrdC00LjRgdC+0L0="
     },
@@ -100,8 +107,14 @@
       "accept": [
         "0a237f5ff08ac4f196c6e2f699f575459785c1f66d17ccdf4a2c92c3f0fa8424",
         "0e3ad86d7cfcb4b0659431c0de64fe539d432e14e7d4a0e9a35acc4904132cf6",
+        "0fed0abb656c55d53b4ed27b1ac9b20b40523ffa2d5b9742bfb3f7b731b2a3e6",
         "2026631a0e5e80c06a52850f8117370f098f7f913e6ab3825602c22fd0194fca",
-        "3f8aba3c3cfaa6ac99a153834438bc43e595e62c59c4385b4c1f9e31ed495eaa"
+        "3a4d449c97f354d8c5edfa4d94f532c39ed5c5ba657fb09c117cccaa7b3dcb74",
+        "3f8aba3c3cfaa6ac99a153834438bc43e595e62c59c4385b4c1f9e31ed495eaa",
+        "9480fcdcff27e324c3f4b22f0071da8c43575521bf6bf4f32f6fe1c885dbabde",
+        "9f0f1d8fd3d301c4b85cca446f364f009789444670dceda336916d400d487b5e",
+        "cbde25f4d64d727f61e8bb0d7396e7150ee3d933c219a5199fae9ec8674d89a4",
+        "ed6178de754d61269a57bade5248fca22e8d221b14c4d827c4771e27b0889617"
       ],
       "reveal": "0JrQsNGA0Lsg0JzQsNGA0LrRgQ=="
     },
@@ -138,8 +151,16 @@
       "accept": [
         "08065c1a7dfb0d24910a2cfd432840c5c1a41feb6a66882dec0dcef1dc458872",
         "0d89ec7471b2b6db04a3ef24a70550b7a11a8ef8e5daf68fd529be3524c0b293",
+        "2c6a8ba5ec54749ca5b900e71c861953a10b102d8c859c7afb4ddef7ad72a0e4",
+        "2e40e545ad064c74ae454aca53c9b5b820316a259a3d18b7842bd43c6d8829b9",
+        "3bc9f1ade4d2fc3e0ff4e4aaf0b9f87b8a7821eb6e06b6d8233dd3013a577158",
+        "3e835f9894b607d03bda71276765bfbc8e22e810e83843dfeb8d090274d9eac7",
+        "63a6cd7d3d2c027749030cc7c4b7942a0b99ef68a41bff41009d35be7f15a70a",
+        "7abd1c2bc1f740f863b78ee966747a0942a65c70730bffb1f34ee97d590ab64d",
+        "8412359f047a7105b2e12d8eb126c4ab68b1483b913741e965ec7d7722076f96",
         "c2b22a7f7d08124db962cb6b8ad48ee965e51259c8d080a27655629273a1d094",
-        "cc221f3fcf556266b65967c94431707fb3790c4e0c16cbcdd9eeea1eb9f16310"
+        "cc221f3fcf556266b65967c94431707fb3790c4e0c16cbcdd9eeea1eb9f16310",
+        "f23a1bf432553d018fea55e7e40cd62b8cf480dd0441ba3fceb22982d2ebc137"
       ],
       "reveal": "0JvQuNC+0L3QtdC70Ywg0JzQtdGB0YHQuA=="
     },
@@ -170,7 +191,10 @@
         "Серии компьютерных игр, появившиеся в 1986 году"
       ],
       "accept": [
+        "02528b1a42e7093fe31404ea6c6f3d8ff78e2c01dbfc0f3ce7d4ef7d092cdae9",
         "186522c3fad77b6d09e6814e383b9f4d8bd71b428c4a250113804a165aacab09",
+        "83c42048c419d8f55df47bc7ec0b392cc4092bdc887ebc35a9e6b59f34826f74",
+        "8d01416611a03b7c979d6fdee3b16006da68e29b5bd5cbc8785bc0e10205b7e8",
         "96fb259df445f0526733671a9aeb86b174f297cb050f7f529706d7956cadf1bc"
       ],
       "reveal": "VGhlIExlZ2VuZCBvZiBaZWxkYQ=="
@@ -189,6 +213,8 @@
         "Цензура в литературе"
       ],
       "accept": [
+        "391c61da5090fca62dbfea1e152fa88700ba68cfa623748e078d7e2649381741",
+        "91eadfbe8fdd84828d58dce0e7f32c7a8e41b9b94153c6a9d5800ce39aa677f6",
         "a79807c53aa2e1edbc3483d2729a356e139dc4f3aa4403b6126b0e38718009fd",
         "d23f1db9467db91390cf18098ccde4d3d0c287d6146e58af7846ed24e2a8ded7",
         "fc33f5b2e927fb3c9d4838ea930df79ed3bc4e50476f3f6e02bf94c92dacc44a"
@@ -217,6 +243,7 @@
       ],
       "accept": [
         "09236b0f9a07e13cd286dec3e61b770b82d3bce2e58cb4a8461e7e537e434c4d",
+        "972754193949d40f7aa33f5dfc0400a71bf662a8e0fe8516d2796c61560f3a0c",
         "b036b1e8b29932e8d5e6ed63583e2ae79aef223e8aeb48c9bf8d2b43e1b69b1e"
       ],
       "reveal": "0JDQvdCz0LrQvtGALdCS0LDRgg=="
@@ -234,7 +261,11 @@
       "accept": [
         "16232f9d343e884cd8cf9ba1030ccf6b9f602461c9281df00d8c4344a4a6879e",
         "4c6ae45a94750693c099ab8bb53914e11f49b92224bf67827773f9f795ab02dc",
-        "cfcc29e1233fe4b183acb688b10e7341426b76ba2c12bf8152c09ab97c2a869a"
+        "57e1c2a72a025378444eca506637f13bf9f03d18774f8f931b811ca542df69b2",
+        "73bb541ecfb213998c7c4c0fa4fb94cb80a56d8fcdf967b5dc141a1388d65729",
+        "bc762544d019e4a682b148d97289fa23d8c57141de216d86ab7c578a69ca4a7e",
+        "cfcc29e1233fe4b183acb688b10e7341426b76ba2c12bf8152c09ab97c2a869a",
+        "f57b0a3c1c5aeb897ba16f95e48bc9832b786e439bdce52f33751a8e5a6cf54e"
       ],
       "reveal": "0JrRg9C70LjQutC+0LLRgdC60LDRjyDQsdC40YLQstCw"
     },
@@ -247,9 +278,16 @@
         "Ядовитые животные"
       ],
       "accept": [
+        "50420b8c665af39bcb11608230b2deb3aaaca18383f782126c4f4f4ba6603cc1",
+        "5a6ab828482a540dd5870dc588c11e42b3494f083c76862e60f12cf8d461f0e0",
+        "6338e148ff782e3a1556994ebbb63e5078aa8457059bf2180c682fd66d681dae",
+        "90d1d42e312495e672aa3795cf1b4ad758afdd88bbd7281d0b386c43ce30724d",
+        "c771d9fc2ab5d78bbbd47a5541ab11ce23c1bf9992af9caf1f5c77047d251a9d",
         "d8451897bcf74163120fe416c22859debf45c973ccf611ac3bbf833dabcbfc7c",
         "e12ca71755e1cd572878df6d28c0238acf0638620cda0d1bb766a4bbecd9c7c7",
-        "e153503dbe61ad65c3d25c8f18af354005c1f6c986ed125602408bec88d8de2c"
+        "e153503dbe61ad65c3d25c8f18af354005c1f6c986ed125602408bec88d8de2c",
+        "f318090a1cff981ffb49bf9c724722fcf299f6726651ca22c074bbeaaed07d9e",
+        "ff1f02fff05137dce47d72c2d238633248efd7b30aadde3ab510dee1820421b8"
       ],
       "reveal": "0JrQvtC80L7QtNGB0LrQuNC5INCy0LDRgNCw0L0="
     }

@@ -10,7 +10,10 @@
       ],
       "accept": [
         "04437b07453005f02f5df52c9a89b4e60e4b537c8362d555791d1e7f9d028e29",
-        "58c8cfb8f7205c4ef6c4cc2558a3138cd3d227e05d0324d8d362ed3d31a3aee3"
+        "58c8cfb8f7205c4ef6c4cc2558a3138cd3d227e05d0324d8d362ed3d31a3aee3",
+        "7cc8d55162de413f9d52fbc11c1395bc2b3bb71425a7313c1004b26cf4c1b4fc",
+        "c9ba012a46c3fed512f6f48bb49ffd776fe889ed75f03d7377e79cc020167591",
+        "faa16135ec5b6d92f50ce62c675dbeb7986dc3476b367db118b4d669527e0a8c"
       ],
       "reveal": "0J/RgNC10YHRgtGD0L/Qu9C10L3QuNC1INC4INC90LDQutCw0LfQsNC90LjQtQ=="
     },
@@ -39,6 +42,7 @@
         "Столкновения с айсбергом"
       ],
       "accept": [
+        "4e09f11791d9edfe3e47b11cf902128326ff47119d10e8dab7013c4a002e82a0",
         "5b9542a4bf7d0d49f379b7e4e7717eb308e657cf959788cf6dd17f3d8afc7606",
         "8c2a25260209b2db50e9d7c369876ddeeaebde2472a38426ca4907fbe4135921"
       ],
@@ -122,7 +126,9 @@
         "0a8cd3b5f9c14a494820832b320c417d0bf73fd644c856fb0f9befa3f129ba1d",
         "5191274ae923d118114fcbb536e39eaa47e1466858b884454517ad0613c9cd08",
         "79ea9358181884637163fbd61c06b22150f429636bdded87bdc70067db2396a4",
-        "b3de298fc1dd3007b7c95be8bec4386b0bd0a44091f3657124240515cdd8c017"
+        "a73d1f560278648b406bcb14ff808d620d7ddffc9a78f5dbf83c2ca622bca154",
+        "b3de298fc1dd3007b7c95be8bec4386b0bd0a44091f3657124240515cdd8c017",
+        "ff2155f1dded3de6c7e073788ad9b86b622aec4a298858013705261bff0aff19"
       ],
       "reveal": "0JDQu9GM0LHQtdGA0YIg0K3QudC90YjRgtC10LnQvQ=="
     },
@@ -168,8 +174,14 @@
       ],
       "accept": [
         "26ce1a1580f693873b6268fef54c5f0d0607f2896cad02ce2894c0c899a11575",
+        "32a37de48cefd0b2119c11a960c742f91581f8dd757c1a7606492d006ebc31dc",
         "48dc728cca0217f5f094b9686982de68e8e9099a5029359322a9ec0877989e86",
         "4d988b1a332b9eb55d543933dcb305dd3da321f1f691925425517ed0afd8e93f",
+        "66f75abdd640824216d6ef17a79342d0e0b79c07a9c91e09e6cf8a3a3fa7bc72",
+        "8cb9c0d42a8736bfb917bd381180560ea3ff31a1e3caa7796e9fab36329d989d",
+        "984ea1830a307392ac0102f150f5aa3aca17457b245abcd45f7bd0062b06a873",
+        "d7804683f9ff1a9b9c0f489804b8d92d6c2c0d94245c4ebbfbbcd2d8f89327ae",
+        "e22c689569dac68156e32de3e2ef7ac3d65884bfa4c4f105c5d4f3bb373b9ada",
         "ece5f505fcb1aa4e6cb3960f8a7e8b57dfb7078a984eca2c7302f8092a1b0832"
       ],
       "reveal": "0KfQsNGA0LvRjNC3INCU0LDRgNCy0LjQvQ=="
@@ -203,6 +215,7 @@
       ],
       "accept": [
         "6e00cd562cc2d88e238dfb81d9439de7ec843ee9d0c9879d549cb1436786f975",
+        "bd9ade20c29160f85e21efeddc12335601e2c3e667eac2b81fc7a5be6509cf04",
         "f0ea2ce2e359cf7ea7a488855877e6609eb6c69f9f72a964b203b1396982b6e9"
       ],
       "reveal": "0JzQsNGC0YDQuNGG0LAgKNGE0LjQu9GM0Lwp"
@@ -251,6 +264,7 @@
         "Чугунная архитектура"
       ],
       "accept": [
+        "692d028e01b21e6924ef8df531930cfbb553925d37f0e6922de461364df2e143",
         "808f6f8b567a15a892a1c6e87a10b881d39a14ca1699ff728809ccfd5f0bb74a",
         "fc64ecc258e21c4f23f8d66b9ff21cfac961f0434c08f9d538dd2c45333efeb1"
       ],
@@ -265,8 +279,14 @@
       ],
       "accept": [
         "0f7f6aec52bea5e34ec8f9250e00c886678dacde08e69f355eb7e1a3416e6110",
+        "10d472a7c3667a7b025b50de4990e179431051f8063809af7073fdd489843187",
+        "11fef184355bf5f5a2c162622ce0dd191f061fcbd623eb7ab0c5ce3e56b8f72c",
         "4b61c357a749ff59bdd0c073a302d3f729996873eedb23514ab850ad7bd2201b",
-        "c3d40b770ff3f5b053fb083d128d948609210a453e2539ddcdf892c8dd2a5669"
+        "7d04c66ba79d2b8b4e28a76462f21ac7c36fbe2f8afabc55af38e1843a009e2f",
+        "a1b4716c1113b24e9171c01289e6097be28099182a32245efe14541eb170ad0a",
+        "c3d40b770ff3f5b053fb083d128d948609210a453e2539ddcdf892c8dd2a5669",
+        "ccafe23a8a51e281572792a79660849894f55530b6ea695e2a51b8719d79be61",
+        "e0bf806e72348d68c9e0384dd2c323637972c04bfe07acd088e61f08e70b96ba"
       ],
       "reveal": "0KTRgNCw0L3RhtGD0LfRgdC60LDRjyDRgNC10LLQvtC70Y7RhtC40Y8="
     }

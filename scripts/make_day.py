@@ -22,7 +22,7 @@ import os
 import re
 import sys
 
-from build_pool import fetch_langlink
+from build_pool import fetch_langlink, fetch_redirects
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -118,6 +118,11 @@ def main():
             en_sn = derive_surname(en, p["categories"])
             if en_sn:
                 forms.add(norm(en_sn))
+        # Redirect aliases: every ru.wiki redirect to the article is an accepted
+        # alternative name/spelling (real names, Latin binomials, variants).
+        for red in fetch_redirects(p["title"]):
+            forms.add(norm(red))
+        forms.discard("")  # drop empties (emoji/punctuation-only redirects)
         puzzles.append({
             "categories": p["categories"],
             "accept": sorted(sha256(f) for f in forms),

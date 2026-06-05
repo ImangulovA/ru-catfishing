@@ -59,9 +59,12 @@
         "Члены-корреспонденты Петербургской академии наук"
       ],
       "accept": [
+        "139e17bd82ceeae8e58ad579a0ddf86eabfa05d5658955cde0fe7401acf758b8",
         "13abd6cc16f15882786f4bf46e9dc20df817371f2900a5f811e11f0f6586c8d0",
         "3723aab63bea868ee5b437a76b45363b8bc47e46c82c0d6b4bdec2e64b1a99e5",
         "3988e8ca898e68b128dd6640848d27b5dc622b239f4ab644eb076a876ba14a16",
+        "51fb00ed7ce30140343e04c484fdf2c93bbf723ef5a4196f3642c2608a7edb06",
+        "7f89bd4fc4586bce8d88147688b3dff05e87efab2115b2daf13d400b8a2572d7",
         "a6762c61b3f4fec204bd60201c29394194a850b8c48482ca127953bd4ad1b9e1"
       ],
       "reveal": "0JvQtdCyINCi0L7Qu9GB0YLQvtC5"
@@ -90,10 +93,14 @@
         "Члены Королевской академии наук и искусств Бельгии"
       ],
       "accept": [
+        "11f8a3216618ab964c8fcfcf6aeabfeb2580cb9e10d073528824cd3314e48ec6",
         "4610ed6824ebdeed9036fed286c726427d98d059ed7933fb8e6974389af7f179",
         "4a8e35ea0dea3e790ea34058657f13ce430495c5bb149e7f6b1b49c4f49fb2f0",
+        "a276b994de4c426a9ef81bab4c1a8eed342d46dc957d582c9fc77cfc85e9e0c4",
         "c7abd4dc26cd750f72b87bb9da1b462c07b20c77c4fc299ef12377adc904ed8d",
-        "ecf8ad1a5e673ec53d6963a612c81ca3e49a27ed69d499c5eea64a8840f6493c"
+        "cf7340321aab77020e27fb56bcc88bdac29be63255320218a6f3f0ee2c296e16",
+        "ecf8ad1a5e673ec53d6963a612c81ca3e49a27ed69d499c5eea64a8840f6493c",
+        "f3fbacd0359be9f66dfedaf7650b1c31708e49b3fc4cf28fc1144107ae3ced39"
       ],
       "reveal": "0KHQsNC70YzQstCw0LTQvtGAINCU0LDQu9C4"
     },
@@ -137,8 +144,15 @@
         "Члены Национальной инженерной академии США"
       ],
       "accept": [
+        "2a81f3d7cad4504a423d477497b2a657483b467615974a33322aa3805282873c",
+        "4061053557f5b16c171e2231443d92600e5e5cd98f4e057905b65454be5f2b5f",
+        "5511df42220f3494ad27559d22d9130b2a001d437479314cbe46808bc028a055",
         "617b56b8d3d5202017bacd8a1ef99ec9640119d79b35c7c8c050aa49e815999d",
+        "765bb8bd1c283a9ca62c4d55fcf1701120240f8123e3d058f16323011708bbce",
         "7ff26ca7636fecde95757c88c79117cd5733344dce935994ba0683bd8ae30471",
+        "b96523827e1ac36bad2c32f92a39a67c88aa3a5ef3c6facd4297fcf5d3580db9",
+        "bd9e77030374955d8fcbabfd534e3f0ac953dd91bc1ad487275f55cd4f076871",
+        "c69c37a22215368503f82a2ec559c4c406ff2c9b22a534c038afdad263ea5e46",
         "f5a56d6c563c88381c5eca8059d9dc090e7cbae324251e8e3cc3e2f353d42f5d",
         "ffae4b57aefcb4a3f513e39df9d4b4e2d70f5d1c9c32e2e5b306860ec4c73bdf"
       ],
@@ -171,8 +185,18 @@
       ],
       "accept": [
         "12c005c6b8ca55bd36d730b8baf5abe215a7a7e71e4862de29915d7e3bf46b4c",
+        "256e812ba4725c2ebb618cdaa9178c12a455eee7d9936efbf56ac4d51bab35dc",
+        "2c990f2396abf9a0e79ef016cc4a5566027117386fd7df2502e295a7af8e9231",
+        "50e9d84d950a6616b95c92339608dd278cb4f1e37ca54f7287d2c29887008418",
         "6efced6a7e04d1137ae7e833b91a4b7660fc985091525eae5bf656819a7f31f9",
-        "a987917874b772d0183880967c42be749e68d02f839d64f854385ec5b8e759c3"
+        "7298eca23d5b38bdaf74688a895df53e256855ecc0b258e84a64ac2a7be3dcc1",
+        "91ae9c07093627455737aed5537f63aec55e2157e65944c56ed2dc0825f8f633",
+        "9a25630c1b80f0a6e30803dd29596c4e52b336a8ef4071956c6e3eac449f6f45",
+        "a60779f867c0415c4a8eed2adb13b5b29245b31cab1d168e336104b3334f29bf",
+        "a955c73cc74e5ab5487d20cf60a8c2f96bb30f4142837ea45fbaa02e85270018",
+        "a987917874b772d0183880967c42be749e68d02f839d64f854385ec5b8e759c3",
+        "a9fbd0b30836f06de5c839627933ae6ad389ce1c6a3cb05e8b867be64f85cc72",
+        "daf40edfbe55b76e78f1d55bf4ff9129c956d2e1cefcad06aa65a76098d586c2"
       ],
       "reveal": "0JfQstGR0LfQtNC90YvQtSDQstC+0LnQvdGLLiDQrdC/0LjQt9C+0LQgSVY6INCd0L7QstCw0Y8g0L3QsNC00LXQttC00LA="
     },
@@ -208,9 +232,14 @@
         "Шутеры от третьего лица"
       ],
       "accept": [
+        "0662e53056d7278ba5f554e2311affe46c4280801f2d05b62c72e63f0428ccf4",
+        "0958c7698f006da0ec1a89e296b56334864a0c81f4a0827e86b4b3578837d781",
+        "1c2ab51106a1d4d4b5dad697cfb07a221ad33c44de9d4ccb276bad09d7629fcc",
         "2fa55ff71ba7950433fafbca00cb16110a80ad0973542d0b240ae5a670b4a1f6",
         "4d782393634717d48f513592e6c607790966f32ba112b6f6bec1a73ec5ce71d0",
         "5ed3bc857297b77b6703210cc34575dccc27ebeaf9d2c08ce14e2cbfa688fdd5",
+        "6d994986a441d9800eb6b5051edb3c9b5da754125589cde82a5894306e7262c7",
+        "7c7c1e458ba7851974838d83b2ee065bcbdfacdfb5e2a9e635eb81790197be15",
         "c95d134f28e0d09162aceb55518e0940a8047824b8c62f8e387b189c9f99b574"
       ],
       "reveal": "R3JhbmQgVGhlZnQgQXV0byBW"
@@ -226,7 +255,9 @@
       ],
       "accept": [
         "78515bd2a4dfffe79cbbbcb01579638800c951380b1d7452748ac48677ca9b7c",
-        "eece7fc756c6a581769baae93093be613aed11571ca032effdc1e647d63c7c96"
+        "eece7fc756c6a581769baae93093be613aed11571ca032effdc1e647d63c7c96",
+        "f3bf65f4dac758bd558b4dde181f3beecac30e0aee1f52caa8bc4c23bf34d926",
+        "f9b8f1b41a8788fa152eeb7a44d5a69c03d584ba53703faf198355dfcddf0ec2"
       ],
       "reveal": "0JLQu9Cw0YHRgtC10LvQuNC9INC60L7Qu9C10YYgKNGA0L7QvNCw0L0p"
     },
@@ -257,6 +288,7 @@
         "Романская архитектура Италии"
       ],
       "accept": [
+        "69e3d66b74b475b70b4e1a56d364b815c9794367e3acd4bb7fff8f926989d65e",
         "7d16d5cde05fcadcd39e64f91afe8de6ba455561865d9e36d4c2e32ffc88b343",
         "e3c3ea2c2382ae457cce61e3edcd4674c95c3041e8ac1dcfe2f6054eb902452f"
       ],
@@ -279,6 +311,10 @@
         "Хрущёвская оттепель"
       ],
       "accept": [
+        "64021f011b630966aa2c973bd26d10e44822c97f9e3cdb351ec6ca28d6c6e1a3",
+        "745454c29ed5322c990c1fdc21f7555f46a15325dcab37ea18de63690f7207a3",
+        "9bb9a58957ea7cb56bbbcff8e031e42d95142816d9fd0300dad7d4c87cecf0bc",
+        "b5defbcd88a736087a9f82c907ff209ebf80846e57899a65db79d2171e8200ac",
         "bb383fd4a49fb8cf74db5fd279e4a8ef87c6e8b70d8b2d0d4e99ef51796945e3",
         "db39bd1f33382a676afa9f58943e9a0b9a155bddc8cc6bdb7ad77a60a74118ac"
       ],
@@ -294,8 +330,16 @@
         "Фоссилии, описанные в 1861 году"
       ],
       "accept": [
+        "1c1a1d71f36abc365053243dc352c849d3858c6205e1ef19f7d7590c0feb5244",
         "236e7fc794f590ce58082bf3feee562245883b974d96651dc4bb31fc0fa2d4a7",
-        "7186c90282d42eebeee0eb8b8c97878e3eebf8c965a83505f9eac1783d629c0f"
+        "2f6edf23f0e022380cd9255cacd88e6e504b1e667346d19b715bbc9a31e7fca6",
+        "658787336dce60205fe1ba3941d631cd52fe40e4f8ab50cd21622a2bddcfc12a",
+        "7186c90282d42eebeee0eb8b8c97878e3eebf8c965a83505f9eac1783d629c0f",
+        "72a4daa1ad16729c27212f219333ddb003defd5d406d080a7fd94497cbeff508",
+        "becef660b375a6c79fd8f947f317d67aeed9f2ea4a4be960865735cd9b44eeaa",
+        "c56acc8a1e03248daac60cc884d6d17abe66100de661d9410d65b38135590e73",
+        "cd17389a1715e4c303dd06c1967d5e2b8f8832f9e68ca4b10de0a23813eb8bd1",
+        "ee68c7f4b6c0aff865dc1036c0572868898ac61a7ff0536a222beece6ced37b2"
       ],
       "reveal": "0JDRgNGF0LXQvtC/0YLQtdGA0LjQutGB"
     }

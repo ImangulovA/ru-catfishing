@@ -27,8 +27,16 @@
       ],
       "accept": [
         "24b2f7db9863b233331cc5f200e3d6d38d9feed4b8f0f5cb5ab548a98de2f08f",
+        "47386c274c5a1fc660efbab5544baa2a16853b01e303d3ccf41cde98dc6d86f0",
+        "5ac3a62a3706eb9454fe85310144496498918b83fbb6418eb3e58de466db468d",
+        "631c4d26a3da42cf3d600aadc7ac50768b7f31e858d6a2796eee29e52154f719",
+        "652f93fe223a5ccd35f76e88085e0f599e49564d23ca9952bdc629e60b2cf52f",
+        "bd79e9368b42c36f637b686288e1a4c475401fc08ca25e5e6400707674e1eb2a",
+        "c65b81321a9ee6cfff989e15019223cc98a58cbddd76d5463407f0e6bcc9a9d2",
+        "c6dfb6672369c867480613c092ec66d7c07b13f450872c25d5f28a67b676d5b2",
         "ca54eefa12ad778accd08856846e98a609a02faa9edcf9e946a798feafca3296",
         "d9fd0ca6ebb4c6830747f9c57d9f1926250943ad77de2efccd84700b66bc6a9c",
+        "ec325f1e39f48e2fdba6444c00ceff3f9d7c0b5c5d4af4a5993f9e1e7c68195d",
         "ffa2171de2049ce1a44acd294009fd17bfa1f0e5c13155d5cf2df6d08d976722"
       ],
       "reveal": "0JzRjdGA0LjQu9C40L0g0JzQvtC90YDQvg=="
@@ -68,9 +76,13 @@
         "Члены Зала славы рок-н-ролла"
       ],
       "accept": [
+        "1b313f932e03a73b8b9df09d3bc96374661fc891f1cf191f340cbab216449d79",
         "347c940b1b622de6fc0ab7ba33a044d10b364b0a1d3e14953a5f314933f55b1a",
         "4922becd6f49eb05527087cffefaadfd677d4fcfbcd8b3484e5f730199344b83",
         "6647ab88ed8344e503753c56903d4c9ee3945c90c127a01243c0dd039b65fada",
+        "96efe318dcd909a98bfaa48e983bbaa99b03db987266151ab0aa6e23be7d6aca",
+        "af32d61f242b6c67b9c7daeb10b128665bf2df62661662d3e267e5621a437b47",
+        "b6fe6ee14487dad833148d0b8b0dc42735fa1ba51ab4735bd3f94d5ac458111f",
         "b769a6983b42d565e79bb4f3f534623453f301d39784e57804a649a67ea05327"
       ],
       "reveal": "0KTRgNC10LTQtNC4INCc0LXRgNC60YzRjtGA0Lg="
@@ -97,8 +109,13 @@
       ],
       "accept": [
         "0606e0da363ab2aaad1e3546a731c9b3fb2bc1b4d0335126004eac8aea039c0d",
+        "25813f3d748a913c429c5ff897cc5c3aa6ff5b3e380c907007fbc421d8774bae",
+        "3a1a0fee9159ed0aacf60383051989a2fb2695a28d428c58eec83b61651c75c5",
+        "5d79aa8de4abfff334d2100a8d5cb745108968870fa81cdc9e47007df4610203",
+        "99211eddcc2bd24275aad6237ceda16971729e533c3ee7de2bc4073059aca14b",
         "e4ac4cada83f399f6442b9996bc71b97ebb46e0630610d16ae85153241978be5",
         "e81dfe69841ad2f7b5790b63e998f0febaf3b29acd732881975130761b98e2c7",
+        "f1599bb56bcc5d94d1156698436b084c507f034abc6b1b0071b4d5b7c134a667",
         "feb0f1e1dd31a0a4ad2d6e98a68ae2ca327e5cc01e83fcdb455ae117b818fe03"
       ],
       "reveal": "0KHRgtC40LLQtdC9INCa0LjQvdCz"
@@ -164,6 +181,7 @@
       ],
       "accept": [
         "164b91fd90a3bc4631b2d5a0bc4d33c915f2a8e0f5099cd7ca9767096ba43b6d",
+        "7106b417266b5ba2ba3b5315b8775b2b67466c7defd6edf4f541edafcc034411",
         "e956efed27d7f68fcb8dda0fd6f02739b62e732d309d8083eb1f28382f141b26"
       ],
       "reveal": "Q3liZXJwdW5rIDIwNzc="
@@ -177,8 +195,11 @@
         "Романы, по мотивам которых были созданы оперы"
       ],
       "accept": [
+        "4dd72bbe60e44c84487a8ab62989ff8ad9d71ccb244d63be8ba96c267ad1d662",
         "72da35c982e6f2a6c37cd73896e26d9feea1445079331f4a075f1cfa820b2c95",
-        "e8679fb8a119eb8deb600762a600277df9636142855b6055a834a46176a73343"
+        "7762301041b2a5b9d549cc96b1cf2884236eec2f767ec5ae7d7ac9ad0ae7902f",
+        "e8679fb8a119eb8deb600762a600277df9636142855b6055a834a46176a73343",
+        "f2d52d8c14ce2fd2caaef42d7f8ea1476adc8913e7fe9940112f22e0cb750e16"
       ],
       "reveal": "0JPQvtGA0LTQvtGB0YLRjCDQuCDQv9GA0LXQtNGD0LHQtdC20LTQtdC90LjQtQ=="
     },
@@ -205,8 +226,11 @@
         "Резиденции монархов"
       ],
       "accept": [
+        "01e322eadb587df4e6a1b529cc4b8203126d56712dff71d7f5854119541d02ab",
+        "1f57a599f62313fbb959b94ac2c30d2e0aeeecd0c6c2e803a062f33219684d4b",
         "a901ca94e84f76678525398e4c7f610fc7bcccdb82d0f711466788e4d4c39e7c",
-        "c458dea2bec4c3880ad6eeebd6012f232268a29ffc0ac47be047aa3b17e17dab"
+        "c458dea2bec4c3880ad6eeebd6012f232268a29ffc0ac47be047aa3b17e17dab",
+        "e13ba584a9468d33788f85ce6f8b6062577adecba0c987841046566e8e644fe9"
       ],
       "reveal": "0JfQsNC/0YDQtdGC0L3Ri9C5INCz0L7RgNC+0LQ="
     },
@@ -223,7 +247,11 @@
         "Сражения византийско-османских войн"
       ],
       "accept": [
+        "114cb77beb0b6e85f9a5c6d41232459ae9a211d3342e8e50baf5755f9e6e2e6c",
         "1ca91a53565b64875c852ae575c222a7fab43b1a503d4ec02f00d0407e286759",
+        "39d8b35b6fef285b8e8a5567e4f8eda8b3d36e146e1b0a8db5848d10015354e4",
+        "545995b42567b8ec15dba470294d0cc369da5b8c7db9e5950530b95fbb70ba62",
+        "8352e3af1b5e57831fec9c920baabc24948716424a256a65c94852115dbb1e26",
         "cd035526ac214f0130b46cd877fd762f8446298554def4c130b9c9d8ed047612",
         "f13c298a48730223bef1e3fa95ee53770faa0283533c197128fc8d6fe2273781"
       ],
@@ -240,8 +268,12 @@
         "Эндемики Австралии"
       ],
       "accept": [
+        "8d0714fedbfee3f6e3d9f7306130a03ff2d6ffe295cffae70983a3da79687625",
+        "8e458a78f9877ba7587d7fbdd09e44710e19f88a66e36ac2fd519988c77487c7",
+        "b8d6ae595d478af7beb9a176470e854293a8a3073b51a59e9546d6e9a7a74927",
         "c85884f30f342fcdc6060b751e93e9235ec26375656c9ece7dea6bb9a86b8fd4",
-        "c88cf9468f1701ff059abe2c172a0da5edd6af83ae80ca1a7579e291c38df6d9"
+        "c88cf9468f1701ff059abe2c172a0da5edd6af83ae80ca1a7579e291c38df6d9",
+        "e69fc0903b0d26678bd568610dc772030f667ff5e2d01c0f1ef39fcb298d20f2"
       ],
       "reveal": "0JrQvtCw0LvQsA=="
     }

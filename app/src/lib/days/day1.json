@@ -22,8 +22,14 @@
       ],
       "accept": [
         "177f85df57ad121d5aaac8076a4a0554a673182fe06cf65ee7d9f7d0961f947d",
+        "78316f6d96a90b723dccc7d62f0fb115fbf91a9e840fd07d3882c10bc3fc09aa",
+        "87338a9403c65e32950b973dbd75b9e4237621b480e2a99609d0e656b4d35312",
+        "8bd45c8f2c12da4b97e2947653585128dd1a55516b8173a99673d1b9c10832c3",
         "a8ac99f28ac8988c6f3e90531364ba43f126267e9deca119090318beb9bc47d3",
+        "ad447f2b70275497e66cd153b756f7cf6dec3bbc5418e99a87ef4f6166bdc531",
+        "baa21f6fd595cc08001b8b1b77448ff0d9b2d84460f3e73b7336052dcb6fe534",
         "c8465d38618f1b0d254efbb5797d3796419aa18578c7a61ca17bc107e31e37a3",
+        "d630d9a34f42b5f49b60ab629ef5a0fb8bf64815c50ef6fe3a175225865b54f4",
         "fb1e7ec987523d2cb9e022cec1d6ae7c99dc46edfae4fe51254025fe4bea571f"
       ],
       "reveal": "0JvQsNCy0LvQtdC50YEsINCQ0LTQsA=="
@@ -114,9 +120,17 @@
       ],
       "accept": [
         "1c4be8a00e25879ab680a7416383f723b4247572facb568f71155ef64e01275c",
+        "247d1676bd51faa776cf162af277c07ac3e6169a23d2f974ccfc3bc76fbf8e8d",
+        "28b71512fd7d9b25d5485ffa520f260b7f4fd9ff831f1c7ac61513115a58490a",
+        "28c17ebf1a845f06bb353ff9b3d63430e26eaefbf8be9fe3b0f9484391afcf29",
         "50fa2b115605ff86d30c217c85cd2be0190412023f862629e869db888aec40d5",
         "6518e9213ceebb754023091cda1356a7c74ebd76eeb69bb0a9e317301b179b12",
         "728d31f644805cda83824fdd9fa31fe480630841e3ad4f196aec9f88d2339600",
+        "797d728debccecd8da666c92aca46e63c2510f66100bc967e1289dcd769debc9",
+        "857cb82380e93f427606a7b6d80e65797cd7e7ebe7c3f21ef229f1fbdfd849a5",
+        "87dd81dfaa693ec4bf88b5b065cc332b2b74b87fd2dc7e3418329734a31bbe7e",
+        "95148a3d042081df5fac8eef47222dd2fd7249f06873bf213998ac0260efd73c",
+        "fa300b29480ce47d69f11db7dff72d40864ed16a455175cfa58e8cd47f341155",
         "ff18c6db13e9d9148969cf71fedfc4388ba66d2b02eaea873d8c0247f6b1a7f8"
       ],
       "reveal": "0KfQtSDQk9C10LLQsNGA0LAsINCt0YDQvdC10YHRgtC+"
@@ -137,6 +151,7 @@
       ],
       "accept": [
         "2970ee6738098c23c76839fb2695a18a4d722a2fcf2149f1202944abb2b63c2f",
+        "594ce78a1358e6e0ecc35656ace10552dab98986fc5182fa968236b3e0cf5594",
         "a9a7f528c0e8bbec1446e8b217daae69a77c6689e8bea4ecd7d11b54c8fad2ad"
       ],
       "reveal": "0JrRgNC40LzQuNC90LDQu9GM0L3QvtC1INGH0YLQuNCy0L4="
@@ -190,7 +205,8 @@
       ],
       "accept": [
         "89e2acaed23d618c674f5f0e2cf58844eae0a98fdeb097945876e46953be2563",
-        "8c2c1004a7b761542f5672cb95b46c4f345f6f40b14a6b3b90d40233746c7436"
+        "8c2c1004a7b761542f5672cb95b46c4f345f6f40b14a6b3b90d40233746c7436",
+        "e09567fee4f8e4aef530e5f182534fde1e2e1e333977c1601271590b0dfc8d32"
       ],
       "reveal": "VGhlIExhc3Qgb2YgVXM="
     },
@@ -208,8 +224,17 @@
         "Цензура в литературе"
       ],
       "accept": [
+        "054a764b4be9441335c72b92f84db3186950ad041c9fd379d1b0767ae17d7c80",
+        "33344c3d50dc3629e995f5a2aaaa08755a8a16660baa8d8dfcbd55a0b7983984",
+        "43490391966d4813220f6455f9159a35e2731a3422a5b54ac587697ed04efc29",
         "4dea5c7cb70f50322ec9d734aa4aa078be9227c05251e18991c596f387552370",
-        "a802940b17f6bed4da700dbb9dcfb91696ed318599eda3bdbfdab3ff92378afe"
+        "80ca853db866ab3b033b209909a87ff86552179e28e344f2e1b6907e6aaae113",
+        "8e1b52a5e2f1061c616b25671143e81c5683f118ac0b023c29efa96431c865e6",
+        "9a55660d18634de4e878333222b4fedf946516e47fee6ebb9fafc5e0f05fc547",
+        "a802940b17f6bed4da700dbb9dcfb91696ed318599eda3bdbfdab3ff92378afe",
+        "af658bd4180b569c4e67bbfb80db4b3ea2a2492f395561db530b6a819b58f909",
+        "e8f30449b969a586ac69f4412ce49bad588fca6070f4535286648752c7629ca3",
+        "f798649ba7b630a6478bdce56bfa50d7fc4e1f6c5e5e7b9603080216a419642b"
       ],
       "reveal": "MTk4NCAo0YDQvtC80LDQvSk="
     },
@@ -227,7 +252,10 @@
       "accept": [
         "1d5ff39d8f02742c554e2b2e36511d911d622d9680b0b8453fae2c1e8240e0cc",
         "410a78f5168e2953a689525c00b0a4248a3bcf90e2c39180de092e059a452433",
-        "48f904eaa0f6539e113599eb2aff5501fba244f3efad76005a2408c518a4b5f6"
+        "48f904eaa0f6539e113599eb2aff5501fba244f3efad76005a2408c518a4b5f6",
+        "5c0ddf1ab926482bdf7ec659f4fdc3f26f7d0bec61fd15ad1131f0e981b2fd56",
+        "b65f96802d2ecdda6ce8bcc9ec3f70b90ff32a985c0282a7add6e2d1053d7feb",
+        "d2ca5adb5e62a2f550edfae99d196281ba5b79c3c83e1802caf6dbc7e5816af9"
       ],
       "reveal": "0JzQvtC90LAg0JvQuNC30LA="
     },
@@ -245,6 +273,7 @@
         "Спектакли по произведениям Эрнста Теодора Гофмана"
       ],
       "accept": [
+        "103f146ab9fd0243fdb0027472fd21eec3c039c255c0a98424a104fd7689eddb",
         "124b60fab7ed72b1aea88c0689770850676ec42b4e650256027b1ea388fb4ac7",
         "1dfd8f7d40b2cb7f4a92ad8735af55de1cee7c09041fe731c269e15d7db020e3"
       ],
@@ -263,8 +292,10 @@
         "Хрущёвская оттепель"
       ],
       "accept": [
+        "126089c57ae698a540367387cbba7db2cd65b45b508e52555fecf12fe47af86c",
         "76bb25d173471fc1c7e8117fdbbf8ad6a3c490a7419d1dbe6fad132563e99d68",
-        "fff94a0ce54c25189d0e84a8bb8c883337df99a1d765c9889af80ab610b3b7eb"
+        "fff94a0ce54c25189d0e84a8bb8c883337df99a1d765c9889af80ab610b3b7eb",
+        "fffe24608474dc9cf919d67a994e8bb7c76bd66465b89561fb8b587cc678911d"
       ],
       "reveal": "0JHQtdGA0LvQuNC90YHQutCw0Y8g0YHRgtC10L3QsA=="
     }

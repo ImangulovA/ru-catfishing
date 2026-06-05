@@ -37,10 +37,15 @@
         "Юристы Индии"
       ],
       "accept": [
+        "290c955594fe707010ba47d9d91af3b735f031f07633b6959a032954976762f2",
+        "31c31d5a2242a71f7cfac45336a37ba5d9b6fc2e6878fd1606c5c562bf59bdb6",
         "48b6ac93975efa456d070c22a9c3ef3693cc4c1867829e2ed7b9d144915cec05",
         "51fbc04ef0e7f08642f1b6c222ee24776ddb07cf72a8553dee839ae8d49c56df",
+        "805f892a37d80daa587a8cd92fb4f6c076cdf9ffcb785d2d31c4212b8c4a987d",
+        "a642cb7f42e6c961c48ffd26485962de19a2910a375b1db1a455a36f4ab65f01",
         "aeada48a1c357f60ab9d7c04555554241e8142a486e32462f73e5a0c6e14cef8",
-        "c341aa75bc45d62e4011dba650b99fb73229d6486d1a902493e6336e63e076a4"
+        "c341aa75bc45d62e4011dba650b99fb73229d6486d1a902493e6336e63e076a4",
+        "fce2a26dd80cc3b10a20a1c92b0eff34b22170a17d71e20b96f5546490b2235e"
       ],
       "reveal": "0JzQsNGF0LDRgtC80LAg0JPQsNC90LTQuA=="
     },
@@ -176,9 +181,15 @@
         "Члены Южно-Африканской коммунистической партии"
       ],
       "accept": [
+        "1a084ad35798067a8641301e7af17b15a3d377f7b4eeed7a2c2287a6efff9e2e",
+        "20ec98e4a098320b86b5c7e3ec578473650a18233b1de3444cdd8dd7cdcd414c",
         "24dec0282d86637b0d1948a5560388b23d58e4e6e5228e0aa6a84ede14719fa9",
+        "26f1a1917a4bd9009722496f5217221e53e54a62288253e410e5fbab4f8effc8",
+        "445b04beeda8e7411a955c8ca2b01e54aad1bea47f540277926b96e370f05712",
         "4bc13d99c5d4a437a1c1323dda6f5b69f55ba0be2febb5bc45cf4ef3d12a986c",
+        "7364562105a7dff2a99a0401dd8ad977d052fd6aa73ec76041af211ff4506936",
         "b20fd9d23347cbe22f9cf2d97066535b5e1be81c2878617c0ade2c835aeb3d57",
+        "c6a8fe82dd48d50439d44b154436be96e22e2313aef35a5c6c23332c95949937",
         "eda002bf9cb508c127e93971571cc978f88cd6f6d606d82361ec608f64bd56cf"
       ],
       "reveal": "0J3QtdC70YzRgdC+0L0g0JzQsNC90LTQtdC70LA="
@@ -212,10 +223,14 @@
         "Умершие от отёка мозга"
       ],
       "accept": [
+        "137429f5626fc3a9f9f21dad219eb1979b02c54c24694b505ccb9d9c929c8430",
         "13cadc6891e07629bd6e229ae3d928952a7bd1a8fd85c2c7969c58a479c189e0",
+        "2dd59b1d031813fd59d41dcf1241ebdb66ed3d3d96f5c04606483a67718df324",
         "2f349a9ba7e2b7ff6b613cd74c53a1209f3d31878730fbdb695d1d13cce58117",
         "61098a4bf2a5e216533e5f2994d8f290308b310f2efa046548a96302afe412ea",
-        "628dee7c86748fd307aec0d0ba8e5bd46c56b2ac0d6ab71f4ac69af288fda071"
+        "628dee7c86748fd307aec0d0ba8e5bd46c56b2ac0d6ab71f4ac69af288fda071",
+        "6a005a290b080ffca8133d6d1d1268f38d96bf5b9be5b1403e5ffa9a6d333746",
+        "7167c80247c5754602b5852811918d1e5c8ac0f8fbfdeba0adf22106d690d1ac"
       ],
       "reveal": "0JHRgNGO0YEg0JvQuA=="
     },
@@ -248,6 +263,7 @@
         "Эпические фильмы Новой Зеландии"
       ],
       "accept": [
+        "476f8471c9d8d232d7d848d452ece104787cfeb23d23cfb95032f33ae3fc4b55",
         "74e005027d8ff5cca2d1302422924cd4ab6d181cfe22649e83fc70c2ea47282a",
         "9057bcec0781c0b7a97bdc1f5030a278f37e64f0c5e443f91da944b396267535",
         "ec875afa707bc4bf87e83b7ab4c2ed3d7c69784c989c4e04c74c730445e32df2"
@@ -305,7 +321,9 @@
         "Романы 1719 года"
       ],
       "accept": [
+        "3354b2f3501e0d7b2e7dadd3b9821955935f3cd6499755c719ae5d23e981b230",
         "56f6c39dcab1cc20fa01c8b755f30ebbea19c51af6f84971ae8a96bb2df6f764",
+        "6c29ddc04ce52f2ee417332f8f6aa9ab5bda26e60bc94d1a14c08c522b2e64fc",
         "be2090ad9357a931730b2a6baa16e361e7f58564d862ae9346d2e203c526be7e"
       ],
       "reveal": "0KDQvtCx0LjQvdC30L7QvSDQmtGA0YPQt9C+"
@@ -323,7 +341,9 @@
       ],
       "accept": [
         "380436ce796ccbf70654d02c3038e9aa2ac722c4966214cbaa6536fe76bd72bd",
-        "9ae106db5e3be5b503feeda551ed13209127d5f1cb2de1d9071b6170a1af2675"
+        "7f3727baf9d13599c3d41bfe93223c7fc363063a86fa25cf18c2b4ae96d41ffb",
+        "9ae106db5e3be5b503feeda551ed13209127d5f1cb2de1d9071b6170a1af2675",
+        "f4ef23f93fa274d8ca3b227731751fdefd97ddfa5291fe133ebe227150a02825"
       ],
       "reveal": "0K/QstC70LXQvdC40LUg0KXRgNC40YHRgtCwINC90LDRgNC+0LTRgw=="
     },
@@ -338,6 +358,8 @@
       ],
       "accept": [
         "2f22b7d426bc2c8989d8727808639c2e1df15e48d86c68f0ec67dc96594b36e4",
+        "4b9638d40f687591d9c5dc4764e1eb044690a2da0ebd8e5898a866125cbb494a",
+        "77a1219f7744fe07b98b3540e2215abbe172f1ad24630fc4481988964741ecfd",
         "d5e2b8773d873cf4906a032458673db22579e9aa5e9c75bdcb603a8274ded0c5",
         "f3b34c0d4cf697590822eace20d96aa8e484354bca393c42535140ecf2385c0f"
       ],
@@ -356,6 +378,7 @@
       "accept": [
         "3795ba58ed04553db5b9d06d07e6554d1a2ae8cdf61c1440a22e74a5bbc7c30c",
         "50161b7c3bc6ff8d0fe52880aa8c72d8064cb16a7872116db460424d1000b449",
+        "50493064810c1d5195238f7b4a5b135e861f5ae6303e0ea511b43dab04960d18",
         "ce9b06836853fca5c4e4d367c83c0a0d2762127f91f3b8828414b3e1a5c24e08"
       ],
       "reveal": "0JLQt9GP0YLQuNC1INCR0LDRgdGC0LjQu9C40Lg="
@@ -369,6 +392,7 @@
       ],
       "accept": [
         "181280af4fcbe3e4110382a58a50fcf287d5f79f0dfcfcca2e83f5128f5efa3a",
+        "2b3028bc7d21218f9c6bdfdf4c6304aa9416f33d9da6dea64d618eceb14e5fed",
         "ad9d9f3a14bcdaf3f122737fdf5e7dfb0cbfbeec3f75bbfac56b3fb122fa5e97",
         "b540780115e12357de02f254d6d316f17f9921fd0ef2efe381f0514e7bb21eef"
       ],

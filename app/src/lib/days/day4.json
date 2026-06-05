@@ -46,7 +46,8 @@
         "5ee40cc8068da74fc096926950405b70032f67575431256b5b1b7f1aa6121bcf",
         "7358bd4ec877e1b622397ab4f9706b76680348a2886bfc0a675ed0555085d0ea",
         "7ac820b64407f0c5d1bdd070f0969bbdf1b1c3068a7ed90e1a9b8c966c373c13",
-        "927e4c411e0dbd9d0d2b1f8edbc531b0308a96f79d436d7898f44358ad0c0c3f"
+        "927e4c411e0dbd9d0d2b1f8edbc531b0308a96f79d436d7898f44358ad0c0c3f",
+        "f103b07b2e6224c018bea45c5adeed44dfe77d8d2c9f79204f9d228b87a6dbe0"
       ],
       "reveal": "0J3QuNC60L7Qu9CwINCi0LXRgdC70LA="
     },
@@ -70,10 +71,16 @@
         "Художницы Мексики"
       ],
       "accept": [
+        "1ad6cadae9d73d141718d261f672815345deca18157a05561443337fad8fc248",
         "1e051e6d5d34c5cfc4d1b5a81a22bdf16f424a3a222e836fd50dcb6eff54de15",
+        "366a4421c801583e83956bcc879bc58e898723cfdaacd63b683a8e08c62221a8",
+        "753cb5fc54d502f50ec4d3215e482f8c263232566c68781c052ebb2a85780c77",
         "8015a2866788c2443b3811caef2febf444c8c47833c192733603a95d3a9b23b4",
         "a5b4105435e12b321d282b88ae76a11bcfc3e8721358702adf9d30d817c1eab5",
-        "d71e3a3bc9be8ffdeb8aebb8073f8fdf034d32d13c3a847b69de254823e53cf6"
+        "af2b3cd3df2f99daa36f4a95cca9c1b7099124296ddb4f10ee9a3b60b3baece6",
+        "b477a3305ec8fc820fbbc6ec58e3e60853d37fac138181885213d798df757ea8",
+        "d71e3a3bc9be8ffdeb8aebb8073f8fdf034d32d13c3a847b69de254823e53cf6",
+        "dd7713b646a9a8912f39b3da195b6b5573dcc5f281c72caa51143ada910ea8b4"
       ],
       "reveal": "0KTRgNC40LTQsCDQmtCw0LvQvg=="
     },
@@ -114,7 +121,13 @@
       "accept": [
         "17c2a3304b174c24374e9e7808d0c15742b2d3e1ca0e6df83e7b05c7e69130b1",
         "74578ba92321ec89e5eca6a0ed892389b59862eae6b72d856e42f6a3320a6aed",
+        "8dc6129f13d96f2c7a345548f9ef35e32d82ade114be126f7bb6f884255437dc",
         "9e1f4ab776edb35939275e82f57ca95a0ff2850654ee04d70d545ac42480f503",
+        "af6af517d67da1443d9bd46b347fcf158f7cfc667a5b86a713756e967a252c16",
+        "af7bfcd1d67a92fd03ded7ef0fdc6adad36cdb59f68ec09149f118a5d795e764",
+        "c0327e780f63739988944029684018bde1887b1bf4a4a88092230fc0d9bbae92",
+        "c66573cd03b9bbf94fae0daeacf71f0ff2eb1b706e7d3eaca2fabb6d828d5efd",
+        "fa63d66b70a9538303ba9134de81f743c4dc955eee65491b5988dc157c07ab8d",
         "fa729e987c0bb1f604f2886935a996075d2e487231c4c3e0c81f33b2e51b37ba"
       ],
       "reveal": "0JLQu9Cw0LTQuNC80LjRgCDQktGL0YHQvtGG0LrQuNC5"
@@ -158,6 +171,7 @@
         "Эпические фильмы США"
       ],
       "accept": [
+        "1f0c3c8d4bb542b1adb2195237550b506a45709df788a4f7b75924b065beab0d",
         "3d8695f289c65298aa3e0908736a0e3701d1ec01d9596b5393d45301d54ce3e5",
         "a55b0153fdbfc0fb5605e4ba6cb14642e9f17f008feb86853fbc27ad2b9fdf09"
       ],
@@ -203,6 +217,8 @@
         "Многопользовательские и однопользовательские игры"
       ],
       "accept": [
+        "076ff767e081b8d6f63765d0db2ada123ead54968c2f650bdb738803362da61c",
+        "131eede788233f444f01e3c6f2e431e5e4e63ad9551a389142907cbf26f9940c",
         "30d12ed6840eb3350215d1f50d3666a4b91972e29dc9ce9ea1bba3138811e4a5",
         "a10335a2644cd19e4af502cb5abe0d85c3878caff3449f8fe206b556d490d6b4"
       ],
@@ -240,9 +256,14 @@
       ],
       "accept": [
         "0115152d196e43ff96dff2e4d233844ae6bbfcb1d218ab8ec9cf02eb6d9dd912",
+        "0206bbe9662f671ecf7670a6475896a18aef7f9353aa891efa28d0daf91f225a",
         "1e3e8600338274d7d678833a07ef3f709ad59dc2b28f5812f4216bb9560ef5f9",
+        "51a3e33317f4daddd52cb0deb747d1be49e6d7dfd2649b65bea58714ecd39f93",
         "60d7c64a06bdd55008ed815510561d1836a5bf6f3469d4dda9ffeed03365199f",
-        "7791613c62f0aadc87e5f3581a0202fbcc8736a30bf2eef51437d7e9b2b1ec5f"
+        "7791613c62f0aadc87e5f3581a0202fbcc8736a30bf2eef51437d7e9b2b1ec5f",
+        "83d5769d75cfb2cf926ed6679846397972860abb6a0a19b09385bd5edbfd9abd",
+        "9207a4715f16d4fd158266f6cce2b35a8182edd28f0aadfb648371c02b5d02a8",
+        "e5cd527923192a654d74f91eef3dc77cfc23d75b279aec463513a37bcb367d80"
       ],
       "reveal": "0JDQstCw0YDQuNGPINC90LAg0KfQtdGA0L3QvtCx0YvQu9GM0YHQutC+0Lkg0JDQrdCh"
     },
@@ -258,8 +279,11 @@
         "Спускаемые аппараты"
       ],
       "accept": [
+        "30f7a1af59d5a9465ee2a5806f64caa517919e053e154d2cfca958c50401d2fa",
+        "5188abdcccd56b8a3d9a983736939ca4ee70fb61cf9f1addf8ff67f0c6019f37",
         "5d39665a663022f49879e3db61200462352d0d890dcf6aa437ef0190e1f22423",
-        "5e3a2317ca8579d353bdcfa18d199376a0ff2a77c3e4c11c3789587c0adee02e"
+        "5e3a2317ca8579d353bdcfa18d199376a0ff2a77c3e4c11c3789587c0adee02e",
+        "66cd81cf46b0c18e1ae3c03a0ce42d1891aa3c88d4890861b32ab9a142f1f9fd"
       ],
       "reveal": "0JDQv9C+0LvQu9C+0L0tMTE="
     },
@@ -275,8 +299,11 @@
         "Появились в 80-е годы"
       ],
       "accept": [
+        "6747e83257e40b23e21b93bcd1844f700a6f4d841bf6332919b79be856fb26a6",
+        "79e9fc27fb8d3e998479649f052bcd5b3567d50fd18dfedf20a4323db61dfa33",
         "8dadfa30cf94dd2a9cf84e1ec2f324aa383bab9b8a9b1009c185160fff37b968",
-        "8f9518a8899ab5e3a5b4ed51bfb49df284837fdf6acdfe1df4da6187f4f35491"
+        "8f9518a8899ab5e3a5b4ed51bfb49df284837fdf6acdfe1df4da6187f4f35491",
+        "d47a36527ce4f58d6dc2bdb8e8555640a84f5666edbb052ca8b8628471f04398"
       ],
       "reveal": "0JrQvtC70LjQt9C10Lk="
     }

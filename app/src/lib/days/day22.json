@@ -73,10 +73,18 @@
         "Энциклопедисты России"
       ],
       "accept": [
+        "15fdc030dc6c9d09983f139017f82b68f7afd24ad96970b52d52332644416f04",
+        "1ea7d46b9ddfa91828d9520fabb3c33e27157185b5772541b3e4d91fb097a9e8",
         "4cc08fcc3884c953b65e0b37828258de93092ccf636715ea46a004226736d121",
+        "50009c744bb135977e5aa8df8745b21764c97874287869abdd55ed35acfc9332",
+        "5aaab028a31908bcd71de106788913da52c75315bb1bb0640c30f8957b48beed",
         "64100308f8418aea4b227dbae8d6242740f2457edbac033c05a9c542e0896741",
+        "75392504e7a71fefe5793a6aa1da1321b1e17bdbb2aacee3a5867d2995da4619",
         "91e9b99f116f9b770fc6c68ce8854a3396b004a8203a3ca316bcd349ced70e6f",
-        "e5cb54bf367ae1c4d95df04f31b9b648c341dc543f5e1f7f521e724f31118cc5"
+        "bd19d9d3b28fd187be8cba4d7e800de433c3f0853257c9c9fa276e4f1a052703",
+        "e5cb54bf367ae1c4d95df04f31b9b648c341dc543f5e1f7f521e724f31118cc5",
+        "fbf29051909beb8618f1249de884297b21e05d206a12fcaba4870f84ebe5dbc3",
+        "fc396136e84f0589f900a2cc9280ff1b2282f3186702b8517d098d573ce8bed4"
       ],
       "reveal": "0JTQvNC40YLRgNC40Lkg0JzQtdC90LTQtdC70LXQtdCy"
     },
@@ -110,9 +118,13 @@
         "Члены Шведской королевской академии наук"
       ],
       "accept": [
+        "07191f18506d8a3a75a4586380dbee29393c6d955eb03aea0cf4aae93e12fdd2",
         "0ae7eb18e1571f8a4cf687d16a0bd90a5e7e4f2a48fd54d3d490698a727d83fc",
         "11eb3a6eba241501772e7f760aa33071e1ebf61d92d8779bf407801653ce6fa0",
+        "552cc311f15dd4e35cf655db2656fc34a818a2f2a0b0a64163f4c7f8b081cd87",
         "66a0f0493eb0d65cd6128ee939f786afe1189cc5129ce28f2e5cb280843812fa",
+        "b806b9c6d0c111bcdb848f3fe908163df16eb652d7e9036c6b88a523ba1e111b",
+        "ead3eaee26253c723fc197e9143bf1bfa0b7ffb1673ce5af5c3181f881c9e978",
         "efb83d298dcbc8ffd41dfa504042f22b82bd63cd5de8948826c9f77c4e8ca065"
       ],
       "reveal": "0JDQu9GM0YTRgNC10LQg0J3QvtCx0LXQu9GM"
@@ -147,6 +159,8 @@
         "2ab2b8f10650b80398396bb1c2492c75cff36a72030d35a607d323e396505bb7",
         "2bcb6b7df88ebd0d58f4432b7f49e11777e26dc98a988b2c3cdcaa27d8ae33d2",
         "7beee44453b26e66ccd83f9bb75acda777050376b4f4249436949aaf228fe3cd",
+        "807304a615d5356526429e08ca7a5d609e6e6fc896e466e135b91519a5f82f1f",
+        "9de7685154592264c09f3b64c04c0af82bca7978b1fb8bbb97f7eda0f4c3403b",
         "d0b3cba71f725563d316ea3516099328042095d10f4571be25c07f9ce31985a5"
       ],
       "reveal": "0KPRgdGN0LnQvSDQkdC+0LvRgg=="
@@ -172,6 +186,7 @@
       ],
       "accept": [
         "1a222674cf3dec641d75f337693fe8413c43b0a0bf40607845b43e8fff9925f4",
+        "332c35d2ab0b41009b5243738da3ef11226eefce5fc8a81bc2a4057306c5164d",
         "b79479af556a40026defadb5135b6726508f8cd6737a2b442f6860de282f9b42"
       ],
       "reveal": "0JjQstCw0L0g0JLQsNGB0LjQu9GM0LXQstC40Ycg0LzQtdC90Y/QtdGCINC/0YDQvtGE0LXRgdGB0LjRjg=="
@@ -206,8 +221,10 @@
         "Фантастические романы"
       ],
       "accept": [
+        "1a8acc9264f1a7ac362e4ff1bc5caa25c6c640ce3bb7f8ed3ce5b8bd6f2e3e26",
         "2fef76f13e3b4241bcd9ab803c3934f6e91018be8b78045737cdc591ecbece14",
-        "c4f5c739df8cd2b09fea7ff61397c3bb600336ad8a32ae6f2bc5c9cbc0ff6676"
+        "c4f5c739df8cd2b09fea7ff61397c3bb600336ad8a32ae6f2bc5c9cbc0ff6676",
+        "e34e8859aaa03f0fcfc6fed866bd4454e451f13e6b8ac4749404e70ce5771838"
       ],
       "reveal": "0KTRgNCw0L3QutC10L3RiNGC0LXQudC9ICjRgNC+0LzQsNC9KQ=="
     },
@@ -236,7 +253,9 @@
       ],
       "accept": [
         "08a74369d0c871e5f47096fa63a8aed072d6937d663230d7cd02451d8521b0bf",
-        "6dc52256791ff76bea213f0cffaed52dfff4a895ff95953fcda017ff09cbe479"
+        "6d05b59da99a79362137524e80270062270e07cfde118b10bc1811e3ec3f141f",
+        "6dc52256791ff76bea213f0cffaed52dfff4a895ff95953fcda017ff09cbe479",
+        "aef6ff6d54f5ccaad3783bd145485d435bfe114a25a355593a588ce18feb155e"
       ],
       "reveal": "0KfQuNGH0LXQvS3QmNGG0LA="
     },
@@ -252,9 +271,18 @@
         "Сражения, высеченные на Триумфальной арке (Париж)"
       ],
       "accept": [
+        "00d7cc1aa7a4d6a235afa53e742b8c1564f0cd3cc6f84e48262108c891948ba2",
         "02adc441ed4984b66a96f8a26a89a0551dbf5bc30315fae7dd75da449905138e",
         "25b332ef29f487cd40fe0809c8135fef82ff87a64081e284f5d2ae98e0dabeaf",
-        "a56f068cb9503c394439cd63e19d01ddaf6ce9fc99236050e3f19f18af0d9a27"
+        "324bb013512a5f7f5c1832d1d116948dad609084ab6b007591a74558a7e0465a",
+        "620ebe4df20f138747de7e092342544efaef9f1df3f65b5d15182618eda6a967",
+        "71d921dd178bc110414cfc49c9a4032999ebc8bedcc3c3f33d713ca5455af588",
+        "79cbf644d2cc8b1f7c08b998464d53aaf7b295e05ebac7cc7a34c2ee87d1445a",
+        "a56f068cb9503c394439cd63e19d01ddaf6ce9fc99236050e3f19f18af0d9a27",
+        "d0ea5cdfa978d9c6b6b8c61305e95fd5cff179db40d85fc164b0620cde59ff7c",
+        "d67aded0e2391673ac301ca5922e527803c535c56b634dd105e239aa1ce021c6",
+        "fc902f1712f2aeed6f962ae83a2bbe935ff545da2e9de058b9fa3638bc145587",
+        "fe7e27d1a17369ac81ef6013006a0240bcbbad208514a4bd1df9a721fc734a2e"
       ],
       "reveal": "0JHQvtGA0L7QtNC40L3RgdC60L7QtSDRgdGA0LDQttC10L3QuNC1"
     },
@@ -278,6 +306,7 @@
       ],
       "accept": [
         "e6fac912d87182e91e41fa42d3e55a6dff290e255c883a3cf38a938db2fb9a56",
+        "e8e825120e8b3d43f5b739ac58f0df3e9c062a8bdceddc15fd45719d70c7054e",
         "f357ee943b2faae3c86f4c26a30b0fcf6f2908bb927118790bc800c6d5159751",
         "fe15d16f894d2147b063553564fc1ad51d70480a7fcfe5ff7653af115aa94220"
       ],
