@@ -12,9 +12,8 @@ Status legend: [ ] todo  [~] in progress  [x] done
 - [x] Tech stack: **SvelteKit + adapter-static**, deployed to Pages via Actions
 - [x] Privacy model: **B — ship categories + hash(answer)**; autocomplete over
       public RU title corpus; no answer list in client
-- [ ] Define puzzle format: N puzzles/day? (original = 10). Default: 5/day.
-- [ ] Define attempts/scoring: lives per puzzle? streaks? Default: 6 guesses, no
-      cross-player scoring in v1.
+- [x] Puzzle format: **10 puzzles/day**, curated by hand.
+- [x] Attempts: **3 tries** per puzzle, no cross-player scoring in v1. Difficulty = hard.
 - [ ] Write a short spec.md from the above.
 
 Locked stack implications:
@@ -40,29 +39,29 @@ Locked stack implications:
 - [ ] Guard against repeats until pool exhausted
 
 ## Epic 3 — Game UI
-- [ ] Show today's category list for the hidden article
+- [x] Show today's category list for the hidden article (v0 prototype)
 - [ ] Guess input with autocomplete over RU title corpus
-- [ ] Reveal-on-correct; track attempts; win/lose states
+- [x] Reveal-on-correct; track attempts; win/lose states (v0)
 - [ ] "Skip / next puzzle" across the day's N puzzles
 - [ ] "Flag stupid" button (broad/giveaway puzzle) — store locally for now
-- [ ] Russian UI copy throughout
+- [x] Russian UI copy throughout (v0)
 
 ## Epic 4 — Share loop  (design FIRST conceptually, build here)
-- [ ] Spoiler-free result string (emoji/score line, Wordle-style)
-- [ ] Copy-to-clipboard button
+- [x] Spoiler-free result string (emoji grid) (v0)
+- [x] Copy-to-clipboard button (v0)
 - [ ] OG share image for link previews
 - [ ] Decide what the line encodes (per-puzzle solved/attempts? total score?)
 
 ## Epic 5 — Hosting & deploy
 - [ ] Choose Pages source: main /root, /docs, or Actions build
-- [ ] Enable GitHub Pages
+- [x] Enable GitHub Pages -> https://imangulova.github.io/game-designer/
 - [ ] (If SvelteKit) GitHub Actions workflow: build + deploy
 - [ ] Custom domain? (optional, later)
 
 ## Epic 6 — Polish
 - [ ] PWA: manifest + icons + theme color (installable, offline shell)
-- [ ] Persist stats locally: streak, history (localStorage)
-- [ ] Dark/light theme (reuse personal HTML viz style)
+- [x] Persist day progress locally (localStorage) (v0)
+- [x] Dark/light theme (v0)
 - [ ] Accessibility pass (keyboard, contrast)
 
 ## Epic 7 — Quality of puzzles
