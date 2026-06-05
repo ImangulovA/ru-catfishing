@@ -9,13 +9,19 @@ Status legend: [ ] todo  [~] in progress  [x] done
 ---
 
 ## Epic 0 — Decisions & spec
-- [ ] Pick tech stack: vanilla JS (fastest) vs SvelteKit static (matches original)
-- [ ] Pick privacy model: (A) answers in client, (B) categories + hashed answer,
-      (C) serverless validator. Default proposal: **B** for v1.
+- [x] Tech stack: **SvelteKit + adapter-static**, deployed to Pages via Actions
+- [x] Privacy model: **B — ship categories + hash(answer)**; autocomplete over
+      public RU title corpus; no answer list in client
 - [ ] Define puzzle format: N puzzles/day? (original = 10). Default: 5/day.
 - [ ] Define attempts/scoring: lives per puzzle? streaks? Default: 6 guesses, no
       cross-player scoring in v1.
 - [ ] Write a short spec.md from the above.
+
+Locked stack implications:
+- Data pipeline (Python) emits JSON with `{categories[], answer_hash}` only.
+- Hashing: normalize the guess (trim, lowercase, ё→е) before hashing so minor
+  input differences still match. Pick one hash (e.g. SHA-256) used both sides.
+- GitHub Actions builds SvelteKit and deploys to Pages (no manual build commits).
 
 ## Epic 1 — Data pipeline (scripts/, Python)
 - [ ] Fetch candidate articles from ru.wikipedia MediaWiki API
