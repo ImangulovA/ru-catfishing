@@ -28,7 +28,7 @@
   let revealWiki = $state('');
   let revealImg = $state('');
   let shaking = $state(false);
-  let theme = $state('dark');
+  let theme = $state('light');
   let copied = $state(false);
   let untilMidnight = $state('');
 
@@ -77,6 +77,7 @@
       .replace(/(.)\1+/g, '$1')
       .split(' ')
       .filter(Boolean)
+      .filter((w) => w !== 'the' && w !== 'of') // drop English stopwords (the last of us == last of us)
       .sort()
       .join(' '); // порядок слов не важен (Бергкамп Деннис == Деннис Бергкамп)
   }
@@ -105,7 +106,7 @@
   }
 
   onMount(() => {
-    applyTheme(localStorage.getItem('rucatfish_theme') || 'dark');
+    applyTheme(localStorage.getItem('rucatfish_theme') || 'light');
 
     // pick the day from ?day=N (archive) or default to today
     const requested = new URLSearchParams(location.search).get('day');

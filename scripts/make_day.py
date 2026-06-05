@@ -27,6 +27,11 @@ from build_pool import fetch_langlink
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+# English stopwords dropped from answers, so "the last of us" == "last of us".
+# Keep this in sync with STOPWORDS in app/src/routes/+page.svelte:norm().
+STOPWORDS = {"the", "of"}
+
+
 def norm(s):
     # Typo-tolerant ("УСЛОВНО зачёт"): fold ё/э->е and й->и, collapse runs of the
     # same char, then SORT the words, so "Хэди Ламарр" / "ламар" all match
@@ -38,7 +43,9 @@ def norm(s):
     s = re.sub(r"[^а-яa-z0-9 ]", " ", s)    # punctuation -> space
     s = re.sub(r"\s+", " ", s).strip()
     s = re.sub(r"(.)\1+", r"\1", s)         # удвоенные буквы -> одна (ламарр->ламар)
-    return " ".join(sorted(s.split()))      # порядок слов не важен (Бергкамп Деннис == Деннис Бергкамп)
+    # drop English stopwords so "last of us" == "the last of us"
+    words = [w for w in s.split() if w not in STOPWORDS]
+    return " ".join(sorted(words))          # порядок слов не важен (Бергкамп Деннис == Деннис Бергкамп)
 
 
 # A puzzle answer is a PERSON if any of its Wikipedia categories is a

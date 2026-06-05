@@ -1,12 +1,17 @@
 <script>
   import { onMount } from 'svelte';
   import { base } from '$app/paths';
-  import { DAYS, availableDays, currentDay, fmtDate } from '$lib/days';
+  import { DAYS, availableDays, currentDay, dateForDay, fmtDate } from '$lib/days';
 
   const CAT = '🐈', FISH = '🐟', HALF = '🐠';
+  const WEEKDAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+  const MONTHS = [
+    'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+    'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь',
+  ];
 
-  let rows = $state([]);
-  let theme = $state('dark');
+  let months = $state([]);
+  let theme = $state('light');
 
   function applyTheme(t) {
     theme = t;
@@ -15,39 +20,69 @@
   }
 
   function readProgress(d) {
-    // returns { played, finished, score, n, grid } for a day's strict json
     const n = d.puzzles.length;
     let saved = null;
     try {
       saved = JSON.parse(localStorage.getItem('rucatfish_day' + d.day));
     } catch (e) {}
     if (!saved || !Array.isArray(saved.results)) {
-      return { played: false, finished: false, score: '0', n, grid: '' };
+      return { played: false, finished: false, score: '0', n };
     }
     const results = saved.results;
     const wins = results.filter((r) => r === 'win').length;
     const halves = results.filter((r) => r === 'half').length;
     const points = wins + halves * 0.5;
     const answered = results.filter((r) => r !== null).length;
-    const grid = results.map((r) => (r === 'win' ? CAT : r === 'half' ? HALF : r === null ? '·' : FISH)).join('');
     return {
       played: answered > 0,
       finished: !!saved.done || answered === n,
       score: Number.isInteger(points) ? String(points) : points.toFixed(1),
       n,
-      grid,
     };
   }
 
+  function buildMonth(year, month, byKey) {
+    const firstWeekday = (new Date(year, month, 1).getDay() + 6) % 7; // Mon = 0
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const cells = [];
+    for (let i = 0; i < firstWeekday; i++) cells.push(null);
+    for (let d = 1; d <= daysInMonth; d++) {
+      cells.push({ d, info: byKey[`${year}-${month}-${d}`] || null });
+    }
+    while (cells.length % 7 !== 0) cells.push(null);
+    const weeks = [];
+    for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
+    return { label: `${MONTHS[month]} ${year}`, weeks };
+  }
+
   onMount(() => {
-    theme = localStorage.getItem('rucatfish_theme') || 'dark';
+    theme = localStorage.getItem('rucatfish_theme') || 'light';
+
     const cur = currentDay();
-    rows = availableDays().map((idx) => ({
-      idx,
-      date: fmtDate(idx),
-      isToday: idx === cur,
-      ...readProgress(DAYS[idx]),
-    }));
+    const avail = availableDays(); // indexes, newest first
+    const byKey = {};
+    for (const idx of avail) {
+      const d = dateForDay(idx);
+      byKey[`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`] = {
+        idx,
+        isToday: idx === cur,
+        date: fmtDate(idx),
+        ...readProgress(DAYS[idx]),
+      };
+    }
+
+    // render every month from the earliest available day through the current month
+    const today = new Date();
+    const start = avail.length ? dateForDay(Math.min(...avail)) : today;
+    const list = [];
+    let y = start.getFullYear();
+    let m = start.getMonth();
+    while (y < today.getFullYear() || (y === today.getFullYear() && m <= today.getMonth())) {
+      list.push(buildMonth(y, m, byKey));
+      m += 1;
+      if (m > 11) { m = 0; y += 1; }
+    }
+    months = list;
   });
 </script>
 
@@ -61,28 +96,49 @@
 
   <div class="card">
     <div class="round">Архив дней</div>
-    <p class="lead">Каждый день — новые 10 загадок. Можно вернуться к прошлым дням.</p>
+    <p class="lead">Каждый день — новые 10 загадок. Кликни на день, чтобы сыграть.</p>
 
-    <div class="list">
-      {#each rows as r}
-        <a class="dayrow" class:today={r.isToday} href={r.isToday ? `${base}/` : `${base}/?day=${r.idx}`}>
-          <div class="left">
-            <span class="num">#{r.idx}</span>
-            <span class="date">{r.date}{#if r.isToday} · сегодня{/if}</span>
+    {#each months as mo}
+      <div class="month">
+        <div class="month-label">{mo.label}</div>
+        <div class="cal-head">
+          {#each WEEKDAYS as w}<div class="wd">{w}</div>{/each}
+        </div>
+        {#each mo.weeks as week}
+          <div class="cal-row">
+            {#each week as cell}
+              {#if !cell}
+                <div class="cell empty"></div>
+              {:else if cell.info}
+                <a
+                  class="cell has"
+                  class:today={cell.info.isToday}
+                  class:done={cell.info.finished}
+                  href={cell.info.isToday ? `${base}/` : `${base}/?day=${cell.info.idx}`}
+                  title={`День ${cell.info.idx} · ${cell.info.date}`}
+                >
+                  <span class="dt">{cell.d}</span>
+                  {#if cell.info.finished}
+                    <span class="sc">{cell.info.score}/{cell.info.n}</span>
+                  {:else if cell.info.played}
+                    <span class="sc dim">…</span>
+                  {:else}
+                    <span class="sc go">играть</span>
+                  {/if}
+                </a>
+              {:else}
+                <div class="cell day"><span class="dt">{cell.d}</span></div>
+              {/if}
+            {/each}
           </div>
-          <div class="right">
-            {#if r.finished}
-              <span class="grid">{r.grid}</span>
-              <span class="score">{r.score}/{r.n}</span>
-            {:else if r.played}
-              <span class="grid">{r.grid}</span>
-              <span class="tag">продолжить →</span>
-            {:else}
-              <span class="tag play">играть →</span>
-            {/if}
-          </div>
-        </a>
-      {/each}
+        {/each}
+      </div>
+    {/each}
+
+    <div class="legend">
+      <span><b class="chip today">сегодня</b></span>
+      <span><b class="chip done">сыграно</b> — со счётом</span>
+      <span><b class="chip go">играть</b> — ещё не пробовал</span>
     </div>
   </div>
 
@@ -104,28 +160,44 @@
 
   .card { background: var(--card); border: 2px solid var(--ink); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
   .round { font-family: var(--mono); color: var(--muted); font-size: 12px; font-weight: 700; text-align: center; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
-  .lead { text-align: center; color: var(--text); font-size: 15px; margin: 0 0 16px; font-weight: 500; }
+  .lead { text-align: center; color: var(--text); font-size: 15px; margin: 0 0 18px; font-weight: 500; }
 
-  .list { display: flex; flex-direction: column; gap: 10px; }
-  .dayrow {
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    background: var(--card2); border: 2px solid var(--ink); border-radius: var(--radius);
-    padding: 12px 16px; text-decoration: none; color: var(--text);
-    box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease;
+  .month { margin-bottom: 22px; }
+  .month-label { font-family: var(--mono); font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; text-align: center; margin-bottom: 10px; }
+  .cal-head, .cal-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .cal-head { margin-bottom: 6px; }
+  .cal-row { margin-bottom: 6px; }
+  .wd { text-align: center; font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; }
+
+  .cell { aspect-ratio: 1 / 1; border-radius: var(--radius-sm); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+  .cell.empty { background: transparent; }
+  .cell.day { color: var(--muted); opacity: 0.45; }
+  .cell.day .dt { font-size: 13px; font-weight: 600; }
+
+  .cell.has {
+    background: var(--card2); border: 2px solid var(--ink); color: var(--text);
+    text-decoration: none; box-shadow: var(--shadow-sm); cursor: pointer;
+    transition: transform 0.06s ease, box-shadow 0.06s ease;
   }
-  .dayrow:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
-  .dayrow:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
-  .dayrow.today { border-top: 8px solid var(--accent); }
-  .left { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-  .num { font-family: var(--mono); font-weight: 800; font-size: 16px; }
-  .date { color: var(--muted); font-size: 13px; font-weight: 500; }
-  .right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-  .right .grid { font-size: 15px; letter-spacing: 1px; }
-  .score { font-family: var(--mono); font-weight: 800; font-size: 15px; background: var(--accent); color: var(--accent-ink); border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 3px 8px; box-shadow: var(--shadow-sm); }
-  .tag { font-weight: 800; font-size: 13px; color: var(--secondary); }
-  .tag.play { color: var(--accent-ink); background: var(--accent); border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 4px 9px; box-shadow: var(--shadow-sm); }
+  .cell.has:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+  .cell.has:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .cell.has .dt { font-size: 15px; font-weight: 800; line-height: 1; }
+  .cell.has .sc { font-family: var(--mono); font-size: 10px; font-weight: 700; line-height: 1; }
+  .cell.has .sc.go { color: var(--secondary); }
+  .cell.has .sc.dim { color: var(--muted); }
+  .cell.has.done { background: var(--green); color: #fff; border-color: var(--ink); }
+  .cell.has.done .sc { color: #fff; }
+  .cell.has.today { border-color: var(--ink); border-top: 6px solid var(--accent); background: var(--accent); color: var(--accent-ink); }
+  .cell.has.today .sc, .cell.has.today.done .sc { color: var(--accent-ink); }
+  .cell.has.today.done { background: var(--accent); color: var(--accent-ink); }
 
-  .foot { color: var(--muted); font-size: 13px; text-align: center; margin-top: 24px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px; font-size: 12px; color: var(--muted); }
+  .legend .chip { display: inline-block; border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 1px 7px; font-weight: 800; font-size: 11px; box-shadow: var(--shadow-sm); }
+  .legend .chip.today { background: var(--accent); color: var(--accent-ink); }
+  .legend .chip.done { background: var(--green); color: #fff; }
+  .legend .chip.go { background: var(--card2); color: var(--secondary); }
+
+  .foot { color: var(--muted); font-size: 13px; text-align: center; margin-top: 20px; }
   .foot a { color: var(--secondary); font-weight: 700; text-decoration: underline; }
 
   @media (max-width: 600px) {
@@ -133,7 +205,9 @@
     .brand { font-size: 16px; }
     .fish { font-size: 18px; }
     .card { padding: 14px; }
-    .dayrow { padding: 10px 12px; }
-    .right .grid { display: none; } /* keep rows compact on small screens */
+    .cal-head, .cal-row { gap: 4px; }
+    .cell.has .dt { font-size: 13px; }
+    .cell.has .sc { font-size: 9px; }
+    .legend { gap: 8px; }
   }
 </style>
