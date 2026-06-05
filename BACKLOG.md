@@ -84,6 +84,7 @@ Locked stack implications:
   the shipped output).
 
 ## Attribution
-- Game concept: party game by Sumana Harihareswara (2006), automated by Kevan
-  Davis (catfishing). Our build is an independent RU implementation.
+- Original concept: Sumana Harihareswara. Name and original implementation:
+  Kevan Davis (2006). The modern daily game at catfishing.net is made by an
+  anonymous developer, Matthew. Our build is an independent RU implementation.
 - Data: ru.wikipedia category data, GFDL.

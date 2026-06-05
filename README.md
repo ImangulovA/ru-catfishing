@@ -3,8 +3,10 @@
 A small daily web game: **guess the Russian Wikipedia article from its
 categories.** 10 puzzles a day, shareable result (Wordle-style), zero login.
 
-Inspired by the party game *catfishing* (invented by Sumana Harihareswara, 2006;
-later automated by Kevan Davis). This is an independent Russian-language build.
+Inspired by *catfishing*: original concept by Sumana Harihareswara; name and
+original implementation by Kevan Davis (2006); the modern daily game at
+catfishing.net is made by an anonymous developer, Matthew. This is an independent
+Russian-language build.
 
 🐟 Live: https://imangulova.github.io/ru-catfishing/
 
@@ -37,5 +39,8 @@ Daily puzzle + tiny shareable result + zero login. Cheap to host
 (static site on GitHub Pages).
 
 ## Attribution
-- Game concept: Sumana Harihareswara (2006), automated by Kevan Davis.
+- Original concept: Sumana Harihareswara.
+- Name and original implementation: Kevan Davis (2006).
+- The modern daily game (catfishing.net): an anonymous developer, Matthew.
+- This project (ru-catfishing) is an independent Russian-language build.
 - Data: ru.wikipedia category data, GFDL.

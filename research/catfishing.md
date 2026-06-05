@@ -5,18 +5,20 @@ Status: CONFIRMED from page source (fetched via curl). High confidence.
 
 ## TL;DR
 "Catfishing" is a guessing game: **given the full list of Wikipedia categories an
-article belongs to, guess the article.** There are TWO distinct implementations,
-and it's important not to conflate them:
+article belongs to, guess the article.** Attribution (corrected 2026-06-05 from
+catfishing.net/help) has THREE distinct parties — don't conflate them:
 
-1. **The original idea** — a party game invented by **Sumana Harihareswara (2006)**:
-   read a Wikipedia page's category list aloud, others guess the article.
-2. **kevan.org/catfishing.php** — **Kevan Davis** automated it (~2006), added a
-   scoring system (Apr 2007). PHP. Adding new articles broke in 2009 (Wikipedia
-   API change) and was never fixed. This is the "classic" version.
-3. **catfishing.net** — a **modern, separate reboot**. Daily format,
-   "10 interesting people, places, and things to guess every day." Different
-   tech stack entirely (see below). Author not stated on the site (Mastodon
-   @catfishing); do NOT assume it's Kevan.
+1. **Original concept** — by **Sumana Harihareswara**: a party game where you read
+   a Wikipedia page's category list aloud and others guess the article.
+2. **Name + original implementation** — by **Kevan Davis (2006)**
+   (kevan.org/catfishing.php). PHP, added a scoring system (Apr 2007). Adding new
+   articles broke in 2009 (Wikipedia API change) and was never fixed. The
+   "classic" version.
+3. **catfishing.net** — the **modern daily game**, made by an **anonymous
+   developer named Matthew** (per https://catfishing.net/help). Daily format,
+   "10 interesting people, places, and things to guess every day." Different tech
+   stack entirely (see below). CORRECTION: this is Matthew's game, NOT Kevan's —
+   earlier notes wrongly left the author unknown / hinted at Kevan.
 
 ## Confirmed mechanic
 - You are shown **all the (useful) Wikipedia categories** of a hidden article.
