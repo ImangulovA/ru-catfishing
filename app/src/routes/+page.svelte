@@ -134,9 +134,12 @@
     untilMidnight = fmtUntilMidnight();
     const timer = setInterval(() => { untilMidnight = fmtUntilMidnight(); }, 60000);
 
-    // Enter also advances to the next puzzle on the answer screen
+    // Enter also advances to the next puzzle on the answer screen.
+    // The submit-Enter is stopped from reaching here (stopPropagation in the
+    // input handler), so it can't both submit AND skip in one keypress; we also
+    // ignore auto-repeat so holding Enter doesn't blow through puzzles.
     const onKey = (e) => {
-      if (e.key !== 'Enter' || view !== 'game' || !revealed) return;
+      if (e.key !== 'Enter' || e.repeat || view !== 'game' || !revealed) return;
       if (e.target && e.target.tagName === 'BUTTON') return; // let the button's own Enter work
       e.preventDefault();
       next();
@@ -323,7 +326,11 @@
             bind:value={guess}
             placeholder="Название статьи…"
             autocomplete="off"
-            onkeydown={(e) => e.key === 'Enter' && check()}
+            onkeydown={(e) => {
+              if (e.key !== 'Enter') return;
+              e.stopPropagation(); // don't let this Enter reach the window "advance" listener
+              check();
+            }}
           />
           <button class="btn primary" onclick={check}>Угадать</button>
         </div>
