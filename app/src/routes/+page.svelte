@@ -32,14 +32,21 @@
   const scoreLabel = $derived(Number.isInteger(points) ? String(points) : points.toFixed(1));
   const grid = $derived(results.map((r) => (r === 'win' ? '🟩' : r === 'half' ? '🟨' : '⬜')).join(''));
 
+  // Typo-tolerant ("УСЛОВНО зачёт"): fold ё/э->е and й->и, then collapse runs
+  // of the same char, so "Хэди Ламарр" / "ламар" / "хеди ламар" all match.
+  // MUST stay byte-identical to norm() in scripts/make_day.py, or guesses won't
+  // hash to the shipped accept hashes.
   function norm(s) {
     return (s || '')
       .toLowerCase()
       .replace(/ё/g, 'е')
+      .replace(/э/g, 'е')
+      .replace(/й/g, 'и')
       .replace(/\([^)]*\)/g, ' ')
       .replace(/[^а-яa-z0-9 ]/g, ' ')
       .replace(/\s+/g, ' ')
-      .trim();
+      .trim()
+      .replace(/(.)\1+/g, '$1');
   }
 
   async function sha256(s) {

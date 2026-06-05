@@ -26,10 +26,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def norm(s):
-    s = s.lower().replace("ё", "е")
+    # Typo-tolerant ("УСЛОВНО зачёт"): fold ё/э->е and й->и, then collapse runs
+    # of the same char, so "Хэди Ламарр" / "ламар" / "хеди ламар" all match
+    # "Хеди Ламарр". MUST stay byte-identical to norm() in app/src/routes/
+    # +page.svelte, or guesses won't hash to the shipped accept hashes.
+    s = s.lower().replace("ё", "е").replace("э", "е").replace("й", "и")
     s = re.sub(r"\([^)]*\)", " ", s)        # drop "(фильм)", "(Мюнхен)"
     s = re.sub(r"[^а-яa-z0-9 ]", " ", s)    # punctuation -> space
-    return re.sub(r"\s+", " ", s).strip()
+    s = re.sub(r"\s+", " ", s).strip()
+    return re.sub(r"(.)\1+", r"\1", s)      # удвоенные буквы -> одна (ламарр->ламар)
 
 
 # A puzzle answer is a PERSON if any of its Wikipedia categories is a

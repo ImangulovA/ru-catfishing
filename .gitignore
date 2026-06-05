@@ -2,3 +2,9 @@
 node_modules/
 /tmp/
 *.log
+__pycache__/
+*.pyc
+
+# Raw, human-editable day sources (plaintext article titles). We edit these,
+# never the strict json. Kept out of git so plaintext answers never ship.
+prototype/data/*.txt
