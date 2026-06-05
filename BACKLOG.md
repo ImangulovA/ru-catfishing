@@ -40,7 +40,7 @@ Locked stack implications:
 
 ## Epic 3 — Game UI
 - [x] Show today's category list for the hidden article (v0 prototype)
-- [ ] Guess input with autocomplete over RU title corpus
+- [ ] Guess input with autocomplete over RU title corpus (still uses alias-hashes for now)
 - [x] Reveal-on-correct; track attempts; win/lose states (v0)
 - [ ] "Skip / next puzzle" across the day's N puzzles
 - [ ] "Flag stupid" button (broad/giveaway puzzle) — store locally for now
@@ -53,9 +53,9 @@ Locked stack implications:
 - [ ] Decide what the line encodes (per-puzzle solved/attempts? total score?)
 
 ## Epic 5 — Hosting & deploy
-- [ ] Choose Pages source: main /root, /docs, or Actions build
-- [x] Enable GitHub Pages -> https://imangulova.github.io/game-designer/
-- [ ] (If SvelteKit) GitHub Actions workflow: build + deploy
+- [x] Pages source: **GitHub Actions** (workflow deploy)
+- [x] Enable GitHub Pages -> https://imangulova.github.io/ru-catfishing/
+- [x] GitHub Actions workflow: build app/ + deploy (.github/workflows/deploy.yml)
 - [ ] Custom domain? (optional, later)
 
 ## Epic 6 — Polish

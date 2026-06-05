@@ -3,7 +3,7 @@
   import { browser } from '$app/environment';
   import day from '$lib/days/day1.json';
 
-  const MAX_TRIES = 3;
+  const MAX_TRIES = 1; // catfishing = one shot
   const KEY = 'rucatfish_day' + day.day;
   const N = day.puzzles.length;
 
@@ -25,7 +25,6 @@
 
   const puzzle = $derived(day.puzzles[i]);
   const wins = $derived(results.filter((r) => r === 'win').length);
-  const triesLeft = $derived(MAX_TRIES - tries);
   const grid = $derived(results.map((r) => (r === 'win' ? '🟩' : '⬜')).join(''));
 
   function norm(s) {
@@ -171,7 +170,7 @@
       <div class="round">Как играть</div>
       <p class="lead">
         Тебе показывают список категорий Википедии, к которым относится статья. Угадай, что это за статья.
-        Сегодня <b>{N}</b> загадок. Сложность: топчик.
+        Сегодня <b>{N}</b> загадок. <b>Одна попытка</b> на каждую.
       </p>
       <div class="row"><button class="btn primary grow" onclick={start}>Играть</button></div>
     </div>
@@ -206,9 +205,7 @@
         <div class="feedback {feedbackKind}">{feedback}</div>
         <div class="subrow">
           <button class="link" onclick={() => reveal('lose', 'Пропущено. Это:')}>Пропустить →</button>
-          <button class="link" onclick={() => reveal('lose', 'Сдался. Это:')}>Сдаться</button>
         </div>
-        <div class="tries">Попыток осталось: {triesLeft}</div>
       {:else}
         <div class="reveal">
           <div class="round">{revealLabel}</div>
