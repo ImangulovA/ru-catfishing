@@ -19,38 +19,50 @@ export function clientId() {
 export const statsEnabled = () => !!STATS_API;
 
 // Fire-and-forget POST. Uses sendBeacon when available (survives page unload).
+// Returns true if the send was at least dispatched, false otherwise.
+//
+// IMPORTANT: the body is sent as text/plain, NOT application/json. text/plain is
+// a CORS-safelisted content type, so the cross-origin POST is a "simple request"
+// with no preflight. navigator.sendBeacon CANNOT send preflighted requests and
+// silently drops application/json beacons -> results never reach the Worker. The
+// Worker parses the body with request.json() regardless of the Content-Type.
 function post(path, payload) {
-  if (!STATS_API || typeof fetch === 'undefined') return;
+  if (!STATS_API || typeof fetch === 'undefined') return false;
   const url = STATS_API + path;
   try {
     const blob = JSON.stringify(payload);
     if (navigator?.sendBeacon) {
-      navigator.sendBeacon(url, new Blob([blob], { type: 'application/json' }));
-      return;
+      if (navigator.sendBeacon(url, new Blob([blob], { type: 'text/plain' }))) return true;
+      // beacon rejected (e.g. queue full) -> fall through to fetch
     }
     fetch(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: blob,
       keepalive: true,
     }).catch(() => {});
-  } catch (e) {}
+    return true;
+  } catch (e) {
+    return false;
+  }
 }
 
 // Submit a finished day once. `points` may be fractional (halves) -> score2.
 export function submitResult(day, points, cells) {
   if (!STATS_API) return; // no backend yet -> don't mark sent, so it can backfill later
-  if (typeof localStorage !== 'undefined') {
-    const flag = 'rucatfish_sent_day' + day;
-    if (localStorage.getItem(flag)) return; // already sent from this browser
-    localStorage.setItem(flag, '1');
-  }
-  post('/result', {
+  const flag = 'rucatfish_sent_day' + day;
+  const hasLS = typeof localStorage !== 'undefined';
+  if (hasLS && localStorage.getItem(flag)) return; // already sent from this browser
+  const sent = post('/result', {
     day,
     score2: Math.round(points * 2),
     cells,
     clientId: clientId(),
   });
+  // Only mark as sent if the request was actually dispatched, so a transient
+  // failure can still backfill on the next visit (the Worker dedupes by
+  // clientId+day, so a retry never double-counts).
+  if (sent && hasLS) localStorage.setItem(flag, '1');
 }
 
 export function submitOpen(day, idx) {
