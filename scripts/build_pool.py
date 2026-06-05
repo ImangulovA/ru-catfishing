@@ -31,11 +31,13 @@ SEED_CATEGORIES = [
     "Категория:Википедия:Хорошие статьи по алфавиту",
 ]
 
-# Category-name fragments that mark service/meta categories we never show.
+# Hidden maintenance categories are already dropped via clshow=!hidden.
+# We additionally drop only pure navigation filler. NOTE: birth/death-year
+# categories ("Родившиеся в 1892 году") are KEPT — they are real clues that
+# help unwind the answer. Only "...по алфавиту" is removed.
 SERVICE_PATTERNS = [
-    "Википедия:", "Страницы", "Статьи", "Незавершённые",
-    "Карточка", "Шаблон", "Запросы", "КУ:", "Категории",
-    "с ", "без ", "для ",  # "Статьи с ...", "... без источников"
+    "по алфавиту",   # "Персоналии по алфавиту", "Картины по алфавиту", ...
+    "Википедия:",    # any non-hidden project-namespace category
 ]
 
 
@@ -83,10 +85,22 @@ def fetch_categories(title):
     return cats
 
 
+# Common words that may appear in a title but are NOT giveaways (so birth/death
+# YEAR categories survive: "Времена года" must not nuke "Картины 1873 года").
+GIVEAWAY_STOPWORDS = {
+    "года", "году", "годы", "годов", "веке", "века", "веков",
+    "после", "часть", "имени", "около",
+}
+
+
+def norm(s):
+    return s.lower().replace("ё", "е")
+
+
 def title_tokens(title):
-    # words of length >= 4, normalized (lowercase, ё->е) for giveaway detection
-    norm = title.lower().replace("ё", "е")
-    return {w for w in re.findall(r"[а-яёa-z0-9]+", norm) if len(w) >= 4}
+    # distinctive title words (len >= 4, minus stopwords) used to detect giveaways
+    words = re.findall(r"[а-яёa-z0-9]+", norm(title))
+    return {w for w in words if len(w) >= 4 and w not in GIVEAWAY_STOPWORDS}
 
 
 def is_service(cat):
@@ -94,8 +108,9 @@ def is_service(cat):
 
 
 def is_giveaway(cat, tokens):
-    cat_words = set(re.findall(r"[а-яёa-z0-9]+", cat.lower().replace("ё", "е")))
-    return bool(cat_words & tokens)
+    # substring match catches inflected forms: "выборг" in "выборгского района"
+    c = norm(cat)
+    return any(tok in c for tok in tokens)
 
 
 def normalize_answer(title):
