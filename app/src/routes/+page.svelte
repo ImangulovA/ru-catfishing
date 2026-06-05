@@ -4,6 +4,7 @@
   import { base } from '$app/paths';
   import { DAYS, resolveDay, currentDay, fmtDate } from '$lib/days';
   import { computeStats } from '$lib/stats';
+  import { submitResult, submitOpen } from '$lib/api';
 
   const MAX_TRIES = 1; // catfishing = one shot
   const CAT = '🐈';    // угадал
@@ -98,7 +99,16 @@
   }
 
   function save() {
-    if (browser && KEY) localStorage.setItem(KEY, JSON.stringify({ i, results, done }));
+    // `live` = played on the puzzle's own date (drives "on the day vs later" stat)
+    if (browser && KEY) localStorage.setItem(KEY, JSON.stringify({ i, results, done, live: isToday }));
+  }
+
+  // raw per-puzzle outcome for the stats backend ('win' | 'half' | 'miss')
+  const rawCells = () => results.map((r) => (r === 'win' ? 'win' : r === 'half' ? 'half' : 'miss'));
+
+  // count an answer's Wikipedia article being opened (best-effort, anonymous)
+  function openWiki() {
+    submitOpen(dayIdx, i);
   }
 
   function applyTheme(t) {
@@ -169,6 +179,9 @@
   function goEnd() {
     stats = computeStats();
     view = 'end';
+    // submit the finished day to the global-stats backend (idempotent: api.js
+    // guards with a per-day localStorage flag, so resuming a done day won't dupe)
+    submitResult(dayIdx, points, rawCells());
     if (points >= WOOHOO) celebrate();
   }
 
@@ -331,6 +344,7 @@
     <div class="brand"><span class="fish">🐟</span> Русский Catfishing</div>
     <div class="hgroup">
       {#if day}<span class="day" title={fmtDate(dayIdx)}>День {dayIdx}{#if !isToday} · архив{/if}</span>{/if}
+      <a class="iconbtn" href="{base}/stats" title="Статистика">📊</a>
       <a class="iconbtn" href="{base}/archive" title="Архив">🗓️</a>
       <button class="iconbtn" onclick={() => applyTheme(theme === 'dark' ? 'light' : 'dark')} title="Тема">
         {theme === 'dark' ? '🌙' : '☀️'}
@@ -363,13 +377,13 @@
           <div class="answer-label">{revealLabel}</div>
           <div class="answer-body">
             {#if revealImg}
-              <a class="thumb" href={revealWiki} target="_blank" rel="noopener">
+              <a class="thumb" href={revealWiki} target="_blank" rel="noopener" onclick={openWiki}>
                 <img src={revealImg} alt={revealTitle} loading="lazy" />
               </a>
             {/if}
             <div class="answer-text">
-              <a class="ans" href={revealWiki} target="_blank" rel="noopener">{revealTitle}</a>
-              <a class="wikilink" href={revealWiki} target="_blank" rel="noopener">Открыть в Википедии ↗</a>
+              <a class="ans" href={revealWiki} target="_blank" rel="noopener" onclick={openWiki}>{revealTitle}</a>
+              <a class="wikilink" href={revealWiki} target="_blank" rel="noopener" onclick={openWiki}>Открыть в Википедии ↗</a>
               {#if results[i] === 'half'}
                 <div class="halfnote">🐠 Засчитано как ½ балла</div>
               {:else if canClaim && results[i] === 'lose'}
@@ -438,7 +452,7 @@
           <div class="stat"><div class="snum">{stats.avg.toFixed(1)}</div><div class="slbl">в среднем</div></div>
           <div class="stat"><div class="snum">{stats.best}</div><div class="slbl">рекорд</div></div>
         </div>
-        <p class="archmore"><a class="archlink" href="{base}/archive">Весь архив и календарь →</a></p>
+        <p class="archmore"><a class="archlink" href="{base}/stats">Вся статистика →</a> · <a class="archlink" href="{base}/archive">архив и календарь</a></p>
       {/if}
       {#if isToday}
         <p class="nextgame">Новая игра через {untilMidnight} <span class="muted">(если я не забью хер)</span></p>
