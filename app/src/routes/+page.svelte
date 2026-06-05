@@ -24,6 +24,18 @@
   let shaking = $state(false);
   let theme = $state('dark');
   let copied = $state(false);
+  let untilMidnight = $state('');  // countdown to the user's local midnight
+
+  // time until the next local midnight (user's own timezone), minute precision
+  function fmtUntilMidnight() {
+    const now = new Date();
+    const mid = new Date(now);
+    mid.setHours(24, 0, 0, 0);     // next local midnight
+    const totalMin = Math.max(0, Math.ceil((mid - now) / 60000));
+    const h = Math.floor(totalMin / 60);
+    const m = totalMin % 60;
+    return h > 0 ? `${h} ч ${m} мин` : `${m} мин`;
+  }
 
   const puzzle = $derived(day.puzzles[i]);
   const wins = $derived(results.filter((r) => r === 'win').length);
@@ -90,6 +102,9 @@
         }
       }
     } catch (e) {}
+    untilMidnight = fmtUntilMidnight();
+    const timer = setInterval(() => { untilMidnight = fmtUntilMidnight(); }, 60000);
+    return () => clearInterval(timer);
   });
 
   function start() {
@@ -185,15 +200,6 @@
       copied = true;
       setTimeout(() => (copied = false), 1500);
     });
-  }
-
-  function replay() {
-    if (browser) localStorage.removeItem(KEY);
-    i = 0;
-    results = Array(N).fill(null);
-    done = false;
-    view = 'game';
-    newPuzzle();
   }
 
   const endLine = $derived(
@@ -294,8 +300,8 @@
       <p class="lead">{endLine}</p>
       <div class="row center">
         <button class="btn primary" onclick={share}>{copied ? 'Скопировано ✓' : 'Поделиться результатом'}</button>
-        <button class="btn ghost" onclick={replay}>Заново</button>
       </div>
+      <p class="nextgame">Новая игра через {untilMidnight} <span class="muted">(если я не забью хер)</span></p>
       <div class="endlist">
         {#each day.puzzles as p, k}
           <div class="endrow">
@@ -471,4 +477,6 @@
   .endrow { display: flex; justify-content: space-between; gap: 10px; padding: 9px 0; border-top: 2px solid var(--line); font-size: 14px; font-weight: 500; }
   .foot { color: var(--muted); font-size: 12px; text-align: center; margin-top: 24px; }
   .foot a { color: var(--secondary); font-weight: 600; }
+  .nextgame { text-align: center; font-family: var(--mono); font-size: 13px; font-weight: 700; margin: 14px 0 0; }
+  .nextgame .muted { color: var(--muted); font-weight: 500; }
 </style>
