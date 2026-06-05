@@ -22,19 +22,23 @@ import os
 import re
 import sys
 
+from build_pool import fetch_langlink
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def norm(s):
-    # Typo-tolerant ("УСЛОВНО зачёт"): fold ё/э->е and й->и, then collapse runs
-    # of the same char, so "Хэди Ламарр" / "ламар" / "хеди ламар" all match
-    # "Хеди Ламарр". MUST stay byte-identical to norm() in app/src/routes/
+    # Typo-tolerant ("УСЛОВНО зачёт"): fold ё/э->е and й->и, collapse runs of the
+    # same char, then SORT the words, so "Хэди Ламарр" / "ламар" all match
+    # "Хеди Ламарр" AND "Бергкамп Деннис" matches "Деннис Бергкамп" (word order
+    # ignored). MUST stay byte-identical to norm() in app/src/routes/
     # +page.svelte, or guesses won't hash to the shipped accept hashes.
     s = s.lower().replace("ё", "е").replace("э", "е").replace("й", "и")
     s = re.sub(r"\([^)]*\)", " ", s)        # drop "(фильм)", "(Мюнхен)"
     s = re.sub(r"[^а-яa-z0-9 ]", " ", s)    # punctuation -> space
     s = re.sub(r"\s+", " ", s).strip()
-    return re.sub(r"(.)\1+", r"\1", s)      # удвоенные буквы -> одна (ламарр->ламар)
+    s = re.sub(r"(.)\1+", r"\1", s)         # удвоенные буквы -> одна (ламарр->ламар)
+    return " ".join(sorted(s.split()))      # порядок слов не важен (Бергкамп Деннис == Деннис Бергкамп)
 
 
 # A puzzle answer is a PERSON if any of its Wikipedia categories is a
@@ -89,6 +93,14 @@ def main():
             sn = derive_surname(p["title"], p["categories"])
             if sn:
                 forms.add(norm(sn))
+        # Cross-language acceptance: add the English-Wikipedia title (+ surname
+        # for persons), so foreign realities can be answered in English too.
+        en = fetch_langlink(p["title"], "en")
+        if en:
+            forms.add(norm(en))
+            en_sn = derive_surname(en, p["categories"])
+            if en_sn:
+                forms.add(norm(en_sn))
         puzzles.append({
             "categories": p["categories"],
             "accept": sorted(sha256(f) for f in forms),

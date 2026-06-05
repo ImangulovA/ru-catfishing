@@ -1,54 +1,70 @@
 <script>
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
-  import day from '$lib/days/day1.json';
+  import { base } from '$app/paths';
+  import { DAYS, resolveDay, currentDay, fmtDate } from '$lib/days';
 
   const MAX_TRIES = 1; // catfishing = one shot
-  const KEY = 'rucatfish_day' + day.day;
-  const N = day.puzzles.length;
+  const CAT = '🐈';    // угадал
+  const FISH = '🐟';   // мимо
+  const HALF = '🐠';   // «я всё-таки прав» = ½
+
+  let day = $state(null);          // resolved strict day json
+  let dayIdx = $state(0);          // which day index we're playing
+  let isToday = $state(true);      // false when playing an archived day
 
   let view = $state('intro');      // 'intro' | 'game' | 'end'
   let i = $state(0);
-  let results = $state(Array(N).fill(null)); // null | 'win' | 'lose' | 'half'
+  let results = $state([]);        // per puzzle: null | 'win' | 'lose' | 'half'
   let canClaim = $state(false);    // show "Я прав" after a wrong guess (not skip)
   let tries = $state(0);
   let done = $state(false);
   let guess = $state('');
-  let feedback = $state('');       // text
+  let feedback = $state('');
   let feedbackKind = $state('');   // '' | 'good' | 'bad'
   let revealed = $state(false);
   let revealLabel = $state('');
   let revealTitle = $state('');
   let revealWiki = $state('');
-  let revealImg = $state('');     // thumbnail fetched from ru.wiki after reveal
+  let revealImg = $state('');
   let shaking = $state(false);
   let theme = $state('dark');
   let copied = $state(false);
-  let untilMidnight = $state('');  // countdown to the user's local midnight
+  let untilMidnight = $state('');
 
   // time until the next local midnight (user's own timezone), minute precision
   function fmtUntilMidnight() {
     const now = new Date();
     const mid = new Date(now);
-    mid.setHours(24, 0, 0, 0);     // next local midnight
+    mid.setHours(24, 0, 0, 0);
     const totalMin = Math.max(0, Math.ceil((mid - now) / 60000));
     const h = Math.floor(totalMin / 60);
     const m = totalMin % 60;
     return h > 0 ? `${h} ч ${m} мин` : `${m} мин`;
   }
 
-  const puzzle = $derived(day.puzzles[i]);
+  const N = $derived(day ? day.puzzles.length : 0);
+  const KEY = $derived(day ? 'rucatfish_day' + day.day : '');
+  const puzzle = $derived(day ? day.puzzles[i] : null);
   const wins = $derived(results.filter((r) => r === 'win').length);
   const halves = $derived(results.filter((r) => r === 'half').length);
-  const points = $derived(wins + halves * 0.5); // win = 1, "я прав" = 0.5
+  const points = $derived(wins + halves * 0.5);
   const scoreLabel = $derived(Number.isInteger(points) ? String(points) : points.toFixed(1));
-  const grid = $derived(results.map((r) => (r === 'win' ? '🟩' : r === 'half' ? '🟨' : '⬜')).join(''));
 
-  // Typo-tolerant ("УСЛОВНО зачёт"): fold ё/э->е and й->и, then collapse runs
-  // of the same char, so "Хэди Ламарр" / "ламар" / "хеди ламар" all match.
-  // MUST stay byte-identical to norm() in scripts/make_day.py, or guesses won't
-  // hash to the shipped accept hashes.
+  // result -> emoji; nulls (unanswered) render as a miss, but the grid is only
+  // shown once the day is finished, so there are none by then.
+  const cells = $derived(results.map((r) => (r === 'win' ? CAT : r === 'half' ? HALF : FISH)));
+  // split into rows of 5 for the Wordle-style share block
+  const emojiRows = $derived.by(() => {
+    const rows = [];
+    for (let k = 0; k < cells.length; k += 5) rows.push(cells.slice(k, k + 5).join(''));
+    return rows;
+  });
+
   function norm(s) {
+    // Typo-tolerant + word-order independent. MUST stay byte-identical to
+    // norm() in scripts/make_day.py, or guesses won't hash to the shipped
+    // accept hashes. (verified via /tmp parity test)
     return (s || '')
       .toLowerCase()
       .replace(/ё/g, 'е')
@@ -58,7 +74,11 @@
       .replace(/[^а-яa-z0-9 ]/g, ' ')
       .replace(/\s+/g, ' ')
       .trim()
-      .replace(/(.)\1+/g, '$1');
+      .replace(/(.)\1+/g, '$1')
+      .split(' ')
+      .filter(Boolean)
+      .sort()
+      .join(' '); // порядок слов не важен (Бергкамп Деннис == Деннис Бергкамп)
   }
 
   async function sha256(s) {
@@ -73,7 +93,7 @@
   }
 
   function save() {
-    if (browser) localStorage.setItem(KEY, JSON.stringify({ i, results, done }));
+    if (browser && KEY) localStorage.setItem(KEY, JSON.stringify({ i, results, done }));
   }
 
   function applyTheme(t) {
@@ -86,25 +106,46 @@
 
   onMount(() => {
     applyTheme(localStorage.getItem('rucatfish_theme') || 'dark');
+
+    // pick the day from ?day=N (archive) or default to today
+    const requested = new URLSearchParams(location.search).get('day');
+    dayIdx = resolveDay(requested);
+    isToday = dayIdx === currentDay();
+    day = DAYS[dayIdx];
+
+    const n = day.puzzles.length;
+    results = Array(n).fill(null);
+    const key = 'rucatfish_day' + day.day;
     try {
-      const s = JSON.parse(localStorage.getItem(KEY));
-      if (s && Array.isArray(s.results)) {
+      const s = JSON.parse(localStorage.getItem(key));
+      if (s && Array.isArray(s.results) && s.results.length === n) {
         results = s.results;
-        // one try each: resume at the first UNanswered puzzle, never re-answer an
-        // already-resolved one (e.g. after reloading on the reveal screen)
         const firstOpen = results.findIndex((r) => r === null);
         if (firstOpen === -1) {
           done = true;
-          i = N - 1;
+          i = n - 1;
         } else {
           i = firstOpen;
           done = !!s.done;
         }
       }
     } catch (e) {}
+
     untilMidnight = fmtUntilMidnight();
     const timer = setInterval(() => { untilMidnight = fmtUntilMidnight(); }, 60000);
-    return () => clearInterval(timer);
+
+    // Enter also advances to the next puzzle on the answer screen
+    const onKey = (e) => {
+      if (e.key !== 'Enter' || view !== 'game' || !revealed) return;
+      if (e.target && e.target.tagName === 'BUTTON') return; // let the button's own Enter work
+      e.preventDefault();
+      next();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('keydown', onKey);
+    };
   });
 
   function start() {
@@ -139,7 +180,7 @@
     tries += 1;
     if (tries >= MAX_TRIES) {
       reveal('lose', 'Не угадал. Правильный ответ:');
-      canClaim = true; // player made a real guess -> can claim half credit
+      canClaim = true;
     } else {
       feedback = `Не то, попробуй ещё (${MAX_TRIES - tries})`;
       feedbackKind = 'bad';
@@ -158,8 +199,6 @@
     fetchImg(revealTitle);
   }
 
-  // Title is already revealed at this point, so pulling the article thumbnail
-  // from ru.wiki leaks nothing. Race-guarded: ignore if the player moved on.
   async function fetchImg(title) {
     if (!browser) return;
     const want = title;
@@ -176,7 +215,7 @@
   }
 
   function claimRight() {
-    results[i] = 'half'; // honor system: my answer was right, give ½ credit
+    results[i] = 'half';
     canClaim = false;
     save();
   }
@@ -193,9 +232,13 @@
     }
   }
 
+  function shareUrl() {
+    if (!browser) return 'imangulova.github.io/ru-catfishing';
+    return (location.host + location.pathname).replace(/\/$/, '');
+  }
+
   function share() {
-    const url = browser ? location.href : '';
-    const txt = `🐟 Русский Catfishing · день ${day.day}\n${grid}  ${scoreLabel}/${N}\n${url}`;
+    const txt = `${shareUrl()}\n#${dayIdx} - ${scoreLabel}/${N}\n${emojiRows.join('\n')}`;
     navigator.clipboard.writeText(txt).then(() => {
       copied = true;
       setTimeout(() => (copied = false), 1500);
@@ -211,25 +254,27 @@
   <header>
     <div class="brand"><span class="fish">🐟</span> Русский Catfishing</div>
     <div class="hgroup">
-      <span class="day">День {day.day}</span>
+      {#if day}<span class="day" title={fmtDate(dayIdx)}>День {dayIdx}{#if !isToday} · архив{/if}</span>{/if}
+      <a class="iconbtn" href="{base}/archive" title="Архив">🗓️</a>
       <button class="iconbtn" onclick={() => applyTheme(theme === 'dark' ? 'light' : 'dark')} title="Тема">
         {theme === 'dark' ? '🌙' : '☀️'}
       </button>
     </div>
   </header>
 
-  {#if view === 'intro'}
+  {#if !day}
+    <div class="card"><p class="lead">Загрузка…</p></div>
+  {:else if view === 'intro'}
     <div class="card">
       <div class="round">Как играть</div>
       <p class="lead">
         Тебе показывают список категорий Википедии, к которым относится статья. Угадай, что это за статья.
         Сегодня <b>{N}</b> загадок. <b>Одна попытка</b> на каждую.
       </p>
+      {#if !isToday}<p class="archnote">Ты играешь архивный день: <b>{fmtDate(dayIdx)}</b>.</p>{/if}
       <div class="row"><button class="btn primary grow" onclick={start}>Играть</button></div>
     </div>
-  {/if}
-
-  {#if view === 'game'}
+  {:else if view === 'game'}
     <div class="card game" class:answered={revealed} class:shake={shaking} onanimationend={() => (shaking = false)}>
       <div class="dots">
         {#each results as r, k}
@@ -250,9 +295,9 @@
               <a class="ans" href={revealWiki} target="_blank" rel="noopener">{revealTitle}</a>
               <a class="wikilink" href={revealWiki} target="_blank" rel="noopener">Открыть в Википедии ↗</a>
               {#if results[i] === 'half'}
-                <div class="halfnote">🟨 Засчитано как ½ балла</div>
+                <div class="halfnote">🐠 Засчитано как ½ балла</div>
               {:else if canClaim && results[i] === 'lose'}
-                <button class="link claim" onclick={claimRight}>Я всё-таки был прав 🟨 (½ балла)</button>
+                <button class="link claim" onclick={claimRight}>Я всё-таки был прав 🐠 (½ балла)</button>
               {/if}
             </div>
           </div>
@@ -288,24 +333,29 @@
         </div>
       {:else}
         <div class="row"><button class="btn primary grow" onclick={next}>Дальше →</button></div>
+        <div class="enterhint">или нажми Enter</div>
       {/if}
     </div>
-  {/if}
-
-  {#if view === 'end'}
+  {:else if view === 'end'}
     <div class="card end">
       <h2>Готово!</h2>
       <div class="score">{scoreLabel} / {N}</div>
-      <div class="grid">{grid}</div>
+      <div class="grid">
+        {#each emojiRows as row}<div>{row}</div>{/each}
+      </div>
       <p class="lead">{endLine}</p>
       <div class="row center">
         <button class="btn primary" onclick={share}>{copied ? 'Скопировано ✓' : 'Поделиться результатом'}</button>
       </div>
-      <p class="nextgame">Новая игра через {untilMidnight} <span class="muted">(если я не забью хер)</span></p>
+      {#if isToday}
+        <p class="nextgame">Новая игра через {untilMidnight} <span class="muted">(если я не забью хер)</span></p>
+      {:else}
+        <p class="nextgame"><a class="archlink" href="{base}/">К сегодняшней игре →</a></p>
+      {/if}
       <div class="endlist">
         {#each day.puzzles as p, k}
           <div class="endrow">
-            <span>{results[k] === 'win' ? '🟩' : results[k] === 'half' ? '🟨' : '⬜'} {b64decode(p.reveal)}</span>
+            <span>{results[k] === 'win' ? CAT : results[k] === 'half' ? HALF : FISH} {b64decode(p.reveal)}</span>
           </div>
         {/each}
       </div>
@@ -314,68 +364,26 @@
 
   <div class="foot">
     Прототип · данные из <a href="https://ru.wikipedia.org" target="_blank" rel="noopener">Википедии</a> (GFDL) ·
-    угадайка в духе catfishing (Sumana Harihareswara, 2006)
+    <a href="{base}/archive">архив дней</a>
   </div>
 </div>
 
 <style>
-  /* ============================================================
-     NEOBRUTALISM design system
-     - default (:root) = Neobrutalism Dark
-     - [data-theme='light'] = Neobrutalism (warm light)
-     The header toggle flips data-theme, switching between the two.
-     Tokens mirror design/neobrutalism.md + design/neobrutalism-dark.md
-     ============================================================ */
-  :global(:root) {
-    /* Neobrutalism Dark */
-    --bg: #12161d; --card: #1e2531; --card2: #262f3f; --field: #12161d;
-    --text: #f4f5f7; --muted: #9aa6b8;
-    --accent: #fdc800; --accent-ink: #14181f; --secondary: #8b72ff;
-    --green: #22c55e; --orange: #f59e0b; --red: #f4365a;
-    --line: #525e76;        /* card/chip/input outlines (lighter than card) */
-    --ink: #000000;         /* hard borders on CTAs + all hard shadows */
-    --radius: 10px; --radius-sm: 6px;
-    --shadow: 5px 5px 0 var(--ink); --shadow-sm: 3px 3px 0 var(--ink);
-    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  }
-  :global([data-theme='light']) {
-    /* Neobrutalism (warm light) */
-    --bg: #fbfbf9; --card: #ffffff; --card2: #fff8de; --field: #fbfbf9;
-    --text: #1c293c; --muted: #5b667a;
-    --accent: #fdc800; --accent-ink: #1c293c; --secondary: #432dd7;
-    --green: #16a34a; --orange: #d97706; --red: #dc2626;
-    --line: #1c293c; --ink: #1c293c;
-  }
-  :global(body) {
-    margin: 0;
-    font-family: var(--font);
-    background-color: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    line-height: 1.5;
-  }
+  /* NEOBRUTALISM design tokens live in +layout.svelte (shared across routes) */
   .wrap { max-width: 680px; margin: 0 auto; padding: 22px 16px 72px; position: relative; }
-  /* faint dot grid overlay (neobrutalism texture) */
-  :global(body)::before {
-    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    background-image: radial-gradient(var(--line) 1px, transparent 1px);
-    background-size: 24px 24px; opacity: 0.12;
-  }
   .wrap > * { position: relative; z-index: 1; }
 
-  /* Focus visibility (WCAG 2.2) */
   :global(a):focus-visible, .btn:focus-visible, .iconbtn:focus-visible,
   .link:focus-visible, input[type='text']:focus-visible {
     outline: 3px solid var(--secondary); outline-offset: 2px;
   }
 
-  header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+  header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 8px; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 21px; letter-spacing: -0.4px; }
   .fish { font-size: 24px; }
   .hgroup { display: flex; gap: 8px; align-items: center; }
-  .day { font-family: var(--mono); color: var(--text); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: var(--accent); color: var(--accent-ink); border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 5px 9px; box-shadow: var(--shadow-sm); }
-  .iconbtn { background: var(--card); border: 2px solid var(--ink); color: var(--text); border-radius: var(--radius-sm); padding: 7px 10px; cursor: pointer; font-size: 16px; box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease; }
+  .day { font-family: var(--mono); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: var(--accent); color: var(--accent-ink); border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 5px 9px; box-shadow: var(--shadow-sm); white-space: nowrap; }
+  .iconbtn { display: inline-flex; align-items: center; justify-content: center; background: var(--card); border: 2px solid var(--ink); color: var(--text); border-radius: var(--radius-sm); padding: 7px 10px; cursor: pointer; font-size: 16px; box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease; text-decoration: none; }
   .iconbtn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
   .iconbtn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
 
@@ -390,9 +398,8 @@
 
   .round { font-family: var(--mono); color: var(--muted); font-size: 12px; font-weight: 700; text-align: center; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
   .lead { text-align: center; color: var(--text); font-size: 15px; margin: 0 0 14px; font-weight: 500; }
+  .archnote { text-align: center; color: var(--muted); font-size: 13px; margin: -4px 0 14px; }
 
-  /* Game card breaks out of the narrow .wrap to use (almost) the full screen.
-     Full-bleed via margin (NOT transform) so it never collides with .shake. */
   .card.game { --gw: min(96vw, 1100px); width: var(--gw); margin-left: calc(50% - var(--gw) / 2); }
 
   .catlabel { font-family: var(--mono); color: var(--muted); font-size: 11px; font-weight: 700; text-align: center; margin: 4px 0 8px; text-transform: uppercase; letter-spacing: 1px; }
@@ -406,7 +413,6 @@
     box-shadow: var(--shadow-sm);
     transition: padding 0.25s ease, font-size 0.25s ease, box-shadow 0.25s ease, transform 0.06s ease;
   }
-  /* After the answer the categories collapse to small reference chips */
   .cats.small { gap: 8px; }
   .cats.small .cat {
     padding: 5px 11px; font-size: 13px; font-weight: 600; border-radius: var(--radius-sm);
@@ -414,7 +420,6 @@
     background: transparent; border-color: var(--line); box-shadow: none;
   }
 
-  /* Revealed answer, pinned to the top of the card */
   .answer { border: 2px solid var(--ink); background: var(--card2); border-radius: var(--radius); padding: 16px; margin: 2px 0 18px; box-shadow: var(--shadow); border-top: 8px solid var(--accent); }
   .answer.win { border-top-color: var(--green); }
   .answer.lose { border-top-color: var(--red); }
@@ -426,16 +431,10 @@
   .answer-text { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
   .answer .ans { font-size: clamp(21px, 3vw, 30px); font-weight: 900; color: var(--text); text-decoration: none; line-height: 1.12; letter-spacing: -0.5px; }
   .answer .ans:hover { text-decoration: underline; text-decoration-thickness: 3px; }
-  .answer .wikilink { color: var(--text); background: var(--accent); color: var(--accent-ink); align-self: flex-start; text-decoration: none; font-size: 13px; font-weight: 800; border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 5px 10px; box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease; }
+  .answer .wikilink { background: var(--accent); color: var(--accent-ink); align-self: flex-start; text-decoration: none; font-size: 13px; font-weight: 800; border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 5px 10px; box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease; }
   .answer .wikilink:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
   .answer .wikilink:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
   .answer-text .claim, .answer-text .halfnote { align-self: flex-start; margin-top: 2px; }
-  @media (max-width: 480px) {
-    .answer-body { flex-direction: column; align-items: center; text-align: center; }
-    .answer-text { align-items: center; }
-    .answer .wikilink, .answer-text .claim, .answer-text .halfnote { align-self: center; }
-    .thumb img { width: 150px; height: 150px; }
-  }
 
   .row { display: flex; gap: 10px; margin-top: 16px; }
   .row.center { justify-content: center; }
@@ -457,7 +456,6 @@
   .btn:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
   .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
   .btn.primary { background: var(--accent); color: var(--accent-ink); }
-  .btn.ghost { background: var(--card); color: var(--text); }
 
   .subrow { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
   .link { background: none; border: none; color: var(--secondary); cursor: pointer; font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; padding: 4px; }
@@ -466,17 +464,54 @@
   .feedback { min-height: 22px; text-align: center; margin-top: 12px; font-weight: 800; font-size: 14px; }
   .feedback.bad { color: var(--red); }
   .feedback.good { color: var(--green); }
+  .enterhint { text-align: center; color: var(--muted); font-family: var(--mono); font-size: 11px; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; }
 
   .shake { animation: shake 0.3s; }
   @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
 
   .end h2 { text-align: center; margin: 4px 0 2px; font-size: 28px; font-weight: 900; letter-spacing: -0.5px; }
   .score { text-align: center; font-size: 44px; font-weight: 900; margin: 6px 0; letter-spacing: -1px; }
-  .grid { text-align: center; font-size: 26px; letter-spacing: 4px; margin: 10px 0; }
+  .grid { text-align: center; font-size: 26px; line-height: 1.25; letter-spacing: 4px; margin: 10px 0; }
   .endlist { margin-top: 18px; }
   .endrow { display: flex; justify-content: space-between; gap: 10px; padding: 9px 0; border-top: 2px solid var(--line); font-size: 14px; font-weight: 500; }
   .foot { color: var(--muted); font-size: 12px; text-align: center; margin-top: 24px; }
   .foot a { color: var(--secondary); font-weight: 600; }
   .nextgame { text-align: center; font-family: var(--mono); font-size: 13px; font-weight: 700; margin: 14px 0 0; }
   .nextgame .muted { color: var(--muted); font-weight: 500; }
+  .archlink { color: var(--secondary); font-weight: 700; text-decoration: underline; }
+
+  /* ---------- MOBILE: shrink everything, hide categories on the answer screen ---------- */
+  @media (max-width: 600px) {
+    .wrap { padding: 14px 10px 56px; }
+    .brand { font-size: 16px; gap: 7px; }
+    .fish { font-size: 18px; }
+    .day { font-size: 11px; padding: 4px 7px; }
+    .iconbtn { padding: 6px 8px; font-size: 15px; }
+    .card { padding: 14px; }
+    .card.game { --gw: 96vw; }
+    .dots { gap: 4px; margin-bottom: 12px; }
+    .dot { width: 16px; height: 9px; }
+    .round { font-size: 11px; }
+    .lead { font-size: 13px; margin-bottom: 10px; }
+    .cats { gap: 7px; margin: 10px 0 2px; }
+    .cat { padding: 9px 10px; font-size: 14px; min-width: 0; flex: 1 1 calc(50% - 7px); border-radius: var(--radius-sm); }
+    input[type='text'] { padding: 11px 12px; }
+    .btn { padding: 11px 13px; font-size: 14px; }
+    .answer { padding: 12px; }
+    .answer .ans { font-size: clamp(18px, 6vw, 24px); }
+    .answer .wikilink { font-size: 12px; }
+    .end h2 { font-size: 23px; }
+    .score { font-size: 34px; }
+    .grid { font-size: 22px; letter-spacing: 3px; }
+    .endrow { font-size: 13px; }
+    /* answer screen: categories are noise on a small screen -> hide them */
+    .game.answered .cats,
+    .game.answered .catlabel { display: none; }
+  }
+  @media (max-width: 480px) {
+    .answer-body { flex-direction: column; align-items: center; text-align: center; }
+    .answer-text { align-items: center; }
+    .answer .wikilink, .answer-text .claim, .answer-text .halfnote { align-self: center; }
+    .thumb img { width: 150px; height: 150px; }
+  }
 </style>

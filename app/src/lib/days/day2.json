@@ -12,7 +12,8 @@
       ],
       "accept": [
         "3069767ac327805755325c8fa4c5b1b9a82e58bfd8ef042c274b43bd31339abd",
-        "47b845ee477f879b76a7961555c839dacd9ce01608e5d45217e3984129ddab88"
+        "47b845ee477f879b76a7961555c839dacd9ce01608e5d45217e3984129ddab88",
+        "63e0af02782cb7603543b77539b9035aab557b1e102ac038bd379df21b874c04"
       ],
       "reveal": "0JHQvtC50YbQvtCy0YHQutC40Lkg0LrQu9GD0LEgKNGE0LjQu9GM0Lwp"
     },
@@ -43,9 +44,11 @@
         "Продолжения компьютерных игр"
       ],
       "accept": [
+        "1055d85f442d5a3bb770a2343acdca09764ac54458535a5611dc56cef5a5411f",
         "3f329f24b1e0af804dfbd21cd3f2667fb53e850562215952d0d705acfd95a81d",
         "5757dd81e05bca7178de342dedde0d4ac049a00bc9925beea6d67ca9c34563af",
-        "604123b727ab049d14d7e2016701b4286be9bc3d80d667fe8aabbfb3afe0c4f2"
+        "604123b727ab049d14d7e2016701b4286be9bc3d80d667fe8aabbfb3afe0c4f2",
+        "74b047e4c8c932904bbcc892fe608379b30613988aaea99535c1185dc2418cac"
       ],
       "reveal": "0JLQtdC00YzQvNCw0LogMzog0JTQuNC60LDRjyDQntGF0L7RgtCw"
     },
@@ -61,6 +64,8 @@
       ],
       "accept": [
         "43f25ec29688d58f23eec4847e482fc92f9cba0ae550def85531634a2d23afb2",
+        "603b0772ce8e0d84a4937a9e2597d8dd08406ad9a7c24f9653e3729e9a175057",
+        "bcdfa55c69070343c5ac89f53a609e429f4d5ad448ec71e5d465d5e97979a93f",
         "ef367e9eb8780ef3552b83aa5945136517ac9ebe3395b082274954c5edeb2718"
       ],
       "reveal": "0JHRg9GA0LvQsNC60Lgg0L3QsCDQktC+0LvQs9C1"
@@ -73,6 +78,7 @@
         "Тетралогии"
       ],
       "accept": [
+        "768d063e7436a6851a6456dfff531a5495a5fc529cb4f9f06805d02c7daa4dce",
         "b1b9cd8d169b764075d03096aed2d37abfff39fcd937d5333a850641b0e84062",
         "e5ae66b03e77f5a447870b11af5530fbf131fb52598fbfc24a0f6071190a8285"
       ],
@@ -91,7 +97,8 @@
         "Серебряное кольцо России"
       ],
       "accept": [
-        "1271f3e634fd28032c60b27df487443953847397a278814070f9250e7ebdc7bd"
+        "1271f3e634fd28032c60b27df487443953847397a278814070f9250e7ebdc7bd",
+        "39432210befb31bdae1f8fcb0447159056e50daeae831c8d2725d957f05fc69a"
       ],
       "reveal": "0JLRi9Cx0L7RgNCz"
     },
@@ -121,8 +128,10 @@
         "08e1ea6930fe78b838aab9936691c7a082e936b52bbd2b0c0b679d42b1288af6",
         "261501801de55ad2867d32f2ee4fa955adce6b07731901657437bbe2510094af",
         "403ef444c7f67d5bec0848ca6dc62161150f5b330ff956fe30b7a5893f654fd9",
-        "6bb008123553377226e09ea7bf94aa430d031bfe35716a85fe581d14555674e5",
+        "6aaab4d1a3a70387e46f269234f4a39d9e4d530ba083a6650baca0a2f7ac0524",
         "7e5750cdf819216ad09850c7837361b24690d3786fead8f63b8a6642ff852697",
+        "83cdf956902c67f2b29fe59b79a4bec7a97f51c1ed0b6afe57e2aaa9062ec03b",
+        "9acfc7f6b49e6d953629cfd7da9eca4c61e79e28a12959488a13b2b8b2f7767c",
         "a73c0e10529f93cc2e7fc2b16c96fc0a983c68e6f5e0d4e3b34acf02077510f0",
         "f26d68f29fc226074a52a0cf3651d2cf174d40ac4880a34d63ef014271185f50"
       ],
@@ -147,6 +156,7 @@
       ],
       "accept": [
         "24fad19aa51c19dc62e6aa4cdbcc2e6454881685e2a62769c7db63faabede4a8",
+        "6562df6241bc8b940692504ae8f3c2273706a6fba4c83ec62a2e79eee898c8fb",
         "dbd36cfbdbcf6ea9b12ff7a0f3c186789a355c15c7e0f860946a8d66d4db2838",
         "dbdd1a934bacfcfed1d2f21e924ee2c79a8a706a0464f0885503406ff58b7708"
       ],
@@ -200,7 +210,10 @@
         "2bbea5252b6a57d63e8419cbbff1d15343cde2ed332ac0b6fdfba1e240c507c2",
         "30bacb1c55be0869f7fdb0f6ed034b412b5a70c414a345854449bb93ff1a559c",
         "345249eef1f4cbf44e206dba3607ed89b93b31625af12741460dfa919c70f2e0",
-        "6205f254199d937094ffc31b685932bbb8f98a53ec526f8af9cd137f4366db85"
+        "6205f254199d937094ffc31b685932bbb8f98a53ec526f8af9cd137f4366db85",
+        "6de2fba1ee8fee81763774f62922a5e5db6a4d155007bd73e828ab7cd16a57f3",
+        "a5a19d72b3a6c2da69ed22228730231d74ac0cf16fa4188bbb501bcf6e24219f",
+        "dc15f43fbff780142d3fa18609f0c164bd2c2ea1247756a362a1d49b87ee49f3"
       ],
       "reveal": "0JHQsNC70YzQvNC+0L3Rgiwg0JrQvtC90YHRgtCw0L3RgtC40L0g0JTQvNC40YLRgNC40LXQstC40Yc="
     },
@@ -233,8 +246,10 @@
         "Эндрюсовский профессор астрономии в Тринити-колледже (Дублин)"
       ],
       "accept": [
+        "3fb74fc959240bf7d0b85e57fdc1fd894974d85db075f44e978dba4ed9203676",
         "43597700e746442b8b9dd8e0b411c53b49758d719b8fd25d6f5deb523c990f01",
-        "6b026f7530ea6c90027e520a17899ce070b8cb2b45333a39ff840911f04460e0",
+        "449f58903e98804c414a1d0bb087b96fc875246069575b9b66c756b4c09dce83",
+        "46497eba130c2f1b626942d5e45257bdb042d8871bb4785ae93b5155e9c0a137",
         "df0a25d61a9efb7450fe633f6708cb1898ae52dbf25a7be94a0433b19ef0b310",
         "f25050aef5c72656acf62417bf1a25e989adf25118220b4878f5e64b0c842119",
         "f4464b38c77b4a82adac9b938f85c7bd8800ef0be8e3cffdd640087d2298ae44",
@@ -249,6 +264,7 @@
         "Швабинг"
       ],
       "accept": [
+        "0b74aa61cc65e16a73ec1e4d9f45c60122d123f742940f7175dc7367b9c18c34",
         "132711b259efaa02d4c79f9832ddbe679de921394fb3bb6f2b7b2e8ce1c56a26",
         "80b192bd4c2729e93fb50135c190873d21ed63cf6b87529c9f7dbdf6e92faeb2",
         "88bf74cf6f542211acdcc29719ebefdbf4d95a0622275b8f47ed51055e30cbf5"

@@ -85,6 +85,23 @@ def fetch_categories(title):
     return cats
 
 
+def fetch_langlink(title, lang="en"):
+    """The article's title on another-language Wikipedia (via langlinks), or None.
+
+    Used to accept cross-language answers for foreign realities: e.g. the ru
+    article "Артур Конан Дойл" has an `en` langlink "Arthur Conan Doyle", so a
+    player can answer in English. The returned title goes through the same norm()
+    (lowercase, dashes->space, word-order-independent) as everything else.
+    """
+    data = api_get({
+        "action": "query", "prop": "langlinks", "titles": title,
+        "lllang": lang, "lllimit": "1",
+    })
+    page = data["query"]["pages"][0]
+    lls = page.get("langlinks") or []
+    return lls[0]["title"] if lls else None
+
+
 # Common words that may appear in a title but are NOT giveaways (so birth/death
 # YEAR categories survive: "Времена года" must not nuke "Картины 1873 года").
 GIVEAWAY_STOPWORDS = {

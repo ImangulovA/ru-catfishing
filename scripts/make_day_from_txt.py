@@ -21,11 +21,18 @@ import base64
 import hashlib
 import json
 import os
+import re
 import sys
 
 # Reuse the vetted fetch/filter logic from build_pool and the surname logic
 # from make_day, so there is a single source of truth for each rule.
-from build_pool import fetch_categories, is_service, is_giveaway, title_tokens
+from build_pool import (
+    fetch_categories,
+    fetch_langlink,
+    is_giveaway,
+    is_service,
+    title_tokens,
+)
 from make_day import derive_surname, norm
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -62,7 +69,11 @@ def build_puzzle(entry):
     """Fetch categories, filter, and return (strict_puzzle, preview_dict)."""
     title = entry["title"]
     cats = fetch_categories(title)
-    tokens = title_tokens(title)
+    # Compute giveaway tokens from the title WITHOUT its "(...)" disambiguator,
+    # so "(роман)" / "(фильм)" don't leak generic words like "роман" and wrongly
+    # nuke real clue categories ("Романы-антиутопии"). The disambiguator is not
+    # part of the actual name, so it must not act as a giveaway.
+    tokens = title_tokens(re.sub(r"\([^)]*\)", " ", title))
     useful = sorted(
         c for c in cats if not is_service(c) and not is_giveaway(c, tokens)
     )
@@ -71,6 +82,15 @@ def build_puzzle(entry):
     sn = derive_surname(title, useful)
     if sn:
         forms.add(norm(sn))
+
+    # Cross-language acceptance: also accept the English-Wikipedia title (and its
+    # surname for persons), so "Conan Doyle" works as well as "Конан Дойль".
+    en = fetch_langlink(title, "en")
+    if en:
+        forms.add(norm(en))
+        en_sn = derive_surname(en, useful)
+        if en_sn:
+            forms.add(norm(en_sn))
 
     strict = {
         "categories": useful,
