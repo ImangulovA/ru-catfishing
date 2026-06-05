@@ -54,7 +54,13 @@ export function currentDay(now = new Date()) {
 }
 
 // Resolve a requested ?day=N to a valid, available index (else the current day).
+// NOTE: when there is no ?day param, `requested` is null/'' -> must fall back to
+// the current day. (Number(null) === 0, so we can't let it reach the parse path,
+// or every default visit would land on day 0.)
 export function resolveDay(requested, now = new Date()) {
+  if (requested === null || requested === undefined || requested === '') {
+    return currentDay(now);
+  }
   const n = Number(requested);
   if (Number.isInteger(n) && DAYS[n] && n <= todayIndex(now)) return n;
   return currentDay(now);
