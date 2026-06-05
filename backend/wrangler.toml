@@ -8,7 +8,7 @@ compatibility_date = "2026-01-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "ru-catfishing-stats"
-database_id = "PASTE_DATABASE_ID_HERE"
+database_id = "9f0662ab-ad53-4b4a-b78d-ce9ac22c8da4"
 
 # Origins allowed to call the API (CORS). Add localhost for dev.
 [vars]
