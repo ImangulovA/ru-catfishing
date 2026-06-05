@@ -1,6 +1,7 @@
 // Day registry + date mapping for ru-catfishing.
 // Day 0 = 2026-06-04 (the original day1, shifted to "yesterday").
 // Day 1 = 2026-06-05 (the new set), and so on, one puzzle-day per calendar day.
+import dayM1 from './day-1.json'; // exception: a "pre-launch" test day (3 июня)
 import day0 from './day0.json';
 import day1 from './day1.json';
 import day2 from './day2.json';
@@ -28,6 +29,7 @@ import day23 from './day23.json';
 
 // index -> strict day json. Add new days here as they are built.
 export const DAYS = {
+  '-1': dayM1,
   0: day0, 1: day1, 2: day2, 3: day3, 4: day4, 5: day5, 6: day6, 7: day7,
   8: day8, 9: day9, 10: day10, 11: day11, 12: day12, 13: day13, 14: day14,
   15: day15, 16: day16, 17: day17, 18: day18, 19: day19, 20: day20,

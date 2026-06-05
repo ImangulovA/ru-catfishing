@@ -71,7 +71,7 @@ async function handleResult(request, env) {
   if (!body) return json({ ok: false, error: 'bad json' }, request, env, 400);
 
   const { day, score2, cells, clientId } = body;
-  if (!isInt(day, 0, 100000)) return json({ ok: false, error: 'bad day' }, request, env, 400);
+  if (!isInt(day, -10, 100000)) return json({ ok: false, error: 'bad day' }, request, env, 400);
   if (!isInt(score2, 0, 40)) return json({ ok: false, error: 'bad score2' }, request, env, 400);
   if (typeof clientId !== 'string' || clientId.length < 8 || clientId.length > 64) {
     return json({ ok: false, error: 'bad clientId' }, request, env, 400);
@@ -114,7 +114,7 @@ async function handleOpen(request, env) {
   const body = await request.json().catch(() => null);
   if (!body) return json({ ok: false, error: 'bad json' }, request, env, 400);
   const { day, idx } = body;
-  if (!isInt(day, 0, 100000) || !isInt(idx, 0, 50)) {
+  if (!isInt(day, -10, 100000) || !isInt(idx, 0, 50)) {
     return json({ ok: false, error: 'bad day/idx' }, request, env, 400);
   }
   await env.DB.batch([
@@ -135,7 +135,7 @@ async function handleOpen(request, env) {
 
 async function handleAgg(request, env, url) {
   const raw = (url.searchParams.get('days') || '').split(',').map((s) => parseInt(s, 10));
-  const days = [...new Set(raw.filter((n) => Number.isInteger(n) && n >= 0))].slice(0, MAX_DAYS);
+  const days = [...new Set(raw.filter((n) => Number.isInteger(n) && n >= -10))].slice(0, MAX_DAYS);
   const placeholders = days.map(() => '?').join(',');
 
   // per-day score distribution (for the user's played days) -> avg + percentile
