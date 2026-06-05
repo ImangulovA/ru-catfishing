@@ -69,9 +69,17 @@
     try {
       const s = JSON.parse(localStorage.getItem(KEY));
       if (s && Array.isArray(s.results)) {
-        i = s.i ?? 0;
         results = s.results;
-        done = !!s.done;
+        // one try each: resume at the first UNanswered puzzle, never re-answer an
+        // already-resolved one (e.g. after reloading on the reveal screen)
+        const firstOpen = results.findIndex((r) => r === null);
+        if (firstOpen === -1) {
+          done = true;
+          i = N - 1;
+        } else {
+          i = firstOpen;
+          done = !!s.done;
+        }
       }
     } catch (e) {}
   });
