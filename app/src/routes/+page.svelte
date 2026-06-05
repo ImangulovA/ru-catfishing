@@ -20,6 +20,7 @@
   let revealLabel = $state('');
   let revealTitle = $state('');
   let revealWiki = $state('');
+  let revealImg = $state('');     // thumbnail fetched from ru.wiki after reveal
   let shaking = $state(false);
   let theme = $state('dark');
   let copied = $state(false);
@@ -100,6 +101,7 @@
     revealed = false;
     canClaim = false;
     tries = 0;
+    revealImg = '';
   }
 
   async function check() {
@@ -131,6 +133,24 @@
     revealTitle = b64decode(puzzle.reveal);
     revealWiki = 'https://ru.wikipedia.org/wiki/' + encodeURIComponent(revealTitle.replace(/ /g, '_'));
     save();
+    fetchImg(revealTitle);
+  }
+
+  // Title is already revealed at this point, so pulling the article thumbnail
+  // from ru.wiki leaks nothing. Race-guarded: ignore if the player moved on.
+  async function fetchImg(title) {
+    if (!browser) return;
+    const want = title;
+    try {
+      const url =
+        'https://ru.wikipedia.org/api/rest_v1/page/summary/' +
+        encodeURIComponent(title.replace(/ /g, '_'));
+      const r = await fetch(url);
+      if (!r.ok) return;
+      const j = await r.json();
+      const src = j?.thumbnail?.source || j?.originalimage?.source || '';
+      if (src && revealed && revealTitle === want) revealImg = src;
+    } catch (e) {}
   }
 
   function claimRight() {
@@ -197,15 +217,42 @@
   {/if}
 
   {#if view === 'game'}
-    <div class="card" class:shake={shaking} onanimationend={() => (shaking = false)}>
+    <div class="card game" class:answered={revealed} class:shake={shaking} onanimationend={() => (shaking = false)}>
       <div class="dots">
         {#each results as r, k}
           <div class="dot" class:win={r === 'win'} class:half={r === 'half'} class:lose={r === 'lose'} class:cur={k === i}></div>
         {/each}
       </div>
-      <div class="round">Раунд {i + 1} из {N}</div>
-      <p class="lead">Статья дня относится к категориям:</p>
-      <div class="cats">
+
+      {#if revealed}
+        <div class="answer" class:win={results[i] === 'win'} class:lose={results[i] === 'lose'} class:half={results[i] === 'half'}>
+          <div class="answer-label">{revealLabel}</div>
+          <div class="answer-body">
+            {#if revealImg}
+              <a class="thumb" href={revealWiki} target="_blank" rel="noopener">
+                <img src={revealImg} alt={revealTitle} loading="lazy" />
+              </a>
+            {/if}
+            <div class="answer-text">
+              <a class="ans" href={revealWiki} target="_blank" rel="noopener">{revealTitle}</a>
+              <a class="wikilink" href={revealWiki} target="_blank" rel="noopener">Открыть в Википедии ↗</a>
+              {#if results[i] === 'half'}
+                <div class="halfnote">🟨 Засчитано как ½ балла</div>
+              {:else if canClaim && results[i] === 'lose'}
+                <button class="link claim" onclick={claimRight}>Я всё-таки был прав 🟨 (½ балла)</button>
+              {/if}
+            </div>
+          </div>
+        </div>
+      {/if}
+
+      {#if !revealed}
+        <div class="round">Раунд {i + 1} из {N}</div>
+        <p class="lead">Статья дня относится к категориям:</p>
+      {:else}
+        <div class="catlabel">Категории этой статьи</div>
+      {/if}
+      <div class="cats" class:small={revealed}>
         {#each puzzle.categories as cat}
           <span class="cat">{cat}</span>
         {/each}
@@ -227,19 +274,7 @@
           <button class="link" onclick={() => reveal('lose', 'Пропущено. Это:')}>Пропустить →</button>
         </div>
       {:else}
-        <div class="reveal">
-          <div class="round">{revealLabel}</div>
-          <div class="ans">{revealTitle}</div>
-          <a href={revealWiki} target="_blank" rel="noopener">Открыть в Википедии ↗</a>
-          {#if results[i] === 'half'}
-            <div class="halfnote">🟨 Засчитано как ½ балла</div>
-          {:else if canClaim && results[i] === 'lose'}
-            <div class="subrow">
-              <button class="link claim" onclick={claimRight}>Я всё-таки был прав 🟨 (½ балла)</button>
-            </div>
-          {/if}
-          <div class="row"><button class="btn primary grow" onclick={next}>Дальше →</button></div>
-        </div>
+        <div class="row"><button class="btn primary grow" onclick={next}>Дальше →</button></div>
       {/if}
     </div>
   {/if}
@@ -271,68 +306,162 @@
 </div>
 
 <style>
+  /* ============================================================
+     NEOBRUTALISM design system
+     - default (:root) = Neobrutalism Dark
+     - [data-theme='light'] = Neobrutalism (warm light)
+     The header toggle flips data-theme, switching between the two.
+     Tokens mirror design/neobrutalism.md + design/neobrutalism-dark.md
+     ============================================================ */
   :global(:root) {
-    --bg: #0a0e1a; --card: #151d30; --card2: #1c2740; --text: #e7ecf5; --muted: #8b97b0;
-    --accent: #1877f2; --green: #02e2ac; --orange: #f59e0b; --purple: #a855f7; --red: #ff5a7a;
-    --border: #26324d; --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    /* Neobrutalism Dark */
+    --bg: #12161d; --card: #1e2531; --card2: #262f3f; --field: #12161d;
+    --text: #f4f5f7; --muted: #9aa6b8;
+    --accent: #fdc800; --accent-ink: #14181f; --secondary: #8b72ff;
+    --green: #22c55e; --orange: #f59e0b; --red: #f4365a;
+    --line: #525e76;        /* card/chip/input outlines (lighter than card) */
+    --ink: #000000;         /* hard borders on CTAs + all hard shadows */
+    --radius: 10px; --radius-sm: 6px;
+    --shadow: 5px 5px 0 var(--ink); --shadow-sm: 3px 3px 0 var(--ink);
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   }
   :global([data-theme='light']) {
-    --bg: #eef2f9; --card: #ffffff; --card2: #f3f6fc; --text: #13203a; --muted: #5a6a86;
-    --border: #dce3f0; --shadow: 0 10px 30px rgba(20, 40, 80, 0.1);
+    /* Neobrutalism (warm light) */
+    --bg: #fbfbf9; --card: #ffffff; --card2: #fff8de; --field: #fbfbf9;
+    --text: #1c293c; --muted: #5b667a;
+    --accent: #fdc800; --accent-ink: #1c293c; --secondary: #432dd7;
+    --green: #16a34a; --orange: #d97706; --red: #dc2626;
+    --line: #1c293c; --ink: #1c293c;
   }
   :global(body) {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: radial-gradient(1200px 600px at 50% -10%, rgba(24, 119, 242, 0.1), transparent), var(--bg);
+    font-family: var(--font);
+    background-color: var(--bg);
     color: var(--text);
     min-height: 100vh;
     line-height: 1.5;
   }
-  * { box-sizing: border-box; }
-  .wrap { max-width: 680px; margin: 0 auto; padding: 20px 16px 64px; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 22px 16px 72px; position: relative; }
+  /* faint dot grid overlay (neobrutalism texture) */
+  :global(body)::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: radial-gradient(var(--line) 1px, transparent 1px);
+    background-size: 24px 24px; opacity: 0.12;
+  }
+  .wrap > * { position: relative; z-index: 1; }
+
+  /* Focus visibility (WCAG 2.2) */
+  :global(a):focus-visible, .btn:focus-visible, .iconbtn:focus-visible,
+  .link:focus-visible, input[type='text']:focus-visible {
+    outline: 3px solid var(--secondary); outline-offset: 2px;
+  }
+
   header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 21px; letter-spacing: -0.4px; }
   .fish { font-size: 24px; }
   .hgroup { display: flex; gap: 8px; align-items: center; }
-  .day { color: var(--muted); font-size: 13px; font-weight: 600; }
-  .iconbtn { background: var(--card); border: 1px solid var(--border); color: var(--text); border-radius: 10px; padding: 8px 10px; cursor: pointer; font-size: 16px; }
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; box-shadow: var(--shadow); }
-  .dots { display: flex; gap: 6px; justify-content: center; margin: 0 0 14px; flex-wrap: wrap; }
-  .dot { width: 22px; height: 10px; border-radius: 6px; background: var(--card2); border: 1px solid var(--border); }
-  .dot.win { background: var(--green); border-color: var(--green); }
-  .dot.half { background: var(--orange); border-color: var(--orange); }
-  .dot.lose { background: var(--red); border-color: var(--red); opacity: 0.7; }
-  .dot.cur { outline: 2px solid var(--accent); outline-offset: 1px; }
-  .round { color: var(--muted); font-size: 13px; font-weight: 700; text-align: center; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px; }
-  .lead { text-align: center; color: var(--muted); font-size: 14px; margin: 0 0 14px; }
-  .cats { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 10px 0 4px; }
-  .cat { background: var(--card2); border: 1px solid var(--border); border-radius: 999px; padding: 7px 13px; font-size: 14px; }
-  .row { display: flex; gap: 8px; margin-top: 16px; }
+  .day { font-family: var(--mono); color: var(--text); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: var(--accent); color: var(--accent-ink); border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 5px 9px; box-shadow: var(--shadow-sm); }
+  .iconbtn { background: var(--card); border: 2px solid var(--ink); color: var(--text); border-radius: var(--radius-sm); padding: 7px 10px; cursor: pointer; font-size: 16px; box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease; }
+  .iconbtn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+  .iconbtn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+
+  .card { background: var(--card); border: 2px solid var(--ink); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+
+  .dots { display: flex; gap: 6px; justify-content: center; margin: 0 0 16px; flex-wrap: wrap; }
+  .dot { width: 24px; height: 12px; border-radius: 3px; background: var(--card2); border: 2px solid var(--line); }
+  .dot.win { background: var(--green); border-color: var(--ink); }
+  .dot.half { background: var(--orange); border-color: var(--ink); }
+  .dot.lose { background: var(--red); border-color: var(--ink); }
+  .dot.cur { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  .round { font-family: var(--mono); color: var(--muted); font-size: 12px; font-weight: 700; text-align: center; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+  .lead { text-align: center; color: var(--text); font-size: 15px; margin: 0 0 14px; font-weight: 500; }
+
+  /* Game card breaks out of the narrow .wrap to use (almost) the full screen.
+     Full-bleed via margin (NOT transform) so it never collides with .shake. */
+  .card.game { --gw: min(96vw, 1100px); width: var(--gw); margin-left: calc(50% - var(--gw) / 2); }
+
+  .catlabel { font-family: var(--mono); color: var(--muted); font-size: 11px; font-weight: 700; text-align: center; margin: 4px 0 8px; text-transform: uppercase; letter-spacing: 1px; }
+
+  .cats { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: stretch; margin: 14px 0 4px; transition: gap 0.25s ease; }
+  .cat {
+    background: var(--card2); border: 2px solid var(--ink); border-radius: var(--radius);
+    padding: 16px 22px; font-size: clamp(16px, 2.2vw, 22px); font-weight: 700;
+    line-height: 1.25; flex: 1 1 auto; min-width: 190px; max-width: 100%;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: padding 0.25s ease, font-size 0.25s ease, box-shadow 0.25s ease, transform 0.06s ease;
+  }
+  /* After the answer the categories collapse to small reference chips */
+  .cats.small { gap: 8px; }
+  .cats.small .cat {
+    padding: 5px 11px; font-size: 13px; font-weight: 600; border-radius: var(--radius-sm);
+    border-width: 2px; flex: 0 0 auto; min-width: 0; color: var(--muted);
+    background: transparent; border-color: var(--line); box-shadow: none;
+  }
+
+  /* Revealed answer, pinned to the top of the card */
+  .answer { border: 2px solid var(--ink); background: var(--card2); border-radius: var(--radius); padding: 16px; margin: 2px 0 18px; box-shadow: var(--shadow); border-top: 8px solid var(--accent); }
+  .answer.win { border-top-color: var(--green); }
+  .answer.lose { border-top-color: var(--red); }
+  .answer.half { border-top-color: var(--orange); }
+  .answer-label { font-family: var(--mono); color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .answer-body { display: flex; gap: 16px; align-items: flex-start; }
+  .thumb { flex: 0 0 auto; line-height: 0; }
+  .thumb img { width: 120px; height: 120px; object-fit: cover; border-radius: var(--radius-sm); border: 2px solid var(--ink); box-shadow: var(--shadow-sm); display: block; }
+  .answer-text { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .answer .ans { font-size: clamp(21px, 3vw, 30px); font-weight: 900; color: var(--text); text-decoration: none; line-height: 1.12; letter-spacing: -0.5px; }
+  .answer .ans:hover { text-decoration: underline; text-decoration-thickness: 3px; }
+  .answer .wikilink { color: var(--text); background: var(--accent); color: var(--accent-ink); align-self: flex-start; text-decoration: none; font-size: 13px; font-weight: 800; border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 5px 10px; box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease; }
+  .answer .wikilink:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+  .answer .wikilink:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .answer-text .claim, .answer-text .halfnote { align-self: flex-start; margin-top: 2px; }
+  @media (max-width: 480px) {
+    .answer-body { flex-direction: column; align-items: center; text-align: center; }
+    .answer-text { align-items: center; }
+    .answer .wikilink, .answer-text .claim, .answer-text .halfnote { align-self: center; }
+    .thumb img { width: 150px; height: 150px; }
+  }
+
+  .row { display: flex; gap: 10px; margin-top: 16px; }
   .row.center { justify-content: center; }
   .grow { flex: 1; }
-  input[type='text'] { flex: 1; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 12px; padding: 13px 14px; font-size: 16px; outline: none; }
-  input[type='text']:focus { border-color: var(--accent); }
-  .btn { border: none; border-radius: 12px; padding: 13px 16px; font-size: 15px; font-weight: 700; cursor: pointer; }
-  .btn.primary { background: var(--accent); color: #fff; }
-  .btn.ghost { background: var(--card2); color: var(--text); border: 1px solid var(--border); }
-  .subrow { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
-  .link { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 13px; text-decoration: underline; }
-  .link.claim { color: var(--orange); font-weight: 700; }
-  .halfnote { color: var(--orange); font-weight: 700; font-size: 14px; margin-top: 12px; }
-  .feedback { min-height: 22px; text-align: center; margin-top: 12px; font-weight: 700; font-size: 14px; }
+  input[type='text'] {
+    flex: 1; background: var(--field); border: 2px solid var(--ink); color: var(--text);
+    border-radius: var(--radius); padding: 13px 14px; font-size: 16px; font-family: var(--font);
+    font-weight: 500; outline: none; box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.08s ease, transform 0.08s ease;
+  }
+  input[type='text']::placeholder { color: var(--muted); }
+  input[type='text']:focus { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--accent); }
+
+  .btn {
+    border: 2px solid var(--ink); border-radius: var(--radius); padding: 13px 18px;
+    font-size: 15px; font-weight: 800; font-family: var(--font); cursor: pointer;
+    box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease;
+  }
+  .btn:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
+  .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.ghost { background: var(--card); color: var(--text); }
+
+  .subrow { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+  .link { background: none; border: none; color: var(--secondary); cursor: pointer; font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; padding: 4px; }
+  .link.claim { color: var(--orange); font-weight: 800; }
+  .halfnote { color: var(--orange); font-weight: 800; font-size: 14px; margin-top: 12px; }
+  .feedback { min-height: 22px; text-align: center; margin-top: 12px; font-weight: 800; font-size: 14px; }
   .feedback.bad { color: var(--red); }
   .feedback.good { color: var(--green); }
-  .reveal { margin-top: 14px; text-align: center; }
-  .reveal .ans { font-size: 20px; font-weight: 800; margin: 6px 0; }
-  .reveal a { color: var(--accent); text-decoration: none; font-size: 14px; }
-  .tries { color: var(--muted); font-size: 12px; text-align: center; margin-top: 8px; }
+
   .shake { animation: shake 0.3s; }
   @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
-  .end h2 { text-align: center; margin: 4px 0 2px; font-size: 26px; }
-  .score { text-align: center; font-size: 40px; font-weight: 900; margin: 6px 0; }
+
+  .end h2 { text-align: center; margin: 4px 0 2px; font-size: 28px; font-weight: 900; letter-spacing: -0.5px; }
+  .score { text-align: center; font-size: 44px; font-weight: 900; margin: 6px 0; letter-spacing: -1px; }
   .grid { text-align: center; font-size: 26px; letter-spacing: 4px; margin: 10px 0; }
   .endlist { margin-top: 18px; }
-  .endrow { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; border-top: 1px solid var(--border); font-size: 14px; }
-  .foot { color: var(--muted); font-size: 12px; text-align: center; margin-top: 22px; }
-  .foot a { color: var(--muted); }
+  .endrow { display: flex; justify-content: space-between; gap: 10px; padding: 9px 0; border-top: 2px solid var(--line); font-size: 14px; font-weight: 500; }
+  .foot { color: var(--muted); font-size: 12px; text-align: center; margin-top: 24px; }
+  .foot a { color: var(--secondary); font-weight: 600; }
 </style>
