@@ -40,12 +40,12 @@
         "Члены Прусской академии наук"
       ],
       "accept": [
-        "06fdcd0704d6385095a477e32e98bcfde9ef86fe9c5cbb15c96aa49fc75fb1af",
-        "1ac498e2198d8cb79058298e1f1f256231810c160aca9553a1df3541bc4ccef7",
+        "30d592c7f2ed2e15b203bae93a854c09eb8f46f10c2495a131c697439ee3f72a",
+        "41c2f423a26794715a048abae2831241ca3d5f4465b21cfc4ea033f53e603a1e",
         "87765da6ccf0668238c1d27c35692e11b4cee9c0e5cd5713a3f6e462d48e9730",
-        "b33101881702d4d584c211be5cc6e2518bf349a6c60f80c378dc93097cf96fda",
         "d9cf7bdef680154952a548f5ccf03343843f8117d809844788987936211a9ac9",
-        "de7d1b721a1e0632b7cf04edf5032c8ecffa9f9a08492152b926f1a5a7e765d7"
+        "de7d1b721a1e0632b7cf04edf5032c8ecffa9f9a08492152b926f1a5a7e765d7",
+        "f548c987a5962f32999ea4b07e5542cff0c8744831fc6750a2083a41d27cafd5"
       ],
       "reveal": "0JXQutCw0YLQtdGA0LjQvdCwIElJ"
     },
@@ -128,8 +128,8 @@
         "Чёрно-белые фильмы Японии"
       ],
       "accept": [
-        "722a2d19fa54f13f17145f081b4f00290d703ba4eeed0d1775d8eb856a30355c",
-        "b0ecec59b25f356b9e13da60f6a5ded23663a4bd2e39a692329e61f1bf9f7faf"
+        "b0ecec59b25f356b9e13da60f6a5ded23663a4bd2e39a692329e61f1bf9f7faf",
+        "b174820a51aeb42217a0718c62d2f726be1b4e5e91f220ab555bf739013aedcd"
       ],
       "reveal": "0KHQtdC80Ywg0YHQsNC80YPRgNCw0LXQsg=="
     },
@@ -159,7 +159,7 @@
       ],
       "accept": [
         "09cc1b93ceee06fd6a91e9cfb15dce3aaa4bab266766ecab59b99bf92ade8094",
-        "380bd01b6526834524b3104cee59b91ea980357e5fe94665aeeee44845c7eb9f"
+        "8e99064522fc3b988b95eaa36f3943f47735488e310aed38297d119f3a678ff9"
       ],
       "reveal": "0JvQvtC70LjRgtCwICjRgNC+0LzQsNC9KQ=="
     },
@@ -172,8 +172,8 @@
         "Портреты Валентина Серова"
       ],
       "accept": [
-        "9dc0c18c47e4bf38506326e929807cd754697e5a3e43e947d71ef328ec4ed647",
-        "a90452bc7da02abc32e160debb5a9d1fb3e56c29c5160401a7427d567ed0efe4"
+        "7859c2080bd04f2710d9942f6566b0a27cb8f8847f9930f6102d35f0faf4f5c4",
+        "9dc0c18c47e4bf38506326e929807cd754697e5a3e43e947d71ef328ec4ed647"
       ],
       "reveal": "0JTQtdCy0L7Rh9C60LAg0YEg0L/QtdGA0YHQuNC60LDQvNC4"
     },
@@ -194,9 +194,9 @@
         "Резиденции Людовика XIV"
       ],
       "accept": [
-        "7547497154f161d2e9a26f120ed8c8ace2c7fd2c364c19466ac00bd290fee6bc",
+        "27b6aeb951c856dc8cb01ca7b4029995001a6e0014e0d479a61637ce6dfc2394",
         "7964fb2c58c9f30823ef1d4baec446db5b575edb6a3e576341eabf8b78eb7fd7",
-        "c671ab167ad985c3bcaffc322fb4d478dc51d073b14d3fc82baa581382b4f904"
+        "f40c0e838f0d5c279edd4cc19b9d067629b12bce5ed66ddd204729f79ac16495"
       ],
       "reveal": "0JLQtdGA0YHQsNC70Yw="
     },
@@ -211,8 +211,8 @@
         "Экономические циклы"
       ],
       "accept": [
-        "eef43385bd6ede32621c3c736f21730264796f52802f4aa311478c9fa265a9a0",
-        "f60390dd583801fde58a7caec3ca873d1a08d7de625f4d8f48b0f558af29679d"
+        "51a5b87c2b5695cc36255f922c8ac36551167a0638088915b2105b5f0b7b466b",
+        "eef43385bd6ede32621c3c736f21730264796f52802f4aa311478c9fa265a9a0"
       ],
       "reveal": "0JLQtdC70LjQutCw0Y8g0LTQtdC/0YDQtdGB0YHQuNGP"
     },

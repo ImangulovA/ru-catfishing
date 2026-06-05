@@ -20,8 +20,8 @@
         "Члены Детективного Клуба"
       ],
       "accept": [
-        "4d0fb16409487a2257becd5edb9e8fd7a0ea850bb184fdd5f14dd6cf8708a6e3",
-        "69eb1a81ff196e74ce90ed3f4c350c63f564f1e2dcc4fd04d41966d7cea03bed",
+        "3667d16c80ee15a4879aba47b3a52ba86a4b2dd076cacd1c1713fe003206c2a7",
+        "4e5305051d83e1880209f408526737cbedc988593cd860ed0c0b03c3bb2e0f05",
         "9dffd1baec065ef674088f79d9fbe907837f214fea5056cb93a53b001ed279ce",
         "ba27444a56b473225c5ca7aa0b24853f7b18d006a7a185c5587d77ee7931301c"
       ],
@@ -61,8 +61,8 @@
       "accept": [
         "0fb06e5f9ace1417f2404cedca3efac29349116faa448f6a6662078679b86e0c",
         "558fb21100ace1fb8f056aa34d90923587710b45617b7f87ff5b77ff69f096a4",
-        "8674a6f299bf7187c8c5deb0f477952f21ef266f12acf0723b3045da07faef44",
-        "93a347ebb92314675cf3676d866e52f9d1b9c087a7e25ca7e606858079614e10"
+        "74f0e1cc57db4caac3f646e4f609a287e24f54510c43cba0be05fe314ec3f5e8",
+        "8674a6f299bf7187c8c5deb0f477952f21ef266f12acf0723b3045da07faef44"
       ],
       "reveal": "0KHRgtGN0L3Qu9C4INCa0YPQsdGA0LjQug=="
     },
@@ -154,7 +154,7 @@
       ],
       "accept": [
         "0e83264eb2e0ced1eb4f337b4c448877cb1088859ee2452cc858d1b0cc358ab1",
-        "2e7eeeb7b89aa3f7c0261cbc5944fa878e22625503ae41cf665ce998577bce00"
+        "29b83ef45bb04aaf8aca461ed023c5f81801c5232ff936bba7cc6d9b79e1eb03"
       ],
       "reveal": "0JfQtdC70ZHQvdCw0Y8g0LzQuNC70Y8gKNGE0LjQu9GM0Lwp"
     },
@@ -178,9 +178,9 @@
         "Сайд-скроллеры"
       ],
       "accept": [
+        "06ffc9280110e4b748d094192ed6461358365061460b7529556e599840449a2a",
         "6dc28b6c9a9dd784e3e52201753e5419636ecde7ad46d9b1c1dd56b1a7aea7b9",
-        "6e48d1a7100457ed116905c5910e14f9c2e52ddf434e1f1461248ed5ca3a66bf",
-        "ba02f47cdfb6d7cbe02ea3230232e30425af9619f1dd6e33557a4966ced0ef99"
+        "6e48d1a7100457ed116905c5910e14f9c2e52ddf434e1f1461248ed5ca3a66bf"
       ],
       "reveal": "U3VwZXIgTWFyaW8gQnJvcy4="
     },
@@ -195,8 +195,8 @@
         "Сатирические повести"
       ],
       "accept": [
-        "3fe1ec9f95c81b24fb66d4157800bad885773b157625b8ba23699755462870ea",
-        "775585f4f3f07d345f63750d93eab36c681edce579bceca86e32bd9ef8fb202a"
+        "775585f4f3f07d345f63750d93eab36c681edce579bceca86e32bd9ef8fb202a",
+        "eec561c8d3807c32d8f2bcdbb9b711ed85e4c43f5645f4c82ffdc685d0745478"
       ],
       "reveal": "0KHQutC+0YLQvdGL0Lkg0LTQstC+0YA="
     },
@@ -210,7 +210,7 @@
         "Скульптуры, изображающие обнажённых мужчин"
       ],
       "accept": [
-        "aa823fb64c79760bbe263ec4f4d4443b4ddb16e49fc1486c490901ecaac2f981",
+        "808758be0c457b8173894028068227773ecd3fa1b3327ed9a7c582cb24f09063",
         "ebb7326bd0e7cc61494ddc804eb569d6ee956651835fafaadef99165a6cf0a06"
       ],
       "reveal": "0JzRi9GB0LvQuNGC0LXQu9GMICjRgdC60YPQu9GM0L/RgtGD0YDQsCk="
@@ -230,8 +230,8 @@
         "Храмы, построенные в XIV веке во Франции"
       ],
       "accept": [
-        "3aa4b02fd5bc99a2c326bbc45791037caa828e7a629839b3b67b6289776bd440",
-        "461a7157f4de9dca2615f4727b34e50daaa5ad9f67e922e1d0b32c228e0d38b4",
+        "41f3fefd84dd72e88cf244bf2f428738f5ade3fb520410fc0e2d231c3c1c40f4",
+        "4db11b919a39baab47129ae09645e4ffc8349704510182014788fbc2c689ebfc",
         "7f751d85309935c3fba25b322239a5287405820de652e0732abd364da1c97e28",
         "b8a01e2cfed613840141eaf42c0d154141f7b8fbda7eb507afe6c742711ff40e"
       ],
@@ -245,10 +245,10 @@
         "События в Древнем Риме"
       ],
       "accept": [
-        "1478b7c974f69ac2b5a85e6805840ca59d16a20feae06f440b4254becca04046",
-        "710b21a4aea17f6cef97a8510f983664b04275615e21cfeaa8a77b0af047c084",
+        "766e53e8ac3cd096609387daf492abf0a85f5154a253c25098e1a1744f6b0ec5",
+        "98ae04a69593a4614ba4300c1dd89a96766e7956d368e26c184ed4b97f3657ab",
         "9922909a7f8d016ccd2e0f61e5a0644e47fcd5b042f98bb39f5ba8723009e4d5",
-        "b40eab5925a0aca778a69e6a239495f16ae48e54d3289ffcf2e1dea0551dae91"
+        "d11a9a1423023d3cb3f59a50b99bfe782a0477707b0474c8ef324fa48ef545cd"
       ],
       "reveal": "0JjQt9Cy0LXRgNC20LXQvdC40LUg0JLQtdC30YPQstC40Y8g0LIgNzkg0LPQvtC00YM="
     },
@@ -262,7 +262,7 @@
       "accept": [
         "7867c3b42a8616d187ea55288aa36e717699bdcc74c049db9188cfd79c6769db",
         "a3d8a11a7e163e6b6a264de413629b75de5f6dd351fcdadc5de9cc7761e94c9a",
-        "a8f854b4ae0f130a14d775f0e0b7cde69e4307e6661f4f908cb232d690879964"
+        "edc85da0c6f2749388a226d69a4b72fbd91f9d78a318363a3ea76222e1af9811"
       ],
       "reveal": "0KDQtdC90YLQs9C10L3QvtCy0YHQutC+0LUg0LjQt9C70YPRh9C10L3QuNC1"
     }

@@ -83,6 +83,11 @@
       .split(' ')
       .filter(Boolean)
       .filter((w) => w !== 'the' && w !== 'of') // drop English stopwords (the last of us == last of us)
+      // singular/plural & case tolerance: drop a trailing Russian inflection
+      // vowel/ь so "коала"=="коалы", "челюсть"=="челюсти", "окно"=="окна". Only
+      // when the stem stays >=3 chars. MUST stay byte-identical to stem() in
+      // scripts/make_day.py:norm().
+      .map((w) => (w.length >= 4 && 'аеиоуыюяь'.includes(w[w.length - 1]) ? w.slice(0, -1) : w))
       .sort()
       .join(' '); // порядок слов не важен (Бергкамп Деннис == Деннис Бергкамп)
   }

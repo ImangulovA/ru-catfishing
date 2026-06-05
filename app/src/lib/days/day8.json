@@ -58,10 +58,10 @@
         "Члены Французской коммунистической партии"
       ],
       "accept": [
-        "378d59a8ef3bcdfaecf131ab996442a4bfa1c12c21c95a9c2b665e8046998c5e",
-        "88cb349a3b25b6a92fefabe3e85ad22f0ef166fc9854c5550979f1d43ea8007d",
+        "8b960e08487b8c692b3be627da53c23ab93b10d25067320993e550069cba91a4",
         "a35b91e621f4bdcb3c77ff4caad5d325b0cc9ea07c9e90e1dadc42051b1b7785",
-        "afd6d144eed1c0e2d9aaad93beb95696c64370d4e9ddfd9b68a9356380f8bec7"
+        "afd6d144eed1c0e2d9aaad93beb95696c64370d4e9ddfd9b68a9356380f8bec7",
+        "ec479b39331e33d81d17bd8e72e8e592d13fc48409648478ff638d2fb1f4c8e2"
       ],
       "reveal": "0J/QsNCx0LvQviDQn9C40LrQsNGB0YHQvg=="
     },
@@ -217,8 +217,8 @@
         "Романы на английском языке"
       ],
       "accept": [
-        "2d3f7fcebc494e0c0d26914f74d15bc882f3fb2b431b11053ea6b083efa12651",
-        "6dcfd679b26d3c351801ac292f27b6ac5dbe791b8b7b99f8ee91e91814181477"
+        "6dcfd679b26d3c351801ac292f27b6ac5dbe791b8b7b99f8ee91e91814181477",
+        "6e067251f102a372b7e69a9eeea1f53e8c420e566256493cf00899ab145f374e"
       ],
       "reveal": "0J3QsNC0INC/0YDQvtC/0LDRgdGC0YzRjiDQstC+INGA0LbQuA=="
     },
@@ -232,7 +232,7 @@
       ],
       "accept": [
         "578a064111594ba78e4256fba242f635553f2dc21bd884a8ee381d561ddc5889",
-        "abf86b7c080300d2e140295d61594dd8701bd3a3c8caa1cab6915a4035bf0364"
+        "df0b66463d48215066399ecd8b36d45d0520eb529aba0a1a93ca7239b980bec6"
       ],
       "reveal": "0KHQvtGC0LLQvtGA0LXQvdC40LUg0JDQtNCw0LzQsA=="
     },
@@ -247,9 +247,9 @@
         "Разделительные стены"
       ],
       "accept": [
-        "1f4665058a13f79266720264067ed41f9c9d820f40e01d80addd898b6fd212f0",
+        "0086a56c9443ce35833ec50fead9ba26cbf36adce5e636d1843cc2f9ee1379f3",
         "677eb8f21a6fa708ff7675d8a7e5ddc01da98df133d6bf7add94f8e50a612638",
-        "9343020f6e279ff47767fd21b5dae25eeee636f679957fa3d90976ae49af15a0"
+        "6dbedc0a14adbbbbf80711e3670d3f634aa5c394c44718556afcc4103896f087"
       ],
       "reveal": "0JLQtdC70LjQutCw0Y8g0JrQuNGC0LDQudGB0LrQsNGPINGB0YLQtdC90LA="
     },
@@ -262,8 +262,8 @@
         "События 7 ноября"
       ],
       "accept": [
-        "94d4cb041199e5d4f34e6cf2af544697460a99bfc3b91ac400021e51b0422538",
-        "c170f7e83d1805c4a94301447b17cfb51dab95a01b0667c439507934e15ca315"
+        "c170f7e83d1805c4a94301447b17cfb51dab95a01b0667c439507934e15ca315",
+        "ecb816c86b8387ff7ec05fbd8ffea75557e6cdb099ae9e723607a6e411fce520"
       ],
       "reveal": "0J7QutGC0Y/QsdGA0YzRgdC60LDRjyDRgNC10LLQvtC70Y7RhtC40Y8="
     },
@@ -279,7 +279,7 @@
         "Ракетно-космическая техника Lockheed Martin"
       ],
       "accept": [
-        "027e2e6f2acc65c095f760d56a8dcee6105483f757a19666a89c37a0099d37f3",
+        "1257f96639c52358194f693ce03fb463974c5640de476e9f22b3f70038915b8f",
         "26dbd355e703f8fc7de99219c3f97aeef0efd37955b018707162c8899343ee2d",
         "66e45db858a636f17d05096faaf2e2b3fffac9996b377c638f41bf55afc82cef",
         "ff855928d09269f2506bed2879333c4dcebb94204b0410465542842f45060de6"

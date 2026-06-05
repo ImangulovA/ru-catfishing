@@ -27,10 +27,10 @@
         "Участники Русско-литовской войны 1561—1570 годов"
       ],
       "accept": [
-        "1d76131d474fc6d73969b57c5192564eb21c2bfc1ef71f436d86919174d99df2",
         "2553eb81aa994aa2e9cad0d4e86012944255c8955040d3271e8fdbe593d17c19",
+        "7143b1d21296f6d5637c9dd0d2dae9e0ae1592d977605229b9b614cedabe1f35",
+        "8e24f17c50bc2b087ced3135a8db174faef3c39f28ce2e1f59b9aed9aac53c38",
         "bf83828f1e3e62ddbf90dab38e642d37a8c4f19f58c9d83e069b21caa4f56d87",
-        "e22d1b995cdfec486e63b72512b373558bbb36cbb9d79c5c73ba87d360a5ea78",
         "ed59316a908cd8261a5e652720341483a8554820c1b401e3e62b1857da24c5ca"
       ],
       "reveal": "0JjQstCw0L0g0JPRgNC+0LfQvdGL0Lk="
@@ -61,9 +61,9 @@
         "Участники Северной войны"
       ],
       "accept": [
+        "5686860464b0ba2ba4bd7cbe4c5af4eee9303f73098a8b522303e95ef82ff8ca",
+        "58238d56d3df2cc82245793db5e7e4c3ef79ad4bc42d2500a9e198543cf2db76",
         "87765da6ccf0668238c1d27c35692e11b4cee9c0e5cd5713a3f6e462d48e9730",
-        "9e337c2e677180f869c88b522f2bdb52d3eafeb53a30167ed834cf63fa0e9cd1",
-        "b0e89e7ab40e97897e325f7244ec15b64cf2563c5071742d19c11b7684dd058c",
         "d525559d9666a96e5c0a32e9b9734314270e60c12507099ef9a715b54d7b05d2",
         "de7d1b721a1e0632b7cf04edf5032c8ecffa9f9a08492152b926f1a5a7e765d7",
         "e9bd8a9cefa8db903b65d87c3b1747ed89519ab611f1d4663afb09db7f99a080"
@@ -105,9 +105,9 @@
       ],
       "accept": [
         "083f4063ac3a51260bc0adfed0dbe08bf971fcbb31bec7f47ca854d0cb6539c6",
+        "275a96fcdd3d24c39ba4c10dccd820a64d0af08d649610031480133f8f540b77",
         "9ea0e6c6f5b4cad6e53059c46cc14ef2b56097957fa589eca3f4cf3b25b3defc",
-        "c462b4447d3721505debd7d357d934996be18729c2a180d8060c0beed2bb2536",
-        "d9dbe118d71296a921f2611798b9e895e342ee6fc677592c4fedeef3f43c641d"
+        "eb02d2bd12806bb847032cd996b55733836ac0d295a4545f862f492ecca668ff"
       ],
       "reveal": "0JTQuNC10LPQviDQnNCw0YDQsNC00L7QvdCw"
     },
@@ -128,8 +128,8 @@
         "Экранизации произведений Джозефа Конрада"
       ],
       "accept": [
-        "53aed8012046dfe92f1866daa9156ee5eda7f79b896386033f03b0a46cee6abd",
-        "e6b48d4f24ca03a15cce2d9cdc6130459ffc29a6eba0db025140db343125aaff"
+        "182ae317bf80e1095d8caacdb20e7615ce8712dff897a95635940ca155a40b42",
+        "53aed8012046dfe92f1866daa9156ee5eda7f79b896386033f03b0a46cee6abd"
       ],
       "reveal": "0JDQv9C+0LrQsNC70LjQv9GB0LjRgSDRgdC10LPQvtC00L3Rjw=="
     },
@@ -171,7 +171,7 @@
         "Цензурирование литературы"
       ],
       "accept": [
-        "e48dc84aea078ed6f8a971396e8248a4ef13c011dc81f7fa8bcf147b0783fe8b",
+        "393f5b483980ce75d1dac7b62b61f7aebd1fbce139f5a3a7d1870bf676b70a5f",
         "f45c6f30e63b745ba5b20920baa99a18383f8d69173b75d49e0386638ce26e81"
       ],
       "reveal": "0J4g0LTQuNCy0L3Ri9C5INC90L7QstGL0Lkg0LzQuNGA"
@@ -209,8 +209,8 @@
         "Храмы, построенные в 1561 году в России"
       ],
       "accept": [
-        "7ff1daea06a5b784635a6a0471ce7dfd8a103ef7d89ff821a88f0e392c32baf7",
-        "ecdc60d49480b4297d71f6aa08a4cc512b3648e7b0804529a539d263a921884b"
+        "3eaf8062502beb0aa73b30903befe95f5d1c61662d4100fc580288711f2c50f0",
+        "7ff1daea06a5b784635a6a0471ce7dfd8a103ef7d89ff821a88f0e392c32baf7"
       ],
       "reveal": "0KHQvtCx0L7RgCDQktCw0YHQuNC70LjRjyDQkdC70LDQttC10L3QvdC+0LPQvg=="
     },
@@ -225,7 +225,7 @@
       ],
       "accept": [
         "1026c24ea6706daf8d11392446ed11b227869fc15bd15f591ce28ef3bb358941",
-        "7e0f72bc8fa41f3b191c0b3ad1f4269058c6c327094fb24b167a92d3ab9e1207"
+        "fb11bd1183e7bdf6b7a3eb83b76c2608dd277ad5e9ed90c6ab4dc206c5702aee"
       ],
       "reveal": "0KXQvtC70L7QtNC90LDRjyDQstC+0LnQvdCw"
     },
@@ -238,7 +238,7 @@
       ],
       "accept": [
         "413ba59412772f2dc63abf1cedbed3d3fd8fbb0e34dd4d042a53d805fd21e9d1",
-        "9a7bdcf24f4fe0336dc8ebd5c9adacf30215b3e3c8b9a158ae0b955f3f83a1d2",
+        "71e5d7be7d3c59f21351d050116f94ebcfed8f67887cd495afb8c8e6f507a41e",
         "e8ed453e08732bfa3174d6d2f9b651fe8d8d3967d0fde8c8cc1a3bf84cc6c57b"
       ],
       "reveal": "0KHQvNC40LvQvtC00L7QvQ=="

@@ -54,8 +54,8 @@
         "Экспедиция на дирижабле «Италия»"
       ],
       "accept": [
+        "67b82ac2e84bb16a80b6a553d47de5e8d3a99ea80d419569f856a947420ee22c",
         "962b308c420c6f3bc133e2d8f7caa033ddff00ac7e2f1f14336ba43d1e8c8c8f",
-        "9921d8bc9fb8b27c589f67bafee01d05329438503bd49347135b72be950b5469",
         "d85be7e9859f9cdfeed61aa2bc1bc5e191b55fd81eb236925122b263d2504742",
         "ff0c5f1c7241836dd05663c3cb79d052553e6ce0a1dc7b3fe4b158b00c7d3803"
       ],
@@ -102,8 +102,8 @@
       ],
       "accept": [
         "1ced74578980248fc443c0288e6818730d701bd16d9755dd73f0ec11c7b3b272",
+        "24830f0a41855b64f42749769528c52864379b703ce2a9894deb686bb8797207",
         "3f087949f6c104ef0ad1629a0c8173e8547fa39e5bb1179139ed91e24d8c5c71",
-        "da46012297dfa39e6d8fab1e83342552bb319a8956779af12a2c6085cd134273",
         "db176536524eac7b9682e2685fdda4cd9dbf436167b97e37666ff7498069912a"
       ],
       "reveal": "0JPQsNGA0YDQuCDQmtCw0YHQv9Cw0YDQvtCy"
@@ -139,8 +139,8 @@
         "Фильмы — лауреаты премии «Золотой медведь»"
       ],
       "accept": [
-        "b719fa2dc5e0f199ed6f88738908e560e2c43b8045ed990ed343c527513642ef",
-        "ce84f967b6e0b9508a165ae0a661ae3f0b9f9c92acfb78dac3af01976481376b"
+        "ce84f967b6e0b9508a165ae0a661ae3f0b9f9c92acfb78dac3af01976481376b",
+        "e0f712e1bf7095c1b38c47a81f5bb68e2d441ac83bcf7b35aba79ad4020bac35"
       ],
       "reveal": "0KPQvdC10YHRkdC90L3Ri9C1INC/0YDQuNC30YDQsNC60LDQvNC4"
     },
@@ -186,7 +186,7 @@
         "Румыния в культуре и искусстве"
       ],
       "accept": [
-        "5b5f0fe860806c0f4e2519b8b86ecce968f4f66b1e88abe5ae341444e4c37217",
+        "72887b515558d61a549b2cd66390e0540e7731e24ffe7d60b72731c8601c4b02",
         "a0126546bff6c68c724dd39db17ce9e4b7a754cca0a79025d5e50afe99a0150d"
       ],
       "reveal": "0JTRgNCw0LrRg9C70LAgKNGA0L7QvNCw0L0p"
@@ -200,7 +200,7 @@
         "Свадьба в живописи"
       ],
       "accept": [
-        "151129ee749b56d56c2dbe84d52d3f320bcc37801dc9d310f58c7f7eebf04859"
+        "0c8a511dc06164abaf241809df5b1985574765221eb5790458d82bb96c142b74"
       ],
       "reveal": "0J3QtdGA0LDQstC90YvQuSDQsdGA0LDQuiAo0LrQsNGA0YLQuNC90LAp"
     },
@@ -228,9 +228,9 @@
         "Торговые пути"
       ],
       "accept": [
-        "1d257ea0476cbfda8cc3749d516b01f8610ff2c9dcb1de4d7fa588ab7dc39280",
+        "35e2b7fc2fdd30e3e878d45ee510c394d1a1f0c6f8a1282bdbc799a16c4e701e",
         "4baf7c51f4f6d05ec13315d2670a992933de6a3226d3f63be8c3d5b0bdc22776",
-        "609b3688f6ca73ca2fa546d04ce1776190ad5f53766e9ac1cb0d6c64508afd67"
+        "62ef9f8ad6a0d214e0f88e97d02dd3663238fdbf43a1ea7b8b2453523d54c46b"
       ],
       "reveal": "0JLQtdC70LjQutC40Lkg0YjRkdC70LrQvtCy0YvQuSDQv9GD0YLRjA=="
     },
@@ -243,8 +243,8 @@
         "Русские народные промыслы"
       ],
       "accept": [
-        "a8293d651f6c6924215272710b89183228c8a3e49fb7c783c351b4f54334b324",
-        "bb94c4260dab58d0bca7fc0fc9f12071080375e8d9fa0cbf0260373ed5a5eb1a",
+        "b0ac8b842535b40b28930418af3ca0465d5e481371bc0f765bad3da0f37d22d6",
+        "b9858b98af7d0645a137682e190980830bcaedd8cf0d61a6631eae238e307d28",
         "dddc95f3414ff8620e3b901c0861eec7bb2aaf8a24e9ae779eace2c56a5fd2bc"
       ],
       "reveal": "0JzQsNGC0YDRkdGI0LrQsA=="

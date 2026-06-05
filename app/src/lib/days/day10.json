@@ -78,10 +78,10 @@
         "Художники-импрессионисты Франции"
       ],
       "accept": [
-        "0efac420557bf588294b2b023106264e4c8b69289d68f0eb7acb772296377c29",
         "79a025d9c4f49dae4fbaea440e2e6917b79b83b52165438df60840cbc0eeceef",
-        "f1e978b9b267e4445a3f01b80e1d2cb3d3d9a0cd044577c943aa9bd6718d7a05",
-        "f52d0f2e7ec7a06f7a6cb8302d7fceac9b9647b1c9080293b720835e3a9ab5fc"
+        "b39e4db2b34526965449b391dffe1087b4e11cac79d4eaf15d9896a78078f59c",
+        "bf2a4f3e96151ef9b3eea14d75841e515732229d06ce1720102776784a65a815",
+        "f1e978b9b267e4445a3f01b80e1d2cb3d3d9a0cd044577c943aa9bd6718d7a05"
       ],
       "reveal": "0JrQu9C+0LQg0JzQvtC90LU="
     },
@@ -143,10 +143,10 @@
       ],
       "accept": [
         "65f604fc5d27f1c53158f36f9cd686eb65194e721dfdb74e7fe306bd4021c68d",
-        "a2fa942e8a700d8640611c957ea58293065886a38b486dd56dd7caa413a3e5ff",
-        "a4da48d23c7069335c4cb783f67ec1445f047aa41a152f480c407915d6b7e1b2",
+        "66a2d0f68d4b4fefbfe250340d2f0e6d821b07b3481d1b83a475acb518f4d2f7",
+        "8db24a7700f116cee885cb16c45d3db21779823ca54a87f07fd38d62ee4d1560",
         "b2adb213f822641771acb898c7bfa79bdc23abee6d77c38a72d9e1a87ffcca69",
-        "dbc33bf66f8d008c625bee6ee0e01e2ee72a44b16e8eb346adf8f0fe16d056df"
+        "c97611a38519b9580283a35376e143da1bc8472902eafea83b907d1681d634d9"
       ],
       "reveal": "0JzQsNGA0LjRjyDQmtGO0YDQuA=="
     },
@@ -164,8 +164,8 @@
         "Шпионские фильмы"
       ],
       "accept": [
-        "0729751424cf934409e4a7b48d254b2d3ca88f67c59f65ca95c5197fca4c13a5",
-        "3a4573eee151660267ebc16744f559bf89af81c135f15a8e2b66bf55765f5aea"
+        "3a4573eee151660267ebc16744f559bf89af81c135f15a8e2b66bf55765f5aea",
+        "f5bce61f4b0c2ec49c43fc9feedb71ea49a41fa7b6e1c635167757cb90669908"
       ],
       "reveal": "0JrQsNGB0LDQsdC70LDQvdC60LAgKNGE0LjQu9GM0Lwp"
     },
@@ -210,7 +210,7 @@
         "Романы-эпопеи"
       ],
       "accept": [
-        "b4283293ad9dc34ede0a281f4d43f8caab4a80d5e540f6a53a1226f5de6f26bc",
+        "3b1292d873a25ee8f7f840251007d1d234a55567d93ed81a6bbb3c34a779a7a2",
         "fc165df6471b0cdd00546559bdf239bcb846c33e9a022f4d50a0221cc9fc9659"
       ],
       "reveal": "0KLRgNC4INC80YPRiNC60LXRgtGR0YDQsA=="
@@ -225,7 +225,7 @@
         "Портреты неидентифицированных людей"
       ],
       "accept": [
-        "678f80134c89f9ab8b98daea94ee8bcf049addf9965da7c7165dbc13f19922d6",
+        "17486c64d768ba23b30ac8a5fdc996c438911d60387f16522c6f60ad2bab0751",
         "d9cda412c20e7ea27b2f5fba280e4759e1fd36e455505308a4921310f190c1b6"
       ],
       "reveal": "0JTQtdCy0YPRiNC60LAg0YEg0LbQtdC80YfRg9C20L3QvtC5INGB0LXRgNGR0LbQutC+0LkgKNC60LDRgNGC0LjQvdCwKQ=="
@@ -264,7 +264,7 @@
         "Сражения в Англии"
       ],
       "accept": [
-        "09adfb81bccac6c3d9f70d1ad70b591d5bc4643a1956b6b28bb07773090a1190",
+        "10cd84479ea9c69eb0d914ccc709f4d74546cf3c9e68f2a3caa284225509fc37",
         "8feec9ac1dd0d09dd0d1e3eb016f4bdda4a2544620ad5fb81676dda3b4384ad5",
         "9c3b9f5134eebcd44d2b5c020e0dc86ce65035b3f9cfbf15bfe00d08389dba3a"
       ],
@@ -279,8 +279,8 @@
         "Чёрные дыры"
       ],
       "accept": [
-        "94a28063dcd0030c9ce586896f0735bf3cbb9dfbaa4bc3a8efccd582ac157875",
-        "9f28c50b746f7ad3b187bd105743607db59fe1bc5d9663e8ff8908ae6db78713"
+        "68627bfcc80b83b7251cb2f85d3c981fa548191b0e8cb69963e5890efb16a343",
+        "94a28063dcd0030c9ce586896f0735bf3cbb9dfbaa4bc3a8efccd582ac157875"
       ],
       "reveal": "0KfRkdGA0L3QsNGPINC00YvRgNCw"
     }

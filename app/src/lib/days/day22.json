@@ -73,9 +73,9 @@
         "Энциклопедисты России"
       ],
       "accept": [
+        "4cc08fcc3884c953b65e0b37828258de93092ccf636715ea46a004226736d121",
         "64100308f8418aea4b227dbae8d6242740f2457edbac033c05a9c542e0896741",
         "91e9b99f116f9b770fc6c68ce8854a3396b004a8203a3ca316bcd349ced70e6f",
-        "b5b170c19b1393572df621ee78fcbf5ed84066bfdddb6c6851e01f4e9d7c419a",
         "e5cb54bf367ae1c4d95df04f31b9b648c341dc543f5e1f7f521e724f31118cc5"
       ],
       "reveal": "0JTQvNC40YLRgNC40Lkg0JzQtdC90LTQtdC70LXQtdCy"
@@ -110,9 +110,9 @@
         "Члены Шведской королевской академии наук"
       ],
       "accept": [
+        "0ae7eb18e1571f8a4cf687d16a0bd90a5e7e4f2a48fd54d3d490698a727d83fc",
         "11eb3a6eba241501772e7f760aa33071e1ebf61d92d8779bf407801653ce6fa0",
-        "9f598a70e65dab47772be4353f37d6fc3bd6936a50d70a761e4f8af83bcdd418",
-        "aaad4cb979243470922a1636ede77826f78bfb30dc7c338209462366dc2e1910",
+        "66a0f0493eb0d65cd6128ee939f786afe1189cc5129ce28f2e5cb280843812fa",
         "efb83d298dcbc8ffd41dfa504042f22b82bd63cd5de8948826c9f77c4e8ca065"
       ],
       "reveal": "0JDQu9GM0YTRgNC10LQg0J3QvtCx0LXQu9GM"
@@ -172,7 +172,7 @@
       ],
       "accept": [
         "1a222674cf3dec641d75f337693fe8413c43b0a0bf40607845b43e8fff9925f4",
-        "747b624b504241dfd76a895b6ae46c371ed385b5c27fea43cd30a6df99b6969e"
+        "b79479af556a40026defadb5135b6726508f8cd6737a2b442f6860de282f9b42"
       ],
       "reveal": "0JjQstCw0L0g0JLQsNGB0LjQu9GM0LXQstC40Ycg0LzQtdC90Y/QtdGCINC/0YDQvtGE0LXRgdGB0LjRjg=="
     },
@@ -187,7 +187,7 @@
         "Франшизы Ubisoft"
       ],
       "accept": [
-        "8f8f9a68a775fb91b00ae25980ab8f35b82b42d3d9dd0b39ed8c12f018549a2c",
+        "31c776935dc0a93db3da7162906bc8a1aa58fd488e682f111c519a2854b0245b",
         "98eba78459d45badc99fc98c5e0d2ba9f23e47fdd7e726fcd0933ca3d2849839"
       ],
       "reveal": "UHJpbmNlIG9mIFBlcnNpYQ=="
@@ -221,8 +221,8 @@
         "Пейзажи русских художников XIX века"
       ],
       "accept": [
-        "3290395b7e8a195975b6d2289db15e7f1836a2ad8e69177eb0a9dd708196be59",
-        "8c1c3d43a72edbf10cc25cc735f725fe443897f796b7ecf7f41eef0039467158"
+        "8c1c3d43a72edbf10cc25cc735f725fe443897f796b7ecf7f41eef0039467158",
+        "f1c9b23399c2e9d18c66bc7bd444917d9cb9ebafad1545aa75e6a5d296a911db"
       ],
       "reveal": "0JPRgNCw0YfQuCDQv9GA0LjQu9C10YLQtdC70Lg="
     },
@@ -252,9 +252,9 @@
         "Сражения, высеченные на Триумфальной арке (Париж)"
       ],
       "accept": [
+        "02adc441ed4984b66a96f8a26a89a0551dbf5bc30315fae7dd75da449905138e",
         "25b332ef29f487cd40fe0809c8135fef82ff87a64081e284f5d2ae98e0dabeaf",
-        "7ec555bb63bdf8654f777aab78fc7c4af3cd81e963698849a29ea663b7286a77",
-        "f5acc7e58c2aafcf900d40e4ff34a9a98dec7268b8d233c9fa0533bf641a3cbf"
+        "a56f068cb9503c394439cd63e19d01ddaf6ce9fc99236050e3f19f18af0d9a27"
       ],
       "reveal": "0JHQvtGA0L7QtNC40L3RgdC60L7QtSDRgdGA0LDQttC10L3QuNC1"
     },
@@ -277,9 +277,9 @@
         "Фоссилии, описанные в 1799 году"
       ],
       "accept": [
-        "c6fc14669d508df4114e8261f0885342d265caf11141dcd8563b5a27b309b85e",
         "e6fac912d87182e91e41fa42d3e55a6dff290e255c883a3cf38a938db2fb9a56",
-        "f357ee943b2faae3c86f4c26a30b0fcf6f2908bb927118790bc800c6d5159751"
+        "f357ee943b2faae3c86f4c26a30b0fcf6f2908bb927118790bc800c6d5159751",
+        "fe15d16f894d2147b063553564fc1ad51d70480a7fcfe5ff7653af115aa94220"
       ],
       "reveal": "0KjQtdGA0YHRgtC40YHRgtGL0Lkg0LzQsNC80L7QvdGC"
     }

@@ -105,10 +105,10 @@
         "Члены парламента Соединённого королевства (1923—1924)"
       ],
       "accept": [
+        "1f8e475105c7d9b350b7f473170d820e71b6910642e0830b865b4031af84cf6c",
         "2ea16d8e75fba434a2966b63454492a81add6f337d523c0625674b758d429ea4",
-        "8d9638e115297acc87c7be28bcacb944cc62136348055d1b15849f11ec3ce720",
-        "c8422042462561d60191e23fe21e3e62d0074fc05948cb2bc4aa960ba02c9528",
-        "d547cabb80d20ae17c0ddc0a75bfeb6b8f9c39f2c528a8ec6ec818b073e5f484"
+        "c3a3a6f4314e3a9a0b3a2483764fec67f5325faff60477d9a330664d83313c55",
+        "c8422042462561d60191e23fe21e3e62d0074fc05948cb2bc4aa960ba02c9528"
       ],
       "reveal": "0KPQuNC90YHRgtC+0L0g0KfQtdGA0YfQuNC70LvRjA=="
     },
@@ -178,8 +178,8 @@
       ],
       "accept": [
         "44212602db9c86f956dd613ff1bbfb31bb6921a6dfb435267eebbfc9b8e551cf",
-        "578af2f615d073505fc8baeb42f4110821453fc5d8229ee54b9b2f4fba0baf25",
         "b85c1508d7aec14576f689152cd54529ab27e6a76124e7158205408a8f8ad1f1",
+        "b9ce099b0f60845727a8d79e043a3c83525da3d747fd3fe9a963feb21e6d30d7",
         "ef4a9125c1883c531c7be9a3b33592002e2a875888aece2087152b315a25125f"
       ],
       "reveal": "0J7QtNGA0Lgg0KXQtdC/0LHRkdGA0L0="
@@ -208,7 +208,7 @@
       ],
       "accept": [
         "7c34b7f986aa9bb15689247691d5582381a81d406e7d5eb3a7a166a1d46876f0",
-        "9090633091765617f360614eaa42e2750ae4ad4a61d20b89b25415a57410488e"
+        "964f870a38fd582cdcb737fc57a0f6d395db077b500175e5d27119689b62bfeb"
       ],
       "reveal": "0KPQvdC10YHRkdC90L3Ri9C1INCy0LXRgtGA0L7QvCAo0YTQuNC70YzQvCk="
     },
@@ -239,7 +239,7 @@
       ],
       "accept": [
         "3474eb7bec96a5275cebcaff951780950d3f68d212919d95315911be337b2ac1",
-        "3a131059fd0495912b3c5b017a05c53f03e58156e926695d57973c91160ecf7b"
+        "76452ba625f3cbdc89ada7463ae78983620a2aa6700adae79133c461dd34ade1"
       ],
       "reveal": "0JHQvtC20LXRgdGC0LLQtdC90L3QsNGPINC60L7QvNC10LTQuNGP"
     },
@@ -254,7 +254,7 @@
         "Произведения о старообрядцах"
       ],
       "accept": [
-        "9b0b7c7d43ee772c9e2f8dc22eb3845b4190da17ee9045ba866906dae69afdab",
+        "5c3d8f66531c4dccf0d33b0314eea92ffa0a939ed720ee19c1373b17b5d828cd",
         "b5e18dc7e76ad9e55cc0a577e2b32a100109c28c2cc5a1406b05ee677cd2ec44"
       ],
       "reveal": "0JHQvtGP0YDRi9C90Y8g0JzQvtGA0L7Qt9C+0LLQsCAo0LrQsNGA0YLQuNC90LAp"
@@ -275,7 +275,7 @@
       "accept": [
         "0cbad8ea6b006354653f7b9105f00e24c13274122bffa8f17c1861f3f6686bfb",
         "76aea2801a6d8472e496bce7410ea1fda648b0b8c36323200a991c5cff7e1dd3",
-        "c2abe6acb2e9141c90b91102db60b2699f6c0c1189293ccfdf8509b132ed2edb"
+        "fe598078658a01a34ce3110362ed653519b13cf4f67a4b55ba8d5d428121e72f"
       ],
       "reveal": "0K3QstC10YDQtdGB0YI="
     },
@@ -297,8 +297,8 @@
       ],
       "accept": [
         "044dd1f05b211d5944e41d3c917a6c206c6458500f148eef3b2a380115a789ef",
-        "57573ef405490478b273f8feddef7411f84841bceb9cc344426112a57409310f",
-        "e3ebb0f2844a310e752f8addcb8580e63c4f04f872c7b4624487e97401e343e0"
+        "3aef7186dd3784f684e8083c2f95a6299411c65afbbebf8fc8752feed4bbd7ec",
+        "e98cee9084fcd7b9c688cd53c672d5be7e2754ea093b3550fcefc53847e3f34f"
       ],
       "reveal": "0JDRgtC+0LzQvdGL0LUg0LHQvtC80LHQsNGA0LTQuNGA0L7QstC60Lgg0KXQuNGA0L7RgdC40LzRiyDQuCDQndCw0LPQsNGB0LDQutC4"
     },
@@ -311,8 +311,8 @@
         "Эндемики Китая"
       ],
       "accept": [
-        "72faa561006401dfc8c880dee9c8851fdb28a935c8ab19f04ca8e053b9391e26",
-        "a97a513d36a6c89fa199d192341867051333878b1a3a65ea47652b94a35b0d97",
+        "27853719853aab04bfaff2a6dd4c565a301cb90088401e24098ce5e7d2a3414b",
+        "483c9b9bb9f972e59a9e4f58ecfb39fe626b13927b4c9c8fb4f07cb289f49c49",
         "dc7e81d93808cd6927c33c64affb4059b6005e181c4df3ebe0167a149b1ead12"
       ],
       "reveal": "0JHQvtC70YzRiNCw0Y8g0L/QsNC90LTQsA=="

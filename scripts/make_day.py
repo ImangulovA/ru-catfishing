@@ -43,8 +43,18 @@ def norm(s):
     s = re.sub(r"[^а-яa-z0-9 ]", " ", s)    # punctuation -> space
     s = re.sub(r"\s+", " ", s).strip()
     s = re.sub(r"(.)\1+", r"\1", s)         # удвоенные буквы -> одна (ламарр->ламар)
+
+    # Singular/plural & case tolerance: drop a trailing Russian inflection vowel
+    # (or soft sign) so the nominative singular and plural collapse to one stem:
+    # "коала"=="коалы", "челюсть"=="челюсти", "окно"=="окна", "кот"=="коты".
+    # Only when the remaining stem stays >=3 chars (word length >=4), so short
+    # words ("Ра", "Рим") are left intact. MUST stay byte-identical to the
+    # same step in app/src/routes/+page.svelte:norm().
+    def stem(w):
+        return w[:-1] if len(w) >= 4 and w[-1] in "аеиоуыюяь" else w
+
     # drop English stopwords so "last of us" == "the last of us"
-    words = [w for w in s.split() if w not in STOPWORDS]
+    words = [stem(w) for w in s.split() if w not in STOPWORDS]
     return " ".join(sorted(words))          # порядок слов не важен (Бергкамп Деннис == Деннис Бергкамп)
 
 

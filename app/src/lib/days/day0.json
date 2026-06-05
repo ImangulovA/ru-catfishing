@@ -20,10 +20,10 @@
         "Цари"
       ],
       "accept": [
-        "16d824567eb81a116d789f4feebc13b28ad9293e662ee24536224e064a83a1b8",
+        "4f09396628aaab2da84a7f071f57343b4a0dd3ea669fde102b68568cf8debf94",
+        "64aba38b917543037777e07b1dae87e3d0d986a8819e19fe54b1eb61e9aad8a0",
         "68fcc5120dd150f766b8bc7af50b171792063de90f65564aeb076d869930b5b4",
-        "87765da6ccf0668238c1d27c35692e11b4cee9c0e5cd5713a3f6e462d48e9730",
-        "b515deef7ec42539ae701d18292c729e4256ab70705d6d37fb7d1ac44fe9e953"
+        "87765da6ccf0668238c1d27c35692e11b4cee9c0e5cd5713a3f6e462d48e9730"
       ],
       "reveal": "0JDQu9C10LrRgdCw0L3QtNGAINCc0LDQutC10LTQvtC90YHQutC40Lk="
     },
@@ -44,8 +44,8 @@
         "Чёрные комедии США"
       ],
       "accept": [
-        "b50ef8e6884e28bccadefaa83d57695de7baa1c8dc162a637a711ccdff63d9be",
-        "eb7c5ffb4fd4318d410a441c4a3ded97a491adfeb23e84b0bd9430e8dec59129"
+        "26ed921cfdb518793eaffed1338ed5b94255170f54410a5df3836276253f8aaa",
+        "b50ef8e6884e28bccadefaa83d57695de7baa1c8dc162a637a711ccdff63d9be"
       ],
       "reveal": "0JHQtdGI0LXQvdGL0LUg0L/RgdGL"
     },
@@ -174,10 +174,10 @@
         "Солнечная система в фантастике"
       ],
       "accept": [
-        "0b160e8bcc19ae2c821f249ab6d6855aa291abcfe072b7c6a15858d3ee98c15c",
-        "699d9692581b41ddffea2466cc00601b7f58b0257bac6f243ac5b280cd291d17",
+        "4b17c31aea505a79728840c45a43f2aa8e4f0c99fdb9c2d837ff6baa1fd3cbd8",
+        "81cb50f3a65361fbc895b9f31f12802f23d89fec33b021d8fa02e3dadca12144",
         "94228a4996b4c228a1a01d540913d8e6590344365eb00a41d79804b87d466555",
-        "a86c516950b8d15932fec5bd46185ac5aaf1f09c473f6d3657762e4c116a9d6f"
+        "aef419396c712a09e49b312fd07273350c72a292b56cb6e9dbd0603e851efbae"
       ],
       "reveal": "0KLRg9C90LPRg9GB0YHQutC40Lkg0LzQtdGC0LXQvtGA0LjRgg=="
     },
@@ -195,7 +195,7 @@
       ],
       "accept": [
         "6e612ba1166ac3e560307ad74b3f00bf929f1ca81c8b40273afa4cc316815628",
-        "bf4b785008a93f36cdb4d535eb3c76f11a6b4eb9d27f87fcc19d5e62f7ed8db1"
+        "f72ebf5e94ed80482dcb98181f08e6e09e23d826b1458116a0540b744726978e"
       ],
       "reveal": "0JzQsNGB0YLQtdGAINC4INCc0LDRgNCz0LDRgNC40YLQsA=="
     },
@@ -218,7 +218,7 @@
         "748aa7ca6b51498f10fd5b9f0ec962bad6dac16e783cec3dda4d702c6f808799",
         "90b85891ef2e95592dcd99a111cc70f008e0b4379e5f3b345ce9a11245a8de5d",
         "b4cacb424971a6fd30a261481f198fac3a66cb7e2673c5bca90facbb5c3fddf3",
-        "f0b5f0150e52c3a6dfb6da256fe2e113095eb59a6219166ff02be1ae91715b18"
+        "f974be0c60d9a195a62c79b75eb0c90ce08b0392efa5c45ea733de7c687129cf"
       ],
       "reveal": "0KXQtdC00Lgg0JvQsNC80LDRgNGA"
     },
@@ -236,7 +236,7 @@
       ],
       "accept": [
         "43865385e1ab1d943d200de652334e6a0de554aca4b7266d90957daa1c4b176d",
-        "c5415cf97f90387f595c2dde5485b605f60cfa18e613d2ab48fc6e765785026b"
+        "76cc619ebc221f8da142ab666d9c7eff70027b0bbc720d8dd5369817d5fb57dd"
       ],
       "reveal": "0JPQtdGA0L3QuNC60LAgKNC60LDRgNGC0LjQvdCwKQ=="
     }
