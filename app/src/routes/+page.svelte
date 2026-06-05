@@ -9,7 +9,8 @@
 
   let view = $state('intro');      // 'intro' | 'game' | 'end'
   let i = $state(0);
-  let results = $state(Array(N).fill(null)); // null | 'win' | 'lose'
+  let results = $state(Array(N).fill(null)); // null | 'win' | 'lose' | 'half'
+  let canClaim = $state(false);    // show "Я прав" after a wrong guess (not skip)
   let tries = $state(0);
   let done = $state(false);
   let guess = $state('');
@@ -25,7 +26,10 @@
 
   const puzzle = $derived(day.puzzles[i]);
   const wins = $derived(results.filter((r) => r === 'win').length);
-  const grid = $derived(results.map((r) => (r === 'win' ? '🟩' : '⬜')).join(''));
+  const halves = $derived(results.filter((r) => r === 'half').length);
+  const points = $derived(wins + halves * 0.5); // win = 1, "я прав" = 0.5
+  const scoreLabel = $derived(Number.isInteger(points) ? String(points) : points.toFixed(1));
+  const grid = $derived(results.map((r) => (r === 'win' ? '🟩' : r === 'half' ? '🟨' : '⬜')).join(''));
 
   function norm(s) {
     return (s || '')
@@ -86,6 +90,7 @@
     feedback = '';
     feedbackKind = '';
     revealed = false;
+    canClaim = false;
     tries = 0;
   }
 
@@ -102,6 +107,7 @@
     tries += 1;
     if (tries >= MAX_TRIES) {
       reveal('lose', 'Не угадал. Правильный ответ:');
+      canClaim = true; // player made a real guess -> can claim half credit
     } else {
       feedback = `Не то, попробуй ещё (${MAX_TRIES - tries})`;
       feedbackKind = 'bad';
@@ -119,6 +125,12 @@
     save();
   }
 
+  function claimRight() {
+    results[i] = 'half'; // honor system: my answer was right, give ½ credit
+    canClaim = false;
+    save();
+  }
+
   function next() {
     if (i < N - 1) {
       i += 1;
@@ -133,7 +145,7 @@
 
   function share() {
     const url = browser ? location.href : '';
-    const txt = `🐟 Русский Catfishing · день ${day.day}\n${grid}  ${wins}/${N}\n${url}`;
+    const txt = `🐟 Русский Catfishing · день ${day.day}\n${grid}  ${scoreLabel}/${N}\n${url}`;
     navigator.clipboard.writeText(txt).then(() => {
       copied = true;
       setTimeout(() => (copied = false), 1500);
@@ -150,7 +162,7 @@
   }
 
   const endLine = $derived(
-    wins >= 9 ? 'Шпион среди нас 🕵️' : wins >= 7 ? 'Отличный улов 🎣' : wins >= 4 ? 'Неплохо!' : 'Рыбка сорвалась 🐟'
+    points >= 9 ? 'Шпион среди нас 🕵️' : points >= 7 ? 'Отличный улов 🎣' : points >= 4 ? 'Неплохо!' : 'Рыбка сорвалась 🐟'
   );
 </script>
 
@@ -180,7 +192,7 @@
     <div class="card" class:shake={shaking} onanimationend={() => (shaking = false)}>
       <div class="dots">
         {#each results as r, k}
-          <div class="dot" class:win={r === 'win'} class:lose={r === 'lose'} class:cur={k === i}></div>
+          <div class="dot" class:win={r === 'win'} class:half={r === 'half'} class:lose={r === 'lose'} class:cur={k === i}></div>
         {/each}
       </div>
       <div class="round">Раунд {i + 1} из {N}</div>
@@ -211,6 +223,13 @@
           <div class="round">{revealLabel}</div>
           <div class="ans">{revealTitle}</div>
           <a href={revealWiki} target="_blank" rel="noopener">Открыть в Википедии ↗</a>
+          {#if results[i] === 'half'}
+            <div class="halfnote">🟨 Засчитано как ½ балла</div>
+          {:else if canClaim && results[i] === 'lose'}
+            <div class="subrow">
+              <button class="link claim" onclick={claimRight}>Я всё-таки был прав 🟨 (½ балла)</button>
+            </div>
+          {/if}
           <div class="row"><button class="btn primary grow" onclick={next}>Дальше →</button></div>
         </div>
       {/if}
@@ -220,7 +239,7 @@
   {#if view === 'end'}
     <div class="card end">
       <h2>Готово!</h2>
-      <div class="score">{wins} / {N}</div>
+      <div class="score">{scoreLabel} / {N}</div>
       <div class="grid">{grid}</div>
       <p class="lead">{endLine}</p>
       <div class="row center">
@@ -230,7 +249,7 @@
       <div class="endlist">
         {#each day.puzzles as p, k}
           <div class="endrow">
-            <span>{results[k] === 'win' ? '🟩' : '⬜'} {b64decode(p.reveal)}</span>
+            <span>{results[k] === 'win' ? '🟩' : results[k] === 'half' ? '🟨' : '⬜'} {b64decode(p.reveal)}</span>
           </div>
         {/each}
       </div>
@@ -273,6 +292,7 @@
   .dots { display: flex; gap: 6px; justify-content: center; margin: 0 0 14px; flex-wrap: wrap; }
   .dot { width: 22px; height: 10px; border-radius: 6px; background: var(--card2); border: 1px solid var(--border); }
   .dot.win { background: var(--green); border-color: var(--green); }
+  .dot.half { background: var(--orange); border-color: var(--orange); }
   .dot.lose { background: var(--red); border-color: var(--red); opacity: 0.7; }
   .dot.cur { outline: 2px solid var(--accent); outline-offset: 1px; }
   .round { color: var(--muted); font-size: 13px; font-weight: 700; text-align: center; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px; }
@@ -289,6 +309,8 @@
   .btn.ghost { background: var(--card2); color: var(--text); border: 1px solid var(--border); }
   .subrow { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
   .link { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 13px; text-decoration: underline; }
+  .link.claim { color: var(--orange); font-weight: 700; }
+  .halfnote { color: var(--orange); font-weight: 700; font-size: 14px; margin-top: 12px; }
   .feedback { min-height: 22px; text-align: center; margin-top: 12px; font-weight: 700; font-size: 14px; }
   .feedback.bad { color: var(--red); }
   .feedback.good { color: var(--green); }

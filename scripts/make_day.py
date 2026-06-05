@@ -32,6 +32,34 @@ def norm(s):
     return re.sub(r"\s+", " ", s).strip()
 
 
+# A puzzle answer is a PERSON if any of its Wikipedia categories is a
+# birth/death category ("Родившиеся в ...", "Умершие в ..."). Films, books,
+# paintings, places, animals, spacecraft never carry these -> reliable signal.
+PERSON_RE = re.compile(r"Родивш|Умерш")
+
+
+def derive_surname(title, categories):
+    """Return the surname (last name) to also accept, or None.
+
+    Only persons get surname acceptance. Rules:
+      - "Фамилия, Имя [Отчество]" (ru.wiki comma form) -> part before the comma.
+      - "Имя [...] Фамилия" (natural order)            -> last whitespace token.
+    The first name alone is NEVER returned, so "Македонский" counts for
+    "Александр Македонский" while "Александр" does not.
+    """
+    if not any(PERSON_RE.search(c) for c in categories):
+        return None
+    t = re.sub(r"\([^)]*\)", " ", title).strip()   # drop disambiguators
+    if "," in t:
+        surname = t.split(",", 1)[0].strip()
+    else:
+        parts = t.split()
+        if len(parts) < 2:
+            return None                            # mononym == full title already
+        surname = parts[-1].strip()
+    return surname or None
+
+
 def sha256(s):
     return hashlib.sha256(s.encode("utf-8")).hexdigest()
 
@@ -48,6 +76,14 @@ def main():
     puzzles = []
     for p in src["puzzles"]:
         forms = set(p.get("accept", [])) | {norm(p["title"])}
+        # surname acceptance: explicit override, else auto-derive for persons
+        if "surname" in p:
+            if p["surname"]:
+                forms.add(norm(p["surname"]))
+        else:
+            sn = derive_surname(p["title"], p["categories"])
+            if sn:
+                forms.add(norm(sn))
         puzzles.append({
             "categories": p["categories"],
             "accept": sorted(sha256(f) for f in forms),
