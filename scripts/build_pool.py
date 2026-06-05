@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+"""Build a Russian-catfishing puzzle pool from ru.wikipedia.
+
+Source = ru.wiki Featured ("Избранные") + Good ("Хорошие") articles: these are
+guaranteed to be detailed Russian articles, and tend to be good guessing targets.
+
+For each article we fetch its (non-hidden) categories, drop service / giveaway
+ones, and keep articles with >= MIN_CATEGORIES useful categories. Output ships
+ONLY {categories[], answer_sha256} so the answer list is not present in clients.
+
+Usage:
+    fbpython build_pool.py --limit 12            # small demo
+    fbpython build_pool.py --limit 300 --out ../prototype/static/pool.json
+"""
+import argparse
+import hashlib
+import json
+import re
+import sys
+import time
+import urllib.parse
+import urllib.request
+
+API = "https://ru.wikipedia.org/w/api.php"
+UA = "game-designer/0.1 (personal project; imangulovamal@gmail.com)"
+MIN_CATEGORIES = 4
+
+# Featured + Good article tracking categories (members are ns0 articles).
+SEED_CATEGORIES = [
+    "Категория:Википедия:Избранные статьи по алфавиту",
+    "Категория:Википедия:Хорошие статьи по алфавиту",
+]
+
+# Category-name fragments that mark service/meta categories we never show.
+SERVICE_PATTERNS = [
+    "Википедия:", "Страницы", "Статьи", "Незавершённые",
+    "Карточка", "Шаблон", "Запросы", "КУ:", "Категории",
+    "с ", "без ", "для ",  # "Статьи с ...", "... без источников"
+]
+
+
+def api_get(params):
+    params = {**params, "format": "json", "formatversion": "2"}
+    url = API + "?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.load(r)
+
+
+def fetch_seed_titles(limit):
+    """Pull article titles, spread across the alphabet for variety."""
+    titles = []
+    for cat in SEED_CATEGORIES:
+        cont = None
+        while len(titles) < limit * 3:
+            params = {
+                "action": "query", "list": "categorymembers",
+                "cmtitle": cat, "cmnamespace": "0", "cmlimit": "500",
+            }
+            if cont:
+                params["cmcontinue"] = cont
+            data = api_get(params)
+            titles += [m["title"] for m in data["query"]["categorymembers"]]
+            cont = data.get("continue", {}).get("cmcontinue")
+            if not cont:
+                break
+            time.sleep(0.1)
+    # spread: take every Nth so we don't get only "А..." military hardware
+    if len(titles) > limit:
+        step = len(titles) // limit
+        titles = titles[::step][:limit]
+    return titles
+
+
+def fetch_categories(title):
+    """Non-hidden categories of an article, with the 'Категория:' prefix removed."""
+    data = api_get({
+        "action": "query", "prop": "categories", "titles": title,
+        "cllimit": "500", "clshow": "!hidden",
+    })
+    page = data["query"]["pages"][0]
+    cats = [c["title"].split(":", 1)[1] for c in page.get("categories", [])]
+    return cats
+
+
+def title_tokens(title):
+    # words of length >= 4, normalized (lowercase, ё->е) for giveaway detection
+    norm = title.lower().replace("ё", "е")
+    return {w for w in re.findall(r"[а-яёa-z0-9]+", norm) if len(w) >= 4}
+
+
+def is_service(cat):
+    return any(p in cat for p in SERVICE_PATTERNS)
+
+
+def is_giveaway(cat, tokens):
+    cat_words = set(re.findall(r"[а-яёa-z0-9]+", cat.lower().replace("ё", "е")))
+    return bool(cat_words & tokens)
+
+
+def normalize_answer(title):
+    return title.strip().lower().replace("ё", "е")
+
+
+def answer_hash(title):
+    return hashlib.sha256(normalize_answer(title).encode("utf-8")).hexdigest()
+
+
+def build(limit):
+    titles = fetch_seed_titles(limit)
+    pool = []
+    for title in titles:
+        cats = fetch_categories(title)
+        tokens = title_tokens(title)
+        useful = [c for c in cats if not is_service(c) and not is_giveaway(c, tokens)]
+        if len(useful) >= MIN_CATEGORIES:
+            pool.append({
+                "title": title,            # kept here for OUR curation only
+                "categories": sorted(useful),
+                "answer_sha256": answer_hash(title),
+                "n_raw_categories": len(cats),
+            })
+        time.sleep(0.1)
+    return pool
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--limit", type=int, default=12)
+    ap.add_argument("--out", default=None)
+    args = ap.parse_args()
+
+    pool = build(args.limit)
+    if args.out:
+        # client build should strip "title"; kept in dev output for review
+        with open(args.out, "w", encoding="utf-8") as f:
+            json.dump(pool, f, ensure_ascii=False, indent=2)
+        print(f"wrote {len(pool)} puzzles -> {args.out}", file=sys.stderr)
+    else:
+        for p in pool:
+            print(f"\n### {p['title']}  (sha {p['answer_sha256'][:10]}…)")
+            print("    " + " · ".join(p["categories"]))
+        print(f"\n[{len(pool)} playable puzzles]", file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main()
