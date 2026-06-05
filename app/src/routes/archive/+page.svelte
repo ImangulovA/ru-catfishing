@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { base } from '$app/paths';
   import { DAYS, availableDays, currentDay, dateForDay, fmtDate } from '$lib/days';
+  import { computeStats } from '$lib/stats';
 
   const CAT = '🐈', FISH = '🐟', HALF = '🐠';
   const WEEKDAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
@@ -11,6 +12,7 @@
   ];
 
   let months = $state([]);
+  let stats = $state(null);
   let theme = $state('light');
 
   function applyTheme(t) {
@@ -57,6 +59,7 @@
 
   onMount(() => {
     theme = localStorage.getItem('rucatfish_theme') || 'light';
+    stats = computeStats();
 
     const cur = currentDay();
     const avail = availableDays(); // indexes, newest first
@@ -97,6 +100,16 @@
   <div class="card">
     <div class="round">Архив дней</div>
     <p class="lead">Каждый день — новые 10 загадок. Кликни на день, чтобы сыграть.</p>
+
+    {#if stats && stats.finished > 0}
+      <div class="stats">
+        <div class="stat"><div class="snum">🔥 {stats.currentStreak}</div><div class="slbl">серия</div></div>
+        <div class="stat"><div class="snum">{stats.maxStreak}</div><div class="slbl">макс. серия</div></div>
+        <div class="stat"><div class="snum">{stats.finished}</div><div class="slbl">дней</div></div>
+        <div class="stat"><div class="snum">{stats.avg.toFixed(1)}</div><div class="slbl">в среднем</div></div>
+        <div class="stat"><div class="snum">{stats.best}</div><div class="slbl">рекорд</div></div>
+      </div>
+    {/if}
 
     {#each months as mo}
       <div class="month">
@@ -162,6 +175,11 @@
   .round { font-family: var(--mono); color: var(--muted); font-size: 12px; font-weight: 700; text-align: center; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
   .lead { text-align: center; color: var(--text); font-size: 15px; margin: 0 0 18px; font-weight: 500; }
 
+  .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 0 0 20px; }
+  .stat { background: var(--card2); border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 10px 4px; text-align: center; box-shadow: var(--shadow-sm); }
+  .snum { font-family: var(--mono); font-weight: 900; font-size: 18px; line-height: 1.1; }
+  .slbl { font-size: 9px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 3px; }
+
   .month { margin-bottom: 22px; }
   .month-label { font-family: var(--mono); font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; text-align: center; margin-bottom: 10px; }
   .cal-head, .cal-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
@@ -209,5 +227,9 @@
     .cell.has .dt { font-size: 13px; }
     .cell.has .sc { font-size: 9px; }
     .legend { gap: 8px; }
+    .stats { gap: 5px; }
+    .stat { padding: 8px 2px; }
+    .snum { font-size: 14px; }
+    .slbl { font-size: 8px; }
   }
 </style>

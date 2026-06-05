@@ -78,7 +78,7 @@ def fetch_categories(title):
     """Non-hidden categories of an article, with the 'Категория:' prefix removed."""
     data = api_get({
         "action": "query", "prop": "categories", "titles": title,
-        "cllimit": "500", "clshow": "!hidden",
+        "cllimit": "500", "clshow": "!hidden", "redirects": "1",
     })
     page = data["query"]["pages"][0]
     cats = [c["title"].split(":", 1)[1] for c in page.get("categories", [])]
@@ -95,7 +95,7 @@ def fetch_langlink(title, lang="en"):
     """
     data = api_get({
         "action": "query", "prop": "langlinks", "titles": title,
-        "lllang": lang, "lllimit": "1",
+        "lllang": lang, "lllimit": "1", "redirects": "1",
     })
     page = data["query"]["pages"][0]
     lls = page.get("langlinks") or []

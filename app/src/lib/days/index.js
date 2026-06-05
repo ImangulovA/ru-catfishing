@@ -4,9 +4,10 @@
 import day0 from './day0.json';
 import day1 from './day1.json';
 import day2 from './day2.json';
+import day3 from './day3.json';
 
 // index -> strict day json. Add new days here as they are built.
-export const DAYS = { 0: day0, 1: day1, 2: day2 };
+export const DAYS = { 0: day0, 1: day1, 2: day2, 3: day3 };
 
 // Calendar anchor: day 0 falls on this local date.
 const BASE = new Date(2026, 5, 4); // months are 0-based -> June 4, 2026

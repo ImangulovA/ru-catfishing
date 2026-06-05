@@ -3,6 +3,7 @@
   import { browser } from '$app/environment';
   import { base } from '$app/paths';
   import { DAYS, resolveDay, currentDay, fmtDate } from '$lib/days';
+  import { computeStats } from '$lib/stats';
 
   const MAX_TRIES = 1; // catfishing = one shot
   const CAT = '🐈';    // угадал
@@ -31,6 +32,7 @@
   let theme = $state('light');
   let copied = $state(false);
   let untilMidnight = $state('');
+  let stats = $state(null);
 
   // time until the next local midnight (user's own timezone), minute precision
   function fmtUntilMidnight() {
@@ -154,6 +156,7 @@
 
   function start() {
     if (done) {
+      stats = computeStats();
       view = 'end';
     } else {
       view = 'game';
@@ -232,6 +235,7 @@
     } else {
       done = true;
       save();
+      stats = computeStats();
       view = 'end';
     }
   }
@@ -355,6 +359,15 @@
       <div class="row center">
         <button class="btn primary" onclick={share}>{copied ? 'Скопировано ✓' : 'Поделиться результатом'}</button>
       </div>
+      {#if stats && stats.finished > 0}
+        <div class="stats">
+          <div class="stat"><div class="snum">🔥 {stats.currentStreak}</div><div class="slbl">серия</div></div>
+          <div class="stat"><div class="snum">{stats.finished}</div><div class="slbl">дней</div></div>
+          <div class="stat"><div class="snum">{stats.avg.toFixed(1)}</div><div class="slbl">в среднем</div></div>
+          <div class="stat"><div class="snum">{stats.best}</div><div class="slbl">рекорд</div></div>
+        </div>
+        <p class="archmore"><a class="archlink" href="{base}/archive">Весь архив и календарь →</a></p>
+      {/if}
       {#if isToday}
         <p class="nextgame">Новая игра через {untilMidnight} <span class="muted">(если я не забью хер)</span></p>
       {:else}
@@ -487,6 +500,12 @@
   .nextgame { text-align: center; font-family: var(--mono); font-size: 13px; font-weight: 700; margin: 14px 0 0; }
   .nextgame .muted { color: var(--muted); font-weight: 500; }
   .archlink { color: var(--secondary); font-weight: 700; text-decoration: underline; }
+  .archmore { text-align: center; margin: 10px 0 0; font-size: 13px; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0 0; }
+  .stat { background: var(--card2); border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 10px 6px; text-align: center; box-shadow: var(--shadow-sm); }
+  .snum { font-family: var(--mono); font-weight: 900; font-size: 19px; line-height: 1.1; }
+  .slbl { font-size: 10px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 3px; }
 
   /* ---------- MOBILE: shrink everything, hide categories on the answer screen ---------- */
   @media (max-width: 600px) {
