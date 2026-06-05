@@ -9,6 +9,7 @@
   const CAT = '🐈';    // угадал
   const FISH = '🐟';   // мимо
   const HALF = '🐠';   // «я всё-таки прав» = ½
+  const WOOHOO = 8;    // score >= this => confetti + WOOHOO banner + share badge
 
   let day = $state(null);          // resolved strict day json
   let dayIdx = $state(0);          // which day index we're playing
@@ -33,6 +34,7 @@
   let copied = $state(false);
   let untilMidnight = $state('');
   let stats = $state(null);
+  let confettiCanvas = $state(null);  // bound <canvas>, used for the WOOHOO celebration
 
   // time until the next local midnight (user's own timezone), minute precision
   function fmtUntilMidnight() {
@@ -156,12 +158,78 @@
 
   function start() {
     if (done) {
-      stats = computeStats();
-      view = 'end';
+      goEnd();
     } else {
       view = 'game';
       newPuzzle();
     }
+  }
+
+  // Transition to the end screen + fire the celebration on a great score.
+  function goEnd() {
+    stats = computeStats();
+    view = 'end';
+    if (points >= WOOHOO) celebrate();
+  }
+
+  // Bright self-contained confetti burst (no libs, no CDN). Spawns colourful
+  // squares/circles that fall with a little gravity + spin, for ~3.5s.
+  function celebrate() {
+    if (!browser || !confettiCanvas) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const canvas = confettiCanvas;
+    const ctx = canvas.getContext('2d');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const W = () => window.innerWidth;
+    const H = () => window.innerHeight;
+    canvas.width = W() * dpr;
+    canvas.height = H() * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const colors = ['#FDC800', '#a855f7', '#02e2ac', '#1877F2', '#f43f5e', '#ff7a00'];
+    const COUNT = Math.min(220, Math.round(W() / 4));
+    const parts = [];
+    for (let k = 0; k < COUNT; k++) {
+      parts.push({
+        x: Math.random() * W(),
+        y: -20 - Math.random() * H() * 0.6,
+        r: 6 + Math.random() * 9,
+        c: colors[k % colors.length],
+        vx: -2.4 + Math.random() * 4.8,
+        vy: 2.5 + Math.random() * 4,
+        rot: Math.random() * Math.PI,
+        vrot: -0.25 + Math.random() * 0.5,
+        rect: Math.random() < 0.55,
+      });
+    }
+    const startT = performance.now();
+    const DURATION = 3500;
+    function frame(now) {
+      const t = now - startT;
+      ctx.clearRect(0, 0, W(), H());
+      for (const p of parts) {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.05; // gravity
+        p.vx *= 0.995;
+        p.rot += p.vrot;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.c;
+        if (t > DURATION - 600) ctx.globalAlpha = Math.max(0, (DURATION - t) / 600);
+        if (p.rect) ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 0.6);
+        else {
+          ctx.beginPath();
+          ctx.arc(0, 0, p.r / 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+      if (t < DURATION) requestAnimationFrame(frame);
+      else ctx.clearRect(0, 0, W(), H());
+    }
+    requestAnimationFrame(frame);
   }
 
   function newPuzzle() {
@@ -235,8 +303,7 @@
     } else {
       done = true;
       save();
-      stats = computeStats();
-      view = 'end';
+      goEnd();
     }
   }
 
@@ -246,7 +313,8 @@
   }
 
   function share() {
-    const txt = `${shareUrl()}\n#${dayIdx} - ${scoreLabel}/${N}\n${emojiRows.join('\n')}`;
+    const badge = points >= WOOHOO ? ' 🎉 WOOHOO' : '';
+    const txt = `${shareUrl()}\n#${dayIdx} - ${scoreLabel}/${N}${badge}\n${emojiRows.join('\n')}`;
     navigator.clipboard.writeText(txt).then(() => {
       copied = true;
       setTimeout(() => (copied = false), 1500);
@@ -349,7 +417,11 @@
       {/if}
     </div>
   {:else if view === 'end'}
-    <div class="card end">
+    <div class="card end" class:bigwin={points >= WOOHOO}>
+      {#if points >= WOOHOO}
+        <div class="woohoo">🎉 WOOHOO! 🎉</div>
+        <p class="woohoo-sub">{points === N ? 'Идеально! Все рыбки твои 🐈' : 'Огонь! Так держать 🔥'}</p>
+      {/if}
       <h2>Готово!</h2>
       <div class="score">{scoreLabel} / {N}</div>
       <div class="grid">
@@ -387,6 +459,8 @@
     Прототип · данные из <a href="https://ru.wikipedia.org" target="_blank" rel="noopener">Википедии</a> (GFDL) ·
     <a href="{base}/archive">архив дней</a>
   </div>
+
+  <canvas class="confetti" bind:this={confettiCanvas} aria-hidden="true"></canvas>
 </div>
 
 <style>
@@ -428,8 +502,9 @@
   .cats { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: stretch; margin: 14px 0 4px; transition: gap 0.25s ease; }
   .cat {
     background: var(--card2); border: 2px solid var(--ink); border-radius: var(--radius);
-    padding: 16px 22px; font-size: clamp(16px, 2.2vw, 22px); font-weight: 700;
-    line-height: 1.25; flex: 1 1 auto; min-width: 190px; max-width: 100%;
+    padding: 16px 22px; font-size: clamp(15px, 1.7vw, 21px); font-weight: 700;
+    line-height: 1.25; flex: 1 1 clamp(170px, 22vw, 260px); min-width: min(170px, 100%); max-width: 100%;
+    overflow-wrap: anywhere; hyphens: none;
     display: flex; align-items: center; justify-content: center; text-align: center;
     box-shadow: var(--shadow-sm);
     transition: padding 0.25s ease, font-size 0.25s ease, box-shadow 0.25s ease, transform 0.06s ease;
@@ -501,6 +576,27 @@
   .nextgame .muted { color: var(--muted); font-weight: 500; }
   .archlink { color: var(--secondary); font-weight: 700; text-decoration: underline; }
   .archmore { text-align: center; margin: 10px 0 0; font-size: 13px; }
+
+  /* ---------- WOOHOO celebration (score >= 8) ---------- */
+  .confetti { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 60; }
+  .woohoo {
+    text-align: center; font-weight: 900; font-size: clamp(30px, 8vw, 48px); letter-spacing: -1px;
+    margin: 2px 0 6px; color: var(--accent-ink); background: var(--accent);
+    border: 3px solid var(--ink); border-radius: var(--radius); box-shadow: var(--shadow); padding: 10px 14px;
+    animation: woohoo-pop 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28) both, woohoo-wiggle 1.6s ease-in-out 0.6s infinite;
+  }
+  .woohoo-sub { text-align: center; font-weight: 800; font-size: 15px; margin: 0 0 8px; color: var(--secondary); }
+  @keyframes woohoo-pop {
+    0% { transform: scale(0.3) rotate(-8deg); opacity: 0; }
+    60% { transform: scale(1.12) rotate(3deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+  }
+  @keyframes woohoo-wiggle { 0%, 100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
+  .end.bigwin .score { color: var(--green); animation: score-pulse 1.2s ease-in-out infinite; }
+  @keyframes score-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+  @media (prefers-reduced-motion: reduce) {
+    .woohoo, .end.bigwin .score { animation: none; }
+  }
 
   .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0 0; }
   .stat { background: var(--card2); border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 10px 6px; text-align: center; box-shadow: var(--shadow-sm); }

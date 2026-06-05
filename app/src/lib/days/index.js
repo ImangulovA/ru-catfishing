@@ -5,9 +5,34 @@ import day0 from './day0.json';
 import day1 from './day1.json';
 import day2 from './day2.json';
 import day3 from './day3.json';
+import day4 from './day4.json';
+import day5 from './day5.json';
+import day6 from './day6.json';
+import day7 from './day7.json';
+import day8 from './day8.json';
+import day9 from './day9.json';
+import day10 from './day10.json';
+import day11 from './day11.json';
+import day12 from './day12.json';
+import day13 from './day13.json';
+import day14 from './day14.json';
+import day15 from './day15.json';
+import day16 from './day16.json';
+import day17 from './day17.json';
+import day18 from './day18.json';
+import day19 from './day19.json';
+import day20 from './day20.json';
+import day21 from './day21.json';
+import day22 from './day22.json';
+import day23 from './day23.json';
 
 // index -> strict day json. Add new days here as they are built.
-export const DAYS = { 0: day0, 1: day1, 2: day2, 3: day3 };
+export const DAYS = {
+  0: day0, 1: day1, 2: day2, 3: day3, 4: day4, 5: day5, 6: day6, 7: day7,
+  8: day8, 9: day9, 10: day10, 11: day11, 12: day12, 13: day13, 14: day14,
+  15: day15, 16: day16, 17: day17, 18: day18, 19: day19, 20: day20,
+  21: day21, 22: day22, 23: day23,
+};
 
 // Calendar anchor: day 0 falls on this local date.
 const BASE = new Date(2026, 5, 4); // months are 0-based -> June 4, 2026

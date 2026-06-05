@@ -41,12 +41,34 @@ SERVICE_PATTERNS = [
 ]
 
 
-def api_get(params):
+def api_get(params, max_retries=6):
+    """GET the API with polite retry/backoff on 429 + transient 5xx errors.
+
+    Wikipedia rate-limits anonymous bursts; on 429 it sends a Retry-After header
+    we honour, otherwise we exponential-backoff (2,4,8,16,... up to 60s).
+    """
     params = {**params, "format": "json", "formatversion": "2"}
     url = API + "?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)
+    for attempt in range(max_retries):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 500, 502, 503, 504) and attempt < max_retries - 1:
+                retry_after = e.headers.get("Retry-After") if e.headers else None
+                wait = int(retry_after) if (retry_after and retry_after.isdigit()) else min(60, 2 ** (attempt + 1))
+                print(f"  [{e.code}] backing off {wait}s (attempt {attempt + 1})", file=sys.stderr)
+                time.sleep(wait)
+                continue
+            raise
+        except urllib.error.URLError as e:
+            if attempt < max_retries - 1:
+                wait = min(60, 2 ** (attempt + 1))
+                print(f"  [URLError {e.reason}] retry in {wait}s", file=sys.stderr)
+                time.sleep(wait)
+                continue
+            raise
 
 
 def fetch_seed_titles(limit):
@@ -138,11 +160,16 @@ def answer_hash(title):
     return hashlib.sha256(normalize_answer(title).encode("utf-8")).hexdigest()
 
 
-def build(limit):
+def build(limit, sleep=0.4, out=None, checkpoint_every=50):
     titles = fetch_seed_titles(limit)
     pool = []
-    for title in titles:
-        cats = fetch_categories(title)
+    for idx, title in enumerate(titles):
+        try:
+            cats = fetch_categories(title)
+        except Exception as e:  # one bad article must not kill a 1000-article run
+            print(f"  skip {title!r}: {e}", file=sys.stderr)
+            time.sleep(sleep)
+            continue
         tokens = title_tokens(title)
         useful = [c for c in cats if not is_service(c) and not is_giveaway(c, tokens)]
         if len(useful) >= MIN_CATEGORIES:
@@ -152,7 +179,11 @@ def build(limit):
                 "answer_sha256": answer_hash(title),
                 "n_raw_categories": len(cats),
             })
-        time.sleep(0.1)
+        if out and (idx + 1) % checkpoint_every == 0:
+            with open(out, "w", encoding="utf-8") as f:
+                json.dump(pool, f, ensure_ascii=False, indent=2)
+            print(f"  …checkpoint {idx + 1}/{len(titles)} titles, {len(pool)} kept", file=sys.stderr)
+        time.sleep(sleep)
     return pool
 
 
@@ -160,9 +191,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=12)
     ap.add_argument("--out", default=None)
+    ap.add_argument("--sleep", type=float, default=0.4, help="seconds between article fetches")
     args = ap.parse_args()
 
-    pool = build(args.limit)
+    pool = build(args.limit, sleep=args.sleep, out=args.out)
     if args.out:
         # client build should strip "title"; kept in dev output for review
         with open(args.out, "w", encoding="utf-8") as f:
