@@ -492,10 +492,10 @@
     outline: 3px solid var(--secondary); outline-offset: 2px;
   }
 
-  header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 8px; }
+  header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 8px; flex-wrap: wrap; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 21px; letter-spacing: -0.4px; }
   .fish { font-size: 24px; }
-  .hgroup { display: flex; gap: 8px; align-items: center; }
+  .hgroup { display: flex; gap: 8px; align-items: center; margin-left: auto; }
   .day { font-family: var(--mono); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: var(--accent); color: var(--accent-ink); border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 5px 9px; box-shadow: var(--shadow-sm); white-space: nowrap; }
   .iconbtn { display: inline-flex; align-items: center; justify-content: center; background: var(--card); border: 2px solid var(--ink); color: var(--text); border-radius: var(--radius-sm); padding: 7px 10px; cursor: pointer; font-size: 16px; box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease; text-decoration: none; }
   .iconbtn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
@@ -514,7 +514,7 @@
   .lead { text-align: center; color: var(--text); font-size: 15px; margin: 0 0 14px; font-weight: 500; }
   .archnote { text-align: center; color: var(--muted); font-size: 13px; margin: -4px 0 14px; }
 
-  .card.game { --gw: min(96vw, 1100px); width: var(--gw); margin-left: calc(50% - var(--gw) / 2); }
+  .card.game { box-sizing: border-box; --gw: min(96vw, 1100px); width: var(--gw); margin-left: calc(50% - var(--gw) / 2); }
 
   .catlabel { font-family: var(--mono); color: var(--muted); font-size: 11px; font-weight: 700; text-align: center; margin: 4px 0 8px; text-transform: uppercase; letter-spacing: 1px; }
 
@@ -555,7 +555,7 @@
   .row.center { justify-content: center; }
   .grow { flex: 1; }
   input[type='text'] {
-    flex: 1; background: var(--field); border: 2px solid var(--ink); color: var(--text);
+    flex: 1; min-width: 0; background: var(--field); border: 2px solid var(--ink); color: var(--text);
     border-radius: var(--radius); padding: 13px 14px; font-size: 16px; font-family: var(--font);
     font-weight: 500; outline: none; box-shadow: var(--shadow-sm);
     transition: box-shadow 0.08s ease, transform 0.08s ease;
