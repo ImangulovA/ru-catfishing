@@ -74,6 +74,15 @@
     return rows.sort((a, b) => a.rate - b.rate).slice(0, 8);
   });
 
+  // Most-opened articles, but ONLY for days the player has finished. The Worker
+  // returns the globally top-opened articles across all days; rendering their
+  // titles for days the player hasn't finished yet would spoil those answers.
+  const topOpens = $derived.by(() => {
+    if (!agg?.topOpens || !stats) return [];
+    const finished = new Set(stats.finishedIdx);
+    return agg.topOpens.filter((o) => finished.has(o.day)).slice(0, 10);
+  });
+
   // Global day averages -> easiest / hardest overall.
   const topEasy = $derived.by(() => {
     if (!agg?.avgByDay) return [];
@@ -226,10 +235,10 @@
           </div>
         {/if}
 
-        {#if agg.topOpens?.length}
+        {#if topOpens.length}
           <div class="seclabel">Чаще всего открывали в Википедии</div>
           <div class="tbl">
-            {#each agg.topOpens.slice(0, 10) as o}
+            {#each topOpens as o}
               <div class="trow">
                 <span class="tttl">{title(o.day, o.idx)}</span>
                 <span class="trate">{o.opens.toLocaleString('ru-RU')}</span>
