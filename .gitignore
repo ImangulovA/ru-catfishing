@@ -11,3 +11,6 @@ prototype/data/*.txt
 
 # Curation pools (plaintext titles + categories, author-only). Never shipped.
 prototype/data/pool*.json
+
+# Bulk-build scratch (seed title list + resume progress, plaintext titles). Author-only.
+prototype/data/_*.json
