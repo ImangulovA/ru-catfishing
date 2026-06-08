@@ -1,8 +1,9 @@
 <script>
   import { onMount } from 'svelte';
   import { base } from '$app/paths';
-  import { DAYS, availableDays, currentDay, dateForDay, fmtDate } from '$lib/days';
+  import { DAYS, availableDays, currentDay, dateForDay, fmtDate, todayIndex } from '$lib/days';
   import { computeStats } from '$lib/stats';
+  import { isUnlocked } from '$lib/unlock';
 
   const CAT = '🐈', FISH = '🐟', HALF = '🐠';
   const WEEKDAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
@@ -61,26 +62,31 @@
     theme = localStorage.getItem('rucatfish_theme') || 'light';
     stats = computeStats();
 
+    const unlocked = isUnlocked(); // author mode: show future days too
+    const tIdx = todayIndex();
     const cur = currentDay();
-    const avail = availableDays(); // indexes, newest first
+    const avail = availableDays(new Date(), unlocked); // indexes, newest first
     const byKey = {};
     for (const idx of avail) {
       const d = dateForDay(idx);
       byKey[`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`] = {
         idx,
         isToday: idx === cur,
+        isFuture: idx > tIdx,
         date: fmtDate(idx),
         ...readProgress(DAYS[idx]),
       };
     }
 
-    // render every month from the earliest available day through the current month
+    // render every month from the earliest available day through the LAST one
+    // (which is the current month normally, or a future month in author mode)
     const today = new Date();
     const start = avail.length ? dateForDay(Math.min(...avail)) : today;
+    const last = avail.length ? dateForDay(Math.max(...avail)) : today;
     const list = [];
     let y = start.getFullYear();
     let m = start.getMonth();
-    while (y < today.getFullYear() || (y === today.getFullYear() && m <= today.getMonth())) {
+    while (y < last.getFullYear() || (y === last.getFullYear() && m <= last.getMonth())) {
       list.push(buildMonth(y, m, byKey));
       m += 1;
       if (m > 11) { m = 0; y += 1; }
@@ -127,14 +133,17 @@
                   class="cell has"
                   class:today={cell.info.isToday}
                   class:done={cell.info.finished}
+                  class:future={cell.info.isFuture}
                   href={cell.info.isToday ? `${base}/` : `${base}/?day=${cell.info.idx}`}
-                  title={`День ${cell.info.idx} · ${cell.info.date}`}
+                  title={`День ${cell.info.idx} · ${cell.info.date}${cell.info.isFuture ? ' · превью (ещё не вышел)' : ''}`}
                 >
                   <span class="dt">{cell.d}</span>
                   {#if cell.info.finished}
                     <span class="sc">{cell.info.score}/{cell.info.n}</span>
                   {:else if cell.info.played}
                     <span class="sc dim">…</span>
+                  {:else if cell.info.isFuture}
+                    <span class="sc go">превью</span>
                   {:else}
                     <span class="sc go">играть</span>
                   {/if}
@@ -208,6 +217,9 @@
   .cell.has.today { border-color: var(--ink); border-top: 6px solid var(--accent); background: var(--accent); color: var(--accent-ink); }
   .cell.has.today .sc, .cell.has.today.done .sc { color: var(--accent-ink); }
   .cell.has.today.done { background: var(--accent); color: var(--accent-ink); }
+  .cell.has.future { border-style: dashed; background: var(--card2); }
+  .cell.has.future .dt { color: var(--secondary); }
+  .cell.has.future .sc.go { color: var(--secondary); }
 
   .legend { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px; font-size: 12px; color: var(--muted); }
   .legend .chip { display: inline-block; border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 1px 7px; font-weight: 800; font-size: 11px; box-shadow: var(--shadow-sm); }

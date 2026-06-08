@@ -167,6 +167,11 @@ export function dateForDay(n) {
   return new Date(atMidnight(BASE) + n * MS_PER_DAY);
 }
 
+// Highest day index that actually has data built (the end of the buffer).
+export function maxDay() {
+  return Math.max(...Object.keys(DAYS).map(Number));
+}
+
 const MONTHS = [
   'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
   'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря',
@@ -178,12 +183,13 @@ export function fmtDate(n) {
 }
 
 // Day indexes that actually exist AND whose date has arrived (no spoilers from
-// future days), newest first.
-export function availableDays(now = new Date()) {
-  const t = todayIndex(now);
+// future days), newest first. When `unlocked` (author mode) is true, ALL built
+// days are returned — including future ones — so you can play ahead.
+export function availableDays(now = new Date(), unlocked = false) {
+  const ceil = unlocked ? maxDay() : todayIndex(now);
   return Object.keys(DAYS)
     .map(Number)
-    .filter((n) => n <= t)
+    .filter((n) => n <= ceil)
     .sort((a, b) => b - a);
 }
 
@@ -198,11 +204,12 @@ export function currentDay(now = new Date()) {
 // NOTE: when there is no ?day param, `requested` is null/'' -> must fall back to
 // the current day. (Number(null) === 0, so we can't let it reach the parse path,
 // or every default visit would land on day 0.)
-export function resolveDay(requested, now = new Date()) {
+export function resolveDay(requested, now = new Date(), unlocked = false) {
   if (requested === null || requested === undefined || requested === '') {
     return currentDay(now);
   }
   const n = Number(requested);
-  if (Number.isInteger(n) && DAYS[n] && n <= todayIndex(now)) return n;
+  const ceil = unlocked ? maxDay() : todayIndex(now);
+  if (Number.isInteger(n) && DAYS[n] && n <= ceil) return n;
   return currentDay(now);
 }

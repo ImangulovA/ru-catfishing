@@ -131,10 +131,15 @@
   onMount(() => {
     applyTheme(localStorage.getItem('rucatfish_theme') || 'light');
 
-    // pick the day from ?day=N (archive) or default to today
+    // author mode: ?unlock=<password> persists a flag that opens future days
+    const unlocked = applyUnlockFromUrl();
+
+    // pick the day from ?day=N (archive) or default to today; future days are
+    // only reachable when unlocked
     const requested = new URLSearchParams(location.search).get('day');
-    dayIdx = resolveDay(requested);
+    dayIdx = resolveDay(requested, new Date(), unlocked);
     isToday = dayIdx === currentDay();
+    isFuture = dayIdx > todayIndex();
     day = DAYS[dayIdx];
 
     const n = day.puzzles.length;
@@ -384,7 +389,7 @@
   <header>
     <div class="brand"><span class="fish">🐟</span> Русский Catfishing</div>
     <div class="hgroup">
-      {#if day}<span class="day" title={fmtDate(dayIdx)}>День {dayIdx}{#if !isToday} · архив{/if}</span>{/if}
+      {#if day}<span class="day" class:future={isFuture} title={fmtDate(dayIdx)}>День {dayIdx}{#if isFuture} · превью{:else if !isToday} · архив{/if}</span>{/if}
       <a class="iconbtn" href="{base}/stats" title="Статистика">📊</a>
       <a class="iconbtn" href="{base}/archive" title="Архив">🗓️</a>
       <button class="iconbtn" onclick={() => applyTheme(theme === 'dark' ? 'light' : 'dark')} title="Тема">
@@ -402,7 +407,7 @@
         Тебе показывают список категорий Википедии, к которым относится статья. Угадай, что это за статья.
         Сегодня <b>{N}</b> загадок. <b>Одна попытка</b> на каждую.
       </p>
-      {#if !isToday}<p class="archnote">Ты играешь архивный день: <b>{fmtDate(dayIdx)}</b>.</p>{/if}
+      {#if isFuture}<p class="archnote">🔓 Режим автора: будущий день <b>{fmtDate(dayIdx)}</b> (ещё не вышел).</p>{:else if !isToday}<p class="archnote">Ты играешь архивный день: <b>{fmtDate(dayIdx)}</b>.</p>{/if}
       <div class="row"><button class="btn primary grow" onclick={start}>Играть</button></div>
     </div>
   {:else if view === 'game'}
@@ -555,6 +560,7 @@
   .fish { font-size: 24px; }
   .hgroup { display: flex; gap: 8px; align-items: center; }
   .day { font-family: var(--mono); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: var(--accent); color: var(--accent-ink); border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 5px 9px; box-shadow: var(--shadow-sm); white-space: nowrap; }
+  .day.future { background: var(--secondary); color: #fff; }
   .iconbtn { display: inline-flex; align-items: center; justify-content: center; background: var(--card); border: 2px solid var(--ink); color: var(--text); border-radius: var(--radius-sm); padding: 7px 10px; cursor: pointer; font-size: 16px; box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease; text-decoration: none; }
   .iconbtn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
   .iconbtn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
