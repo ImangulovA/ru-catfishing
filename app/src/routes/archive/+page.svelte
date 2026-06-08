@@ -98,9 +98,14 @@
 <div class="wrap">
   <header>
     <a class="brand" href="{base}/"><span class="fish">🐟</span> Русский Catfishing</a>
-    <button class="iconbtn" onclick={() => applyTheme(theme === 'dark' ? 'light' : 'dark')} title="Тема">
-      {theme === 'dark' ? '🌙' : '☀️'}
-    </button>
+    <div class="hgroup">
+      <a class="todaybtn" href="{base}/">К сегодняшней игре</a>
+      <a class="iconbtn" href="{base}/stats" title="Статистика">📊</a>
+      <a class="iconbtn active" href="{base}/archive" title="Архив">🗓️</a>
+      <button class="iconbtn" onclick={() => applyTheme(theme === 'dark' ? 'light' : 'dark')} title="Тема">
+        {theme === 'dark' ? '🌙' : '☀️'}
+      </button>
+    </div>
   </header>
 
   <div class="card">
@@ -173,12 +178,17 @@
   .wrap { max-width: 680px; margin: 0 auto; padding: 22px 16px 72px; position: relative; }
   .wrap > * { position: relative; z-index: 1; }
 
-  header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 8px; }
+  header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 8px; flex-wrap: wrap; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 21px; letter-spacing: -0.4px; color: var(--text); text-decoration: none; }
   .fish { font-size: 24px; }
-  .iconbtn { display: inline-flex; align-items: center; justify-content: center; background: var(--card); border: 2px solid var(--ink); color: var(--text); border-radius: var(--radius-sm); padding: 7px 10px; cursor: pointer; font-size: 16px; box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease; }
+  .hgroup { display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap; justify-content: flex-end; }
+  .todaybtn { display: inline-flex; align-items: center; background: var(--accent); color: var(--accent-ink); border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 7px 12px; font-size: 13px; font-weight: 800; text-decoration: none; box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease; white-space: nowrap; }
+  .todaybtn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+  .todaybtn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .iconbtn { display: inline-flex; align-items: center; justify-content: center; background: var(--card); border: 2px solid var(--ink); color: var(--text); border-radius: var(--radius-sm); padding: 7px 10px; cursor: pointer; font-size: 16px; box-shadow: var(--shadow-sm); transition: transform 0.06s ease, box-shadow 0.06s ease; text-decoration: none; }
   .iconbtn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
   .iconbtn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .iconbtn.active { background: var(--accent); color: var(--accent-ink); }
 
   .card { background: var(--card); border: 2px solid var(--ink); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
   .round { font-family: var(--mono); color: var(--muted); font-size: 12px; font-weight: 700; text-align: center; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
