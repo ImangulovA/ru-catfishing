@@ -2,9 +2,10 @@
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
   import { base } from '$app/paths';
-  import { DAYS, resolveDay, currentDay, fmtDate } from '$lib/days';
+  import { DAYS, resolveDay, currentDay, fmtDate, todayIndex } from '$lib/days';
   import { computeStats } from '$lib/stats';
-  import { submitResult, submitOpen } from '$lib/api';
+  import { submitResult, submitOpen, fetchAgg } from '$lib/api';
+  import { applyUnlockFromUrl } from '$lib/unlock';
 
   const MAX_TRIES = 1; // catfishing = one shot
   const CAT = '🐈';    // угадал
@@ -15,10 +16,13 @@
   let day = $state(null);          // resolved strict day json
   let dayIdx = $state(0);          // which day index we're playing
   let isToday = $state(true);      // false when playing an archived day
+  let isFuture = $state(false);    // true when author mode is playing a not-yet-released day
 
   let view = $state('intro');      // 'intro' | 'game' | 'end'
   let i = $state(0);
   let results = $state([]);        // per puzzle: null | 'win' | 'lose' | 'half'
+  let guesses = $state([]);        // per puzzle: null (нет данных) | '' (пропуск) | введённый текст
+  let agg = $state(null);          // глобальная стата по дню (win/half/miss на загадку)
   let canClaim = $state(false);    // show "Я прав" after a wrong guess (not skip)
   let tries = $state(0);
   let done = $state(false);
@@ -105,7 +109,7 @@
 
   function save() {
     // `live` = played on the puzzle's own date (drives "on the day vs later" stat)
-    if (browser && KEY) localStorage.setItem(KEY, JSON.stringify({ i, results, done, live: isToday }));
+    if (browser && KEY) localStorage.setItem(KEY, JSON.stringify({ i, results, guesses, done, live: isToday }));
   }
 
   // raw per-puzzle outcome for the stats backend ('win' | 'half' | 'miss')
@@ -135,11 +139,13 @@
 
     const n = day.puzzles.length;
     results = Array(n).fill(null);
+    guesses = Array(n).fill(null); // null = нет данных (старые дни покажутся как раньше)
     const key = 'rucatfish_day' + day.day;
     try {
       const s = JSON.parse(localStorage.getItem(key));
       if (s && Array.isArray(s.results) && s.results.length === n) {
         results = s.results;
+        if (Array.isArray(s.guesses) && s.guesses.length === n) guesses = s.guesses;
         const firstOpen = results.findIndex((r) => r === null);
         if (firstOpen === -1) {
           done = true;
@@ -187,6 +193,10 @@
     // submit the finished day to the global-stats backend (idempotent: api.js
     // guards with a per-day localStorage flag, so resuming a done day won't dupe)
     submitResult(dayIdx, points, rawCells());
+    // подтянуть глобальную стату по этому дню для показа «% угадавших» на загадку
+    fetchAgg([dayIdx]).then((a) => {
+      if (a && a.ok) agg = a;
+    });
     if (points >= WOOHOO) celebrate();
   }
 
@@ -282,8 +292,9 @@
     }
   }
 
-  function reveal(result, label) {
+  function reveal(result, label, typed = guess) {
     results[i] = result;
+    guesses[i] = (typed || '').trim(); // '' = пропуск, иначе введённый игроком текст
     revealed = true;
     revealLabel = label;
     revealTitle = b64decode(puzzle.reveal);
@@ -337,6 +348,31 @@
       copied = true;
       setTimeout(() => (copied = false), 1500);
     });
+  }
+
+  const wikiUrl = (t) => 'https://ru.wikipedia.org/wiki/' + encodeURIComponent((t || '').replace(/ /g, '_'));
+
+  // склонение слова «игрок» по числу
+  function playersWord(n) {
+    const a = n % 100;
+    const b = n % 10;
+    if (a >= 11 && a <= 14) return 'игроков';
+    if (b === 1) return 'игрок';
+    if (b >= 2 && b <= 4) return 'игрока';
+    return 'игроков';
+  }
+
+  // глобальная статистика по конкретной загадке (или null, если данных нет)
+  function pctFor(k) {
+    const p = agg && agg.puzzle && agg.puzzle[dayIdx] && agg.puzzle[dayIdx][k];
+    if (!p) return null;
+    const total = (p.win || 0) + (p.half || 0) + (p.miss || 0);
+    if (!total) return null;
+    return {
+      total,
+      winPct: Math.round((100 * (p.win || 0)) / total),
+      halfPct: Math.round((100 * (p.half || 0)) / total),
+    };
   }
 
   const endLine = $derived(
@@ -428,7 +464,7 @@
         </div>
         <div class="feedback {feedbackKind}">{feedback}</div>
         <div class="subrow">
-          <button class="link" onclick={() => reveal('lose', 'Пропущено. Это:')}>Пропустить →</button>
+          <button class="link" onclick={() => reveal('lose', 'Пропущено. Это:', '')}>Пропустить →</button>
         </div>
       {:else}
         <div class="row"><button class="btn primary grow" onclick={next}>Дальше →</button></div>
@@ -466,8 +502,30 @@
       {/if}
       <div class="endlist">
         {#each day.puzzles as p, k}
+          {@const correct = b64decode(p.reveal)}
+          {@const mine = guesses[k]}
+          {@const st = pctFor(k)}
           <div class="endrow">
-            <span>{results[k] === 'win' ? CAT : results[k] === 'half' ? HALF : FISH} {b64decode(p.reveal)}</span>
+            <div class="er-head">
+              <span class="er-emoji">{results[k] === 'win' ? CAT : results[k] === 'half' ? HALF : FISH}</span>
+              <a class="er-title" href={wikiUrl(correct)} target="_blank" rel="noopener">{correct}</a>
+            </div>
+            {#if results[k] !== 'win' && mine != null}
+              <div class="er-mine">
+                {#if mine}Твой ответ: «{mine}»{:else}Пропущено{/if}
+              </div>
+            {/if}
+            {#if st}
+              <div class="er-comm">
+                <div class="bar">
+                  <span class="seg win" style="width:{st.winPct}%"></span>
+                  <span class="seg half" style="width:{st.halfPct}%"></span>
+                </div>
+                <div class="er-comm-txt">
+                  {st.winPct}% угадали{#if st.halfPct > 0} · ещё {st.halfPct}% ½{/if} · {st.total} {playersWord(st.total)}
+                </div>
+              </div>
+            {/if}
           </div>
         {/each}
       </div>
@@ -588,7 +646,18 @@
   .score { text-align: center; font-size: 44px; font-weight: 900; margin: 6px 0; letter-spacing: -1px; }
   .grid { text-align: center; font-size: 26px; line-height: 1.25; letter-spacing: 4px; margin: 10px 0; }
   .endlist { margin-top: 18px; }
-  .endrow { display: flex; justify-content: space-between; gap: 10px; padding: 9px 0; border-top: 2px solid var(--line); font-size: 14px; font-weight: 500; }
+  .endrow { display: flex; flex-direction: column; gap: 6px; padding: 11px 0; border-top: 2px solid var(--line); font-size: 14px; font-weight: 500; }
+  .er-head { display: flex; align-items: baseline; gap: 8px; }
+  .er-emoji { font-size: 16px; flex: 0 0 auto; }
+  .er-title { font-weight: 800; color: var(--text); text-decoration: none; }
+  .er-title:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+  .er-mine { font-size: 13px; color: var(--muted); padding-left: 26px; }
+  .er-comm { padding-left: 26px; display: flex; flex-direction: column; gap: 4px; }
+  .bar { display: flex; height: 8px; border: 2px solid var(--ink); border-radius: 999px; overflow: hidden; background: var(--card2); max-width: 320px; }
+  .seg { display: block; height: 100%; }
+  .seg.win { background: var(--green); }
+  .seg.half { background: var(--orange); }
+  .er-comm-txt { font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 700; }
   .foot { color: var(--muted); font-size: 12px; text-align: center; margin-top: 24px; }
   .foot a { color: var(--secondary); font-weight: 600; }
   .nextgame { text-align: center; font-family: var(--mono); font-size: 13px; font-weight: 700; margin: 14px 0 0; }
@@ -646,6 +715,7 @@
     .score { font-size: 34px; }
     .grid { font-size: 22px; letter-spacing: 3px; }
     .endrow { font-size: 13px; }
+    .er-mine, .er-comm { padding-left: 22px; }
     /* answer screen: categories are noise on a small screen -> hide them */
     .game.answered .cats,
     .game.answered .catlabel { display: none; }
