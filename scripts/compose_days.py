@@ -27,7 +27,7 @@ import sys
 import time
 from collections import Counter
 
-from classify import PV_FLOOR, THEME_LABELS
+from classify import PV_FLOOR, THEME_LABELS, is_excluded
 from make_day import norm
 from bulk_build import build_strict, write_day
 
@@ -40,6 +40,12 @@ FAMOUS = os.path.join(DATA, "_famous.txt")
 LOCKED_MAX = 25     # days -1..25 are released/locked
 CURVE = [("easy", 3), ("medium", 4), ("hard", 3)]
 PER_DAY = 10
+DEFAULT_CAP = 2     # max puzzles of one theme per day
+THEME_CAP = {"sport": 1}    # sport must not repeat in a day (no 2 footballers)
+
+
+def cap_for(theme):
+    return THEME_CAP.get(theme, DEFAULT_CAP)
 
 
 def reveal_title(b64):
@@ -99,19 +105,19 @@ def compose(pool, seed):
     round_i = 0
 
     def take(tier, day_themes):
-        # prefer least-recently-used theme with <2 used in this day
+        # prefer least-recently-used theme that is under its per-day cap
         for th in sorted(THEME_LABELS, key=lambda t: theme_last[t]):
-            if day_themes.get(th, 0) >= 2:
+            if day_themes.get(th, 0) >= cap_for(th):
                 continue
             for idx, c in enumerate(by_tier[tier]):
                 if c["theme"] == th:
                     return by_tier[tier].pop(idx)
-        # relax: any candidate of this tier whose theme isn't maxed
+        # relax: any candidate of this tier whose theme isn't capped (never
+        # exceed a cap — sport=1 must hold even as a last resort)
         for idx, c in enumerate(by_tier[tier]):
-            if day_themes.get(c["theme"], 0) < 2:
+            if day_themes.get(c["theme"], 0) < cap_for(c["theme"]):
                 return by_tier[tier].pop(idx)
-        # full relax within tier
-        return by_tier[tier].pop() if by_tier[tier] else None
+        return None
 
     def take_relaxed(tier, day_themes, relaxed):
         nearest = {
@@ -159,7 +165,13 @@ def main():
 
     cls = json.load(open(CLASSIFIED, encoding="utf-8"))
     locked = gather_locked_keys()
-    # candidates = famous & detailed enough & not already released, deduped
+    # solvable filter: if the screen has run, only LLM-solvable titles qualify
+    solv_path = os.path.join(DATA, "_solvable.json")
+    solvable = None
+    if os.path.exists(solv_path):
+        solvable = {dedup_key(t) for t in json.load(open(solv_path, encoding="utf-8"))}
+        print(f"solvable filter: {len(solvable)} titles", file=sys.stderr)
+    # candidates = famous & detailed enough & solvable & not released, deduped
     pool = []
     seen = set()
     for t, meta in cls.items():
@@ -167,6 +179,8 @@ def main():
             continue
         k = dedup_key(t)
         if k in locked or k in seen:
+            continue
+        if solvable is not None and k not in solvable:
             continue
         seen.add(k)
         pool.append({"title": t, "theme": meta["theme"], "tier": meta["tier"]})
@@ -203,38 +217,53 @@ def main():
         if p["title"] not in seen_titles:
             leftover.append(p)
 
+    def take_spare(tier, day_themes):
+        # prefer same tier whose theme is still under its per-day cap
+        for i, sp in enumerate(leftover):
+            if sp["tier"] == tier and day_themes.get(sp["theme"], 0) < cap_for(sp["theme"]):
+                return leftover.pop(i)
+        for i, sp in enumerate(leftover):
+            if day_themes.get(sp["theme"], 0) < cap_for(sp["theme"]):
+                return leftover.pop(i)
+        return None
+
     built = 0
     for d, day in enumerate(days):
         idx = args.start + d
         puzzles = []
         used_keys = set()
+        day_themes = {}
         queue = list(day)
         while queue and len(puzzles) < PER_DAY:
             c = queue.pop(0)
+            # theme-cap guard (e.g. sport=1): if the day is already at the cap
+            # for this theme, swap for a spare of another theme
+            if day_themes.get(c["theme"], 0) >= cap_for(c["theme"]):
+                repl = take_spare(c["tier"], day_themes)
+                if repl:
+                    queue.append(repl)
+                print(f"  day{idx} cap {c['theme']}: {c['title']!r} "
+                      f"-> {repl['title'] if repl else 'NO SPARE'}", file=sys.stderr)
+                continue
             try:
                 strict, n, status = build_strict(c["title"], c["tier"])
             except Exception as e:
                 status = "err"
                 print(f"  day{idx} ERR {c['title']!r}: {e}", file=sys.stderr)
             time.sleep(args.sleep)
-            if status == "ok":
+            excl = is_excluded(strict["categories"]) if status == "ok" else None
+            if status == "ok" and not excl:
                 k = dedup_key(c["title"])
                 if k in used_keys:
                     continue
                 used_keys.add(k)
                 puzzles.append({"title": c["title"], "strict": strict})
+                day_themes[c["theme"]] = day_themes.get(c["theme"], 0) + 1
             else:
-                # back-fill from spares (prefer same tier)
-                repl = None
-                for i, sp in enumerate(leftover):
-                    if sp["tier"] == c["tier"]:
-                        repl = leftover.pop(i)
-                        break
-                if repl is None and leftover:
-                    repl = leftover.pop(0)
+                repl = take_spare(c["tier"], day_themes)
                 if repl:
                     queue.append(repl)
-                print(f"  day{idx} skip {status}: {c['title']!r} "
+                print(f"  day{idx} skip {excl or status}: {c['title']!r} "
                       f"-> {repl['title'] if repl else 'NO SPARE'}", file=sys.stderr)
         if len(puzzles) == PER_DAY:
             write_day(idx, puzzles)

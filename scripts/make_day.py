@@ -68,6 +68,7 @@ TAIL_PATTERNS = [
     r"\s+в\s+\d{1,4}\s+году?$",   # "...в 79 году"
     r"\s+\d{3,4}\s+года$",        # "...1773 года"
     r",?\s+\d{3,4}$",             # хвостовой год ("..., 1979")
+    r"\s+[IVXLCDM]{1,7}$",        # хвостовая римская цифра (Клеопатра VII, Елизавета I)
 ]
 
 
@@ -107,6 +108,22 @@ def derive_surname(title, categories):
             return None                            # mononym == full title already
         surname = parts[-1].strip()
     return surname or None
+
+
+def given_surname_form(title, categories):
+    """For comma-form persons "Фамилия, Имя [Отчество]" return "Имя Фамилия"
+    (drops the patronymic) so a player can answer name+surname without it
+    ("Матвей Сафонов" for "Сафонов, Матвей Евгеньевич"). None otherwise."""
+    if not any(PERSON_RE.search(c) for c in categories):
+        return None
+    t = re.sub(r"\([^)]*\)", " ", title).strip()
+    if "," not in t:
+        return None
+    surname, rest = t.split(",", 1)
+    given = rest.strip().split()
+    if not given or not surname.strip():
+        return None
+    return f"{given[0]} {surname.strip()}"
 
 
 def sha256(s):
@@ -152,6 +169,9 @@ def main():
             en_sn = derive_surname(en, p["categories"])
             if en_sn:
                 forms.add(norm(en_sn))
+        gsf = given_surname_form(p["title"], p["categories"])
+        if gsf:
+            forms.add(norm(gsf))
         forms.discard("")  # drop empties (emoji/punctuation-only redirects)
         puzzles.append({
             "categories": p["categories"],

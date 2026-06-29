@@ -98,6 +98,46 @@ def classify_theme(categories):
     return FALLBACK_THEME[0]
 
 
+# Topics excluded by user preference (2026-06-29): acting (boring) and MODERN
+# RUSSIAN politics (sensitive). Match against lowercased categories. Historical
+# Russian figures (monarchs, empire-era PMs) are NOT excluded — only modern RF
+# politics + the Russo-Ukrainian war / sanctions / Putin family.
+EXCLUDE_ACTOR = ["актёр", "актрис"]
+EXCLUDE_RU_POLITICS = [
+    "политики россии", "члены «единой россии»", "члены единой россии",
+    "депутаты государственной думы", "губернаторы", "главы регионов",
+    "главы республик", "президенты россии", "сенаторы российской федерации",
+    "члены совета федерации", "председатели правительства российской федерации",
+    "лица, подвергнутые санкциям", "российско-украинск", "вторжение россии",
+    "дети владимира путина", "семья владимира путина", "мэры москвы",
+    "пресс-секретари президента", "администрация президента россии",
+]
+
+
+# Bloggers/streamers (user-excluded 2026-06-29). Specific markers only, to avoid
+# nuking footballers/rappers who merely have a side YouTube channel.
+EXCLUDE_BLOGGER = ["ютубер", "видеоблогер", "стримеры", "тиктокер", "твич"]
+# Adult + gambling: RE-INCLUDED by user (2026-06-29) — "чо бы нет". Kept as a
+# named list for documentation / easy future toggling, but no longer excluded.
+EXCLUDE_ADULT = ["порно", "эроти", "букмекер", "азартн", "казино"]
+
+
+def is_excluded(categories):
+    """Return an exclusion reason ('actor'|'rupol'|'blogger') or None.
+
+    Adult/gambling are intentionally NOT excluded (user choice); to re-exclude,
+    add back the EXCLUDE_ADULT branch below.
+    """
+    blob = " · ".join(categories).lower()
+    if any(k in blob for k in EXCLUDE_ACTOR):
+        return "actor"
+    if any(k in blob for k in EXCLUDE_RU_POLITICS):
+        return "rupol"
+    if any(k in blob for k in EXCLUDE_BLOGGER):
+        return "blogger"
+    return None
+
+
 # ------------------------------------------------------------ PAGEVIEWS -------
 def _load_pv_cache():
     if os.path.exists(PV_CACHE):

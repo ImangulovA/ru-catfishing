@@ -34,7 +34,7 @@ from build_pool import (
     is_service,
     title_tokens,
 )
-from make_day import derive_surname, expand_forms, norm
+from make_day import derive_surname, expand_forms, given_surname_form, norm
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -100,6 +100,9 @@ def build_puzzle(entry, difficulty="medium"):
         en_sn = derive_surname(en, useful)
         if en_sn:
             forms.add(norm(en_sn))
+    gsf = given_surname_form(title, useful)
+    if gsf:
+        forms.add(norm(gsf))
 
     forms.discard("")  # drop empties (emoji/punctuation-only redirects, etc.)
     strict = {
