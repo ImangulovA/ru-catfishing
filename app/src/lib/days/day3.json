@@ -43,7 +43,8 @@
         "e88f47cfc10232d790ac4ecf33c5c15a9d68a233ece62b2c9dfecbf3053abc8e",
         "eba85b6b70fef47b602bf04623a1dd092b3d789dc433222838c176c65afa8920"
       ],
-      "reveal": "0JvQtdC+0L3QsNGA0LTQviDQtNCwINCS0LjQvdGH0Lg="
+      "reveal": "0JvQtdC+0L3QsNGA0LTQviDQtNCwINCS0LjQvdGH0Lg=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -73,21 +74,21 @@
         "Умершие в Кроуборо"
       ],
       "accept": [
+        "0521e8ff7a333e307bcc213671eba164c8a0df0c98fad7c37d4c88ca1d5de033",
         "156584f70e18b0a112a2f20bda7e4275ab594843ff82d65a0dc76dd1c56df0eb",
         "1b2801cce3f528db8091172324101159527212d39616a73234c7b383e30a6335",
         "1de6b321b36b24e5e8f43c0df5735d4e6d6660a391cd98bd0450860af4a84bbf",
-        "301f6fbbcbb08ed0bc4afa12baf3d6ef0cfc56d39ce7c7e5440331f8da2d4305",
+        "2e3ce30523a0bc7e4bc3e075f2e503f1f92703e7b935841499c8c37673375728",
         "5bba842acfa04108d6044a94983aaf5e68b684c13e424a51048b978bbbb7d3b5",
         "76a25b3087f33ba4f96f703b482e3ac24878b13afcef0198cca18a599da04d32",
         "9762de031b37c6277a6f5d9a822385e40d67a919952f31352b588b72a22f81fe",
         "b7d272a100db2a2d52567037b25414a3bb35d66f650905d6e5c233f5f26fe37a",
         "bc5793c4e3c66ec83a2a33612facdea9fadb8e2e570f681adde227638b837457",
         "d08dc3fe4ce8608e3995444e1e66e1de4e273741aa4ed32eab1f6efd88facff3",
-        "f51fe12842047a89af52c8e47de059c1a5231992290c65a93db25c55a86617a4",
-        "fa541cab7a0bee4a91faa7177496cd24b4f817881197283bfc4c432f645a5690",
-        "fbbcc682e982b5196efd6a3e6827bea671fb69f1a9a03030be0e1c11e53b48d3"
+        "fa541cab7a0bee4a91faa7177496cd24b4f817881197283bfc4c432f645a5690"
       ],
-      "reveal": "0JDRgNGC0YPRgCDQmtC+0L3QsNC9INCU0L7QudC7"
+      "reveal": "0JDRgNGC0YPRgCDQmtC+0L3QsNC9INCU0L7QudC7",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -112,10 +113,11 @@
         "Фильмы, спродюсированные Нилом Кэнтоном"
       ],
       "accept": [
-        "757120dd8bd065dcb668ad271ba85026d89f3ac5004ee69d36b2b9900cc3c27e",
-        "c1b59f2c3f33280d588bd7bdd788c083c34ea6fc0738060f8e7120ca4816eef7"
+        "1ee5e32f0033dcc1af39a68ce31ba45e78160129acb13ee87774a2e85259320e",
+        "757120dd8bd065dcb668ad271ba85026d89f3ac5004ee69d36b2b9900cc3c27e"
       ],
-      "reveal": "0J3QsNC30LDQtCDQsiDQsdGD0LTRg9GJ0LXQtQ=="
+      "reveal": "0J3QsNC30LDQtCDQsiDQsdGD0LTRg9GJ0LXQtQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -159,7 +161,8 @@
         "4ff46b9cb18ecd035ba8ccc7c28215944f29753aa95680bbc8b25a41dca5b0f9",
         "9b1126d5772dc8ebeb5af2f3f268d7b72785ea9311cb75c25c9317738f37329a"
       ],
-      "reveal": "0JjQs9GA0LAg0L/RgNC10YHRgtC+0LvQvtCyICjRgtC10LvQtdGB0LXRgNC40LDQuyk="
+      "reveal": "0JjQs9GA0LAg0L/RgNC10YHRgtC+0LvQvtCyICjRgtC10LvQtdGB0LXRgNC40LDQuyk=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -189,12 +192,13 @@
       "accept": [
         "32c117c44eb0be36647ac8a7215d6b9dab4c34708aa4cbe0e57407e4ad508528",
         "4c36bfec2d3860125fe3d4b0718260176c2a5e7e38829756c20eb951b832224e",
-        "542dcbf7a5e1768de825dd0ed09204beb536ea23ac0c0f8e0e7789c00529233d",
         "b4587dc3c49f73d45734e95ab6a46e0a8278104d8461e42890dc1c854f985ffa",
         "b98849908efb14565dd557a3ad0b43a2edd941f50dcfda82b943171c7d236192",
-        "e76a1e85d7656a1959f3a22282dfac52a180c19abadd0fea1e1ac3c251b50e97"
+        "e76a1e85d7656a1959f3a22282dfac52a180c19abadd0fea1e1ac3c251b50e97",
+        "ec5f8d5f5781e305278db2b9277f53cf02cfdce0ad3c1f592d6afbf3532f3c99"
       ],
-      "reveal": "UG9ydGFsIDI="
+      "reveal": "UG9ydGFsIDI=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -210,10 +214,11 @@
       ],
       "accept": [
         "6b2e94912bb4d007b3a885a8ae5ecb90ee6c7f39d860ae97de881eab88fe077e",
-        "6f6b03be1c085095e30506851172a33070523d88fe424d3a2206e799ce2448d8",
-        "d9ec871934bcee9b4735bd63e090abaacfe875748a81d00228547db35828a653"
+        "81f0250970681f88052d7d2d21e52718fac22000b7d7177429511934fa5a5dc5",
+        "b6b6b32bb8a437422436f064b336296b7563db465e8f4b173f80208496f9387d"
       ],
-      "reveal": "0JLQvtC50L3QsCDQuCDQvNC40YA="
+      "reveal": "0JLQvtC50L3QsCDQuCDQvNC40YA=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -232,7 +237,8 @@
         "d2f05c81263cb41a88db3740856d9a3d1bacb5349aaeb06b0d78a5002c812963",
         "f92e8c0574ed39cc325800f2687102e0fa40500a35c8acba15e38cb86cd28149"
       ],
-      "reveal": "0KfRkdGA0L3Ri9C5INC60LLQsNC00YDQsNGC"
+      "reveal": "0KfRkdGA0L3Ri9C5INC60LLQsNC00YDQsNGC",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -256,7 +262,8 @@
         "75b1f1285c5d7e01320b373a2c892e10e460ea5c721209ceb09b9791ddc4f24b",
         "a2d061827eec8b0790e4e718a629b5dfc971f77473b1a8a769bcea96981cbb33"
       ],
-      "reveal": "0KHRgtC+0YPQvdGF0LXQvdC00LY="
+      "reveal": "0KHRgtC+0YPQvdGF0LXQvdC00LY=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -278,7 +285,8 @@
         "8854df7176de0166070c62357346f64c9c4f2093ff235caa61a30fb2aa743a02",
         "c7f5f47415ba48a2eb8fce98c749cf90967631c9b8755189c2824914518e4f49"
       ],
-      "reveal": "0JHQuNGC0LLQsCDQv9GA0Lgg0JLQsNGC0LXRgNC70L7Qvg=="
+      "reveal": "0JHQuNGC0LLQsCDQv9GA0Lgg0JLQsNGC0LXRgNC70L7Qvg==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -296,7 +304,8 @@
         "b58f5299b535fc93a6bf19d557d325c5fdebc3e56c3af3ddf95e4bdee0461d7d",
         "c371b31250e28306ce4bdcb626e4506eb5ffcc7c16aa4ae71250e631c709f527"
       ],
-      "reveal": "0JLQvtGP0LTQttC10YAtMQ=="
+      "reveal": "0JLQvtGP0LTQttC10YAtMQ==",
+      "difficulty": "easy"
     }
   ]
 }

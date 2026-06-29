@@ -39,7 +39,7 @@ from build_pool import (
     is_service,
     title_tokens,
 )
-from make_day import derive_surname, norm
+from make_day import derive_surname, expand_forms, norm
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "prototype", "data")
@@ -109,7 +109,7 @@ def is_military(title, cats):
     return any(m in text or m in t for m in MIL_MARKERS)
 
 
-def build_strict(title):
+def build_strict(title, difficulty="medium"):
     """Return (strict_dict | None, n_cats, status)."""
     cats = fetch_categories(title)
     tokens = title_tokens(re.sub(r"\([^)]*\)", " ", title))
@@ -119,24 +119,29 @@ def build_strict(title):
     if is_military(title, useful):
         return None, len(useful), "mil"
 
-    forms = {norm(title)}
+    # Collect every RAW accepted name, each expanded to its short form, then
+    # norm() them all (keeps make_day.py and bulk_build.py in lockstep).
+    raws = set(expand_forms(title))
+    en = fetch_langlink(title, "en")
+    if en:
+        raws |= expand_forms(en)
+    for red in fetch_redirects(title):
+        raws |= expand_forms(red)
+    forms = {norm(r) for r in raws}
     sn = derive_surname(title, useful)
     if sn:
         forms.add(norm(sn))
-    en = fetch_langlink(title, "en")
     if en:
-        forms.add(norm(en))
         en_sn = derive_surname(en, useful)
         if en_sn:
             forms.add(norm(en_sn))
-    for red in fetch_redirects(title):
-        forms.add(norm(red))
     forms.discard("")
 
     strict = {
         "categories": useful,
         "accept": sorted(sha256(f) for f in forms),
         "reveal": b64(title),
+        "difficulty": difficulty,
     }
     # per-puzzle leak: plaintext title must not appear inside its own categories
     if any(title in c for c in useful):

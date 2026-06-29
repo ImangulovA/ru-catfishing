@@ -1,0 +1,275 @@
+#!/usr/bin/env python3
+"""Compose balanced future days (>= START) from a classified candidate pool.
+
+Inputs:
+  prototype/data/_classified.json  (theme + GLOBAL tier per title; classify_pool.py)
+  existing day*.json               (candidate titles from days 26.. + locked -1..25)
+  prototype/data/_famous.txt       (curated well-known titles, optional)
+
+Rules per day (10 puzzles):
+  - difficulty curve  3 easy / 4 medium / 3 hard
+  - theme quota       max 2 of one theme, aim >= 5 distinct themes
+  - theme spread      least-recently-used theme preferred across the horizon
+  - intra-day order   deterministic shuffle, no long runs of the same tier
+Locked titles (days -1..25) are never reused; candidates are deduped by norm().
+
+Each chosen title is rebuilt with build_strict() (current norm + qualifier
+expansion + difficulty), so the shipped hashes are fresh. Titles that fail the
+quality gate (<4 cats / military / leak) are skipped and back-filled.
+"""
+import argparse
+import base64
+import glob
+import json
+import os
+import random
+import sys
+from collections import Counter
+
+from classify import THEME_LABELS
+from make_day import norm
+from bulk_build import build_strict, write_day
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DAYS_DIR = os.path.join(ROOT, "app", "src", "lib", "days")
+DATA = os.path.join(ROOT, "prototype", "data")
+CLASSIFIED = os.path.join(DATA, "_classified.json")
+FAMOUS = os.path.join(DATA, "_famous.txt")
+
+LOCKED_MAX = 25     # days -1..25 are released/locked
+CURVE = [("easy", 3), ("medium", 4), ("hard", 3)]
+PER_DAY = 10
+
+
+def reveal_title(b64):
+    return base64.b64decode(b64).decode("utf-8")
+
+
+def dedup_key(title):
+    return norm(title)
+
+
+def gather_locked_keys():
+    keys = set()
+    for n in range(-1, LOCKED_MAX + 1):
+        path = os.path.join(DAYS_DIR, f"day{n}.json")
+        if not os.path.exists(path):
+            continue
+        d = json.load(open(path, encoding="utf-8"))
+        for p in d.get("puzzles", []):
+            keys.add(dedup_key(reveal_title(p["reveal"])))
+    return keys
+
+
+def gather_candidate_titles(locked):
+    """Titles from existing days 26.. + famous list, minus locked, deduped."""
+    cand = {}  # key -> title (first wins)
+    # existing future days (will be overwritten by the recomposed ones)
+    for f in glob.glob(os.path.join(DAYS_DIR, "day*.json")):
+        base = os.path.basename(f)
+        try:
+            n = int(base[3:-5])
+        except ValueError:
+            continue
+        if n <= LOCKED_MAX:
+            continue
+        d = json.load(open(f, encoding="utf-8"))
+        for p in d.get("puzzles", []):
+            t = reveal_title(p["reveal"])
+            k = dedup_key(t)
+            if k not in locked:
+                cand.setdefault(k, t)
+    # curated famous
+    if os.path.exists(FAMOUS):
+        for raw in open(FAMOUS, encoding="utf-8"):
+            t = raw.strip()
+            if not t or t.startswith("#"):
+                continue
+            k = dedup_key(t)
+            if k not in locked:
+                cand.setdefault(k, t)
+    return list(cand.values())
+
+
+def arrange_no_runs(day, rng):
+    """Interleave the 10 puzzles so difficulty is shuffled, never sorted, and
+    avoids 3-of-the-same-tier in a row whenever feasible."""
+    from collections import defaultdict
+    buckets = defaultdict(list)
+    items = day[:]
+    rng.shuffle(items)
+    for it in items:
+        buckets[it["tier"]].append(it)
+    result = []
+    while len(result) < len(items):
+        avail = [t for t in buckets if buckets[t]]
+
+        def no_run(t):
+            return not (len(result) >= 2 and result[-1]["tier"] == t == result[-2]["tier"])
+
+        choices = [t for t in avail if no_run(t)] or avail
+        # spread: prefer the tier with the most remaining, random tie-break
+        choices.sort(key=lambda t: (-len(buckets[t]), rng.random()))
+        result.append(buckets[choices[0]].pop())
+    return result
+
+
+def compose(pool, seed):
+    """Greedy pack pool -> list of days (each a list of {title,theme,tier})."""
+    by_tier = {"easy": [], "medium": [], "hard": []}
+    for p in pool:
+        by_tier.get(p["tier"], by_tier["medium"]).append(p)
+    rng = random.Random(seed)
+    for k in by_tier:
+        rng.shuffle(by_tier[k])
+
+    theme_last = {k: -1 for k in THEME_LABELS}
+    days = []
+    round_i = 0
+
+    def take(tier, day_themes):
+        # prefer least-recently-used theme with <2 used in this day
+        for th in sorted(THEME_LABELS, key=lambda t: theme_last[t]):
+            if day_themes.get(th, 0) >= 2:
+                continue
+            for idx, c in enumerate(by_tier[tier]):
+                if c["theme"] == th:
+                    return by_tier[tier].pop(idx)
+        # relax: any candidate of this tier whose theme isn't maxed
+        for idx, c in enumerate(by_tier[tier]):
+            if day_themes.get(c["theme"], 0) < 2:
+                return by_tier[tier].pop(idx)
+        # full relax within tier
+        return by_tier[tier].pop() if by_tier[tier] else None
+
+    def take_relaxed(tier, day_themes, relaxed):
+        nearest = {
+            "easy": ["easy", "medium", "hard"],
+            "medium": ["medium", "easy", "hard"],
+            "hard": ["hard", "medium", "easy"],
+        }[tier]
+        for tt in nearest:
+            c = take(tt, day_themes)
+            if c:
+                if tt != tier:
+                    relaxed[0] += 1
+                return c
+        return None
+
+    relaxed = [0]
+    # stop before the pool degenerates into a single-tier "dregs" day: require a
+    # minimum mix of each tier so every emitted day stays shuffleable.
+    while (sum(len(v) for v in by_tier.values()) >= PER_DAY
+           and all(len(by_tier[t]) >= 2 for t in ("easy", "medium", "hard"))):
+        day, day_themes = [], {}
+        for tier, count in CURVE:
+            for _ in range(count):
+                c = take_relaxed(tier, day_themes, relaxed)
+                if c is None:
+                    break
+                day.append(c)
+                day_themes[c["theme"]] = day_themes.get(c["theme"], 0) + 1
+        if len(day) < PER_DAY:
+            break
+        for c in day:
+            theme_last[c["theme"]] = round_i
+        days.append(arrange_no_runs(day, rng))
+        round_i += 1
+    return days, relaxed[0]
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--start", type=int, default=26)
+    ap.add_argument("--max-days", type=int, default=0, help="0 = as many as pool allows")
+    ap.add_argument("--seed", type=int, default=42)
+    args = ap.parse_args()
+
+    cls = json.load(open(CLASSIFIED, encoding="utf-8"))
+    locked = gather_locked_keys()
+    titles = gather_candidate_titles(locked)
+    pool = []
+    for t in titles:
+        meta = cls.get(t)
+        if not meta or meta.get("n_cats", 0) < 4:
+            continue
+        pool.append({"title": t, "theme": meta["theme"], "tier": meta["tier"]})
+    print(f"locked={len(locked)} candidates={len(pool)} "
+          f"(tiers={Counter(p['tier'] for p in pool)})", file=sys.stderr)
+
+    days, relaxed = compose(pool, args.seed)
+    if args.max_days:
+        days = days[: args.max_days]
+    print(f"composed {len(days)} days (slot relaxations: {relaxed})", file=sys.stderr)
+
+    # Candidates are already gathered + classified, so it is now safe to remove
+    # every existing future day (>= start): any day index NOT rewritten below
+    # would otherwise linger with stale-norm hashes and a broken answer check.
+    removed = 0
+    for f in glob.glob(os.path.join(DAYS_DIR, "day*.json")):
+        try:
+            n = int(os.path.basename(f)[3:-5])
+        except ValueError:
+            continue
+        if n >= args.start:
+            os.remove(f)
+            removed += 1
+    print(f"removed {removed} stale future day files (>= {args.start})", file=sys.stderr)
+
+    # build + write each day; back-fill any title that fails build_strict
+    leftover = []  # spare pool drained for back-fill (any tier)
+    seen_titles = set()
+    for day in days:
+        for c in day:
+            seen_titles.add(c["title"])
+    # spares = classified candidates not used in any composed day
+    for p in pool:
+        if p["title"] not in seen_titles:
+            leftover.append(p)
+
+    built = 0
+    for d, day in enumerate(days):
+        idx = args.start + d
+        puzzles = []
+        used_keys = set()
+        queue = list(day)
+        while queue and len(puzzles) < PER_DAY:
+            c = queue.pop(0)
+            try:
+                strict, n, status = build_strict(c["title"], c["tier"])
+            except Exception as e:
+                status = "err"
+                print(f"  day{idx} ERR {c['title']!r}: {e}", file=sys.stderr)
+            if status == "ok":
+                k = dedup_key(c["title"])
+                if k in used_keys:
+                    continue
+                used_keys.add(k)
+                puzzles.append({"title": c["title"], "strict": strict})
+            else:
+                # back-fill from spares (prefer same tier)
+                repl = None
+                for i, sp in enumerate(leftover):
+                    if sp["tier"] == c["tier"]:
+                        repl = leftover.pop(i)
+                        break
+                if repl is None and leftover:
+                    repl = leftover.pop(0)
+                if repl:
+                    queue.append(repl)
+                print(f"  day{idx} skip {status}: {c['title']!r} "
+                      f"-> {repl['title'] if repl else 'NO SPARE'}", file=sys.stderr)
+        if len(puzzles) == PER_DAY:
+            write_day(idx, puzzles)
+            built += 1
+            tiers = Counter(p["strict"]["difficulty"] for p in puzzles)
+            print(f"[day {idx}] {dict(tiers)}")
+        else:
+            print(f"[day {idx}] INCOMPLETE ({len(puzzles)}/10) — stopping", file=sys.stderr)
+            break
+
+    print(f"\nDONE: built days {args.start}..{args.start + built - 1} ({built} days)")
+
+
+if __name__ == "__main__":
+    main()

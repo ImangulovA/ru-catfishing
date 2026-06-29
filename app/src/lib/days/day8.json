@@ -29,7 +29,8 @@
         "b6bd14bb4432cae0063eb5ff4894cee023d6b8f8053bcc9d8e11092487187282",
         "fd465413526c1637337146d4a55945d5040461d0ea326ed3e3468c20bcc0f35d"
       ],
-      "reveal": "0KPQuNC70YzRj9C8INCo0LXQutGB0L/QuNGA"
+      "reveal": "0KPQuNC70YzRj9C8INCo0LXQutGB0L/QuNGA",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -60,17 +61,17 @@
         "Члены Французской коммунистической партии"
       ],
       "accept": [
-        "5d8130ec4f450009a44e1b3a9676e158f6185329f7f7e39167367142d7cf5d32",
+        "7a278786d3578aeecae55cdf45e6ddd36146fdd78d8fae68990daee2feb15535",
         "8b960e08487b8c692b3be627da53c23ab93b10d25067320993e550069cba91a4",
-        "8f116e387ae0365996a341d17974fd8b494169000de3120b031b0cf07c3d20ec",
         "a35b91e621f4bdcb3c77ff4caad5d325b0cc9ea07c9e90e1dadc42051b1b7785",
         "afd6d144eed1c0e2d9aaad93beb95696c64370d4e9ddfd9b68a9356380f8bec7",
         "b312a20d6a803a8851c891c0dce8118f0d1c66a131a26188e0907b19a8542ec0",
+        "e05f42fa334010fb6c52aa36be444f974dba47cc37935d17dbf992fdebdacf07",
         "ec479b39331e33d81d17bd8e72e8e592d13fc48409648478ff638d2fb1f4c8e2",
-        "f9630a0a1cf2011593dcb28ca80d310925b88716e87e845d7b00b1ac358aa37f",
-        "ffb2a8870e9dc1b7b2b9b9b3f8d1b021467f3f90921d1cc213e5088c415a56bf"
+        "f9630a0a1cf2011593dcb28ca80d310925b88716e87e845d7b00b1ac358aa37f"
       ],
-      "reveal": "0J/QsNCx0LvQviDQn9C40LrQsNGB0YHQvg=="
+      "reveal": "0J/QsNCx0LvQviDQn9C40LrQsNGB0YHQvg==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -145,10 +146,10 @@
         "8d5c766ede651536351bba5ea9400c72969e0cbe3337e1bf1c0e6320eace4a10",
         "980d0583a9ef3125ef2d58cfff20a7af7b6d999415840151cb9d081d1ee61d83",
         "a9a187c82f502688faff740875f5aff3b30592f44ac599e6adcaa12637aa26e3",
-        "b2f45d8f672f786df0adbab2b5ec1911161663f01fae35030a0cb5ac9814739a",
-        "df7a5405affe528eb9badc693fc3a2ead09c88cf8ece4b2502c6f4a1a515acc3"
+        "b2f45d8f672f786df0adbab2b5ec1911161663f01fae35030a0cb5ac9814739a"
       ],
-      "reveal": "0K7RgNC40Lkg0JPQsNCz0LDRgNC40L0="
+      "reveal": "0K7RgNC40Lkg0JPQsNCz0LDRgNC40L0=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -175,7 +176,8 @@
         "0bb7e22db6b47a7bf17d419180cea6413a9a4685c70efbe4a4b6ac4fb5df06e9",
         "0bd8b2e19931fe065ab5bc50a5e0880f89f4cc812bb6b31a68c4e723cf7633f7"
       ],
-      "reveal": "0JPQu9Cw0LTQuNCw0YLQvtGAICjRhNC40LvRjNC8LCAyMDAwKQ=="
+      "reveal": "0JPQu9Cw0LTQuNCw0YLQvtGAICjRhNC40LvRjNC8LCAyMDAwKQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -217,7 +219,8 @@
         "7dac5a8d747ab4c2af4bcd452e6526feb3b061df24cefcac164217e61d87f39b",
         "7e6e9877fff0dbcc576df15fd6e6de65a95d6dce6ced8fc47c4cf9dba3484195"
       ],
-      "reveal": "RG9vbSAo0LjQs9GA0LAsIDE5OTMp"
+      "reveal": "RG9vbSAo0LjQs9GA0LAsIDE5OTMp",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -230,13 +233,14 @@
       ],
       "accept": [
         "02300e1b6c8d86aa11de2b64768ae8ce217ea90ebf8d93dbfbcf00f56f267b43",
-        "079d0b8f7c2e7c4c7a38a0ea36d584fd993a0ab902136c8abea913f0c65b25f2",
-        "1f92ded02ac744e20ef24ef98d50f0659860db699fe152e8214317a3cb6ecaf1",
-        "2211d09865aeb5293a717275e1cf93cfce58debb09dcf3399813482d30be7ce5",
+        "39f45ffd22f7903141894a2996f6d04966e472562321c3e9d5323a50dc3c4188",
+        "42c61d122cf3653f8e76d07eb71c94f7b63a4e4781471b910932db4656ba5e77",
         "6dcfd679b26d3c351801ac292f27b6ac5dbe791b8b7b99f8ee91e91814181477",
-        "6e067251f102a372b7e69a9eeea1f53e8c420e566256493cf00899ab145f374e"
+        "e66555b3a269fecb7bb4fa1af6d49c7f157ccba658317c4acee957e602862474",
+        "f4bc9ae3b7b0d96192c263e6b7fe4cf4881848550f649890bea9fdc4f33aa5ec"
       ],
-      "reveal": "0J3QsNC0INC/0YDQvtC/0LDRgdGC0YzRjiDQstC+INGA0LbQuA=="
+      "reveal": "0J3QsNC0INC/0YDQvtC/0LDRgdGC0YzRjiDQstC+INGA0LbQuA==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -250,7 +254,8 @@
         "578a064111594ba78e4256fba242f635553f2dc21bd884a8ee381d561ddc5889",
         "df0b66463d48215066399ecd8b36d45d0520eb529aba0a1a93ca7239b980bec6"
       ],
-      "reveal": "0KHQvtGC0LLQvtGA0LXQvdC40LUg0JDQtNCw0LzQsA=="
+      "reveal": "0KHQvtGC0LLQvtGA0LXQvdC40LUg0JDQtNCw0LzQsA==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -269,7 +274,8 @@
         "6dbedc0a14adbbbbf80711e3670d3f634aa5c394c44718556afcc4103896f087",
         "87edae6734295e80197101252c0fa36d95015d81742805ccd96f033a34e38297"
       ],
-      "reveal": "0JLQtdC70LjQutCw0Y8g0JrQuNGC0LDQudGB0LrQsNGPINGB0YLQtdC90LA="
+      "reveal": "0JLQtdC70LjQutCw0Y8g0JrQuNGC0LDQudGB0LrQsNGPINGB0YLQtdC90LA=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -283,30 +289,32 @@
         "00f3f6c1d997cc22496625d243030defac60a5f6493f779ca8f17816cc8f64db",
         "022f35040cbac455a4ebe5367b864caa80c6b60db77abf5de6528084f15a49b9",
         "07060fcfa4d94f0209d850fcbd2fe396d53d85a396ad9adc95d166534a86772f",
+        "25d733965dcb165057e631299884a7a6096407954e3fc8c68dc0662d067cdbcd",
+        "2a547ac34fe330c9cf797ec13a7a7e2d94538871ec4281ed5411ff6fee3ecc04",
         "2bd9fcf3d665e89c869ff1d0b4d4f3c38a537751f2d67f4c26ca86cb9f77aa45",
-        "399170203172857cca6418eb43a11b7fdfa66f1ffec3d64fd19b3d51229e8016",
+        "39d7806687b66473d0f2b9ad3707eb8cc03d94fbb1658f8c3451ec47326a0c10",
         "3a524c9a68cb739eacff0754191c309499da10df89ad1bc05cbca70b8d2818dc",
+        "3b8a5655a8cd8b744846cf13901d397eb0962aaad962ed7ab29c48c10d6b2e05",
         "3bc40b7e12f8301104c599763d0d340e1b0adc9458955a77238e312f179e93f5",
         "3e460f4ba806c73918c629780b1914faba0cd64048ccc47e66df683f79e7d4fa",
         "61e70fa6bdabde391be17adc724d06522d218820c9eedf0049ef3a59adc73a96",
         "6b47d8fcf74fffeed13bafc40b9a48217bba54312c3769400059623c74beed03",
-        "805a3e937ac58076cc81e2dbe77c98ed58f5708897a8f0fe354f3255980a633c",
         "90b82e73c49c1b9e74f65c0544577833c4ae0920d110d19f6e5ff3f119c3c2dd",
+        "9499d549c1a56a07ce6b89d6b9cbedb4b20109e0da1539502e18ac630ed35508",
         "9a48a8ac77e468f58b796695fbb2eb4b111e6c643d7f3066fe96a2ddfc7bc1c6",
         "9dfddf3387a9d1cf818683a5cca6c8ee14fb96c9f13bae7583831df1b852ca2c",
         "bc18ee5ebec2a6cc5d282bc7274585c70ffd529d94b6a8d5dfa2fc7a5170ebc1",
         "bc63ce597961bf5fae9dfe38e2831d7c2e8b65364fd545d07a1661ab5ee1f005",
         "c170f7e83d1805c4a94301447b17cfb51dab95a01b0667c439507934e15ca315",
-        "d456c59874d5a1061d5c4bd8577bef6f85d73cb7381dc7866faf29e1d738a522",
         "eb27b161a51eb8050aab8f6551dda7fb9046cde8bb135d2282a4707af6559209",
         "ec8f69f88baeaeb7de60d12eb077aa7483574076cbde2b388f22b4c4e7acf985",
         "ecb816c86b8387ff7ec05fbd8ffea75557e6cdb099ae9e723607a6e411fce520",
         "f1afd839b8a575c6f22eff59c1d1052b4c0a4545a84e9c22b4d99de9df18f4e1",
         "f8ff598c0a6becf24f7722301f995faa2d0099a5d073259f85998403fbde41d9",
-        "fd98b602c2baeb37f7b5d3bb8bc69d748afba5592c340596a8c5929c17633f05",
-        "fecc61b40d92a47cc60fb9d5802e6093c9f8faf1399aa7dc7b022c492d07e0f7"
+        "fd98b602c2baeb37f7b5d3bb8bc69d748afba5592c340596a8c5929c17633f05"
       ],
-      "reveal": "0J7QutGC0Y/QsdGA0YzRgdC60LDRjyDRgNC10LLQvtC70Y7RhtC40Y8="
+      "reveal": "0J7QutGC0Y/QsdGA0YzRgdC60LDRjyDRgNC10LLQvtC70Y7RhtC40Y8=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -329,7 +337,8 @@
         "a55379ba145fb88767d5eaa408eec4c225a4ca08a936f5f0fc4b3814feb63cf3",
         "ff855928d09269f2506bed2879333c4dcebb94204b0410465542842f45060de6"
       ],
-      "reveal": "0JrQvtGB0LzQuNGH0LXRgdC60LjQuSDRgtC10LvQtdGB0LrQvtC/IMKr0KXQsNCx0LHQu8K7"
+      "reveal": "0JrQvtGB0LzQuNGH0LXRgdC60LjQuSDRgtC10LvQtdGB0LrQvtC/IMKr0KXQsNCx0LHQu8K7",
+      "difficulty": "hard"
     }
   ]
 }

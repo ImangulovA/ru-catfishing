@@ -67,7 +67,8 @@
         "7f89bd4fc4586bce8d88147688b3dff05e87efab2115b2daf13d400b8a2572d7",
         "a6762c61b3f4fec204bd60201c29394194a850b8c48482ca127953bd4ad1b9e1"
       ],
-      "reveal": "0JvQtdCyINCi0L7Qu9GB0YLQvtC5"
+      "reveal": "0JvQtdCyINCi0L7Qu9GB0YLQvtC5",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -98,11 +99,12 @@
         "4a8e35ea0dea3e790ea34058657f13ce430495c5bb149e7f6b1b49c4f49fb2f0",
         "a276b994de4c426a9ef81bab4c1a8eed342d46dc957d582c9fc77cfc85e9e0c4",
         "c7abd4dc26cd750f72b87bb9da1b462c07b20c77c4fc299ef12377adc904ed8d",
-        "cf7340321aab77020e27fb56bcc88bdac29be63255320218a6f3f0ee2c296e16",
+        "cbfcda10205e28590eaabb6bb4229818d4c3f7846fe850ce7e36640eaa2e0690",
         "ecf8ad1a5e673ec53d6963a612c81ca3e49a27ed69d499c5eea64a8840f6493c",
         "f3fbacd0359be9f66dfedaf7650b1c31708e49b3fc4cf28fc1144107ae3ced39"
       ],
-      "reveal": "0KHQsNC70YzQstCw0LTQvtGAINCU0LDQu9C4"
+      "reveal": "0KHQsNC70YzQstCw0LTQvtGAINCU0LDQu9C4",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -144,19 +146,19 @@
         "Члены Национальной инженерной академии США"
       ],
       "accept": [
+        "15187d37db53944a7968521b673a9924dc7f4d5341e42af49bf0470f789f9f6c",
         "2a81f3d7cad4504a423d477497b2a657483b467615974a33322aa3805282873c",
         "4061053557f5b16c171e2231443d92600e5e5cd98f4e057905b65454be5f2b5f",
-        "5511df42220f3494ad27559d22d9130b2a001d437479314cbe46808bc028a055",
         "617b56b8d3d5202017bacd8a1ef99ec9640119d79b35c7c8c050aa49e815999d",
         "765bb8bd1c283a9ca62c4d55fcf1701120240f8123e3d058f16323011708bbce",
         "7ff26ca7636fecde95757c88c79117cd5733344dce935994ba0683bd8ae30471",
-        "b96523827e1ac36bad2c32f92a39a67c88aa3a5ef3c6facd4297fcf5d3580db9",
         "bd9e77030374955d8fcbabfd534e3f0ac953dd91bc1ad487275f55cd4f076871",
         "c69c37a22215368503f82a2ec559c4c406ff2c9b22a534c038afdad263ea5e46",
         "f5a56d6c563c88381c5eca8059d9dc090e7cbae324251e8e3cc3e2f353d42f5d",
         "ffae4b57aefcb4a3f513e39df9d4b4e2d70f5d1c9c32e2e5b306860ec4c73bdf"
       ],
-      "reveal": "0J3QuNC7INCQ0YDQvNGB0YLRgNC+0L3Qsw=="
+      "reveal": "0J3QuNC7INCQ0YDQvNGB0YLRgNC+0L3Qsw==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -198,7 +200,8 @@
         "a9fbd0b30836f06de5c839627933ae6ad389ce1c6a3cb05e8b867be64f85cc72",
         "daf40edfbe55b76e78f1d55bf4ff9129c956d2e1cefcad06aa65a76098d586c2"
       ],
-      "reveal": "0JfQstGR0LfQtNC90YvQtSDQstC+0LnQvdGLLiDQrdC/0LjQt9C+0LQgSVY6INCd0L7QstCw0Y8g0L3QsNC00LXQttC00LA="
+      "reveal": "0JfQstGR0LfQtNC90YvQtSDQstC+0LnQvdGLLiDQrdC/0LjQt9C+0LQgSVY6INCd0L7QstCw0Y8g0L3QsNC00LXQttC00LA=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -242,7 +245,8 @@
         "7c7c1e458ba7851974838d83b2ee065bcbdfacdfb5e2a9e635eb81790197be15",
         "c95d134f28e0d09162aceb55518e0940a8047824b8c62f8e387b189c9f99b574"
       ],
-      "reveal": "R3JhbmQgVGhlZnQgQXV0byBW"
+      "reveal": "R3JhbmQgVGhlZnQgQXV0byBW",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -259,7 +263,8 @@
         "f3bf65f4dac758bd558b4dde181f3beecac30e0aee1f52caa8bc4c23bf34d926",
         "f9b8f1b41a8788fa152eeb7a44d5a69c03d584ba53703faf198355dfcddf0ec2"
       ],
-      "reveal": "0JLQu9Cw0YHRgtC10LvQuNC9INC60L7Qu9C10YYgKNGA0L7QvNCw0L0p"
+      "reveal": "0JLQu9Cw0YHRgtC10LvQuNC9INC60L7Qu9C10YYgKNGA0L7QvNCw0L0p",
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -273,7 +278,8 @@
         "6081b3564a86a91590755b5e856a558b04f8d35dc44a93f5bbd546cf7b58bac6",
         "d21ac862d79f8c4c5ab15e7dd2582674ed05f82b4af44052a2fe0ea4f2cb543f"
       ],
-      "reveal": "0J3QvtGH0L3QvtC5INC00L7Qt9C+0YAgKNC60LDRgNGC0LjQvdCwKQ=="
+      "reveal": "0J3QvtGH0L3QvtC5INC00L7Qt9C+0YAgKNC60LDRgNGC0LjQvdCwKQ==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -292,7 +298,8 @@
         "7d16d5cde05fcadcd39e64f91afe8de6ba455561865d9e36d4c2e32ffc88b343",
         "e3c3ea2c2382ae457cce61e3edcd4674c95c3041e8ac1dcfe2f6054eb902452f"
       ],
-      "reveal": "0J/QuNC30LDQvdGB0LrQsNGPINCx0LDRiNC90Y8="
+      "reveal": "0J/QuNC30LDQvdGB0LrQsNGPINCx0LDRiNC90Y8=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -318,7 +325,8 @@
         "bb383fd4a49fb8cf74db5fd279e4a8ef87c6e8b70d8b2d0d4e99ef51796945e3",
         "db39bd1f33382a676afa9f58943e9a0b9a155bddc8cc6bdb7ad77a60a74118ac"
       ],
-      "reveal": "0JrQsNGA0LjQsdGB0LrQuNC5INC60YDQuNC30LjRgQ=="
+      "reveal": "0JrQsNGA0LjQsdGB0LrQuNC5INC60YDQuNC30LjRgQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -341,7 +349,8 @@
         "cd17389a1715e4c303dd06c1967d5e2b8f8832f9e68ca4b10de0a23813eb8bd1",
         "ee68c7f4b6c0aff865dc1036c0572868898ac61a7ff0536a222beece6ced37b2"
       ],
-      "reveal": "0JDRgNGF0LXQvtC/0YLQtdGA0LjQutGB"
+      "reveal": "0JDRgNGF0LXQvtC/0YLQtdGA0LjQutGB",
+      "difficulty": "medium"
     }
   ]
 }

@@ -22,7 +22,7 @@
         "Либреттисты Российской империи",
         "Мемуаристы Российской империи",
         "Монархи Европы XVIII века",
-        "Памятник Тысячелетие России",
+        "Памятник «Тысячелетие России»",
         "Писательницы России XVIII века",
         "Полковники (Российская империя)",
         "Похороненные в Петропавловском соборе",
@@ -40,9 +40,7 @@
         "Члены Прусской академии наук"
       ],
       "accept": [
-        "0a478fcd6816dcbfacd7a110f3ee26e1af16e0e01bda8a18112fcd2f5a9de460",
         "132b057980ac128f9957768c46e2d88ca0bdac5c8222a2f69440676cfed16141",
-        "1863995b489ff1b94c42231d393f153d598314e9320a36d83cf97fa0d4f80c99",
         "19bbb3b841fcc19f30262e433294003d3e0cb55f4f6ba1566c8acf897e5844ed",
         "30d592c7f2ed2e15b203bae93a854c09eb8f46f10c2495a131c697439ee3f72a",
         "41c2f423a26794715a048abae2831241ca3d5f4465b21cfc4ea033f53e603a1e",
@@ -53,11 +51,11 @@
         "d9cf7bdef680154952a548f5ccf03343843f8117d809844788987936211a9ac9",
         "de7d1b721a1e0632b7cf04edf5032c8ecffa9f9a08492152b926f1a5a7e765d7",
         "e43c5842da3c74ea5210580ae953c590dedf4900ca09d993c3dea4624a7ebcb2",
-        "e9e3f2eaf263972f893f17302ecd2dc0ba41d170c265981475dc1f0c29252f2d",
         "eafed82fa8003783bbf2af4fc47e1f9ba28f8071e32fc04b32c2ece4f5e5d837",
         "f548c987a5962f32999ea4b07e5542cff0c8744831fc6750a2083a41d27cafd5"
       ],
-      "reveal": "0JXQutCw0YLQtdGA0LjQvdCwIElJ"
+      "reveal": "0JXQutCw0YLQtdGA0LjQvdCwIElJ",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -87,7 +85,8 @@
         "d9c124b514b65e1ed335e4c398201fd0ef16050cef8f24c3ac932870e9548f55",
         "dad7a3fd24992d938dd774ca683d7c74cc0810fbb3af56e2707b4ac8563ddf18"
       ],
-      "reveal": "0KXRgNC40YHRgtC+0YTQvtGAINCa0L7Qu9GD0LzQsQ=="
+      "reveal": "0KXRgNC40YHRgtC+0YTQvtGAINCa0L7Qu9GD0LzQsQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -138,7 +137,8 @@
         "f0040a8d22fda201abec864b0fa0e769ab2cd81354e91f3502bdda89ab8007d1",
         "f066239d25e787935804f5ebb9376a024d858cab8ef3d58239c40c9f0ef5d9fe"
       ],
-      "reveal": "0JzQvtGF0LDQvNC80LXQtCDQkNC70Lg="
+      "reveal": "0JzQvtGF0LDQvNC80LXQtCDQkNC70Lg=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -160,7 +160,8 @@
         "b0ecec59b25f356b9e13da60f6a5ded23663a4bd2e39a692329e61f1bf9f7faf",
         "b174820a51aeb42217a0718c62d2f726be1b4e5e91f220ab555bf739013aedcd"
       ],
-      "reveal": "0KHQtdC80Ywg0YHQsNC80YPRgNCw0LXQsg=="
+      "reveal": "0KHQtdC80Ywg0YHQsNC80YPRgNCw0LXQsg==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -173,7 +174,8 @@
         "93263ee4a626804526709862c3fe34dfddf1c2888aea66cc8679ec19bb47be87",
         "d4603c71a6e10af4a5594149620fe371ff80847cf42737ad1c85f9f3f2df2bd1"
       ],
-      "reveal": "0KHQsNC/0ZHRgCAo0LjQs9GA0LAp"
+      "reveal": "0KHQsNC/0ZHRgCAo0LjQs9GA0LAp",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -190,7 +192,8 @@
         "09cc1b93ceee06fd6a91e9cfb15dce3aaa4bab266766ecab59b99bf92ade8094",
         "8e99064522fc3b988b95eaa36f3943f47735488e310aed38297d119f3a678ff9"
       ],
-      "reveal": "0JvQvtC70LjRgtCwICjRgNC+0LzQsNC9KQ=="
+      "reveal": "0JvQvtC70LjRgtCwICjRgNC+0LzQsNC9KQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -204,7 +207,8 @@
         "7859c2080bd04f2710d9942f6566b0a27cb8f8847f9930f6102d35f0faf4f5c4",
         "9dc0c18c47e4bf38506326e929807cd754697e5a3e43e947d71ef328ec4ed647"
       ],
-      "reveal": "0JTQtdCy0L7Rh9C60LAg0YEg0L/QtdGA0YHQuNC60LDQvNC4"
+      "reveal": "0JTQtdCy0L7Rh9C60LAg0YEg0L/QtdGA0YHQuNC60LDQvNC4",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -226,10 +230,11 @@
         "27b6aeb951c856dc8cb01ca7b4029995001a6e0014e0d479a61637ce6dfc2394",
         "7964fb2c58c9f30823ef1d4baec446db5b575edb6a3e576341eabf8b78eb7fd7",
         "a011f9aec3777f71af0ef69b031b67e23c2365a1af18494df95c3443c0d54bfe",
-        "cfed54f83e85fdf1ea387d4f9a4aef9059db998b0ba4cf57bd3aafc3bf3c27c9",
+        "b3972acea4e5a9ec0768720473a742ebb2f633cbafa256e1280a85cc7cf4b01a",
         "f40c0e838f0d5c279edd4cc19b9d067629b12bce5ed66ddd204729f79ac16495"
       ],
-      "reveal": "0JLQtdGA0YHQsNC70Yw="
+      "reveal": "0JLQtdGA0YHQsNC70Yw=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -242,14 +247,15 @@
         "Экономические циклы"
       ],
       "accept": [
+        "0463e289ad2711a8907c4a7832a8bef9615e6551118e69c453ad7a54643d1b89",
         "09434f144556f1c53a8e7762423f200cf470d046fea15e7fc2dbee15bf765bf7",
-        "51214fd03ff5313944cb92d41d51f895b91b1162350df65cf2227f504e44d78e",
         "51a5b87c2b5695cc36255f922c8ac36551167a0638088915b2105b5f0b7b466b",
         "b0a778110d0a27b0f284d7dd3d27e76ed657cfc948566e6f2ea97019a1b0e832",
-        "b680b159d9db0b2b57276cbb04dbd9f49300bfae186c3b18c3b31043d62682c5",
+        "eecf1c2bbfcef437450de4f033d6d1574d907c26a334bad2da6b32a0fb0ccf48",
         "eef43385bd6ede32621c3c736f21730264796f52802f4aa311478c9fa265a9a0"
       ],
-      "reveal": "0JLQtdC70LjQutCw0Y8g0LTQtdC/0YDQtdGB0YHQuNGP"
+      "reveal": "0JLQtdC70LjQutCw0Y8g0LTQtdC/0YDQtdGB0YHQuNGP",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -271,7 +277,8 @@
         "d4c549a6ed33107b98ebfc6e47c9c7499597dd346d42b8cbb28a1de062bdd776",
         "ea66983c9ec11fb1ffdb8c502c9160cb853b51e252ba6ac10279e37a663c403b"
       ],
-      "reveal": "0KPRgtC60L7QvdC+0YE="
+      "reveal": "0KPRgtC60L7QvdC+0YE=",
+      "difficulty": "easy"
     }
   ]
 }

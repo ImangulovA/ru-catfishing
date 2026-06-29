@@ -10,12 +10,13 @@
       ],
       "accept": [
         "04437b07453005f02f5df52c9a89b4e60e4b537c8362d555791d1e7f9d028e29",
-        "58c8cfb8f7205c4ef6c4cc2558a3138cd3d227e05d0324d8d362ed3d31a3aee3",
         "7cc8d55162de413f9d52fbc11c1395bc2b3bb71425a7313c1004b26cf4c1b4fc",
+        "866c1bdcee8ca3c759a1609dc47d6425f3285c0db2d7f7337d0051b1e2d28c1b",
         "c9ba012a46c3fed512f6f48bb49ffd776fe889ed75f03d7377e79cc020167591",
         "faa16135ec5b6d92f50ce62c675dbeb7986dc3476b367db118b4d669527e0a8c"
       ],
-      "reveal": "0J/RgNC10YHRgtGD0L/Qu9C10L3QuNC1INC4INC90LDQutCw0LfQsNC90LjQtQ=="
+      "reveal": "0J/RgNC10YHRgtGD0L/Qu9C10L3QuNC1INC4INC90LDQutCw0LfQsNC90LjQtQ==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -31,7 +32,8 @@
         "2f501595d6f227955686aa8d6bb70e0682acf6682a5cd5c83eb56f8d2e29ba58",
         "520dccedff681e38cb824d0fb33a85db96d55b680564fdb26a8e17b73db5ca18"
       ],
-      "reveal": "0JrRgNC40LogKNC60LDRgNGC0LjQvdCwKQ=="
+      "reveal": "0JrRgNC40LogKNC60LDRgNGC0LjQvdCwKQ==",
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -46,7 +48,8 @@
         "5b9542a4bf7d0d49f379b7e4e7717eb308e657cf959788cf6dd17f3d8afc7606",
         "8c2a25260209b2db50e9d7c369876ddeeaebde2472a38426ca4907fbe4135921"
       ],
-      "reveal": "0KLQuNGC0LDQvdC40Lo="
+      "reveal": "0KLQuNGC0LDQvdC40Lo=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -127,10 +130,10 @@
         "5191274ae923d118114fcbb536e39eaa47e1466858b884454517ad0613c9cd08",
         "79ea9358181884637163fbd61c06b22150f429636bdded87bdc70067db2396a4",
         "a73d1f560278648b406bcb14ff808d620d7ddffc9a78f5dbf83c2ca622bca154",
-        "b3de298fc1dd3007b7c95be8bec4386b0bd0a44091f3657124240515cdd8c017",
-        "ff2155f1dded3de6c7e073788ad9b86b622aec4a298858013705261bff0aff19"
+        "b3de298fc1dd3007b7c95be8bec4386b0bd0a44091f3657124240515cdd8c017"
       ],
-      "reveal": "0JDQu9GM0LHQtdGA0YIg0K3QudC90YjRgtC10LnQvQ=="
+      "reveal": "0JDQu9GM0LHQtdGA0YIg0K3QudC90YjRgtC10LnQvQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -184,7 +187,8 @@
         "e22c689569dac68156e32de3e2ef7ac3d65884bfa4c4f105c5d4f3bb373b9ada",
         "ece5f505fcb1aa4e6cb3960f8a7e8b57dfb7078a984eca2c7302f8092a1b0832"
       ],
-      "reveal": "0KfQsNGA0LvRjNC3INCU0LDRgNCy0LjQvQ=="
+      "reveal": "0KfQsNGA0LvRjNC3INCU0LDRgNCy0LjQvQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -218,7 +222,8 @@
         "bd9ade20c29160f85e21efeddc12335601e2c3e667eac2b81fc7a5be6509cf04",
         "f0ea2ce2e359cf7ea7a488855877e6609eb6c69f9f72a964b203b1396982b6e9"
       ],
-      "reveal": "0JzQsNGC0YDQuNGG0LAgKNGE0LjQu9GM0Lwp"
+      "reveal": "0JzQsNGC0YDQuNGG0LAgKNGE0LjQu9GM0Lwp",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -234,7 +239,8 @@
         "cf50b29a59e9539bee0be16e94f5a2e29f306806528ca3acd826d9dd8b150938",
         "f82b355e9997f0214736945484622b704ca949ae6ca72f9212b77b0fdc9b3bcc"
       ],
-      "reveal": "0J/RgNC40LrQu9GO0YfQtdC90LjRjyDQotC+0LzQsCDQodC+0LnQtdGA0LA="
+      "reveal": "0J/RgNC40LrQu9GO0YfQtdC90LjRjyDQotC+0LzQsCDQodC+0LnQtdGA0LA=",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -250,7 +256,8 @@
         "030e8d5a2d1b7921543d7b009bab806a8cbc7d6b15aa390587767d2d871acf81",
         "fd9481bcd9154a7bd571ca0a3b421fa6210e22836447338bfe3ab26dac3aa2c6"
       ],
-      "reveal": "0KLQsNC50L3QsNGPINCy0LXRh9C10YDRjyAo0JvQtdC+0L3QsNGA0LTQviDQtNCwINCS0LjQvdGH0Lgp"
+      "reveal": "0KLQsNC50L3QsNGPINCy0LXRh9C10YDRjyAo0JvQtdC+0L3QsNGA0LTQviDQtNCwINCS0LjQvdGH0Lgp",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -268,7 +275,8 @@
         "808f6f8b567a15a892a1c6e87a10b881d39a14ca1699ff728809ccfd5f0bb74a",
         "fc64ecc258e21c4f23f8d66b9ff21cfac961f0434c08f9d538dd2c45333efeb1"
       ],
-      "reveal": "0K3QudGE0LXQu9C10LLQsCDQsdCw0YjQvdGP"
+      "reveal": "0K3QudGE0LXQu9C10LLQsCDQsdCw0YjQvdGP",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -288,7 +296,8 @@
         "ccafe23a8a51e281572792a79660849894f55530b6ea695e2a51b8719d79be61",
         "e0bf806e72348d68c9e0384dd2c323637972c04bfe07acd088e61f08e70b96ba"
       ],
-      "reveal": "0KTRgNCw0L3RhtGD0LfRgdC60LDRjyDRgNC10LLQvtC70Y7RhtC40Y8="
+      "reveal": "0KTRgNCw0L3RhtGD0LfRgdC60LDRjyDRgNC10LLQvtC70Y7RhtC40Y8=",
+      "difficulty": "hard"
     }
   ]
 }

@@ -47,7 +47,8 @@
         "c341aa75bc45d62e4011dba650b99fb73229d6486d1a902493e6336e63e076a4",
         "fce2a26dd80cc3b10a20a1c92b0eff34b22170a17d71e20b96f5546490b2235e"
       ],
-      "reveal": "0JzQsNGF0LDRgtC80LAg0JPQsNC90LTQuA=="
+      "reveal": "0JzQsNGF0LDRgtC80LAg0JPQsNC90LTQuA==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -192,7 +193,8 @@
         "c6a8fe82dd48d50439d44b154436be96e22e2313aef35a5c6c23332c95949937",
         "eda002bf9cb508c127e93971571cc978f88cd6f6d606d82361ec608f64bd56cf"
       ],
-      "reveal": "0J3QtdC70YzRgdC+0L0g0JzQsNC90LTQtdC70LA="
+      "reveal": "0J3QtdC70YzRgdC+0L0g0JzQsNC90LTQtdC70LA=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -232,7 +234,8 @@
         "6a005a290b080ffca8133d6d1d1268f38d96bf5b9be5b1403e5ffa9a6d333746",
         "7167c80247c5754602b5852811918d1e5c8ac0f8fbfdeba0adf22106d690d1ac"
       ],
-      "reveal": "0JHRgNGO0YEg0JvQuA=="
+      "reveal": "0JHRgNGO0YEg0JvQuA==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -268,7 +271,8 @@
         "9057bcec0781c0b7a97bdc1f5030a278f37e64f0c5e443f91da944b396267535",
         "ec875afa707bc4bf87e83b7ab4c2ed3d7c69784c989c4e04c74c730445e32df2"
       ],
-      "reveal": "0JLQu9Cw0YHRgtC10LvQuNC9INC60L7Qu9C10YY6INCR0YDQsNGC0YHRgtCy0L4g0JrQvtC70YzRhtCw"
+      "reveal": "0JLQu9Cw0YHRgtC10LvQuNC9INC60L7Qu9C10YY6INCR0YDQsNGC0YHRgtCy0L4g0JrQvtC70YzRhtCw",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -306,7 +310,8 @@
         "19a1337f737cb68ec07acd6634132b1bad3d13284b013de3c22198e721a89870",
         "58b56d00d52379dc0899623f15d5a1633fbeb8801c439b4ebb055b9cb70b42a9"
       ],
-      "reveal": "U3BhY2UgSW52YWRlcnM="
+      "reveal": "U3BhY2UgSW52YWRlcnM=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -321,12 +326,13 @@
         "Романы 1719 года"
       ],
       "accept": [
-        "3354b2f3501e0d7b2e7dadd3b9821955935f3cd6499755c719ae5d23e981b230",
+        "325c91ad6cfc9af7217aa80215651753c3810d02035178dc36b3f568c330a385",
         "56f6c39dcab1cc20fa01c8b755f30ebbea19c51af6f84971ae8a96bb2df6f764",
         "6c29ddc04ce52f2ee417332f8f6aa9ab5bda26e60bc94d1a14c08c522b2e64fc",
         "be2090ad9357a931730b2a6baa16e361e7f58564d862ae9346d2e203c526be7e"
       ],
-      "reveal": "0KDQvtCx0LjQvdC30L7QvSDQmtGA0YPQt9C+"
+      "reveal": "0KDQvtCx0LjQvdC30L7QvSDQmtGA0YPQt9C+",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -345,7 +351,8 @@
         "9ae106db5e3be5b503feeda551ed13209127d5f1cb2de1d9071b6170a1af2675",
         "f4ef23f93fa274d8ca3b227731751fdefd97ddfa5291fe133ebe227150a02825"
       ],
-      "reveal": "0K/QstC70LXQvdC40LUg0KXRgNC40YHRgtCwINC90LDRgNC+0LTRgw=="
+      "reveal": "0K/QstC70LXQvdC40LUg0KXRgNC40YHRgtCwINC90LDRgNC+0LTRgw==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -358,12 +365,13 @@
       ],
       "accept": [
         "2f22b7d426bc2c8989d8727808639c2e1df15e48d86c68f0ec67dc96594b36e4",
+        "445413e29ebca87bb0bab6e9fae5d154dc12c3d5584f7b8446fc7f4069beab1e",
         "4b9638d40f687591d9c5dc4764e1eb044690a2da0ebd8e5898a866125cbb494a",
-        "77a1219f7744fe07b98b3540e2215abbe172f1ad24630fc4481988964741ecfd",
         "d5e2b8773d873cf4906a032458673db22579e9aa5e9c75bdcb603a8274ded0c5",
         "f3b34c0d4cf697590822eace20d96aa8e484354bca393c42535140ecf2385c0f"
       ],
-      "reveal": "0JHQvtC70YzRiNC+0Lkg0YHRhNC40L3QutGB"
+      "reveal": "0JHQvtC70YzRiNC+0Lkg0YHRhNC40L3QutGB",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -381,7 +389,8 @@
         "50493064810c1d5195238f7b4a5b135e861f5ae6303e0ea511b43dab04960d18",
         "ce9b06836853fca5c4e4d367c83c0a0d2762127f91f3b8828414b3e1a5c24e08"
       ],
-      "reveal": "0JLQt9GP0YLQuNC1INCR0LDRgdGC0LjQu9C40Lg="
+      "reveal": "0JLQt9GP0YLQuNC1INCR0LDRgdGC0LjQu9C40Lg=",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -396,7 +405,8 @@
         "ad9d9f3a14bcdaf3f122737fdf5e7dfb0cbfbeec3f75bbfac56b3fb122fa5e97",
         "b540780115e12357de02f254d6d316f17f9921fd0ef2efe381f0514e7bb21eef"
       ],
-      "reveal": "0J3QuNCw0LPQsNGA0YHQutC40Lkg0LLQvtC00L7Qv9Cw0LQ="
+      "reveal": "0J3QuNCw0LPQsNGA0YHQutC40Lkg0LLQvtC00L7Qv9Cw0LQ=",
+      "difficulty": "medium"
     }
   ]
 }

@@ -34,7 +34,7 @@ from build_pool import (
     is_service,
     title_tokens,
 )
-from make_day import derive_surname, norm
+from make_day import derive_surname, expand_forms, norm
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -66,7 +66,7 @@ def parse_txt(path):
     return day_value, puzzles
 
 
-def build_puzzle(entry):
+def build_puzzle(entry, difficulty="medium"):
     """Fetch categories, filter, and return (strict_puzzle, preview_dict)."""
     title = entry["title"]
     cats = fetch_categories(title)
@@ -79,30 +79,34 @@ def build_puzzle(entry):
         c for c in cats if not is_service(c) and not is_giveaway(c, tokens)
     )
 
-    forms = {norm(title)} | {norm(a) for a in entry["accept"]}
+    # Collect every RAW accepted name (title, curated aliases, en title,
+    # redirects), each expanded to its short form, THEN norm() them all, so the
+    # "core" title is accepted (Извержение Везувия <- ...в 79 году) and aliases
+    # get the same leniency.
+    raws = set(expand_forms(title))
+    for alias in entry["accept"]:
+        raws |= expand_forms(alias)
+    en = fetch_langlink(title, "en")
+    if en:
+        raws |= expand_forms(en)
+    for red in fetch_redirects(title):
+        raws |= expand_forms(red)
+    forms = {norm(r) for r in raws}
+
     sn = derive_surname(title, useful)
     if sn:
         forms.add(norm(sn))
-
-    # Cross-language acceptance: also accept the English-Wikipedia title (and its
-    # surname for persons), so "Conan Doyle" works as well as "Конан Дойль".
-    en = fetch_langlink(title, "en")
     if en:
-        forms.add(norm(en))
         en_sn = derive_surname(en, useful)
         if en_sn:
             forms.add(norm(en_sn))
-
-    # Redirect aliases: every ru.wiki redirect to the article is an accepted
-    # alternative name/spelling (real names, Latin binomials, variants).
-    for red in fetch_redirects(title):
-        forms.add(norm(red))
 
     forms.discard("")  # drop empties (emoji/punctuation-only redirects, etc.)
     strict = {
         "categories": useful,
         "accept": sorted(sha256(f) for f in forms),
         "reveal": b64(title),
+        "difficulty": difficulty,
     }
     preview = {"title": title, "n_cats": len(useful), "categories": useful}
     return strict, preview

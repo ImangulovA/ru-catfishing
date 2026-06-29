@@ -115,7 +115,8 @@
         "c8422042462561d60191e23fe21e3e62d0074fc05948cb2bc4aa960ba02c9528",
         "e7d989de80db06f7a605c25afc4f7d57280102619aa183e56c94e6e56628d358"
       ],
-      "reveal": "0KPQuNC90YHRgtC+0L0g0KfQtdGA0YfQuNC70LvRjA=="
+      "reveal": "0KPQuNC90YHRgtC+0L0g0KfQtdGA0YfQuNC70LvRjA==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -149,11 +150,11 @@
         "2329e18d83560f4958c2965a362bb30772fa20b4a3c9232a3cd2ae4602fcde4d",
         "4cf66da41f73609e9af5d91061abe1901b477a90a219e898c05bca44bb15a6e8",
         "59e9a54c68a7a0f9c74b441bfe2ed6dd592ce8351468c675aead17df9a377aad",
-        "5cbddafbf82aa253efc216843e1dddafd377035dc916e3f0bcaa511bf95a58ea",
         "8f30191ce47d82ce6b3c0688bcf4130e3c590af094e3e10efe66dd5ba39ce5b2",
         "d577eaecc7967c1b74e404d29ebc612172e34425ca263d5073656de1833030d1"
       ],
-      "reveal": "0JDQstGA0LDQsNC8INCb0LjQvdC60L7Qu9GM0L0="
+      "reveal": "0JDQstGA0LDQsNC8INCb0LjQvdC60L7Qu9GM0L0=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -186,13 +187,13 @@
       ],
       "accept": [
         "44212602db9c86f956dd613ff1bbfb31bb6921a6dfb435267eebbfc9b8e551cf",
-        "9024a7f3834917f0a246cd8bc796fc2ec4ac0456603ac0bf925097a5644b7dda",
         "b85c1508d7aec14576f689152cd54529ab27e6a76124e7158205408a8f8ad1f1",
         "b9ce099b0f60845727a8d79e043a3c83525da3d747fd3fe9a963feb21e6d30d7",
         "ca6aa4f47378213a2b9d834f244fda0fc46301017f4e6d262bc17a272fad3cc5",
         "ef4a9125c1883c531c7be9a3b33592002e2a875888aece2087152b315a25125f"
       ],
-      "reveal": "0J7QtNGA0Lgg0KXQtdC/0LHRkdGA0L0="
+      "reveal": "0J7QtNGA0Lgg0KXQtdC/0LHRkdGA0L0=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -220,24 +221,28 @@
         "7c34b7f986aa9bb15689247691d5582381a81d406e7d5eb3a7a166a1d46876f0",
         "964f870a38fd582cdcb737fc57a0f6d395db077b500175e5d27119689b62bfeb"
       ],
-      "reveal": "0KPQvdC10YHRkdC90L3Ri9C1INCy0LXRgtGA0L7QvCAo0YTQuNC70YzQvCk="
+      "reveal": "0KPQvdC10YHRkdC90L3Ri9C1INCy0LXRgtGA0L7QvCAo0YTQuNC70YzQvCk=",
+      "difficulty": "easy"
     },
     {
       "categories": [
-        "Action RPG",
         "Компьютерные игры в жанре тёмного фэнтези",
         "Компьютерные игры с возможностью изменения внешнего вида персонажа",
         "Компьютерные игры с главным героем с выбираемым гендером",
         "Компьютерные игры с трёхмерной графикой",
         "Компьютерные игры, разработанные FromSoftware",
-        "Серии компьютерных игр"
+        "Компьютерные игры, разработанные в Японии",
+        "Серии компьютерных игр",
+        "Серии компьютерных игр в жанре action RPG",
+        "Серии компьютерных игр, появившиеся в 2011 году"
       ],
       "accept": [
         "2c0e2fd1410afd485181930d389bf17f8a2dbd8e332d782ef9812e63ea80365a",
         "54a7c25dd3c81d3acaff5ce76480ff06e285a2d892c6e0492098a6206b78d278",
         "db0f8efa7ccb8e5e41006c2ba473e21a36dc84f69bdde83f168c7790031fb056"
       ],
-      "reveal": "RGFyayBTb3Vscw=="
+      "reveal": "RGFyayBTb3Vscw==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -253,7 +258,8 @@
         "3474eb7bec96a5275cebcaff951780950d3f68d212919d95315911be337b2ac1",
         "76452ba625f3cbdc89ada7463ae78983620a2aa6700adae79133c461dd34ade1"
       ],
-      "reveal": "0JHQvtC20LXRgdGC0LLQtdC90L3QsNGPINC60L7QvNC10LTQuNGP"
+      "reveal": "0JHQvtC20LXRgdGC0LLQtdC90L3QsNGPINC60L7QvNC10LTQuNGP",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -269,7 +275,8 @@
         "5c3d8f66531c4dccf0d33b0314eea92ffa0a939ed720ee19c1373b17b5d828cd",
         "b5e18dc7e76ad9e55cc0a577e2b32a100109c28c2cc5a1406b05ee677cd2ec44"
       ],
-      "reveal": "0JHQvtGP0YDRi9C90Y8g0JzQvtGA0L7Qt9C+0LLQsCAo0LrQsNGA0YLQuNC90LAp"
+      "reveal": "0JHQvtGP0YDRi9C90Y8g0JzQvtGA0L7Qt9C+0LLQsCAo0LrQsNGA0YLQuNC90LAp",
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -291,7 +298,8 @@
         "76aea2801a6d8472e496bce7410ea1fda648b0b8c36323200a991c5cff7e1dd3",
         "fe598078658a01a34ce3110362ed653519b13cf4f67a4b55ba8d5d428121e72f"
       ],
-      "reveal": "0K3QstC10YDQtdGB0YI="
+      "reveal": "0K3QstC10YDQtdGB0YI=",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -311,22 +319,24 @@
       ],
       "accept": [
         "044dd1f05b211d5944e41d3c917a6c206c6458500f148eef3b2a380115a789ef",
-        "1f8ac849e7267713dc8fb25c2fa6fe530fc2c560111263e3b96502a657b35f65",
         "247d08972e63d9878632275a0381f8ba6f1f0cb69c45914f156a79ca0e18ddb8",
         "2d04793d5e657537a484395f2957f60625bf60d93f7ceb62f1929713cd066714",
-        "2e1e4b571e8e9cec51392f04a23617026f49b3f37e5ceac768a85630433ce5df",
         "37d901f0ac22887f8766c0fc9d28007235fe822243ac59140921cf7489e83a3c",
-        "3aef7186dd3784f684e8083c2f95a6299411c65afbbebf8fc8752feed4bbd7ec",
-        "5e7addda325c044f94de6a04f90ab576b549962d620bc8f2cea6f28dce0a3408",
-        "63f0cb1f4bbb52ba295c48b03804229736cb12a3ae180c777596f566b3b5f65f",
-        "86cc7d8d462d444f96f82647d7381c468831fd0ef7d9187dc190219031a5d411",
+        "4f5214ac6f9d80da8e99e986c728ed521950fc2566897d4a73b04a3dfacd207a",
+        "959f1960bd2f1e1e4d711d76ef0ec741bf95262789906885f5737e7bbc0d0a41",
+        "a0b55e827293b07b81a4f8c4d4a2a84c259ff704dc814d926fa77b9e7b6e1f03",
+        "a1aa4a8052f815ac4bfccb45f84f5102b065278cd7a401544ea1acd1d2dd9b2a",
+        "a8fc7a639cf75b65978a6d5c9e1a18b3101ce1d9209a17b480019402aed06465",
         "b20e282d5678faff4e3481f7c54fcd2c5c620d574ee24dc05e86e7bb1d264940",
-        "e2db29ea13294472857252fff812ae19ff4ec114735bde1c0568a32dc1a1f26b",
+        "c63fe30527cee138ea7544743159d33200d32249056d23cc8168581dbe9c5ee1",
+        "d9e9f0f59876cb661d901eae836bab251f0ca0996d9329d1cde6d3dd7883de87",
         "e98cee9084fcd7b9c688cd53c672d5be7e2754ea093b3550fcefc53847e3f34f",
         "ee55e84e9b23f62b84fcaeee19804a039b829d34b0e7a122547be7efc251c37d",
-        "faf9b43224278359d0240242377c98befb564adf81c92716330bb62ea625dd8d"
+        "eefdc0b86fa28e79b54ae835136baf7d380ad489c837d3e6e2920ed1f52e31fd",
+        "f00c62f00d740ead15f499a9722941bb96534a4ca5ae89b3f35c8b4de05b3935"
       ],
-      "reveal": "0JDRgtC+0LzQvdGL0LUg0LHQvtC80LHQsNGA0LTQuNGA0L7QstC60Lgg0KXQuNGA0L7RgdC40LzRiyDQuCDQndCw0LPQsNGB0LDQutC4"
+      "reveal": "0JDRgtC+0LzQvdGL0LUg0LHQvtC80LHQsNGA0LTQuNGA0L7QstC60Lgg0KXQuNGA0L7RgdC40LzRiyDQuCDQndCw0LPQsNGB0LDQutC4",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -346,7 +356,8 @@
         "c949e76da6ff97c337be36b25b4ced8690607cb6f99e0ca30b638419a55f70e2",
         "dc7e81d93808cd6927c33c64affb4059b6005e181c4df3ebe0167a149b1ead12"
       ],
-      "reveal": "0JHQvtC70YzRiNCw0Y8g0L/QsNC90LTQsA=="
+      "reveal": "0JHQvtC70YzRiNCw0Y8g0L/QsNC90LTQsA==",
+      "difficulty": "medium"
     }
   ]
 }

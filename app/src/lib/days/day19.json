@@ -12,7 +12,6 @@
         "Писатели Русского государства",
         "Похороненные в Архангельском соборе (Московский Кремль)",
         "Правители XVI века",
-        "Родившиеся 15 августа",
         "Родившиеся 25 августа",
         "Родившиеся в 1530 году",
         "Родившиеся в Коломенском",
@@ -28,6 +27,7 @@
       ],
       "accept": [
         "06a4f8760a39ca8e77aee588e0d75f4ea67926ac1e55d5e13efad29b7efcb111",
+        "08a891a2a0a20b6c9d5f97f67a3cfc2e6b36762cb0c4daf6f6d81353cb57f695",
         "0e0983aa626884d0ef311d7f1cff8f5995fede59ad7202b75594e35c246fc60a",
         "1270479b01185edca4f87b8e2152cfb787eafaf4f62bfd560573d05ab7926e67",
         "1f8e1e9021f2dd43bc14f272b0af4ed5c80c7c580c04100aaa165098a5fdef6e",
@@ -42,7 +42,6 @@
         "9913cf2994366dc257e5538c375ebfa96545aa4c74ab4eb7de96e2406b8b721c",
         "ad83586691fb2de977247536d96525a6fb65f43769cbec1f6ce7c231457d0311",
         "b00d194165561b63ed127e2bc0809d87001cc0d0cbfbe2528ae390d74575afe9",
-        "b0c6a74411806cfacc95f291057226f8b78524fe73100774a6c5f4a2dffb313b",
         "bb190824486c7bafb05d40ab634b06a8663c45254a5de72f1aeee50a78f4c228",
         "bf83828f1e3e62ddbf90dab38e642d37a8c4f19f58c9d83e069b21caa4f56d87",
         "de22eda0200210c81d8c7d0ea0bbb1858466fc6848a53fb8e6e675dc06dbafe9",
@@ -51,7 +50,8 @@
         "ed59316a908cd8261a5e652720341483a8554820c1b401e3e62b1857da24c5ca",
         "f09991eb6d0091ba0d6ff35266e3ddaad539e0d3e7e445a50cbdcc22c331f35d"
       ],
-      "reveal": "0JjQstCw0L0g0JPRgNC+0LfQvdGL0Lk="
+      "reveal": "0JjQstCw0L0g0JPRgNC+0LfQvdGL0Lk=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -66,7 +66,7 @@
         "Монархи Европы XVII века",
         "Монархи Европы XVIII века",
         "Основатели городов",
-        "Памятник Тысячелетие России",
+        "Памятник «Тысячелетие России»",
         "Персоналии:Санкт-Петербург",
         "Родившиеся 9 июня",
         "Родившиеся в 1672 году",
@@ -108,7 +108,8 @@
         "e569eca07bc56e27fc2b93a55ef4e7cb2d7d20b999911072a898530e6932c44a",
         "e9bd8a9cefa8db903b65d87c3b1747ed89519ab611f1d4663afb09db7f99a080"
       ],
-      "reveal": "0J/RkdGC0YAgSQ=="
+      "reveal": "0J/RkdGC0YAgSQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -152,7 +153,8 @@
         "d8f42a575c6cf0b06a6c58b9bdda87261d946612d1e5041c74a158f4c1be7ec5",
         "eb02d2bd12806bb847032cd996b55733836ac0d295a4545f862f492ecca668ff"
       ],
-      "reveal": "0JTQuNC10LPQviDQnNCw0YDQsNC00L7QvdCw"
+      "reveal": "0JTQuNC10LPQviDQnNCw0YDQsNC00L7QvdCw",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -178,7 +180,8 @@
         "53aed8012046dfe92f1866daa9156ee5eda7f79b896386033f03b0a46cee6abd",
         "de19e989a8171ed406d12a407c9f0fad539ebac69323e19d0f31edd5a0e62ccf"
       ],
-      "reveal": "0JDQv9C+0LrQsNC70LjQv9GB0LjRgSDRgdC10LPQvtC00L3Rjw=="
+      "reveal": "0JDQv9C+0LrQsNC70LjQv9GB0LjRgSDRgdC10LPQvtC00L3Rjw==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -206,7 +209,8 @@
         "664f10307d0fc1b5d88af3fe09ed347ff494d0a7123d34eb367a69f16f9d8f40",
         "a9bfb6a9d43e153e393953649716d3ace22033796c3a24756efb33188745f629"
       ],
-      "reveal": "QW1vbmcgVXM="
+      "reveal": "QW1vbmcgVXM=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -221,13 +225,14 @@
         "Цензурирование литературы"
       ],
       "accept": [
-        "393f5b483980ce75d1dac7b62b61f7aebd1fbce139f5a3a7d1870bf676b70a5f",
+        "619d58abf7e670643dccad80c8d3642de2d821a5c6bf656db1d905c4c46787c1",
         "9fac22d9836c6a67b245bb81c8f15569485ade1b525d7840ab7d3b766b89d9d2",
+        "a5474808a3c19440f6702e797b76aae7994c3b6b2473d65c0e77f5d710d8101e",
         "b708872bb3509b29035d00b143d6bd1452226a2ad482cc896b3e164b0e9dbd2a",
-        "f45c6f30e63b745ba5b20920baa99a18383f8d69173b75d49e0386638ce26e81",
-        "f64336fb4219172937189e7562e2820fdddbcd73416b982835c23746607fc84d"
+        "f45c6f30e63b745ba5b20920baa99a18383f8d69173b75d49e0386638ce26e81"
       ],
-      "reveal": "0J4g0LTQuNCy0L3Ri9C5INC90L7QstGL0Lkg0LzQuNGA"
+      "reveal": "0J4g0LTQuNCy0L3Ri9C5INC90L7QstGL0Lkg0LzQuNGA",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -243,7 +248,8 @@
         "2c371c2ada73a02e26e14416800e8a49f875d27b8b5ff31f1dbe37bdaa6d7faa",
         "2ed6c170844fa4f17ca0815eded79a190735ef269b309100e93c45830b9d899c"
       ],
-      "reveal": "0KLQsNC90LXRhiAo0LrQsNGA0YLQuNC90LAg0JzQsNGC0LjRgdGB0LAp"
+      "reveal": "0KLQsNC90LXRhiAo0LrQsNGA0YLQuNC90LAg0JzQsNGC0LjRgdGB0LAp",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -263,16 +269,17 @@
       ],
       "accept": [
         "3eaf8062502beb0aa73b30903befe95f5d1c61662d4100fc580288711f2c50f0",
-        "42050f4621feafc273220ed86447ce6ff96289f19fb9826aa7dda21d3241f94a",
-        "593f9b64a51cd772c0f3f82ba2d91b087e570e717c9857945e62f512d306e57a",
-        "7ff1daea06a5b784635a6a0471ce7dfd8a103ef7d89ff821a88f0e392c32baf7",
-        "8da643049ba5fa660995d7db47f82b360344b836db536668aa7d95717bb154d5",
-        "8fee479885fe046d812bb65dca51ebe5a6fb33d821cc167cd3f757e3b5e709a6",
+        "4367dcc99cdf5948835392d2d3bdbe71ff9f7a123105c6cb038bde58204db3c6",
+        "790f9b8e85b01eaec82c2d1c8aadd17c286b3b436ddb1674d349a2b53561801a",
+        "950c350767c475fedda80aca452b9a1a38b9525cd8244ebcb4b9b17715fad6dc",
         "9806b9d977aefcd27e2675a015e86410c16abcec46ef715cb5121f8161cde9aa",
-        "ab403f4dab56640def5fcaffdceb01b23b3b20700b87f2f9fe89780d8264b0b7",
-        "b97623aa5545c71afba4792a8e4ba92050f3e77aaf78004e51f378729827845e"
+        "b97623aa5545c71afba4792a8e4ba92050f3e77aaf78004e51f378729827845e",
+        "de9ecd81db73ccae12258bc5ef4136ec19c28ac010ce8de57b103917d9693675",
+        "e5d104a5563acc7fdd9449c0b7dafc72b887cb802cb46ec14c329e0466434fdc",
+        "e98e42b6b6a1be2452b1457887aea4d4f129105a7f64d72469ab9158f5644c69"
       ],
-      "reveal": "0KHQvtCx0L7RgCDQktCw0YHQuNC70LjRjyDQkdC70LDQttC10L3QvdC+0LPQvg=="
+      "reveal": "0KHQvtCx0L7RgCDQktCw0YHQuNC70LjRjyDQkdC70LDQttC10L3QvdC+0LPQvg==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -287,7 +294,8 @@
         "1026c24ea6706daf8d11392446ed11b227869fc15bd15f591ce28ef3bb358941",
         "fb11bd1183e7bdf6b7a3eb83b76c2608dd277ad5e9ed90c6ab4dc206c5702aee"
       ],
-      "reveal": "0KXQvtC70L7QtNC90LDRjyDQstC+0LnQvdCw"
+      "reveal": "0KXQvtC70L7QtNC90LDRjyDQstC+0LnQvdCw",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -301,7 +309,8 @@
         "71e5d7be7d3c59f21351d050116f94ebcfed8f67887cd495afb8c8e6f507a41e",
         "e8ed453e08732bfa3174d6d2f9b651fe8d8d3967d0fde8c8cc1a3bf84cc6c57b"
       ],
-      "reveal": "0KHQvNC40LvQvtC00L7QvQ=="
+      "reveal": "0KHQvNC40LvQvtC00L7QvQ==",
+      "difficulty": "hard"
     }
   ]
 }

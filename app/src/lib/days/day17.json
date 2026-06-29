@@ -15,6 +15,7 @@
         "Католические святые XV века",
         "Люди, чей прах был развеян",
         "Национальные герои Франции",
+        "Общавшиеся с ангелами",
         "Персоналии:Орлеан",
         "Посмертно реабилитированные",
         "Родившиеся 6 января",
@@ -32,11 +33,12 @@
         "4a774b70e42698a77643fcda3e091376609506bb3037b1667aac1c271a198a99",
         "734f459f2d459a2cdd7fcfdf49385c6e15f0dc7072f8d37a4d6e391466cb4c7d",
         "7d536e5f41bf07950f2af7973e87d545f6aa50a96ef2a49d767a6d7fa89aa46e",
-        "ad4eb6bdca913178bce7289976198c16db0b3b5f0d4aa25d56b3a8ca21c20342",
-        "d2a7945a986796c1df3a2c458215bd8db8aaf6d4aa4a87c99696272ff6054491",
-        "e650121250108cc358eed75854d56aebe669009fc6dc1b3511c7738099b6889d"
+        "da4d1d3f8dc18557fc2a67471fd9c4e100efebac7a3b66c9383907eebcb47f95",
+        "e650121250108cc358eed75854d56aebe669009fc6dc1b3511c7738099b6889d",
+        "ecfc070e2a7b4a40077bf2f64248e17af21c50729e7cbcfdf8fe13b4f68feb54"
       ],
-      "reveal": "0JbQsNC90L3QsCDQtOKAmdCQ0YDQug=="
+      "reveal": "0JbQsNC90L3QsCDQtOKAmdCQ0YDQug==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -64,7 +66,8 @@
         "816151a890158a83793dc99de8fb284c7c9eec16edee28ae2f78b55c861a95d5",
         "89a72058950021dd8417625e227ed3d8d025addbe2dc71f415fb711b1cfe7b7c"
       ],
-      "reveal": "0JrQu9C10L7Qv9Cw0YLRgNCw"
+      "reveal": "0JrQu9C10L7Qv9Cw0YLRgNCw",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -109,7 +112,8 @@
         "71f61d28c91596758d05d054300e3f539092e2852c93cddb3786ed0e8ff84f21",
         "7fb5304484f645a3ff1e6ed6384b9c616d4e83446b5a367041173e520321d817"
       ],
-      "reveal": "0JzQsNC50LrQuyDQlNC20L7RgNC00LDQvQ=="
+      "reveal": "0JzQsNC50LrQuyDQlNC20L7RgNC00LDQvQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -137,7 +141,8 @@
         "52b691674026562894effa5e28a74f1e93eeb8018649cc8b54553ebcd2c5c2f0",
         "ab0b179946024f2dedc5bbc0673e689acc4dbf45848c0f12f0a29bfb9bce8b22"
       ],
-      "reveal": "0J/RgdC40YXQviAo0YTQuNC70YzQvCk="
+      "reveal": "0J/RgdC40YXQviAo0YTQuNC70YzQvCk=",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -151,7 +156,8 @@
         "42ee150e0f7c475178a78cf34795a4398eb968dc28e104f857240538f860a54f",
         "699ebb6f4caeac322c7bf3700648258e05312f70fba9c9bad9a02c5729ab71bc"
       ],
-      "reveal": "0JvQtdCz0L4="
+      "reveal": "0JvQtdCz0L4=",
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -165,7 +171,8 @@
         "3fb58f10c4914534a1d1eccf27644a70d6f494dc8a090ba7de299b8b026f7dc1",
         "cd4a8399804c9c03b2cbbbf88b076c957827e843f30646b2554ebae050f18ab3"
       ],
-      "reveal": "0KPQsdC40YLRjCDQv9C10YDQtdGB0LzQtdGI0L3QuNC60LA="
+      "reveal": "0KPQsdC40YLRjCDQv9C10YDQtdGB0LzQtdGI0L3QuNC60LA=",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -178,18 +185,19 @@
         "Сосна в живописи"
       ],
       "accept": [
-        "6b26f9712a1b641e75360f2ee5b8276d14f3633797b1544fd02fcec899d5dc2b",
-        "6c69491753f47e8fd7ee2c98059740cb8c762395696a25b45c70fa08ec58d7da",
-        "7570194746525ae62ea57158960b9ee74690b761167ea26b99ea28d3adb0ec79",
-        "c68c0731c41cbe7309b7648e99c1283d39f4fe904af48c583909b5f7bb94a3b8"
+        "0270aef0da1a3e71706f3931d9c105694895c4c2759048275a137d0e738a85f1",
+        "a745c99e68a8e6f64de2d72cf0ed87b041532a513c485dbbe455701a8799362d",
+        "c68c0731c41cbe7309b7648e99c1283d39f4fe904af48c583909b5f7bb94a3b8",
+        "e9e4cc1cc6157bea34cc59014fbd0e397ebe7257589beb2b49e6332607ea8562"
       ],
-      "reveal": "0KPRgtGA0L4g0LIg0YHQvtGB0L3QvtCy0L7QvCDQu9C10YHRgw=="
+      "reveal": "0KPRgtGA0L4g0LIg0YHQvtGB0L3QvtCy0L7QvCDQu9C10YHRgw==",
+      "difficulty": "medium"
     },
     {
       "categories": [
         "Всемирное наследие в Австралии",
         "Здания и сооружения, построенные в 1973 году",
-        "Здания и сооружения, спроектированные Йорном Утзоном",
+        "Здания и сооружения, спроектированные Йорном Утцоном",
         "Культура Сиднея",
         "Культурный канон Дании",
         "Появились в 1973 году в Австралии"
@@ -201,7 +209,8 @@
         "e08c9c6d4cebe04f79b03404028d8d8a244f0aae366f5cf89373e72461a5f051",
         "f377ba7fac2f483e0562beb5cb8f25d2b213213e57b6f86390615362807fd22d"
       ],
-      "reveal": "0KHQuNC00L3QtdC50YHQutC40Lkg0L7Qv9C10YDQvdGL0Lkg0YLQtdCw0YLRgA=="
+      "reveal": "0KHQuNC00L3QtdC50YHQutC40Lkg0L7Qv9C10YDQvdGL0Lkg0YLQtdCw0YLRgA==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -227,7 +236,8 @@
         "d32a5d7c591d1f51fb410e2dabdd0974d6c93a415b83e9b609d20d52e9653997",
         "fc656daf5fc4af579698be0747b0708c28e8218a74e9e5c1cafc7465309564a6"
       ],
-      "reveal": "0JLQtdC70LjQutCw0Y8g0YXQsNGA0YLQuNGPINCy0L7Qu9GM0L3QvtGB0YLQtdC5"
+      "reveal": "0JLQtdC70LjQutCw0Y8g0YXQsNGA0YLQuNGPINCy0L7Qu9GM0L3QvtGB0YLQtdC5",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -250,7 +260,8 @@
         "f0870fc3f5da92c3808aeaec47347304ea8023a1c02748ad54f25c00c2f51457",
         "f9fca6b84604dc463af2151feaaf8abc609d2d327af2980b34ad22a8bfd7d095"
       ],
-      "reveal": "0KHQuNC90LjQuSDQutC40YI="
+      "reveal": "0KHQuNC90LjQuSDQutC40YI=",
+      "difficulty": "medium"
     }
   ]
 }

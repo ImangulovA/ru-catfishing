@@ -29,10 +29,10 @@
         "ad447f2b70275497e66cd153b756f7cf6dec3bbc5418e99a87ef4f6166bdc531",
         "baa21f6fd595cc08001b8b1b77448ff0d9b2d84460f3e73b7336052dcb6fe534",
         "c8465d38618f1b0d254efbb5797d3796419aa18578c7a61ca17bc107e31e37a3",
-        "d630d9a34f42b5f49b60ab629ef5a0fb8bf64815c50ef6fe3a175225865b54f4",
         "fb1e7ec987523d2cb9e022cec1d6ae7c99dc46edfae4fe51254025fe4bea571f"
       ],
-      "reveal": "0JvQsNCy0LvQtdC50YEsINCQ0LTQsA=="
+      "reveal": "0JvQsNCy0LvQtdC50YEsINCQ0LTQsA==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -72,7 +72,8 @@
         "d5dfa9d427e1431b5fadf3d1ff7058160db66a36ea9e28c7dfe83bc641c7a78b",
         "d9870dcd8522b80f35a5205444a44ea0bee49a0cde94c79d4476fd0a61018d30"
       ],
-      "reveal": "0JHQvtGA0L7QtNC40L0sINCQ0LvQtdC60YHQsNC90LTRgCDQn9C+0YDRhNC40YDRjNC10LLQuNGH"
+      "reveal": "0JHQvtGA0L7QtNC40L0sINCQ0LvQtdC60YHQsNC90LTRgCDQn9C+0YDRhNC40YDRjNC10LLQuNGH",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -133,7 +134,8 @@
         "fa300b29480ce47d69f11db7dff72d40864ed16a455175cfa58e8cd47f341155",
         "ff18c6db13e9d9148969cf71fedfc4388ba66d2b02eaea873d8c0247f6b1a7f8"
       ],
-      "reveal": "0KfQtSDQk9C10LLQsNGA0LAsINCt0YDQvdC10YHRgtC+"
+      "reveal": "0KfQtSDQk9C10LLQsNGA0LAsINCt0YDQvdC10YHRgtC+",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -154,7 +156,8 @@
         "594ce78a1358e6e0ecc35656ace10552dab98986fc5182fa968236b3e0cf5594",
         "a9a7f528c0e8bbec1446e8b217daae69a77c6689e8bea4ecd7d11b54c8fad2ad"
       ],
-      "reveal": "0JrRgNC40LzQuNC90LDQu9GM0L3QvtC1INGH0YLQuNCy0L4="
+      "reveal": "0JrRgNC40LzQuNC90LDQu9GM0L3QvtC1INGH0YLQuNCy0L4=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -174,10 +177,11 @@
         "Франшизы Sony Pictures"
       ],
       "accept": [
-        "0aed3c3c96c569c895053b28d7a58b5e88b053182029b9faafc89b7f9938588d",
-        "5f73f78dbf49c2acc45f98f2861706e9544be5f90244950c649e872fe5d17ae8"
+        "5f73f78dbf49c2acc45f98f2861706e9544be5f90244950c649e872fe5d17ae8",
+        "d295ddb03697294b6545383920cb7a33585d5974780177b0b4d093433864e6d1"
       ],
-      "reveal": "0JLQviDQstGB0LUg0YLRj9C20LrQuNC1"
+      "reveal": "0JLQviDQstGB0LUg0YLRj9C20LrQuNC1",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -208,7 +212,8 @@
         "8c2c1004a7b761542f5672cb95b46c4f345f6f40b14a6b3b90d40233746c7436",
         "e09567fee4f8e4aef530e5f182534fde1e2e1e333977c1601271590b0dfc8d32"
       ],
-      "reveal": "VGhlIExhc3Qgb2YgVXM="
+      "reveal": "VGhlIExhc3Qgb2YgVXM=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -226,6 +231,7 @@
       "accept": [
         "054a764b4be9441335c72b92f84db3186950ad041c9fd379d1b0767ae17d7c80",
         "33344c3d50dc3629e995f5a2aaaa08755a8a16660baa8d8dfcbd55a0b7983984",
+        "3b7303cf9938700bed88f95c0f87d42f4b967c91af7a32753a1594e2dc5dfc58",
         "43490391966d4813220f6455f9159a35e2731a3422a5b54ac587697ed04efc29",
         "4dea5c7cb70f50322ec9d734aa4aa078be9227c05251e18991c596f387552370",
         "80ca853db866ab3b033b209909a87ff86552179e28e344f2e1b6907e6aaae113",
@@ -233,10 +239,10 @@
         "9a55660d18634de4e878333222b4fedf946516e47fee6ebb9fafc5e0f05fc547",
         "a802940b17f6bed4da700dbb9dcfb91696ed318599eda3bdbfdab3ff92378afe",
         "af658bd4180b569c4e67bbfb80db4b3ea2a2492f395561db530b6a819b58f909",
-        "e8f30449b969a586ac69f4412ce49bad588fca6070f4535286648752c7629ca3",
         "f798649ba7b630a6478bdce56bfa50d7fc4e1f6c5e5e7b9603080216a419642b"
       ],
-      "reveal": "MTk4NCAo0YDQvtC80LDQvSk="
+      "reveal": "MTk4NCAo0YDQvtC80LDQvSk=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -257,7 +263,8 @@
         "b65f96802d2ecdda6ce8bcc9ec3f70b90ff32a985c0282a7add6e2d1053d7feb",
         "d2ca5adb5e62a2f550edfae99d196281ba5b79c3c83e1802caf6dbc7e5816af9"
       ],
-      "reveal": "0JzQvtC90LAg0JvQuNC30LA="
+      "reveal": "0JzQvtC90LAg0JvQuNC30LA=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -277,7 +284,8 @@
         "124b60fab7ed72b1aea88c0689770850676ec42b4e650256027b1ea388fb4ac7",
         "1dfd8f7d40b2cb7f4a92ad8735af55de1cee7c09041fe731c269e15d7db020e3"
       ],
-      "reveal": "0KnQtdC70LrRg9C90YfQuNC6"
+      "reveal": "0KnQtdC70LrRg9C90YfQuNC6",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -297,7 +305,8 @@
         "fff94a0ce54c25189d0e84a8bb8c883337df99a1d765c9889af80ab610b3b7eb",
         "fffe24608474dc9cf919d67a994e8bb7c76bd66465b89561fb8b587cc678911d"
       ],
-      "reveal": "0JHQtdGA0LvQuNC90YHQutCw0Y8g0YHRgtC10L3QsA=="
+      "reveal": "0JHQtdGA0LvQuNC90YHQutCw0Y8g0YHRgtC10L3QsA==",
+      "difficulty": "easy"
     }
   ]
 }

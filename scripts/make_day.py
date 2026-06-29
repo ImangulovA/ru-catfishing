@@ -27,9 +27,10 @@ from build_pool import fetch_langlink, fetch_redirects
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# English stopwords dropped from answers, so "the last of us" == "last of us".
+# Function/stop words dropped from answers, symmetric on both sides, so
+# "the last of us" == "last of us" and "О дивный новый мир" == "дивный новый мир".
 # Keep this in sync with STOPWORDS in app/src/routes/+page.svelte:norm().
-STOPWORDS = {"the", "of"}
+STOPWORDS = {"the", "of", "о", "об", "обо", "и", "а", "но", "в", "во", "на", "не"}
 
 
 def norm(s):
@@ -40,7 +41,8 @@ def norm(s):
     # +page.svelte, or guesses won't hash to the shipped accept hashes.
     s = s.lower().replace("ё", "е").replace("э", "е").replace("й", "и")
     s = re.sub(r"\([^)]*\)", " ", s)        # drop "(фильм)", "(Мюнхен)"
-    s = re.sub(r"[^а-яa-z0-9 ]", " ", s)    # punctuation -> space
+    s = re.sub(r"['’‘ʼ`]", "", s)           # апострофы/кавычки -> ничего (д'арк -> дарк)
+    s = re.sub(r"[^а-яa-z0-9 ]", " ", s)    # прочая пунктуация -> пробел
     s = re.sub(r"\s+", " ", s).strip()
     s = re.sub(r"(.)\1+", r"\1", s)         # удвоенные буквы -> одна (ламарр->ламар)
 
@@ -56,6 +58,27 @@ def norm(s):
     # drop English stopwords so "last of us" == "the last of us"
     words = [stem(w) for w in s.split() if w not in STOPWORDS]
     return " ".join(sorted(words))          # порядок слов не важен (Бергкамп Деннис == Деннис Бергкамп)
+
+
+# Trailing qualifier patterns stripped so the "core" title is also accepted, e.g.
+# "Извержение Везувия в 79 году" -> also accept "Извержение Везувия". Each form
+# is later norm()+sha256'd into accept, and expand_forms() is applied to the title
+# AND to every redirect/langlink so aliases get the same leniency.
+TAIL_PATTERNS = [
+    r"\s+в\s+\d{1,4}\s+году?$",   # "...в 79 году"
+    r"\s+\d{3,4}\s+года$",        # "...1773 года"
+    r",?\s+\d{3,4}$",             # хвостовой год ("..., 1979")
+]
+
+
+def expand_forms(raw):
+    """Return {raw} plus 'short' variants with a trailing date/qualifier removed."""
+    forms = {raw}
+    for pat in TAIL_PATTERNS:
+        short = re.sub(pat, "", raw).strip()
+        if short and short != raw:
+            forms.add(short)
+    return forms
 
 
 # A puzzle answer is a PERSON if any of its Wikipedia categories is a
@@ -101,7 +124,22 @@ def main():
 
     puzzles = []
     for p in src["puzzles"]:
-        forms = set(p.get("accept", [])) | {norm(p["title"])}
+        # Collect every RAW accepted name (title, curated aliases, en title,
+        # redirects), each expanded to its short form, THEN norm() them all.
+        raws = set(expand_forms(p["title"]))
+        for alias in p.get("accept", []):
+            raws |= expand_forms(alias)
+        # Cross-language acceptance: add the English-Wikipedia title so foreign
+        # realities can be answered in English too.
+        en = fetch_langlink(p["title"], "en")
+        if en:
+            raws |= expand_forms(en)
+        # Redirect aliases: every ru.wiki redirect to the article is an accepted
+        # alternative name/spelling (real names, Latin binomials, variants).
+        for red in fetch_redirects(p["title"]):
+            raws |= expand_forms(red)
+        forms = {norm(r) for r in raws}
+
         # surname acceptance: explicit override, else auto-derive for persons
         if "surname" in p:
             if p["surname"]:
@@ -110,23 +148,16 @@ def main():
             sn = derive_surname(p["title"], p["categories"])
             if sn:
                 forms.add(norm(sn))
-        # Cross-language acceptance: add the English-Wikipedia title (+ surname
-        # for persons), so foreign realities can be answered in English too.
-        en = fetch_langlink(p["title"], "en")
         if en:
-            forms.add(norm(en))
             en_sn = derive_surname(en, p["categories"])
             if en_sn:
                 forms.add(norm(en_sn))
-        # Redirect aliases: every ru.wiki redirect to the article is an accepted
-        # alternative name/spelling (real names, Latin binomials, variants).
-        for red in fetch_redirects(p["title"]):
-            forms.add(norm(red))
         forms.discard("")  # drop empties (emoji/punctuation-only redirects)
         puzzles.append({
             "categories": p["categories"],
             "accept": sorted(sha256(f) for f in forms),
             "reveal": b64(p["title"]),
+            "difficulty": p.get("difficulty", "medium"),
         })
 
     out = {"day": src["day"], "puzzles": puzzles}

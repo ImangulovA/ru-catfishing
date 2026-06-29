@@ -20,17 +20,20 @@
         "Ремейки компьютерных игр"
       ],
       "accept": [
-        "e2cf69c9cef5510903eb8dcb6c3ad05235d8c79e32d6421baec15656cf04ed3a"
+        "98ef10776f41b43610d6b49e2ed8b52b1aa8c7fe880e7218b2f6841083cd427f"
       ],
-      "reveal": "QmFsZHVy4oCZcyBHYXRlIElJOiBFbmhhbmNlZCBFZGl0aW9u"
+      "reveal": "QmFsZHVy4oCZcyBHYXRlIElJOiBFbmhhbmNlZCBFZGl0aW9u",
+      "difficulty": "medium"
     },
     {
       "categories": [
         "Композиции в стиле дабстеп",
         "Композиции в стиле синти-поп",
         "Песни 2013 года",
+        "Песни T.I.",
         "Песни Игги Азалии",
         "Песни на английском языке",
+        "Песни, написанные T.I.",
         "Синглы 2013 года",
         "Синглы Def Jam Recordings",
         "Хип-хоп-песни США"
@@ -38,7 +41,8 @@
       "accept": [
         "c34dae37b1325bf25d89019434b755156202f33fc153cf6d5e1ba30f330eabec"
       ],
-      "reveal": "Q2hhbmdlIFlvdXIgTGlmZQ=="
+      "reveal": "Q2hhbmdlIFlvdXIgTGlmZQ==",
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -55,7 +59,8 @@
         "8dc6272448a8a3ffaeeb076f3868d25ecbf4e122ae9d5228a3f6caada13ffab0",
         "aea0d58595ad0962d4d4af99a1fe85ff986232b277ef77e065a13dc88f4fdec9"
       ],
-      "reveal": "0JrQvtGB0YLRkdGAINC80Y/Qs9C60LjQuQ=="
+      "reveal": "0JrQvtGB0YLRkdGAINC80Y/Qs9C60LjQuQ==",
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -71,7 +76,8 @@
       "accept": [
         "9e14324072eaf81691f5f719cf61e8aba41e76fe5691a6c896fa66e734ae9db1"
       ],
-      "reveal": "SnVnZ2VybmF1dCAo0LjQs9GA0LAsIDE5ODUp"
+      "reveal": "SnVnZ2VybmF1dCAo0LjQs9GA0LAsIDE5ODUp",
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -90,7 +96,8 @@
       "accept": [
         "570da0e7034a50ddd7b753bc17479e4149bd6bcd6e50239478c8dc2697595784"
       ],
-      "reveal": "Rm9ydHJlc3MgKNC40LPRgNCwKQ=="
+      "reveal": "Rm9ydHJlc3MgKNC40LPRgNCwKQ==",
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -106,7 +113,8 @@
         "0418fdd635ac77d8d4bfec4fee1a424d714e4ff846de1a7409fb007f88166106",
         "2d0f88e3042a5d697b15ee559fb4f88a76d2b986e10dcd3fa8795421861f87fe"
       ],
-      "reveal": "0JPQvtC80L7QvNC+0L3Rg9C80LXQvdGC"
+      "reveal": "0JPQvtC80L7QvNC+0L3Rg9C80LXQvdGC",
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -132,7 +140,8 @@
         "eddf1508a228fbf2ff177c661de6d7f9ab27db32e293b84a256a7d0408026b61",
         "f484258b1e8062abeb6907bcdf0c863034afe60b805f75fa410f88f0f474e91c"
       ],
-      "reveal": "0JrQuNGC0L7QstCw0Y8g0LDQutGD0LvQsA=="
+      "reveal": "0JrQuNGC0L7QstCw0Y8g0LDQutGD0LvQsA==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -150,7 +159,8 @@
       "accept": [
         "96c05ab91bf387bbc9cc96aaeb5dbbb41562fb980f408cb6121b80b67836bd40"
       ],
-      "reveal": "QSBNb21lbnRhcnkgTGFwc2Ugb2YgUmVhc29u"
+      "reveal": "QSBNb21lbnRhcnkgTGFwc2Ugb2YgUmVhc29u",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -165,7 +175,8 @@
         "4c54c52ad0e67ea80624396c578ca9a05e92c9439c21acea755fbffef622f715",
         "54efa883fe3f63c111711f059e76338225347e47a23a9d027dc59d461a39b5f2"
       ],
-      "reveal": "0KjQsNCx0LDRiCAo0LDQu9GM0LHQvtC8KQ=="
+      "reveal": "0KjQsNCx0LDRiCAo0LDQu9GM0LHQvtC8KQ==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -180,7 +191,8 @@
         "04c2cf4ae28ec2326cf3aac2f2beec74816117df95fbc89e79e5ec87fe944964",
         "b6511a8ebdee7a648a95bf3cd03eb129d35a79d2133554bd29636c8c7869e466"
       ],
-      "reveal": "0JHQuNGC0LLQsCDQv9GA0Lgg0JPQsNCx0LjQtdC90LU="
+      "reveal": "0JHQuNGC0LLQsCDQv9GA0Lgg0JPQsNCx0LjQtdC90LU=",
+      "difficulty": "hard"
     }
   ]
 }

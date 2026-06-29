@@ -18,7 +18,7 @@
         "Литературные критики Российской империи",
         "Масоны России",
         "Многоязычные писатели",
-        "Памятник Тысячелетие России",
+        "Памятник «Тысячелетие России»",
         "Первый выпуск Царскосельского лицея",
         "Переводчики XIX века",
         "Переводчики Адама Мицкевича",
@@ -57,18 +57,17 @@
         "0090c398bc86406ca6c37c9882162267201f4156ad8847c9c2938f5cc8cee4c1",
         "30228a3d4739a3f6ffbf828d9b059912fccccae1f57b6882ac93cf90aa666057",
         "4459b66edba879745840155cef22de4dfcb79ce2e3d0ba9a971f456c4a70978f",
-        "48794da6777f7042b42005331dc8a604972625e6e2056582d4f01a62ab5b7eea",
         "548a9521d866c8fdfb37f44753a7394dcb0b0b0e732d653d4fea1695c4d67e27",
         "583cbc4d054bd2f02146780f59e3dfa622b70f8cf89c14b4972a37bc9734c626",
-        "652da8355bb7a8f68d28ae5c92ede7880ad317d7cd2010c4e680a11b5c6ce4e9",
+        "623097828a54fd553704367102526ee23b0038f6d9f9d669aae84a412754c337",
         "a330246f7ebf4192a136e4bf050dae5e7b1428b53c29da20a2d0c1dd20cda239",
         "cb514491b5e38f240bbd71ec3aa10ba1265fb73ea20989f1f1400d753e0d713f",
         "d1e3bf06dafca558c897c969723efa5591e407baf7cd124c37fdbc66ea3098e7",
-        "e98feb10d5f131bdbdb37ffeff62d9e3debd301c4a26a6dfd713886cecdeb33f",
         "ef82a2c75c57221d437afbf1b68a8977bfbe89221789da8cec0c2d52622b4ace",
         "fa6ae11379418ebf709a21685a1df32cc0fdd1d024f208f52d2148907c7d23d0"
       ],
-      "reveal": "0JDQu9C10LrRgdCw0L3QtNGAINCh0LXRgNCz0LXQtdCy0LjRhyDQn9GD0YjQutC40L0="
+      "reveal": "0JDQu9C10LrRgdCw0L3QtNGAINCh0LXRgNCz0LXQtdCy0LjRhyDQn9GD0YjQutC40L0=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -94,7 +93,8 @@
         "bf2a4f3e96151ef9b3eea14d75841e515732229d06ce1720102776784a65a815",
         "f1e978b9b267e4445a3f01b80e1d2cb3d3d9a0cd044577c943aa9bd6718d7a05"
       ],
-      "reveal": "0JrQu9C+0LQg0JzQvtC90LU="
+      "reveal": "0JrQu9C+0LQg0JzQvtC90LU=",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -169,7 +169,8 @@
         "e27ad87d7a4694ba2cfd48386dd03f604294342eed0b57ebc9522f5cf3f6dd11",
         "f0b0b3ade85d6de37cb56540e9d750dcecf7084710bf5169e0adcd679fa3db57"
       ],
-      "reveal": "0JzQsNGA0LjRjyDQmtGO0YDQuA=="
+      "reveal": "0JzQsNGA0LjRjyDQmtGO0YDQuA==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -188,7 +189,8 @@
         "3a4573eee151660267ebc16744f559bf89af81c135f15a8e2b66bf55765f5aea",
         "f5bce61f4b0c2ec49c43fc9feedb71ea49a41fa7b6e1c635167757cb90669908"
       ],
-      "reveal": "0JrQsNGB0LDQsdC70LDQvdC60LAgKNGE0LjQu9GM0Lwp"
+      "reveal": "0JrQsNGB0LDQsdC70LDQvdC60LAgKNGE0LjQu9GM0Lwp",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -221,21 +223,22 @@
         "3a8730f1f5ac3c58a4c7c15c0da4e541d3a78c5c7f668523fcf4db3bea209e24",
         "481870d5f9357b7d2fb194c119f23e997d3a3bad94e4240bb4ba129393e7de3c",
         "514a91bfb8e2068991b21897026c4a527ea138d43acb92f629f90fdaee9c63e0",
+        "5eb172b6c84bb5accea57db9109cd08fbd7d09cdd0927ed26b4e9033ab1bee69",
         "6caf668571637a5cc62f4f76109abdd3bc35e869af152847b3c17dd4d9f9e8ce",
         "76a73bb2a379e127bfd5ea9fd396be52e0f3a354873761cc12c28373460a2205",
         "92e0909b217fdc14a05d5dc23dd056428d7b24ad6e334410392cf5befdbee0d0",
         "9feef470b7ea0f37241128e98078d3e08a89c08771e45361ba40da8a823e05bc",
         "ac59fd61bdfc03db6c8caf622b15760c4869eac0588721323d853d8910a266a3",
-        "af5d8c18a71ba143186b199f7d35133a4a857007a8a2bf7575140dcc20aee731",
         "b2760576df030f0c778602d661603eb031520034ca9f65e5b3791c7e7359de32",
         "c7466b283914ff4c95d47d96edb56bb2c15f416f96246495be5cc12c7a867552",
         "cdb6c2f1b41a5dd20d70efe2794f184c8262a0cd69c8bb283a3ac60b7a6a53b0",
         "d86839626a320de6838be0c99d33e807bf93f1caec6e935e56b8ab3b69bd758d",
         "da6f9228dcb3588654c1c4d6a508655e596412282439445520988428ec34e8e3",
-        "e77e44c6df90d163489cba862f77ab422c7d4a73a312c8add9f4e1a4c3e56487",
-        "f3c48a6a0319e3f01adbf9ba0f09fdc90b61b3d6377fb5bda0ed1e0989d628ef"
+        "dd22182ccf47857a20c047c076887b2e99df30c3e7686c8c65569aefc3d59759",
+        "e77e44c6df90d163489cba862f77ab422c7d4a73a312c8add9f4e1a4c3e56487"
       ],
-      "reveal": "SGFsZi1MaWZlIDI="
+      "reveal": "SGFsZi1MaWZlIDI=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -250,7 +253,8 @@
         "3b1292d873a25ee8f7f840251007d1d234a55567d93ed81a6bbb3c34a779a7a2",
         "fc165df6471b0cdd00546559bdf239bcb846c33e9a022f4d50a0221cc9fc9659"
       ],
-      "reveal": "0KLRgNC4INC80YPRiNC60LXRgtGR0YDQsA=="
+      "reveal": "0KLRgNC4INC80YPRiNC60LXRgtGR0YDQsA==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -266,7 +270,8 @@
         "883de2e110d9c4b5c0ca25f49d07b26b24296cf04e1c44cfb1d13b22e945b2f3",
         "d9cda412c20e7ea27b2f5fba280e4759e1fd36e455505308a4921310f190c1b6"
       ],
-      "reveal": "0JTQtdCy0YPRiNC60LAg0YEg0LbQtdC80YfRg9C20L3QvtC5INGB0LXRgNGR0LbQutC+0LkgKNC60LDRgNGC0LjQvdCwKQ=="
+      "reveal": "0JTQtdCy0YPRiNC60LAg0YEg0LbQtdC80YfRg9C20L3QvtC5INGB0LXRgNGR0LbQutC+0LkgKNC60LDRgNGC0LjQvdCwKQ==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -292,13 +297,14 @@
         "a3bdd2b3f49c01e3a32bf6fbd13475afc545f55ad4d276e11a630d38b80a34f5",
         "ce059c916baa789b0895e1b1759759fd35fc1140d566cc29d8f5147e377e6d1f"
       ],
-      "reveal": "0JHQuNCzLdCR0LXQvQ=="
+      "reveal": "0JHQuNCzLdCR0LXQvQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
         "1066 год в Англии",
+        "Восточный Суссекс",
         "События 14 октября",
-        "События в Восточном Суссексе",
         "Сражения 1066 года",
         "Сражения Нормандии",
         "Сражения англосаксов",
@@ -309,7 +315,8 @@
         "8feec9ac1dd0d09dd0d1e3eb016f4bdda4a2544620ad5fb81676dda3b4384ad5",
         "9c3b9f5134eebcd44d2b5c020e0dc86ce65035b3f9cfbf15bfe00d08389dba3a"
       ],
-      "reveal": "0JHQuNGC0LLQsCDQv9GA0Lgg0JPQsNGB0YLQuNC90LPRgdC1"
+      "reveal": "0JHQuNGC0LLQsCDQv9GA0Lgg0JPQsNGB0YLQuNC90LPRgdC1",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -336,7 +343,8 @@
         "c1e8358e3acb11d4cc09ac5d811dcb5355debf3135662b04c352407d18a29b46",
         "f1558d2472526ef0c1ad5a1ce624f452af8f36363f4edc12ee1615feba0a6276"
       ],
-      "reveal": "0KfRkdGA0L3QsNGPINC00YvRgNCw"
+      "reveal": "0KfRkdGA0L3QsNGPINC00YvRgNCw",
+      "difficulty": "medium"
     }
   ]
 }

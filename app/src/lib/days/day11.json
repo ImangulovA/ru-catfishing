@@ -46,19 +46,19 @@
         "218329c9623d8f18e238acee8719242895ccca5e4b6da58c1d188fd2449466f0",
         "238c9da4b00229f2fde393908a49daa7931a892bfc94aba9a368bdad5a902d18",
         "2f1069bde7888d501a66ee994bdfd9cd377f521dee346ab0d9e3305ea676ece9",
-        "31b4af9438b991b01f34beeee9717c1509c7c385da5fa06e6c152870178d1a03",
         "368a2a56511eaa4863addc7c4d7cc25b25bd1fc5e090c376bf971b53013408ed",
         "415329340a3883405a080e38a2417433acdc7456f5f293b37164f549b13263fc",
-        "41f2e5c40205c036c8f589ee2d5d862474f198bdead00a6954c1b3fbeca5377f",
         "5e9eb08e88c8ca356635bb81dccc2f96ca6870ad7a5259c25f6eaf29a00ef696",
         "647f368a5efdfc1bb9153cd43042a563d38be37d2fa8e13851c6114aed94061b",
         "6d3ecc507ff5ebde60efa199bfefbaaad8fdce4d0d61fc80774ca777855cefa2",
         "72aa35120b1b9c842d612e89bbbe899b7c4070cd3b80f48c36242ef685ab0b77",
+        "9607e059d197996c8a504ebd71a34e7826d288ee4a11f1849b5c7109832479df",
+        "a1dccdec39109b186fca8106b1922d334b59dc6008e3b2d5d0c850df23a31cde",
         "a5070a90705bdb6845f9ce249b2cc2d31b438086fd55eafcbba8f645e8fe5e52",
-        "e1348411902af976394c22989d8bbd1c47a718d3a2d03acd007f1616e3f3deaa",
-        "ea7f54c94ab1b4b0e416ee764b802e49bdfbb9cf994e0f724ffa68769c7483a6"
+        "e1348411902af976394c22989d8bbd1c47a718d3a2d03acd007f1616e3f3deaa"
       ],
-      "reveal": "0JDQvdGC0L7QvSDQp9C10YXQvtCy"
+      "reveal": "0JDQvdGC0L7QvSDQp9C10YXQvtCy",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -97,7 +97,8 @@
         "ee90a5457713e6b204a4327f9f45bfa84f8ff87a4208cb46d7e5fcee900ebe02",
         "eeae09b49b708233fa00236ae6e8469333f8296daa022aad3b70aa3aa461e2b8"
       ],
-      "reveal": "0JzQuNC60LXQu9Cw0L3QtNC20LXQu9C+"
+      "reveal": "0JzQuNC60LXQu9Cw0L3QtNC20LXQu9C+",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -140,7 +141,8 @@
         "cab9b9d5275b1fed55b89276fa2a04a73fc3fa647ce5faf6d4316301057f8042",
         "f31a18545e5e39d0e5258f325334365c986ef2e25ca1c17ff35854f7feed6c98"
       ],
-      "reveal": "0KHRgtC40LIg0JTQttC+0LHRgQ=="
+      "reveal": "0KHRgtC40LIg0JTQttC+0LHRgQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -161,7 +163,6 @@
         "Фильмы о психиатрических лечебницах",
         "Фильмы о технологическом влиянии",
         "Фильмы о ядерной войне и ядерном оружии",
-        "Фильмы об искусственном интеллекте",
         "Фильмы по сценариям Джеймса Кэмерона",
         "Фильмы по сценариям Уильяма Вишера-младшего",
         "Фильмы с музыкой Брэда Фиделя",
@@ -178,7 +179,8 @@
         "ad80d54ff4512af5c5901afe96844672f6b5d6ea956301e8ce7db60050b81819",
         "fff9ec23efcb6c45a4abffcb6fcb38691be053a43e8857a27ea3a9b49a93d5a0"
       ],
-      "reveal": "0KLQtdGA0LzQuNC90LDRgtC+0YAgMjog0KHRg9C00L3Ri9C5INC00LXQvdGM"
+      "reveal": "0KLQtdGA0LzQuNC90LDRgtC+0YAgMjog0KHRg9C00L3Ri9C5INC00LXQvdGM",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -187,6 +189,7 @@
         "Игры для Windows",
         "Игры для macOS",
         "Игры, использующие язык Lua",
+        "Киберспортивные компьютерные игры",
         "Компьютерные игры 2004 года",
         "Компьютерные игры в жанре MMORPG",
         "Компьютерные игры с открытым миром",
@@ -202,7 +205,8 @@
         "b6dc933311bc2357cc5fc636a4dbe41a01b7a33b583d043a7f870f3440697e27",
         "d9ac4059a8536d285486898ed3e103ceae6a6d6ddbeeb362cea31babee5c2cdc"
       ],
-      "reveal": "V29ybGQgb2YgV2FyY3JhZnQ="
+      "reveal": "V29ybGQgb2YgV2FyY3JhZnQ=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -214,12 +218,13 @@
       ],
       "accept": [
         "1681d2e8db405403f5ac25f46a00562319bf8a8d4d9c32686027d669b1f78e75",
+        "24260be530839eb05d38cd0a3b778a845c73b323364768aceaaa313c35808f01",
+        "30c91d2bcfc219d006691a7297c0cd741a01922baab406c4ca98be02e790e1f3",
         "7f6b0fbcc6da23bc1e0798badb0b3f7d9b564929e886f2502630958539b41526",
-        "a8a1016fea0fecc0fddadb933a7918ae443b67010d545b36f9cd304580645b38",
-        "b2d696d641ca51322bb1a56849e7cc82218023d1bd6e30b6c61b55c449b4f920",
-        "e1ec8f261c653ca98f98d4800a8b06b59a5287799120d3bd3d3c759450aa72eb"
+        "fc33ac61a6238346a83b462b8d50466dd835c9c06bdde65c747686673123a726"
       ],
-      "reveal": "0JDQu9C40YHQsCDQsiDQodGC0YDQsNC90LUg0YfRg9C00LXRgQ=="
+      "reveal": "0JDQu9C40YHQsCDQsiDQodGC0YDQsNC90LUg0YfRg9C00LXRgQ==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -233,7 +238,8 @@
         "4c2ab33e8f950fbf36e56c34770652ef6b83b9b4bef3ce469adbc801dd38fd05",
         "e88646b7626e58494770dc2c03ed7451f56c554a3bb1b2a5e01dd42d314ab494"
       ],
-      "reveal": "0JTQtdCy0Y/RgtGL0Lkg0LLQsNC7ICjQutCw0YDRgtC40L3QsCk="
+      "reveal": "0JTQtdCy0Y/RgtGL0Lkg0LLQsNC7ICjQutCw0YDRgtC40L3QsCk=",
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -249,7 +255,8 @@
         "754692bc0efbcdd8c52fba15961e797be6aac6b6ac3cd2b3dc3d2bd1e5ee6d3e",
         "a131f648e36f73e7072b11566ddbbf0b0e8918e3f87e42646a83b3714b939850"
       ],
-      "reveal": "0J/QsNGA0YTQtdC90L7QvQ=="
+      "reveal": "0J/QsNGA0YTQtdC90L7QvQ==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -265,7 +272,8 @@
         "1a66a0fc14b9aac6baa0cde75d02aef3dd5e8fc4a2024a1c7b1ed530172d5809",
         "7c1c326b025bc5fc9e91553b09379a8bb4febafd5a5b817e3b9b6177bd87381f"
       ],
-      "reveal": "0KLRg9GC0LDQvdGF0LDQvNC+0L0="
+      "reveal": "0KLRg9GC0LDQvdGF0LDQvNC+0L0=",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -290,7 +298,8 @@
         "6e4148ba48cbcef464b6e44a269233819e3a16683de0446ab3e50628d5e9db5c",
         "b886fb7f1c248a67445b1d0e920dfd35daf397bbdeec585c5f78966b99d84182"
       ],
-      "reveal": "0JDRgNGF0LjQvNC10LQ="
+      "reveal": "0JDRgNGF0LjQvNC10LQ=",
+      "difficulty": "easy"
     }
   ]
 }

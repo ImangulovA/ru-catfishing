@@ -39,7 +39,8 @@
         "ec325f1e39f48e2fdba6444c00ceff3f9d7c0b5c5d4af4a5993f9e1e7c68195d",
         "ffa2171de2049ce1a44acd294009fd17bfa1f0e5c13155d5cf2df6d08d976722"
       ],
-      "reveal": "0JzRjdGA0LjQu9C40L0g0JzQvtC90YDQvg=="
+      "reveal": "0JzRjdGA0LjQu9C40L0g0JzQvtC90YDQvg==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -85,7 +86,8 @@
         "b6fe6ee14487dad833148d0b8b0dc42735fa1ba51ab4735bd3f94d5ac458111f",
         "b769a6983b42d565e79bb4f3f534623453f301d39784e57804a649a67ea05327"
       ],
-      "reveal": "0KTRgNC10LTQtNC4INCc0LXRgNC60YzRjtGA0Lg="
+      "reveal": "0KTRgNC10LTQtNC4INCc0LXRgNC60YzRjtGA0Lg=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -118,7 +120,8 @@
         "f1599bb56bcc5d94d1156698436b084c507f034abc6b1b0071b4d5b7c134a667",
         "feb0f1e1dd31a0a4ad2d6e98a68ae2ca327e5cc01e83fcdb455ae117b818fe03"
       ],
-      "reveal": "0KHRgtC40LLQtdC9INCa0LjQvdCz"
+      "reveal": "0KHRgtC40LLQtdC9INCa0LjQvdCz",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -144,7 +147,8 @@
         "7f3d79954e4ee64c4792f320a6f9933c40faab894f55c2e4774bd138f29dc424",
         "cc956db7f9fde628fbf89f4264ef027b102105c16458c2afb6cd5ff7e779e665"
       ],
-      "reveal": "0KfQtdC70Y7RgdGC0LggKNGE0LjQu9GM0Lwp"
+      "reveal": "0KfQtdC70Y7RgdGC0LggKNGE0LjQu9GM0Lwp",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -181,10 +185,13 @@
       ],
       "accept": [
         "164b91fd90a3bc4631b2d5a0bc4d33c915f2a8e0f5099cd7ca9767096ba43b6d",
+        "1e6b41f0261eed5acd27bd7d0f6463389a420219981572546e6ca1b34188ebc2",
         "7106b417266b5ba2ba3b5315b8775b2b67466c7defd6edf4f541edafcc034411",
+        "a1ba386fab363965d92661add5718bf12d2ab70d4f8dda90356aa57471dbae65",
         "e956efed27d7f68fcb8dda0fd6f02739b62e732d309d8083eb1f28382f141b26"
       ],
-      "reveal": "Q3liZXJwdW5rIDIwNzc="
+      "reveal": "Q3liZXJwdW5rIDIwNzc=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -198,10 +205,11 @@
         "4dd72bbe60e44c84487a8ab62989ff8ad9d71ccb244d63be8ba96c267ad1d662",
         "72da35c982e6f2a6c37cd73896e26d9feea1445079331f4a075f1cfa820b2c95",
         "7762301041b2a5b9d549cc96b1cf2884236eec2f767ec5ae7d7ac9ad0ae7902f",
-        "e8679fb8a119eb8deb600762a600277df9636142855b6055a834a46176a73343",
+        "a963c3621d3f32b08f222242314bbc2c3898496089e3fe7ede5855b8f1426fac",
         "f2d52d8c14ce2fd2caaef42d7f8ea1476adc8913e7fe9940112f22e0cb750e16"
       ],
-      "reveal": "0JPQvtGA0LTQvtGB0YLRjCDQuCDQv9GA0LXQtNGD0LHQtdC20LTQtdC90LjQtQ=="
+      "reveal": "0JPQvtGA0LTQvtGB0YLRjCDQuCDQv9GA0LXQtNGD0LHQtdC20LTQtdC90LjQtQ==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -215,7 +223,8 @@
         "00702d411f9c62d434612a075a729e69044c889a9d3fd7165a16a5fd7e00ad80",
         "5d14072e08a6c38f10ee9c5a3752aa436345a81132bd4815147e4741d6bef930"
       ],
-      "reveal": "0KHQuNC60YHRgtC40L3RgdC60LDRjyDQvNCw0LTQvtC90L3QsA=="
+      "reveal": "0KHQuNC60YHRgtC40L3RgdC60LDRjyDQvNCw0LTQvtC90L3QsA==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -232,7 +241,8 @@
         "c458dea2bec4c3880ad6eeebd6012f232268a29ffc0ac47be047aa3b17e17dab",
         "e13ba584a9468d33788f85ce6f8b6062577adecba0c987841046566e8e644fe9"
       ],
-      "reveal": "0JfQsNC/0YDQtdGC0L3Ri9C5INCz0L7RgNC+0LQ="
+      "reveal": "0JfQsNC/0YDQtdGC0L3Ri9C5INCz0L7RgNC+0LQ=",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -255,7 +265,8 @@
         "cd035526ac214f0130b46cd877fd762f8446298554def4c130b9c9d8ed047612",
         "f13c298a48730223bef1e3fa95ee53770faa0283533c197128fc8d6fe2273781"
       ],
-      "reveal": "0J/QsNC00LXQvdC40LUg0JrQvtC90YHRgtCw0L3RgtC40L3QvtC/0L7Qu9GP"
+      "reveal": "0J/QsNC00LXQvdC40LUg0JrQvtC90YHRgtCw0L3RgtC40L3QvtC/0L7Qu9GP",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -275,7 +286,8 @@
         "c88cf9468f1701ff059abe2c172a0da5edd6af83ae80ca1a7579e291c38df6d9",
         "e69fc0903b0d26678bd568610dc772030f667ff5e2d01c0f1ef39fcb298d20f2"
       ],
-      "reveal": "0JrQvtCw0LvQsA=="
+      "reveal": "0JrQvtCw0LvQsA==",
+      "difficulty": "medium"
     }
   ]
 }

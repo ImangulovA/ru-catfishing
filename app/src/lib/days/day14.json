@@ -26,11 +26,11 @@
         "3667d16c80ee15a4879aba47b3a52ba86a4b2dd076cacd1c1713fe003206c2a7",
         "4e5305051d83e1880209f408526737cbedc988593cd860ed0c0b03c3bb2e0f05",
         "9dffd1baec065ef674088f79d9fbe907837f214fea5056cb93a53b001ed279ce",
-        "a528ff6adeb7fcbf665230dc4f6f69dcb453d734624313568618a9c3cff0be50",
         "ba27444a56b473225c5ca7aa0b24853f7b18d006a7a185c5587d77ee7931301c",
         "df6171a403226fc67a4ff2ab7afb063c08a355e80475b00226e99f89832b4034"
       ],
-      "reveal": "0JDQs9Cw0YLQsCDQmtGA0LjRgdGC0Lg="
+      "reveal": "0JDQs9Cw0YLQsCDQmtGA0LjRgdGC0Lg=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -70,7 +70,8 @@
         "8674a6f299bf7187c8c5deb0f477952f21ef266f12acf0723b3045da07faef44",
         "98eccaed2b3b6402433acdf7205f0488db9668eceb8b648396d60b8d2e344415"
       ],
-      "reveal": "0KHRgtGN0L3Qu9C4INCa0YPQsdGA0LjQug=="
+      "reveal": "0KHRgtGN0L3Qu9C4INCa0YPQsdGA0LjQug==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -136,9 +137,9 @@
         "1c719bd39859059a4ea07fdf1e7319058b96a1b4e70e240b923cede9a3985ea6",
         "236ddf3f19c6a71a832479aa5c41ff61a55c39a570b241343ae77488240d98d7",
         "4ce031b0af6c6a1531f07c52a8cc6a945d6a1f113182a6ea9fb463049f5b6928",
+        "4d70f8295e80e1c683abbd08aca6be4e7f8762ce417bb9cab83c4972fb874d37",
         "4ee7c1e0fa7a705be0f9f53506ab0d72d2d7471e35d9c44614e63c576cb5dcbf",
         "55b0f32848322bf293ea802e958e405e383c66bcb603786a8a489769ded432bb",
-        "59cf1814808c1c7466adac5a3fa838790eaecb9b3eec2397c71814dfe24fce1c",
         "62e440a3ac7eedb97b4b838a4112f3a509cc6697ef498c0109e0961b19f3f9db",
         "756f6a3ba29fb408b73906369307c1b632cb85535757664697c000c725a44ad5",
         "944d317e4005f5fc5d1d5245b84ab9062b7c00f7cc70e7773efdd961afa9412a",
@@ -154,7 +155,8 @@
         "dec153eefca9945b17164aa0b4d0850ff0a8752dbe00caac06e3cdf89efe5d2b",
         "ea9083d08ce5ac3549ddca2a7868c6687bd2ba0b8c4cf424eca6efeb33080833"
       ],
-      "reveal": "0J3QsNC/0L7Qu9C10L7QvSBJ"
+      "reveal": "0J3QsNC/0L7Qu9C10L7QvSBJ",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -178,7 +180,8 @@
         "0e83264eb2e0ced1eb4f337b4c448877cb1088859ee2452cc858d1b0cc358ab1",
         "29b83ef45bb04aaf8aca461ed023c5f81801c5232ff936bba7cc6d9b79e1eb03"
       ],
-      "reveal": "0JfQtdC70ZHQvdCw0Y8g0LzQuNC70Y8gKNGE0LjQu9GM0Lwp"
+      "reveal": "0JfQtdC70ZHQvdCw0Y8g0LzQuNC70Y8gKNGE0LjQu9GM0Lwp",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -206,7 +209,8 @@
         "6dc28b6c9a9dd784e3e52201753e5419636ecde7ad46d9b1c1dd56b1a7aea7b9",
         "6e48d1a7100457ed116905c5910e14f9c2e52ddf434e1f1461248ed5ca3a66bf"
       ],
-      "reveal": "U3VwZXIgTWFyaW8gQnJvcy4="
+      "reveal": "U3VwZXIgTWFyaW8gQnJvcy4=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -223,7 +227,8 @@
         "775585f4f3f07d345f63750d93eab36c681edce579bceca86e32bd9ef8fb202a",
         "eec561c8d3807c32d8f2bcdbb9b711ed85e4c43f5645f4c82ffdc685d0745478"
       ],
-      "reveal": "0KHQutC+0YLQvdGL0Lkg0LTQstC+0YA="
+      "reveal": "0KHQutC+0YLQvdGL0Lkg0LTQstC+0YA=",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -238,7 +243,8 @@
         "808758be0c457b8173894028068227773ecd3fa1b3327ed9a7c582cb24f09063",
         "ebb7326bd0e7cc61494ddc804eb569d6ee956651835fafaadef99165a6cf0a06"
       ],
-      "reveal": "0JzRi9GB0LvQuNGC0LXQu9GMICjRgdC60YPQu9GM0L/RgtGD0YDQsCk="
+      "reveal": "0JzRi9GB0LvQuNGC0LXQu9GMICjRgdC60YPQu9GM0L/RgtGD0YDQsCk=",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -261,7 +267,8 @@
         "7f751d85309935c3fba25b322239a5287405820de652e0732abd364da1c97e28",
         "b8a01e2cfed613840141eaf42c0d154141f7b8fbda7eb507afe6c742711ff40e"
       ],
-      "reveal": "0KHQvtCx0L7RgCDQn9Cw0YDQuNC20YHQutC+0Lkg0JHQvtCz0L7QvNCw0YLQtdGA0Lg="
+      "reveal": "0KHQvtCx0L7RgCDQn9Cw0YDQuNC20YHQutC+0Lkg0JHQvtCz0L7QvNCw0YLQtdGA0Lg=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -271,12 +278,14 @@
         "События в Древнем Риме"
       ],
       "accept": [
+        "734d51e743cd9554364e4894905789711a6e0337c26f7f10c39a35a88900ce50",
         "766e53e8ac3cd096609387daf492abf0a85f5154a253c25098e1a1744f6b0ec5",
+        "976eee680ac9dff159c2fa4c5fcbba7a3e1b3c75378d60261b9df6b50d3bd556",
         "98ae04a69593a4614ba4300c1dd89a96766e7956d368e26c184ed4b97f3657ab",
-        "9922909a7f8d016ccd2e0f61e5a0644e47fcd5b042f98bb39f5ba8723009e4d5",
-        "d11a9a1423023d3cb3f59a50b99bfe782a0477707b0474c8ef324fa48ef545cd"
+        "9922909a7f8d016ccd2e0f61e5a0644e47fcd5b042f98bb39f5ba8723009e4d5"
       ],
-      "reveal": "0JjQt9Cy0LXRgNC20LXQvdC40LUg0JLQtdC30YPQstC40Y8g0LIgNzkg0LPQvtC00YM="
+      "reveal": "0JjQt9Cy0LXRgNC20LXQvdC40LUg0JLQtdC30YPQstC40Y8g0LIgNzkg0LPQvtC00YM=",
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -301,7 +310,8 @@
         "c62061d2a0e1d6b69ba6ac807be6bcd4af156ef18963290a0c6472a8a442af5b",
         "edc85da0c6f2749388a226d69a4b72fbd91f9d78a318363a3ea76222e1af9811"
       ],
-      "reveal": "0KDQtdC90YLQs9C10L3QvtCy0YHQutC+0LUg0LjQt9C70YPRh9C10L3QuNC1"
+      "reveal": "0KDQtdC90YLQs9C10L3QvtCy0YHQutC+0LUg0LjQt9C70YPRh9C10L3QuNC1",
+      "difficulty": "medium"
     }
   ]
 }

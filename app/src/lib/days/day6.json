@@ -43,7 +43,6 @@
       ],
       "accept": [
         "2e12f5cd305a2b9c086112d67a4b8affbd718da3447690d594d98f8c2a7daf4f",
-        "3de4d05ceb1735ef0d5fb25a748068ac7dec706c77f1b4c14e37b36d1423385e",
         "4cf9057abf02b5063609f26b3d1641fc1945a191e6e31e5a5bddcce50d584696",
         "b0d6136b665e4e6702afde8106e84cb9e1df60990f38739c729a4c449731e7da",
         "c878b003d19387afc6992bcc7f4a66cca25ef9933a441cd51dc65bca12814980",
@@ -51,7 +50,8 @@
         "d47ad17d1542045de7b4c68f0c95216185517b55f80e80dbf1fb0a5ad8a0e11f",
         "fd216818cecbc78c0aeb274521b1501a01a2226a23a9a6922abb824b12dd86c4"
       ],
-      "reveal": "0JjRgdCw0LDQuiDQndGM0Y7RgtC+0L0="
+      "reveal": "0JjRgdCw0LDQuiDQndGM0Y7RgtC+0L0=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -92,7 +92,8 @@
         "e188f420445bef90db062ce2f9a4959ecc57276bfc5e5f7828c6e9a2af9405d5",
         "f3cabc6c299139b5a3e725025307c8cd545981d1b38e6ab0b69170f8dbc96e74"
       ],
-      "reveal": "0JfQuNCz0LzRg9C90LQg0KTRgNC10LnQtA=="
+      "reveal": "0JfQuNCz0LzRg9C90LQg0KTRgNC10LnQtA==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -123,7 +124,8 @@
         "ee6d6461bc6bac236426248e1a28f003cefb91798875a916a6d5d34f1e474501",
         "f8acc6ad3c1c0c78a944b91fb36cfcef9210eb2c74e5661889763500297d6c4b"
       ],
-      "reveal": "0JLQuNC90YHQtdC90YIg0JLQsNC9INCT0L7Qsw=="
+      "reveal": "0JLQuNC90YHQtdC90YIg0JLQsNC9INCT0L7Qsw==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -137,8 +139,8 @@
         "Фильмы США 1993 года",
         "Фильмы Стивена Спилберга",
         "Фильмы на английском языке",
-        "Фильмы о Германии",
         "Фильмы о Холокосте",
+        "Фильмы о нацистской Германии",
         "Фильмы по сценариям Стивена Заилляна",
         "Фильмы с музыкой Джона Уильямса",
         "Фильмы — лауреаты премии BAFTA",
@@ -158,9 +160,10 @@
       ],
       "accept": [
         "079b8cbe2f914e413ff28e2bfb1af353c30d104706b1f050c7332b2602d4b706",
-        "5b4d0e06357b77857f217edc1f86ba1e159cebc02a3ed94b56ba0f8f2cad83c4"
+        "b15fcedef739ed38f7c7c7fe080e52c36e11399eaa1a44cc9220e5a2e5e304d5"
       ],
-      "reveal": "0KHQv9C40YHQvtC6INCo0LjQvdC00LvQtdGA0LA="
+      "reveal": "0KHQv9C40YHQvtC6INCo0LjQvdC00LvQtdGA0LA=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -201,7 +204,8 @@
         "b5a38c667611990485f7d70e653b6ef1f555f0a36014bb5b327015257d7d9ec8",
         "c44058bc195a4c5e94e03b9445b4713e93c6760418f8d354c6a20477e6c04909"
       ],
-      "reveal": "0JzQsNC50L3QutGA0LDRhNGC"
+      "reveal": "0JzQsNC50L3QutGA0LDRhNGC",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -223,7 +227,8 @@
         "784abe8ba283dc0bdd24fafdc23adf0e718b3e9c4b81e88868ce4945a6fcc516",
         "b96f67cc6b4fcce0e0d475d092fd81a74f2134448090e0c22786e9bdccd7b70e"
       ],
-      "reveal": "0JPRgNCw0YQg0JzQvtC90YLQtS3QmtGA0LjRgdGC0L4="
+      "reveal": "0JPRgNCw0YQg0JzQvtC90YLQtS3QmtGA0LjRgdGC0L4=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -237,7 +242,8 @@
         "6c97f8ffbe81d6d50aa2b309f81b06097a8e95fa4d00020958db1f60a8387c9c",
         "a1328c633b67e3f8b8e261c8684d0cc54944b4a97b467af24a612ff65b7d1937"
       ],
-      "reveal": "0J/QvtGG0LXQu9GD0LkgKNC60LDRgNGC0LjQvdCwINCa0LvQuNC80YLQsCk="
+      "reveal": "0J/QvtGG0LXQu9GD0LkgKNC60LDRgNGC0LjQvdCwINCa0LvQuNC80YLQsCk=",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -260,7 +266,8 @@
         "16fcf8b392188070c392bcd9031ee0533a352e8d2346b199e6983ceeb9aa7409",
         "ba0798b3aeb18606893b85a10b82f90ff18e9561631a617512bcabed08069133"
       ],
-      "reveal": "0KHRgtCw0YLRg9GPINCh0LLQvtCx0L7QtNGL"
+      "reveal": "0KHRgtCw0YLRg9GPINCh0LLQvtCx0L7QtNGL",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -282,10 +289,11 @@
       "accept": [
         "31e1a19c2334b8a94bbd847fddd8a89238d90c1321f55bc76bda86522622dd9f",
         "8ea9c090e3bc2cbb37786ce09b80545e238bfc3fd7f095bcf63590a1cb3e3a70",
-        "ac6fb0cf779ff53220cf612e433378a14496b1d981021a709211d07d0a07d266",
-        "c705d8af52a46a5aa108d1df4ab82a0fb9e504ce72fb8b14153c86ae3e4e4a2b"
+        "c705d8af52a46a5aa108d1df4ab82a0fb9e504ce72fb8b14153c86ae3e4e4a2b",
+        "e77cd95921bc41f244eb1b3186dd88bbd0a97f0939206fde5cd0f4fb031d85c8"
       ],
-      "reveal": "0JLQsNGA0YTQvtC70L7QvNC10LXQstGB0LrQsNGPINC90L7Rh9GM"
+      "reveal": "0JLQsNGA0YTQvtC70L7QvNC10LXQstGB0LrQsNGPINC90L7Rh9GM",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -306,7 +314,8 @@
         "59ad1225b7dd0e68567e0840be1813be45736fc11e648fc31c1356f43ff9f4a0",
         "deae5fb80431c8b15596eb91a4548983dcff330d754d9773ee4e50e20f7d5ddf"
       ],
-      "reveal": "0JHQvtC70YzRiNC+0Lkg0LDQtNGA0L7QvdC90YvQuSDQutC+0LvQu9Cw0LnQtNC10YA="
+      "reveal": "0JHQvtC70YzRiNC+0Lkg0LDQtNGA0L7QvdC90YvQuSDQutC+0LvQu9Cw0LnQtNC10YA=",
+      "difficulty": "easy"
     }
   ]
 }

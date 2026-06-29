@@ -33,7 +33,8 @@
         "c8f11df3d854e1d6892f3d1010035477be049decae6d01c3c89ad8aa44077c0d",
         "efe3bbd6ae656874c6b8fd3eee5f19d530c623fd5518afdb9a579a0a5d7b88a7"
       ],
-      "reveal": "0JDQu9C10LrRgdCw0L3QtNGAINCc0LDQutC10LTQvtC90YHQutC40Lk="
+      "reveal": "0JDQu9C10LrRgdCw0L3QtNGAINCc0LDQutC10LTQvtC90YHQutC40Lk=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -55,7 +56,8 @@
         "26ed921cfdb518793eaffed1338ed5b94255170f54410a5df3836276253f8aaa",
         "b50ef8e6884e28bccadefaa83d57695de7baa1c8dc162a637a711ccdff63d9be"
       ],
-      "reveal": "0JHQtdGI0LXQvdGL0LUg0L/RgdGL"
+      "reveal": "0JHQtdGI0LXQvdGL0LUg0L/RgdGL",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -76,7 +78,8 @@
         "50ac81f970325a3e011f2437818adde426e1278dee5670dd359edfca43a72d79",
         "5847b88eeff3142fc990e7e5e6fd2c40af91f3b12c30fb1c243fedce1bb8be40"
       ],
-      "reveal": "0JPQvtGA0L7QtCDQstC+0YDQvtCy"
+      "reveal": "0JPQvtGA0L7QtCDQstC+0YDQvtCy",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -125,19 +128,19 @@
         "Члены Шведской королевской академии наук"
       ],
       "accept": [
-        "06549a5b2f1867b8374c7ba5732619385c87dfc16527532931becbb3b2cdc1d4",
         "34a9caeb5c6651b71aeb07267ab8ab1659dc1bd3008dccffcdddcaa58506e348",
         "4612e5b5f4d3ac3e621ab339d6945f9ce27eac2cc455eafe59e5e4c95945135e",
         "5010d3148de3eb7fafaa47c4fe2e16492db14bfec1fdd1d3316b114b4b84569a",
         "52975af5af83545433afef276470d7f75666c764a3d9d387199abf9aaed1e37b",
+        "53e17ca0a4d4b767ceff17eb48e2bb1929f93e4ab9744f832b5172cc181c9c92",
         "869aa03be88b281b360461b8dac1cb01180f02d572c8039aa6b888972a862a2b",
         "a45c4618d6014d6711df5a8115a3168aa7bcc85bd958f5d4c4cf20fc0be16b27",
         "b2d42ee8039f7ae539607fceb108ebcde8fd9bf2d79d893ef318670afdd7c811",
-        "b964ffa3d9484f481a6446ced2a6532b16d1904147f65b5bb4890c7e1ee5b762",
         "c9e60f8ba335ce4d222c1467d1e47a5468da8dc4e574d7b9535ced9795d4e775",
         "ce2d78344d6073e39277a79b58732b18c131aa182dfe974687dba41d7706c0f1"
       ],
-      "reveal": "0JPQtdC50LfQtdC90LHQtdGA0LMsINCS0LXRgNC90LXRgA=="
+      "reveal": "0JPQtdC50LfQtdC90LHQtdGA0LMsINCS0LXRgNC90LXRgA==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -163,7 +166,8 @@
         "8d2ca4fb5c8f586c4a93616903325e976894b64a72e01c9fd1edbf82e1afc28c",
         "fc2230a149a2ac78b288fdc900f1a9898c9eec069232c8ec52af81ff710c6912"
       ],
-      "reveal": "0JHQtdGA0LPQutCw0LzQvywg0JTQtdC90L3QuNGB"
+      "reveal": "0JHQtdGA0LPQutCw0LzQvywg0JTQtdC90L3QuNGB",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -179,7 +183,8 @@
         "9233ee53026b3e9b98b41175400ae235331c8bbf541675709d25b184183613bd",
         "f715136d30017804ad58bff7f2adf63f3f7f8bdefbd9c91c0437d0ac99c9e760"
       ],
-      "reveal": "0JDQv9C+0LvQu9C+0L0tMTY="
+      "reveal": "0JDQv9C+0LvQu9C+0L0tMTY=",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -201,7 +206,8 @@
         "94228a4996b4c228a1a01d540913d8e6590344365eb00a41d79804b87d466555",
         "aef419396c712a09e49b312fd07273350c72a292b56cb6e9dbd0603e851efbae"
       ],
-      "reveal": "0KLRg9C90LPRg9GB0YHQutC40Lkg0LzQtdGC0LXQvtGA0LjRgg=="
+      "reveal": "0KLRg9C90LPRg9GB0YHQutC40Lkg0LzQtdGC0LXQvtGA0LjRgg==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -216,14 +222,15 @@
         "Цензурирование литературы в СССР"
       ],
       "accept": [
+        "303cc046f6e492bb8d6e6af6439905b0b4c0d18ca16820f088edbca6455f50a8",
         "6e612ba1166ac3e560307ad74b3f00bf929f1ca81c8b40273afa4cc316815628",
         "b7a9b6437a43c070b5a8883414bddad174925fdcb3e0329f1c130cbad28dd2c4",
         "bcb93f7f2a0f54bc79d8e9588312a1064adeb51c098e26448e65a1a70959a007",
         "e6c4440be18eb32235563dc73de36ab24a62743ca19d0f43ec1046bb5e7307b7",
-        "f51acd2b9a9363d8744381066daa5f6945f240574a6a2851d50fe654d35552c0",
-        "f72ebf5e94ed80482dcb98181f08e6e09e23d826b1458116a0540b744726978e"
+        "f51acd2b9a9363d8744381066daa5f6945f240574a6a2851d50fe654d35552c0"
       ],
-      "reveal": "0JzQsNGB0YLQtdGAINC4INCc0LDRgNCz0LDRgNC40YLQsA=="
+      "reveal": "0JzQsNGB0YLQtdGAINC4INCc0LDRgNCz0LDRgNC40YLQsA==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -249,7 +256,8 @@
         "c259dd59ed59dac378dace73333906fd15da98fe709962328e4ed0f4e906c056",
         "f974be0c60d9a195a62c79b75eb0c90ce08b0392efa5c45ea733de7c687129cf"
       ],
-      "reveal": "0KXQtdC00Lgg0JvQsNC80LDRgNGA"
+      "reveal": "0KXQtdC00Lgg0JvQsNC80LDRgNGA",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -267,7 +275,8 @@
         "43865385e1ab1d943d200de652334e6a0de554aca4b7266d90957daa1c4b176d",
         "76cc619ebc221f8da142ab666d9c7eff70027b0bbc720d8dd5369817d5fb57dd"
       ],
-      "reveal": "0JPQtdGA0L3QuNC60LAgKNC60LDRgNGC0LjQvdCwKQ=="
+      "reveal": "0JPQtdGA0L3QuNC60LAgKNC60LDRgNGC0LjQvdCwKQ==",
+      "difficulty": "medium"
     }
   ]
 }

@@ -55,7 +55,8 @@
         "ca048aa98380af3c129ad645d6722f829b90208a104f08498843ca7ed3ffa6a6",
         "d6bb53169e83679f6b87324248bac16d5c777d9a9abd8804701a935a5c40c043"
       ],
-      "reveal": "0K3RgNC90LXRgdGCINCl0LXQvNC40L3Qs9GD0Y3QuQ=="
+      "reveal": "0K3RgNC90LXRgdGCINCl0LXQvNC40L3Qs9GD0Y3QuQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -87,7 +88,8 @@
         "e157bda0ac7d0dd4b71f4c32d6a4231af9b2c366451c30dc00c10e350e3f6e3a",
         "f613f5167c0cc63621faea46cba6202087254e1c29b164ad6b2ba496f8d34613"
       ],
-      "reveal": "0KDQsNGE0LDRjdC70Ywg0KHQsNC90YLQuA=="
+      "reveal": "0KDQsNGE0LDRjdC70Ywg0KHQsNC90YLQuA==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -140,7 +142,8 @@
         "e348a7d3c69408397466eed30586f0b8cb8ff4a33d33cda7b26ca19be422de9b",
         "fefa4cba6205e9144b4bb1ea973813d03beca960376bd9a8146969b2ee16c05f"
       ],
-      "reveal": "0JHQuNC70Lsg0JPQtdC50YLRgQ=="
+      "reveal": "0JHQuNC70Lsg0JPQtdC50YLRgQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -169,7 +172,8 @@
         "96c984b12f5fcac14629c3d607eec7a92a1b352c1b5bd3cdff16a8e3f2759f85",
         "c4e00a67c8396af2b26edd5578e6a64c0db021f409128c7c91cca348c4fce13d"
       ],
-      "reveal": "0KHQuNGP0L3QuNC1ICjRhNC40LvRjNC8LCAxOTgwKQ=="
+      "reveal": "0KHQuNGP0L3QuNC1ICjRhNC40LvRjNC8LCAxOTgwKQ==",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -177,6 +181,7 @@
         "Игры для Windows",
         "Игры для macOS",
         "Игры на движке GoldSrc",
+        "Киберспортивные компьютерные игры",
         "Компьютерные игры 1999 года",
         "Компьютерные игры, изданные «Букой»",
         "Компьютерные игры, разработанные Valve",
@@ -195,7 +200,8 @@
         "ed4cbbdf78a2d6975543a56eb43569db1012dd1d1684c8591258ef83d6b8b3b9",
         "f46369dc3c7a730c583111bca31e12216dff06599cf5134fe6ff4d7218155029"
       ],
-      "reveal": "Q291bnRlci1TdHJpa2U="
+      "reveal": "Q291bnRlci1TdHJpa2U=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -212,7 +218,8 @@
         "74a5fe5232b02a8bedce0c092430c1adcb3076d8d168ede37359b1e2cd2e763e",
         "c89a6ff4766434f9bf62a7ecc9aaa5c8ea118468735bd0a5a2eb971e434bdeb8"
       ],
-      "reveal": "0JLQtdC70LjQutC40Lkg0JPRjdGC0YHQsdC4"
+      "reveal": "0JLQtdC70LjQutC40Lkg0JPRjdGC0YHQsdC4",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -225,7 +232,8 @@
         "3fe42765e5d43254e2454a789f8de9136e29afab27c5e06608747eafcf45795c",
         "9d656c21be06ac9821736fba932b2a5e72048f48f1a3cf83a899bbe4f5ac760f"
       ],
-      "reveal": "0JDQvNC10YDQuNC60LDQvdGB0LrQsNGPINCz0L7RgtC40LrQsCAo0LrQsNGA0YLQuNC90LAp"
+      "reveal": "0JDQvNC10YDQuNC60LDQvdGB0LrQsNGPINCz0L7RgtC40LrQsCAo0LrQsNGA0YLQuNC90LAp",
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -241,7 +249,8 @@
         "d75fb1062b69ebfa8e10c023973103172ad2f7d083b91268f5ce132ced1df44c",
         "fbeeb2abb4bd9f397123019a1f8d72ff31e4292b234490aae1692b45ea950116"
       ],
-      "reveal": "0JzQsNGH0YMt0J/QuNC60YfRgw=="
+      "reveal": "0JzQsNGH0YMt0J/QuNC60YfRgw==",
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -258,15 +267,16 @@
         "Сражения на Тихом океане"
       ],
       "accept": [
-        "1aecd1a1eb9dc5ef71b7f2180b73a497fd3e6783603063e9044f6c371b2ec268",
         "27c0505d3fda2ab22ce82730cb3f97280d7a5e774f8fdfa4dd0af733a4337377",
         "81851f2e248a23986d6dd32445de1ea52856eaeca8b424b1adbbfef995e0e175",
         "8cea5b6195c446722614156d119bc098dc7741727b41f652893eaace88cead2d",
+        "8e0ef15fdc5ef179abfafaae550030fa37c2335ce56ee4d506653ac3e09d52ea",
         "9d0edc8e8ce9738d0a1c0dbab539ed898eba091dd0c14beaba4872241c9aa966",
         "bd58b326b3b1f061d42aec33a09cbfb90dc06d52b02073bfb5b90f40415cc44f",
         "ccb2c09012df13a3e2e790a511053f38a8742154e5e11f61e9d39863062173f9"
       ],
-      "reveal": "0KbRg9GB0LjQvNGB0LrQvtC1INGB0YDQsNC20LXQvdC40LU="
+      "reveal": "0KbRg9GB0LjQvNGB0LrQvtC1INGB0YDQsNC20LXQvdC40LU=",
+      "difficulty": "easy"
     },
     {
       "categories": [
@@ -277,12 +287,13 @@
         "Короткопериодические кометы"
       ],
       "accept": [
-        "057ff12ff432e3b1fcb397fc1303fc2a39234606077eeec91778e8cb335667a5",
         "22a4a1b7357fa0ad25b4c60b93b750450f06a5df8eae89af41751c322636fb4f",
         "60be42df51beb7e4a14ae37f70327004161c2fcc6c69523dda07620bf3db6a7a",
-        "dc8723fa8702df1894a95f7ad46d61d15241f0aa448c7284500e1e06df5a4b71"
+        "dc8723fa8702df1894a95f7ad46d61d15241f0aa448c7284500e1e06df5a4b71",
+        "df153d53b548116bd684eec4789da6f6752d2585c9b671304c598960b4d6ca32"
       ],
-      "reveal": "0JrQvtC80LXRgtCwINCT0LDQu9C70LXRjw=="
+      "reveal": "0JrQvtC80LXRgtCwINCT0LDQu9C70LXRjw==",
+      "difficulty": "medium"
     }
   ]
 }

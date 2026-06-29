@@ -70,6 +70,11 @@
     return rows;
   });
 
+  // Function/stop words dropped from answers, symmetric on both sides, so
+  // "the last of us" == "last of us" and "О дивный новый мир" == "дивный новый
+  // мир". MUST stay in sync with STOPWORDS in scripts/make_day.py:norm().
+  const STOPWORDS = new Set(['the', 'of', 'о', 'об', 'обо', 'и', 'а', 'но', 'в', 'во', 'на', 'не']);
+
   function norm(s) {
     // Typo-tolerant + word-order independent. MUST stay byte-identical to
     // norm() in scripts/make_day.py, or guesses won't hash to the shipped
@@ -80,13 +85,14 @@
       .replace(/э/g, 'е')
       .replace(/й/g, 'и')
       .replace(/\([^)]*\)/g, ' ')
+      .replace(/['’‘ʼ`]/g, '') // апострофы/кавычки -> ничего (д'арк -> дарк)
       .replace(/[^а-яa-z0-9 ]/g, ' ')
       .replace(/\s+/g, ' ')
       .trim()
       .replace(/(.)\1+/g, '$1')
       .split(' ')
       .filter(Boolean)
-      .filter((w) => w !== 'the' && w !== 'of') // drop English stopwords (the last of us == last of us)
+      .filter((w) => !STOPWORDS.has(w)) // drop function/stop words symmetrically
       // singular/plural & case tolerance: drop a trailing Russian inflection
       // vowel/ь so "коала"=="коалы", "челюсть"=="челюсти", "окно"=="окна". Only
       // when the stem stays >=3 chars. MUST stay byte-identical to stem() in
@@ -329,6 +335,17 @@
     save();
   }
 
+  // отзачёт: зеркало к claimRight — после автозачёта (win) игрок может отозвать
+  // («я не это имел в виду»): win -> miss (полный отзачёт, 0 баллов)
+  function unclaim() {
+    results[i] = 'lose';
+    save();
+  }
+
+  // тир сложности показываем на экране ответа (не раньше — чтобы не подсказывать)
+  const DIFF = { easy: '🟢 Лёгкий', medium: '🟡 Средний', hard: '🔴 Сложный' };
+  const diffLabel = $derived(puzzle && puzzle.difficulty ? DIFF[puzzle.difficulty] : '');
+
   function next() {
     if (i < N - 1) {
       i += 1;
@@ -430,10 +447,13 @@
             <div class="answer-text">
               <a class="ans" href={revealWiki} target="_blank" rel="noopener" onclick={openWiki}>{revealTitle}</a>
               <a class="wikilink" href={revealWiki} target="_blank" rel="noopener" onclick={openWiki}>Открыть в Википедии ↗</a>
+              {#if diffLabel}<div class="diffrow">Сложность: <b>{diffLabel}</b></div>{/if}
               {#if results[i] === 'half'}
                 <div class="halfnote">🐠 Засчитано как ½ балла</div>
               {:else if canClaim && results[i] === 'lose'}
                 <button class="link claim" onclick={claimRight}>Я всё-таки был прав 🐠 (½ балла)</button>
+              {:else if results[i] === 'win'}
+                <button class="link unclaim" onclick={unclaim}>Я не это имел в виду 🐟 (отозвать)</button>
               {/if}
             </div>
           </div>
@@ -639,6 +659,9 @@
   .subrow { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
   .link { background: none; border: none; color: var(--secondary); cursor: pointer; font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; padding: 4px; }
   .link.claim { color: var(--orange); font-weight: 800; }
+  .link.unclaim { color: var(--red); font-weight: 800; }
+  .diffrow { font-size: 13px; color: var(--muted); font-weight: 600; margin-top: 2px; }
+  .diffrow b { color: var(--text); font-weight: 800; }
   .halfnote { color: var(--orange); font-weight: 800; font-size: 14px; margin-top: 12px; }
   .feedback { min-height: 22px; text-align: center; margin-top: 12px; font-weight: 800; font-size: 14px; }
   .feedback.bad { color: var(--red); }
