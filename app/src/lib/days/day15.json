@@ -193,7 +193,7 @@
         "ef4a9125c1883c531c7be9a3b33592002e2a875888aece2087152b315a25125f"
       ],
       "reveal": "0J7QtNGA0Lgg0KXQtdC/0LHRkdGA0L0=",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -242,7 +242,7 @@
         "db0f8efa7ccb8e5e41006c2ba473e21a36dc84f69bdde83f168c7790031fb056"
       ],
       "reveal": "RGFyayBTb3Vscw==",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -259,7 +259,7 @@
         "76452ba625f3cbdc89ada7463ae78983620a2aa6700adae79133c461dd34ade1"
       ],
       "reveal": "0JHQvtC20LXRgdGC0LLQtdC90L3QsNGPINC60L7QvNC10LTQuNGP",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -336,7 +336,7 @@
         "f00c62f00d740ead15f499a9722941bb96534a4ca5ae89b3f35c8b4de05b3935"
       ],
       "reveal": "0JDRgtC+0LzQvdGL0LUg0LHQvtC80LHQsNGA0LTQuNGA0L7QstC60Lgg0KXQuNGA0L7RgdC40LzRiyDQuCDQndCw0LPQsNGB0LDQutC4",
-      "difficulty": "easy"
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -357,7 +357,7 @@
         "dc7e81d93808cd6927c33c64affb4059b6005e181c4df3ebe0167a149b1ead12"
       ],
       "reveal": "0JHQvtC70YzRiNCw0Y8g0L/QsNC90LTQsA==",
-      "difficulty": "medium"
+      "difficulty": "hard"
     }
   ]
 }

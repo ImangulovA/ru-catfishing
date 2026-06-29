@@ -86,7 +86,7 @@
         "dad7a3fd24992d938dd774ca683d7c74cc0810fbb3af56e2707b4ac8563ddf18"
       ],
       "reveal": "0KXRgNC40YHRgtC+0YTQvtGAINCa0L7Qu9GD0LzQsQ==",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -161,7 +161,7 @@
         "b174820a51aeb42217a0718c62d2f726be1b4e5e91f220ab555bf739013aedcd"
       ],
       "reveal": "0KHQtdC80Ywg0YHQsNC80YPRgNCw0LXQsg==",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -175,7 +175,7 @@
         "d4603c71a6e10af4a5594149620fe371ff80847cf42737ad1c85f9f3f2df2bd1"
       ],
       "reveal": "0KHQsNC/0ZHRgCAo0LjQs9GA0LAp",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -193,7 +193,7 @@
         "8e99064522fc3b988b95eaa36f3943f47735488e310aed38297d119f3a678ff9"
       ],
       "reveal": "0JvQvtC70LjRgtCwICjRgNC+0LzQsNC9KQ==",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -208,7 +208,7 @@
         "9dc0c18c47e4bf38506326e929807cd754697e5a3e43e947d71ef328ec4ed647"
       ],
       "reveal": "0JTQtdCy0L7Rh9C60LAg0YEg0L/QtdGA0YHQuNC60LDQvNC4",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -234,7 +234,7 @@
         "f40c0e838f0d5c279edd4cc19b9d067629b12bce5ed66ddd204729f79ac16495"
       ],
       "reveal": "0JLQtdGA0YHQsNC70Yw=",
-      "difficulty": "easy"
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -255,7 +255,7 @@
         "eef43385bd6ede32621c3c736f21730264796f52802f4aa311478c9fa265a9a0"
       ],
       "reveal": "0JLQtdC70LjQutCw0Y8g0LTQtdC/0YDQtdGB0YHQuNGP",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -278,7 +278,7 @@
         "ea66983c9ec11fb1ffdb8c502c9160cb853b51e252ba6ac10279e37a663c403b"
       ],
       "reveal": "0KPRgtC60L7QvdC+0YE=",
-      "difficulty": "easy"
+      "difficulty": "hard"
     }
   ]
 }

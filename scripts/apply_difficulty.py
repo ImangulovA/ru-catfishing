@@ -23,11 +23,22 @@ def reveal_title(b64):
     return base64.b64decode(b64).decode("utf-8")
 
 
+# Composed future days (>= this) already carry their balanced tier from
+# compose_days; only (re)label locked/past days from the global map here.
+LOCKED_MAX = 25
+
+
 def main():
     cls = json.load(open(CLASSIFIED, encoding="utf-8"))
     changed = 0
     missing = 0
     for f in sorted(glob.glob(os.path.join(DAYS_DIR, "day*.json"))):
+        try:
+            n = int(os.path.basename(f)[3:-5])
+        except ValueError:
+            continue
+        if n > LOCKED_MAX:
+            continue
         d = json.load(open(f, encoding="utf-8"))
         dirty = False
         for p in d.get("puzzles", []):

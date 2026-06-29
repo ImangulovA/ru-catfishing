@@ -29,6 +29,10 @@ UA = "game-designer/0.1 (personal project; imangulovamal@gmail.com)"
 PV_START = "20250601"
 PV_END = "20260601"
 
+# Fame floor: only articles with >= this many avg monthly ru.wiki pageviews are
+# eligible as PLAYABLE puzzles. Below it = too obscure (dropped from candidates).
+PV_FLOOR = 5000
+
 
 # ---------------------------------------------------------------- THEME -------
 # Ordered list (key, label, keyword-substrings). First theme with any keyword
@@ -118,7 +122,13 @@ def fetch_pageviews(title, sleep=0.1):
     """
     if title in _PV:
         return _PV[title]
-    enc = urllib.parse.quote(title.replace(" ", "_"), safe="")
+    # resolve redirect -> canonical title so views aren't undercounted
+    try:
+        from build_pool import resolve_title
+        canon = resolve_title(title)
+    except Exception:
+        canon = title
+    enc = urllib.parse.quote(canon.replace(" ", "_"), safe="")
     url = (
         "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
         f"ru.wikipedia/all-access/all-agents/{enc}/monthly/{PV_START}/{PV_END}"

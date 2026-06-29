@@ -96,6 +96,18 @@ def fetch_seed_titles(limit):
     return titles
 
 
+def resolve_title(title):
+    """Canonical article title (follows redirects + normalisation), or `title`.
+
+    The pageviews REST API does NOT follow redirects, so querying a redirect
+    title ("Майнкрафт", "Клод Моне") undercounts views. Resolve to the canonical
+    title first ("Minecraft", "Моне, Клод") so the fame signal is accurate.
+    """
+    data = api_get({"action": "query", "titles": title, "redirects": "1"})
+    pages = data.get("query", {}).get("pages") or [{}]
+    return pages[0].get("title", title)
+
+
 def fetch_categories(title):
     """Non-hidden categories of an article, with the 'Категория:' prefix removed."""
     data = api_get({

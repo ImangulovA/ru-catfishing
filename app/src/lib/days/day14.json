@@ -30,7 +30,7 @@
         "df6171a403226fc67a4ff2ab7afb063c08a355e80475b00226e99f89832b4034"
       ],
       "reveal": "0JDQs9Cw0YLQsCDQmtGA0LjRgdGC0Lg=",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -71,7 +71,7 @@
         "98eccaed2b3b6402433acdf7205f0488db9668eceb8b648396d60b8d2e344415"
       ],
       "reveal": "0KHRgtGN0L3Qu9C4INCa0YPQsdGA0LjQug==",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -181,7 +181,7 @@
         "29b83ef45bb04aaf8aca461ed023c5f81801c5232ff936bba7cc6d9b79e1eb03"
       ],
       "reveal": "0JfQtdC70ZHQvdCw0Y8g0LzQuNC70Y8gKNGE0LjQu9GM0Lwp",
-      "difficulty": "easy"
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -210,7 +210,7 @@
         "6e48d1a7100457ed116905c5910e14f9c2e52ddf434e1f1461248ed5ca3a66bf"
       ],
       "reveal": "U3VwZXIgTWFyaW8gQnJvcy4=",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -228,7 +228,7 @@
         "eec561c8d3807c32d8f2bcdbb9b711ed85e4c43f5645f4c82ffdc685d0745478"
       ],
       "reveal": "0KHQutC+0YLQvdGL0Lkg0LTQstC+0YA=",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -244,7 +244,7 @@
         "ebb7326bd0e7cc61494ddc804eb569d6ee956651835fafaadef99165a6cf0a06"
       ],
       "reveal": "0JzRi9GB0LvQuNGC0LXQu9GMICjRgdC60YPQu9GM0L/RgtGD0YDQsCk=",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -268,7 +268,7 @@
         "b8a01e2cfed613840141eaf42c0d154141f7b8fbda7eb507afe6c742711ff40e"
       ],
       "reveal": "0KHQvtCx0L7RgCDQn9Cw0YDQuNC20YHQutC+0Lkg0JHQvtCz0L7QvNCw0YLQtdGA0Lg=",
-      "difficulty": "easy"
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -311,7 +311,7 @@
         "edc85da0c6f2749388a226d69a4b72fbd91f9d78a318363a3ea76222e1af9811"
       ],
       "reveal": "0KDQtdC90YLQs9C10L3QvtCy0YHQutC+0LUg0LjQt9C70YPRh9C10L3QuNC1",
-      "difficulty": "medium"
+      "difficulty": "hard"
     }
   ]
 }

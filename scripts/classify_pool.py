@@ -21,6 +21,7 @@ from classify import (
     difficulty_score,
     fetch_pageviews,
     flush_pv_cache,
+    PV_FLOOR,
     THEME_LABELS,
 )
 from build_pool import fetch_categories, is_giveaway, is_service, title_tokens
@@ -30,6 +31,7 @@ DAYS_DIR = os.path.join(ROOT, "app", "src", "lib", "days")
 DATA = os.path.join(ROOT, "prototype", "data")
 OUT = os.path.join(DATA, "_classified.json")
 FAMOUS = os.path.join(DATA, "_famous.txt")
+TOP = os.path.join(DATA, "_top_titles.json")
 
 
 def reveal_title(b64):
@@ -71,6 +73,15 @@ def main():
                 n_new += 1
         print(f"+ famous titles not yet in days: {n_new}", file=sys.stderr)
 
+    if os.path.exists(TOP):
+        top = json.load(open(TOP, encoding="utf-8"))
+        n_top = 0
+        for t in top:
+            if t not in items:
+                items[t] = None
+                n_top += 1
+        print(f"+ most-viewed titles not yet seen: {n_top}", file=sys.stderr)
+
     records = {}
     scores = []
     total = len(items)
@@ -91,9 +102,14 @@ def main():
             json.dump(records, open(OUT, "w", encoding="utf-8"),
                       ensure_ascii=False, indent=2)
 
-    tiers = assign_tiers(scores)
+    # Tiers are terciles among PLAYABLE (famous) titles only: pv >= floor AND
+    # >= 4 categories. Everything below the fame floor is too obscure to be a
+    # candidate -> labelled "hard" for display, excluded from composition by pv.
+    survivors = [(t, sc) for (t, sc) in scores
+                 if records[t]["pv"] >= PV_FLOOR and records[t]["n_cats"] >= 4]
+    tiers = assign_tiers(survivors)
     for title in records:
-        records[title]["tier"] = tiers.get(title, "medium")
+        records[title]["tier"] = tiers.get(title, "hard")
 
     flush_pv_cache()
     json.dump(records, open(OUT, "w", encoding="utf-8"),
@@ -102,10 +118,13 @@ def main():
     # summary
     from collections import Counter
     th = Counter(r["theme"] for r in records.values())
-    ti = Counter(r["tier"] for r in records.values())
+    ti = Counter(tiers.values())
     print(f"\nwrote {len(records)} -> {OUT}")
-    print("themes:", {THEME_LABELS[k]: v for k, v in th.most_common()})
-    print("tiers :", dict(ti))
+    print(f"playable (pv>={PV_FLOOR}, >=4 cats): {len(survivors)} of {len(records)}")
+    print("playable themes:",
+          {THEME_LABELS[k]: v for k, v in
+           Counter(records[t]["theme"] for t, _ in survivors).most_common()})
+    print("playable tiers :", dict(ti))
 
 
 if __name__ == "__main__":

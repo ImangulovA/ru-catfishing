@@ -24,9 +24,10 @@ import json
 import os
 import random
 import sys
+import time
 from collections import Counter
 
-from classify import THEME_LABELS
+from classify import PV_FLOOR, THEME_LABELS
 from make_day import norm
 from bulk_build import build_strict, write_day
 
@@ -59,36 +60,6 @@ def gather_locked_keys():
         for p in d.get("puzzles", []):
             keys.add(dedup_key(reveal_title(p["reveal"])))
     return keys
-
-
-def gather_candidate_titles(locked):
-    """Titles from existing days 26.. + famous list, minus locked, deduped."""
-    cand = {}  # key -> title (first wins)
-    # existing future days (will be overwritten by the recomposed ones)
-    for f in glob.glob(os.path.join(DAYS_DIR, "day*.json")):
-        base = os.path.basename(f)
-        try:
-            n = int(base[3:-5])
-        except ValueError:
-            continue
-        if n <= LOCKED_MAX:
-            continue
-        d = json.load(open(f, encoding="utf-8"))
-        for p in d.get("puzzles", []):
-            t = reveal_title(p["reveal"])
-            k = dedup_key(t)
-            if k not in locked:
-                cand.setdefault(k, t)
-    # curated famous
-    if os.path.exists(FAMOUS):
-        for raw in open(FAMOUS, encoding="utf-8"):
-            t = raw.strip()
-            if not t or t.startswith("#"):
-                continue
-            k = dedup_key(t)
-            if k not in locked:
-                cand.setdefault(k, t)
-    return list(cand.values())
 
 
 def arrange_no_runs(day, rng):
@@ -183,18 +154,23 @@ def main():
     ap.add_argument("--start", type=int, default=26)
     ap.add_argument("--max-days", type=int, default=0, help="0 = as many as pool allows")
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--sleep", type=float, default=0.3, help="polite pause between builds")
     args = ap.parse_args()
 
     cls = json.load(open(CLASSIFIED, encoding="utf-8"))
     locked = gather_locked_keys()
-    titles = gather_candidate_titles(locked)
+    # candidates = famous & detailed enough & not already released, deduped
     pool = []
-    for t in titles:
-        meta = cls.get(t)
-        if not meta or meta.get("n_cats", 0) < 4:
+    seen = set()
+    for t, meta in cls.items():
+        if meta.get("pv", 0) < PV_FLOOR or meta.get("n_cats", 0) < 4:
             continue
+        k = dedup_key(t)
+        if k in locked or k in seen:
+            continue
+        seen.add(k)
         pool.append({"title": t, "theme": meta["theme"], "tier": meta["tier"]})
-    print(f"locked={len(locked)} candidates={len(pool)} "
+    print(f"locked={len(locked)} candidates={len(pool)} (pv>={PV_FLOOR}) "
           f"(tiers={Counter(p['tier'] for p in pool)})", file=sys.stderr)
 
     days, relaxed = compose(pool, args.seed)
@@ -240,6 +216,7 @@ def main():
             except Exception as e:
                 status = "err"
                 print(f"  day{idx} ERR {c['title']!r}: {e}", file=sys.stderr)
+            time.sleep(args.sleep)
             if status == "ok":
                 k = dedup_key(c["title"])
                 if k in used_keys:

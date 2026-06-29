@@ -40,7 +40,7 @@
         "ffa2171de2049ce1a44acd294009fd17bfa1f0e5c13155d5cf2df6d08d976722"
       ],
       "reveal": "0JzRjdGA0LjQu9C40L0g0JzQvtC90YDQvg==",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -121,7 +121,7 @@
         "feb0f1e1dd31a0a4ad2d6e98a68ae2ca327e5cc01e83fcdb455ae117b818fe03"
       ],
       "reveal": "0KHRgtC40LLQtdC9INCa0LjQvdCz",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -148,7 +148,7 @@
         "cc956db7f9fde628fbf89f4264ef027b102105c16458c2afb6cd5ff7e779e665"
       ],
       "reveal": "0KfQtdC70Y7RgdGC0LggKNGE0LjQu9GM0Lwp",
-      "difficulty": "easy"
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -209,7 +209,7 @@
         "f2d52d8c14ce2fd2caaef42d7f8ea1476adc8913e7fe9940112f22e0cb750e16"
       ],
       "reveal": "0JPQvtGA0LTQvtGB0YLRjCDQuCDQv9GA0LXQtNGD0LHQtdC20LTQtdC90LjQtQ==",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -224,7 +224,7 @@
         "5d14072e08a6c38f10ee9c5a3752aa436345a81132bd4815147e4741d6bef930"
       ],
       "reveal": "0KHQuNC60YHRgtC40L3RgdC60LDRjyDQvNCw0LTQvtC90L3QsA==",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -242,7 +242,7 @@
         "e13ba584a9468d33788f85ce6f8b6062577adecba0c987841046566e8e644fe9"
       ],
       "reveal": "0JfQsNC/0YDQtdGC0L3Ri9C5INCz0L7RgNC+0LQ=",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -266,7 +266,7 @@
         "f13c298a48730223bef1e3fa95ee53770faa0283533c197128fc8d6fe2273781"
       ],
       "reveal": "0J/QsNC00LXQvdC40LUg0JrQvtC90YHRgtCw0L3RgtC40L3QvtC/0L7Qu9GP",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -287,7 +287,7 @@
         "e69fc0903b0d26678bd568610dc772030f667ff5e2d01c0f1ef39fcb298d20f2"
       ],
       "reveal": "0JrQvtCw0LvQsA==",
-      "difficulty": "medium"
+      "difficulty": "hard"
     }
   ]
 }

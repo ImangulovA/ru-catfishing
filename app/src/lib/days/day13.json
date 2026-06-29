@@ -67,7 +67,7 @@
         "a944f7fd9f939cd60b048c016b2dd5f5b9da3221ece41ee3f36dabd1aa9b9baa"
       ],
       "reveal": "0K3QtNCz0LDRgCDQkNC70LvQsNC9INCf0L4=",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -107,7 +107,7 @@
         "f807c0533d9371d903707bbeda0cfe93a83b22885f442c3c4be8ff14305a3ea3"
       ],
       "reveal": "0JDQu9GM0YTRgNC10LQg0KXQuNGH0LrQvtC6",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -159,7 +159,7 @@
         "fad8fac557f5a4f3f5d403d918f35e11e2f89bfdb9fd6c31341eacea7d8401ca"
       ],
       "reveal": "0KLQsNC80LDQs9C+0YfQuA==",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -175,7 +175,7 @@
         "5afa3e4524679e66dd0f3de89b29347cbe451fe5745467b2189b8216dde4440a"
       ],
       "reveal": "0JzQvtCx0Lgg0JTQuNC6",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -189,7 +189,7 @@
         "f30472a96b0727884755ae26d08a024e22a3f14f30e04b77a1e06dbbe27c1d03"
       ],
       "reveal": "0JHQvtCz0LDRgtGL0YDQuCAo0LrQsNGA0YLQuNC90LAg0JLQsNGB0L3QtdGG0L7QstCwKQ==",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -208,7 +208,7 @@
         "ed5c09bba3426d63d9543d0660d032ad56bc913518c90d791a0ac15700571895"
       ],
       "reveal": "0J/QuNGA0LDQvNC40LTQsCDQpdC10L7Qv9GB0LA=",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -227,7 +227,7 @@
         "eef8ce424f202fac7be74c1c2fbdd8f9a319de69675e35b0dc2c52ee4a447984"
       ],
       "reveal": "0JHQvtGB0YLQvtC90YHQutC+0LUg0YfQsNC10L/QuNGC0LjQtQ==",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -245,7 +245,7 @@
         "d54cfc8348b34d8266a3c79985a8d6b6895298899e6fab8e285122d9bac6cf2a"
       ],
       "reveal": "0JvRg9C90L7RhdC+0LQtMQ==",
-      "difficulty": "medium"
+      "difficulty": "hard"
     }
   ]
 }

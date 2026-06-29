@@ -50,7 +50,7 @@
         "f103b07b2e6224c018bea45c5adeed44dfe77d8d2c9f79204f9d228b87a6dbe0"
       ],
       "reveal": "0J3QuNC60L7Qu9CwINCi0LXRgdC70LA=",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -84,7 +84,7 @@
         "dd7713b646a9a8912f39b3da195b6b5573dcc5f281c72caa51143ada910ea8b4"
       ],
       "reveal": "0KTRgNC40LTQsCDQmtCw0LvQvg==",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -132,7 +132,7 @@
         "fa729e987c0bb1f604f2886935a996075d2e487231c4c3e0c81f33b2e51b37ba"
       ],
       "reveal": "0JLQu9Cw0LTQuNC80LjRgCDQktGL0YHQvtGG0LrQuNC5",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -200,7 +200,7 @@
         "dcd6690de1ec927a463f837e2842c9dc1669ff21603c6affaf953df5c3c10873"
       ],
       "reveal": "0J/QvtCx0LXQsyDQuNC3INCo0L7Rg9GI0LXQvdC60LA=",
-      "difficulty": "easy"
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -227,7 +227,7 @@
         "a10335a2644cd19e4af502cb5abe0d85c3878caff3449f8fe206b556d490d6b4"
       ],
       "reveal": "0KLQtdGC0YDQuNGB",
-      "difficulty": "easy"
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -243,7 +243,7 @@
         "5b1ac43985d4f08a6227c8b909b5c35a75d2955d591ae3e916adf43614f2ab26"
       ],
       "reveal": "0JfQstGR0LfQtNC90LDRjyDQvdC+0YfRjA==",
-      "difficulty": "medium"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -272,7 +272,7 @@
         "e5cd527923192a654d74f91eef3dc77cfc23d75b279aec463513a37bcb367d80"
       ],
       "reveal": "0JDQstCw0YDQuNGPINC90LAg0KfQtdGA0L3QvtCx0YvQu9GM0YHQutC+0Lkg0JDQrdCh",
-      "difficulty": "easy"
+      "difficulty": "medium"
     },
     {
       "categories": [
@@ -293,7 +293,7 @@
         "c7872be7e923e58956755129ef565530e8b9d305f612427d6a94dc64af8b73a5"
       ],
       "reveal": "0JDQv9C+0LvQu9C+0L0tMTE=",
-      "difficulty": "easy"
+      "difficulty": "hard"
     },
     {
       "categories": [
@@ -314,7 +314,7 @@
         "d47a36527ce4f58d6dc2bdb8e8555640a84f5666edbb052ca8b8628471f04398"
       ],
       "reveal": "0JrQvtC70LjQt9C10Lk=",
-      "difficulty": "easy"
+      "difficulty": "hard"
     }
   ]
 }
