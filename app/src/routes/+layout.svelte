@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { base } from '$app/paths';
   let { children } = $props();
 
   // Apply the saved theme as early as possible so every route (game + archive)
@@ -13,7 +14,34 @@
 
 {@render children()}
 
+<footer class="madeby">
+  <a href="{base}/internals.html">
+    <span class="ru">Как это сделано</span>
+    <span class="en">How it was done</span>
+  </a>
+</footer>
+
 <style>
+  /* Global "making-of" footer, shown under every route. */
+  footer.madeby {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 28px 16px 36px;
+    border-top: 2px solid var(--line);
+    margin-top: 32px;
+  }
+  footer.madeby a {
+    display: inline-flex; flex-direction: column; gap: 2px;
+    text-decoration: none; color: var(--text);
+    font-weight: 800; font-size: 15px; letter-spacing: -0.2px;
+    padding: 8px 16px; border: 2px solid var(--ink); border-radius: var(--radius-sm);
+    background: var(--card2); box-shadow: var(--shadow-sm);
+    transition: transform .08s ease, box-shadow .08s ease;
+  }
+  footer.madeby a:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+  footer.madeby a:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  footer.madeby .en { font-weight: 600; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
   /* ============================================================
      NEOBRUTALISM design tokens — shared across all routes.
      default (:root) = warm light · [data-theme='dark'] = dark

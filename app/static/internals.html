@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ru-catfishing — project internals</title>
+<style>
+  :root{
+    --ink:#15130e; --paper:#fbf4e0; --card:#fffdf6; --accent:#FDC800;
+    --accent2:#a855f7; --green:#02b37e; --red:#f43f5e; --mut:#6b6452;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --sh:6px 6px 0 var(--ink);
+  }
+  [data-theme=dark]{
+    --ink:#f4eeda; --paper:#15130e; --card:#211d15;
+    --mut:#9a917c; --sh:6px 6px 0 #000;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--paper);color:var(--ink);font-family:var(--font);
+    display:flex;flex-direction:column;overflow:hidden;transition:background .2s}
+  header{display:flex;align-items:center;gap:10px;padding:14px 20px;
+    border-bottom:3px solid var(--ink)}
+  .brand{font-weight:900;font-size:18px;letter-spacing:-.4px;display:flex;gap:8px;align-items:center}
+  .brand .f{font-size:22px}
+  .sp{flex:1}
+  .btn{font-family:var(--mono);font-weight:700;font-size:12px;border:2px solid var(--ink);
+    background:var(--card);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer;
+    box-shadow:3px 3px 0 var(--ink)}
+  .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+  .btn.on{background:var(--accent)}
+  main{flex:1;position:relative;overflow:hidden}
+  .slide{position:absolute;inset:0;padding:5vh 6vw;display:none;flex-direction:column;
+    justify-content:center;animation:in .25s ease}
+  .slide.on{display:flex}
+  @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .kick{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--accent2);
+    text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+  h1{font-size:clamp(28px,5vw,56px);line-height:1.04;margin:0 0 14px;letter-spacing:-1.5px}
+  h2{font-size:clamp(24px,4vw,40px);line-height:1.08;margin:0 0 18px;letter-spacing:-1px}
+  p,li{font-size:clamp(15px,1.7vw,21px);line-height:1.5;max-width:62ch}
+  ul{margin:6px 0;padding-left:0;list-style:none}
+  li{margin:9px 0;padding-left:30px;position:relative}
+  li::before{content:'▸';position:absolute;left:0;color:var(--accent2);font-weight:900}
+  b,strong{font-weight:800}
+  code{font-family:var(--mono);background:var(--accent);color:#15130e;padding:1px 6px;
+    border-radius:5px;font-size:.85em;border:1.5px solid var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .chip{font-family:var(--mono);font-size:13px;font-weight:700;border:2px solid var(--ink);
+    background:var(--card);border-radius:8px;padding:7px 12px;box-shadow:var(--sh)}
+  .chip.y{background:var(--accent)} .chip.p{background:var(--accent2);color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:14px;max-width:980px}
+  .stat{border:2px solid var(--ink);background:var(--card);border-radius:12px;padding:16px;box-shadow:var(--sh)}
+  .stat .n{font-family:var(--mono);font-weight:900;font-size:clamp(22px,3vw,34px)}
+  .stat .l{font-size:13px;color:var(--mut);font-weight:700;margin-top:4px}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;font-family:var(--mono);font-weight:700;font-size:13px}
+  .flow .n{border:2px solid var(--ink);background:var(--card);border-radius:8px;padding:6px 10px;box-shadow:3px 3px 0 var(--ink)}
+  .flow .a{color:var(--accent2);font-size:18px}
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:900px;margin-top:8px}
+  .ba>div{border:2px solid var(--ink);border-radius:10px;padding:12px 14px;box-shadow:var(--sh)}
+  .ba .bad{background:#ffe9ec} .ba .good{background:#e8fbf3}
+  [data-theme=dark] .ba .bad{background:#3a1620} [data-theme=dark] .ba .good{background:#0e3326}
+  .ba h3{margin:.1em 0 .4em;font-size:15px;font-family:var(--mono);text-transform:uppercase;letter-spacing:1px}
+  footer{display:flex;align-items:center;gap:10px;padding:10px 20px;border-top:3px solid var(--ink);
+    font-family:var(--mono);font-size:12px;font-weight:700}
+  .dots{display:flex;gap:6px;flex-wrap:wrap}
+  .dot{width:11px;height:11px;border:2px solid var(--ink);border-radius:3px;background:transparent;cursor:pointer}
+  .dot.on{background:var(--accent)}
+  .count{color:var(--mut)}
+  .hint{color:var(--mut);font-weight:500}
+  .mono{font-family:var(--mono)} .em{color:var(--accent2)}
+</style>
+</head>
+<body data-theme="light">
+<header>
+  <div class="brand"><span class="f">🐟</span> ru-catfishing · <span id="subtitle">project internals</span></div>
+  <div class="sp"></div>
+  <button class="btn" id="lang">RU</button>
+  <button class="btn" id="theme">☀️ / 🌙</button>
+</header>
+
+<main id="main"></main>
+
+<footer>
+  <span class="count" id="count">1 / 10</span>
+  <div class="sp"></div>
+  <div class="dots" id="dots"></div>
+</footer>
+
+<script>
+const SUB = {en:'project internals', ru:'кишки проекта'};
+const HINT = {en:'← → navigate · click the dots below', ru:'← → листать · клик по точкам внизу'};
+
+const SLIDES = [
+{ big:true,
+  en:{k:'a daily guessing game', t:"Guess the Wikipedia article<br>from its category list",
+    b:`<p>10 puzzles a day, <b>one guess</b> each. A static site on GitHub Pages with a
+       Wordle-style "share your result" loop.</p>
+    <div class="chips"><span class="chip y">SvelteKit · adapter-static</span>
+    <span class="chip">ru.wikipedia API</span><span class="chip p">Cloudflare Worker + D1</span></div>
+    <p class="hint" style="margin-top:18px">__HINT__</p>`},
+  ru:{k:'ежедневная игра-угадайка', t:"Угадай статью Википедии<br>по списку её категорий",
+    b:`<p>10 загадок в день, <b>одна попытка</b> на каждую. Статичный сайт на GitHub Pages,
+       соцпетля «поделись результатом» в стиле Wordle.</p>
+    <div class="chips"><span class="chip y">SvelteKit · adapter-static</span>
+    <span class="chip">ru.wikipedia API</span><span class="chip p">Cloudflare Worker + D1</span></div>
+    <p class="hint" style="margin-top:18px">__HINT__</p>`} },
+
+{ en:{k:'privacy on a static site', t:"No answers in the code",
+    b:`<p>The site is static: anything sent to the browser sits in the source. So per puzzle it
+       ships only:</p><ul>
+    <li><code>categories[]</code> — the clue (public categories, GFDL)</li>
+    <li><code>accept: [sha256(norm(form))…]</code> — hashes of accepted answers</li>
+    <li><code>reveal: base64(title)</code> — decoded only after you solve it</li>
+    <li><code>difficulty</code> — 🟢/🟡/🔴, shown on the answer screen</li></ul>
+    <p>A guess is accepted iff <code>sha256(norm(input))</code> is in <code>accept</code>.
+       Obfuscation, not encryption — the honest ceiling of a static site.</p>`},
+  ru:{k:'приватность на статике', t:"Ответов в коде нет",
+    b:`<p>Сайт статичный: всё, что уходит в браузер, лежит в исходниках. Поэтому по каждой
+       загадке шипается только:</p><ul>
+    <li><code>categories[]</code> — подсказка (публичные категории, GFDL)</li>
+    <li><code>accept: [sha256(norm(форма))…]</code> — хеши принимаемых ответов</li>
+    <li><code>reveal: base64(title)</code> — декодируется только после разгадки</li>
+    <li><code>difficulty</code> — 🟢/🟡/🔴, на экране ответа</li></ul>
+    <p>Ответ засчитан, если <code>sha256(norm(ввод))</code> есть в <code>accept</code>.
+       Обфускация, не шифрование — честный потолок статики.</p>`} },
+
+{ en:{k:'the heart of scoring', t:'One <span class="mono">norm()</span>, two languages, byte-identical',
+    b:`<p>Normalization lives twice: Python (building hashes) and JavaScript (checking in the
+       browser). One character apart and the game silently stops accepting. A parity test guards it.</p><ul>
+    <li>lowercase · ё/э→е · й→и · strip <code>(...)</code></li>
+    <li><b>apostrophes/quotes → nothing</b> (Jeanne d'Arc = jeanne darc)</li>
+    <li>punctuation → space · collapse doubles (lamarr→lamar)</li>
+    <li>drop stop-words · stem a trailing vowel · <b>sort the words</b> (order doesn't matter)</li></ul>`},
+  ru:{k:'сердце зачёта', t:'Одна <span class="mono">norm()</span>, два языка, побайтно',
+    b:`<p>Нормализация живёт дважды: Python (сборка хешей) и JavaScript (проверка в браузере).
+       Разойдутся на символ — игра молча перестаёт засчитывать. Есть тест паритета.</p><ul>
+    <li>lowercase · ё/э→е · й→и · срез <code>(...)</code></li>
+    <li><b>апострофы/кавычки → ничего</b> (Жанна д'Арк = жанна дарк)</li>
+    <li>пунктуация → пробел · схлоп дублей (ламарр→ламар)</li>
+    <li>дроп стоп-слов · стем хвостовой гласной · <b>сортировка слов</b> (порядок не важен)</li></ul>`} },
+
+{ en:{k:'being kind to the player', t:"What else we accept",
+    b:`<ul>
+    <li><b>Short form</b> without the tail: "Eruption of Vesuvius" ← "…in AD 79"</li>
+    <li><b>Roman numerals</b>: "Cleopatra" ← "Cleopatra VII"</li>
+    <li><b>Name without patronymic</b>: "Matvey Safonov" ← "Safonov, Matvey Yevgenyevich"</li>
+    <li><b>Surname</b> alone · the English title (langlink) · every Wiki redirect</li></ul>
+    <p>All precomputed at build time and hashed. Plus an honor system both ways:
+       <span class="em">"I was right after all"</span> (½) and <span class="em">"Not what I meant"</span> (un-claim).</p>`},
+  ru:{k:'доброта к игроку', t:"Что ещё засчитываем",
+    b:`<ul>
+    <li><b>Короткую форму</b> без хвоста: «Извержение Везувия» ← «…в 79 году»</li>
+    <li><b>Римские цифры</b>: «Клеопатра» ← «Клеопатра VII»</li>
+    <li><b>Имя без отчества</b>: «Матвей Сафонов» ← «Сафонов, Матвей Евгеньевич»</li>
+    <li><b>Фамилию</b> отдельно · английский тайтл (langlink) · все редиректы Вики</li></ul>
+    <p>Всё предвычисляется на сборке и хешируется. Плюс честная система в обе стороны:
+       <span class="em">«Я всё-таки прав»</span> (½) и <span class="em">«Я не это имел в виду»</span> (отзачёт).</p>`} },
+
+{ en:{k:'difficulty', t:"Fame = pageviews",
+    b:`<ul>
+    <li>Difficulty proxy = average article views (Wikimedia API) + number of categories</li>
+    <li><b>Bug:</b> the API doesn't follow redirects → "Майнкрафт" = 343 instead of <b>72,660</b>.
+        Fix: resolve to the canonical title first</li>
+    <li><b>Fame floor 5,000</b>: anything below is too obscure to use</li>
+    <li>Tiers 🟢/🟡/🔴 = percentiles within the famous pool</li></ul>
+    <p>Lesson: relative difficulty is useless when the whole pool is niche. You need an absolute floor.</p>`},
+  ru:{k:'сложность', t:"Известность = просмотры",
+    b:`<ul>
+    <li>Прокси сложности = средние просмотры статьи (Wikimedia API) + число категорий</li>
+    <li><b>Баг:</b> API не следует редиректам → «Майнкрафт» = 343 вместо <b>72 660</b>.
+        Чиним резолвом до канонического тайтла</li>
+    <li><b>Порог известности 5000</b>: всё ниже — обскур, в игру не берём</li>
+    <li>Тиры 🟢/🟡/🔴 — перцентили внутри известного пула</li></ul>
+    <p>Урок: относительная сложность бесполезна, если весь пул нишевый. Нужен абсолютный порог.</p>`} },
+
+{ en:{k:'balancing a day', t:"A day is composed like a diet",
+    b:`<ul>
+    <li>Difficulty curve <b>3 🟢 / 4 🟡 / 3 🔴</b></li>
+    <li>Max 2 of one theme, ≥5 distinct themes · <b>sport never repeats</b></li>
+    <li>Themes picked least-recently-used across the horizon · shuffled order</li>
+    <li>Deduped against every released day · no "three in a row"</li>
+    <li><b>Excluded:</b> acting and modern Russian politics</li></ul>
+    <p>10 themes: cinema · games · music · art · literature · science · history · sport · geography · society.</p>`},
+  ru:{k:'баланс дня', t:"День собирается как «диета»",
+    b:`<ul>
+    <li>Кривая сложности <b>3 🟢 / 4 🟡 / 3 🔴</b></li>
+    <li>Max 2 одной темы, ≥5 разных тем · <b>спорт не повторяется</b></li>
+    <li>Темы по least-recently-used по горизонту · порядок вперемешку</li>
+    <li>Дедуп против всех вышедших дней · нет «троек подряд»</li>
+    <li><b>Исключены:</b> актёрство и современная российская политика</li></ul>
+    <p>10 тем: кино · игры · музыка · искусство · литература · наука · история · спорт · география · общество.</p>`} },
+
+{ en:{k:'the interesting part', t:"An LLM checks solvability",
+    b:`<p>"Solvable" = the categories converge to one answer a human can deduce. We measure it
+       directly: <b>an LLM plays a day blind</b> (categories only, no web), and its guess is checked
+       by our own scoring logic.</p><ul>
+    <li>Dead end: category intersection is almost always unique — no signal</li>
+    <li>Dead end: fixing one puzzle at a time exhausts the theme×tier buckets</li>
+    <li><b>Fix:</b> screen the whole pool once, compose days only from solvable ones
+        → 10/10 by construction</li></ul>`},
+  ru:{k:'самое интересное', t:"Решаемость проверяет LLM",
+    b:`<p>«Решаемо» = категории сходятся к одному ответу, который человек может вывести.
+       Меряем напрямую: <b>LLM играет день вслепую</b> (только категории, без веба),
+       а ответ сверяется нашей же логикой зачёта.</p><ul>
+    <li>Тупик: пересечение категорий почти всегда уникально — не сигнал</li>
+    <li>Тупик: чинить по одному пазлу — кончаются бакеты тема×тир</li>
+    <li><b>Решение:</b> скринить весь пул один раз, собирать дни только из решаемых
+        → 10/10 по построению</li></ul>`} },
+
+{ en:{k:'the data pipeline', t:"From Wikipedia to a day",
+    b:`<div class="flow"><span class="n">fetch_top</span><span class="a">→</span>
+    <span class="n">classify_pool</span><span class="a">→</span><span class="n">screen (LLM swarm)</span><span class="a">→</span>
+    <span class="n">compose_days</span><span class="a">→</span><span class="n">gen_index</span><span class="a">→</span>
+    <span class="n">apply_difficulty</span><span class="a">→</span><span class="n">check_days</span><span class="a">→</span>
+    <span class="n">build</span></div>
+    <p style="margin-top:18px">Most-viewed articles → theme + difficulty → drop unsolvable ones via
+       agents → balanced days → quality checks → static build.</p>`},
+  ru:{k:'пайплайн данных', t:"От Википедии до дня",
+    b:`<div class="flow"><span class="n">fetch_top</span><span class="a">→</span>
+    <span class="n">classify_pool</span><span class="a">→</span><span class="n">screen (LLM-сворм)</span><span class="a">→</span>
+    <span class="n">compose_days</span><span class="a">→</span><span class="n">gen_index</span><span class="a">→</span>
+    <span class="n">apply_difficulty</span><span class="a">→</span><span class="n">check_days</span><span class="a">→</span>
+    <span class="n">build</span></div>
+    <p style="margin-top:18px">Самые посещаемые статьи → тема + сложность → отсев нерешаемых
+       агентами → сбалансированные дни → проверки качества → статичная сборка.</p>`} },
+
+{ en:{k:'rabbit holes = content', t:"What I didn't expect",
+    b:`<div class="ba">
+    <div class="bad"><h3>I thought</h3>an "easy" tier means an easy puzzle</div>
+    <div class="good"><h3>turned out</h3>relative tiers in an obscure pool are still niche</div>
+    <div class="bad"><h3>I thought</h3>pageviews = honest fame</div>
+    <div class="good"><h3>turned out</h3>the API ignores redirects → famous things "sink"</div>
+    <div class="bad"><h3>I thought</h3>I'd add leniency at runtime</div>
+    <div class="good"><h3>turned out</h3>no answers on the client → everything hashed ahead</div>
+    <div class="bad"><h3>I thought</h3>"solvable" = mathematically unique</div>
+    <div class="good"><h3>turned out</h3>you need an LLM player as a human proxy</div></div>`},
+  ru:{k:'грабли = контент', t:"Чего не ожидал",
+    b:`<div class="ba">
+    <div class="bad"><h3>казалось</h3>«лёгкий» тир = лёгкий пазл</div>
+    <div class="good"><h3>оказалось</h3>относительные тиры в обскурном пуле = всё равно нишево</div>
+    <div class="bad"><h3>казалось</h3>просмотры = честная известность</div>
+    <div class="good"><h3>оказалось</h3>API игнорит редиректы → известное «тонет»</div>
+    <div class="bad"><h3>казалось</h3>доброту зачёта добавлю в рантайме</div>
+    <div class="good"><h3>оказалось</h3>ответов нет на клиенте → всё хешируется заранее</div>
+    <div class="bad"><h3>казалось</h3>«решаемо» = математически однозначно</div>
+    <div class="good"><h3>оказалось</h3>нужен LLM-игрок как прокси человека</div></div>`} },
+
+{ en:{k:'scale', t:"By the numbers",
+    b:`<div class="grid">
+    <div class="stat"><div class="n">5,908</div><div class="l">articles classified</div></div>
+    <div class="stat"><div class="n">3,522</div><div class="l">playable (pv≥5000)</div></div>
+    <div class="stat"><div class="n">10</div><div class="l">themes balanced</div></div>
+    <div class="stat"><div class="n">~150</div><div class="l">days of buffer</div></div>
+    <div class="stat"><div class="n">2</div><div class="l">norm impls, byte-identical</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">answers in the bundle</div></div></div>
+    <p style="margin-top:18px" class="hint">imangulova.github.io/ru-catfishing</p>`},
+  ru:{k:'масштаб', t:"В цифрах",
+    b:`<div class="grid">
+    <div class="stat"><div class="n">5 908</div><div class="l">статей классифицировано</div></div>
+    <div class="stat"><div class="n">3 522</div><div class="l">играбельных (pv≥5000)</div></div>
+    <div class="stat"><div class="n">10</div><div class="l">тем сбалансировано</div></div>
+    <div class="stat"><div class="n">~150</div><div class="l">дней буфера</div></div>
+    <div class="stat"><div class="n">2</div><div class="l">реализации norm, побайтно</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">ответов в бандле</div></div></div>
+    <p style="margin-top:18px" class="hint">imangulova.github.io/ru-catfishing</p>`} },
+];
+
+let lang='en', i=0;
+const main=document.getElementById('main');
+const dots=document.getElementById('dots');
+const count=document.getElementById('count');
+
+function render(){
+  document.documentElement.lang=lang;
+  document.getElementById('subtitle').textContent=SUB[lang];
+  document.getElementById('lang').textContent = lang==='en' ? 'RU' : 'EN';
+  main.innerHTML='';
+  SLIDES.forEach((s,k)=>{
+    const c=s[lang]; const sec=document.createElement('section');
+    sec.className='slide'+(k===i?' on':'');
+    const H=s.big?'h1':'h2';
+    sec.innerHTML=`<div class="kick">${c.k}</div><${H}>${c.t}</${H}>`+
+      c.b.replace('__HINT__',HINT[lang]);
+    main.appendChild(sec);
+  });
+  dots.innerHTML='';
+  SLIDES.forEach((_,k)=>{const d=document.createElement('div');
+    d.className='dot'+(k===i?' on':'');d.onclick=()=>go(k);dots.appendChild(d)});
+  count.textContent=(i+1)+' / '+SLIDES.length;
+}
+function go(k){i=(k+SLIDES.length)%SLIDES.length;
+  [...main.children].forEach((s,n)=>s.classList.toggle('on',n===i));
+  [...dots.children].forEach((d,n)=>d.classList.toggle('on',n===i));
+  count.textContent=(i+1)+' / '+SLIDES.length}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown')go(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')go(i-1);
+  else if(e.key==='Home')go(0); else if(e.key==='End')go(SLIDES.length-1)});
+main.addEventListener('click',e=>{if(e.target.closest('.dot'))return;go(i+1)});
+document.getElementById('lang').onclick=e=>{e.stopPropagation();
+  lang=lang==='en'?'ru':'en';render()};
+document.getElementById('theme').onclick=e=>{e.stopPropagation();
+  document.body.dataset.theme=document.body.dataset.theme==='dark'?'light':'dark'};
+render();
+</script>
+</body>
+</html>
