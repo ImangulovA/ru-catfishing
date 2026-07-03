@@ -24,7 +24,8 @@ from classify import (
     PV_FLOOR,
     THEME_LABELS,
 )
-from build_pool import fetch_categories, is_giveaway, is_service, title_tokens
+from build_pool import (fetch_categories, flush_cats_cache, is_giveaway,
+                        is_service, title_tokens)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DAYS_DIR = os.path.join(ROOT, "app", "src", "lib", "days")
@@ -32,6 +33,7 @@ DATA = os.path.join(ROOT, "prototype", "data")
 OUT = os.path.join(DATA, "_classified.json")
 FAMOUS = os.path.join(DATA, "_famous.txt")
 TOP = os.path.join(DATA, "_top_titles.json")
+REALIA = os.path.join(DATA, "_realia_titles.json")  # non-person: works/objects/concepts
 
 
 def reveal_title(b64):
@@ -82,6 +84,15 @@ def main():
                 n_top += 1
         print(f"+ most-viewed titles not yet seen: {n_top}", file=sys.stderr)
 
+    if os.path.exists(REALIA):
+        realia = json.load(open(REALIA, encoding="utf-8"))
+        n_re = 0
+        for t in realia:
+            if t not in items:
+                items[t] = None
+                n_re += 1
+        print(f"+ realia (non-person) titles not yet seen: {n_re}", file=sys.stderr)
+
     records = {}
     scores = []
     total = len(items)
@@ -112,6 +123,7 @@ def main():
         records[title]["tier"] = tiers.get(title, "hard")
 
     flush_pv_cache()
+    flush_cats_cache()
     json.dump(records, open(OUT, "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)
 

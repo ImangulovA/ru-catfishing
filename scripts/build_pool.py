@@ -15,6 +15,7 @@ Usage:
 import argparse
 import hashlib
 import json
+import os
 import re
 import sys
 import time
@@ -108,14 +109,35 @@ def resolve_title(title):
     return pages[0].get("title", title)
 
 
+_CATS_CACHE_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "prototype", "data",
+    "_cats_cache.json")
+try:
+    _CATS = json.load(open(_CATS_CACHE_PATH, encoding="utf-8"))
+except Exception:
+    _CATS = {}
+
+
+def flush_cats_cache():
+    json.dump(_CATS, open(_CATS_CACHE_PATH, "w", encoding="utf-8"),
+              ensure_ascii=False)
+
+
 def fetch_categories(title):
-    """Non-hidden categories of an article, with the 'Категория:' prefix removed."""
+    """Non-hidden categories of an article, with the 'Категория:' prefix removed.
+    Cached on disk (_cats_cache.json) so repeated runs (classify_pool, prep_screen)
+    do not re-hit the rate-limited ru.wiki API for the same title."""
+    if title in _CATS:
+        return _CATS[title]
     data = api_get({
         "action": "query", "prop": "categories", "titles": title,
         "cllimit": "500", "clshow": "!hidden", "redirects": "1",
     })
     page = data["query"]["pages"][0]
     cats = [c["title"].split(":", 1)[1] for c in page.get("categories", [])]
+    _CATS[title] = cats
+    if len(_CATS) % 50 == 0:
+        flush_cats_cache()
     return cats
 
 
