@@ -37,15 +37,42 @@ DATA = os.path.join(ROOT, "prototype", "data")
 CLASSIFIED = os.path.join(DATA, "_classified.json")
 FAMOUS = os.path.join(DATA, "_famous.txt")
 
-LOCKED_MAX = 25     # days -1..25 are released/locked
+LOCKED_MAX = 29     # days -1..29 are released/locked (day0 = 2026-06-04)
 CURVE = [("easy", 3), ("medium", 4), ("hard", 3)]
 PER_DAY = 10
 DEFAULT_CAP = 2     # max puzzles of one theme per day
 THEME_CAP = {"sport": 1}    # sport must not repeat in a day (no 2 footballers)
+PERSON_CAP = 5      # max puzzles about a person per day (rest are "realia")
+REALIA_FLOOR = 3000  # realia are famous enough lower than people (people: PV_FLOOR)
+
+_CATS_CACHE = os.path.join(DATA, "_cats_cache.json")
+_REALIA = os.path.join(DATA, "_realia_titles.json")
 
 
 def cap_for(theme):
     return THEME_CAP.get(theme, DEFAULT_CAP)
+
+
+def load_realia():
+    if os.path.exists(_REALIA):
+        return {dedup_key(t) for t in json.load(open(_REALIA, encoding="utf-8"))}
+    return set()
+
+
+def build_person_map():
+    """title-key -> is_person, from day-file categories + the cats cache. A person
+    is any article with a birth/death-year category (Родивш*/Умерш*)."""
+    cats_by_title = {}
+    if os.path.exists(_CATS_CACHE):
+        cats_by_title.update(json.load(open(_CATS_CACHE, encoding="utf-8")))
+    for f in glob.glob(os.path.join(DAYS_DIR, "day*.json")):
+        d = json.load(open(f, encoding="utf-8"))
+        for p in d.get("puzzles", []):
+            cats_by_title[reveal_title(p["reveal"])] = p.get("categories", [])
+    person = {}
+    for t, cats in cats_by_title.items():
+        person[dedup_key(t)] = any("Родивш" in c or "Умерш" in c for c in (cats or []))
+    return person
 
 
 def reveal_title(b64):
@@ -104,29 +131,32 @@ def compose(pool, seed):
     days = []
     round_i = 0
 
-    def take(tier, day_themes):
+    def ok_person(c, day_people):
+        return not (c.get("person") and day_people >= PERSON_CAP)
+
+    def take(tier, day_themes, day_people):
         # prefer least-recently-used theme that is under its per-day cap
         for th in sorted(THEME_LABELS, key=lambda t: theme_last[t]):
             if day_themes.get(th, 0) >= cap_for(th):
                 continue
             for idx, c in enumerate(by_tier[tier]):
-                if c["theme"] == th:
+                if c["theme"] == th and ok_person(c, day_people):
                     return by_tier[tier].pop(idx)
         # relax: any candidate of this tier whose theme isn't capped (never
-        # exceed a cap — sport=1 must hold even as a last resort)
+        # exceed a cap — sport=1 and the person cap must hold as a last resort)
         for idx, c in enumerate(by_tier[tier]):
-            if day_themes.get(c["theme"], 0) < cap_for(c["theme"]):
+            if day_themes.get(c["theme"], 0) < cap_for(c["theme"]) and ok_person(c, day_people):
                 return by_tier[tier].pop(idx)
         return None
 
-    def take_relaxed(tier, day_themes, relaxed):
+    def take_relaxed(tier, day_themes, relaxed, day_people):
         nearest = {
             "easy": ["easy", "medium", "hard"],
             "medium": ["medium", "easy", "hard"],
             "hard": ["hard", "medium", "easy"],
         }[tier]
         for tt in nearest:
-            c = take(tt, day_themes)
+            c = take(tt, day_themes, day_people)
             if c:
                 if tt != tier:
                     relaxed[0] += 1
@@ -138,14 +168,16 @@ def compose(pool, seed):
     # minimum mix of each tier so every emitted day stays shuffleable.
     while (sum(len(v) for v in by_tier.values()) >= PER_DAY
            and all(len(by_tier[t]) >= 2 for t in ("easy", "medium", "hard"))):
-        day, day_themes = [], {}
+        day, day_themes, day_people = [], {}, 0
         for tier, count in CURVE:
             for _ in range(count):
-                c = take_relaxed(tier, day_themes, relaxed)
+                c = take_relaxed(tier, day_themes, relaxed, day_people)
                 if c is None:
                     break
                 day.append(c)
                 day_themes[c["theme"]] = day_themes.get(c["theme"], 0) + 1
+                if c.get("person"):
+                    day_people += 1
         if len(day) < PER_DAY:
             break
         for c in day:
@@ -165,26 +197,33 @@ def main():
 
     cls = json.load(open(CLASSIFIED, encoding="utf-8"))
     locked = gather_locked_keys()
+    realia = load_realia()          # dedup keys of non-person "вещи"
+    person_map = build_person_map()  # dedup key -> is_person
     # solvable filter: if the screen has run, only LLM-solvable titles qualify
     solv_path = os.path.join(DATA, "_solvable.json")
     solvable = None
     if os.path.exists(solv_path):
         solvable = {dedup_key(t) for t in json.load(open(solv_path, encoding="utf-8"))}
         print(f"solvable filter: {len(solvable)} titles", file=sys.stderr)
-    # candidates = famous & detailed enough & solvable & not released, deduped
+    # candidates = famous enough (realia at a lower floor) & detailed & solvable &
+    # not released, deduped
     pool = []
     seen = set()
     for t, meta in cls.items():
-        if meta.get("pv", 0) < PV_FLOOR or meta.get("n_cats", 0) < 4:
-            continue
         k = dedup_key(t)
+        floor = REALIA_FLOOR if k in realia else PV_FLOOR
+        if meta.get("pv", 0) < floor or meta.get("n_cats", 0) < 4:
+            continue
         if k in locked or k in seen:
             continue
         if solvable is not None and k not in solvable:
             continue
         seen.add(k)
-        pool.append({"title": t, "theme": meta["theme"], "tier": meta["tier"]})
-    print(f"locked={len(locked)} candidates={len(pool)} (pv>={PV_FLOOR}) "
+        pool.append({"title": t, "theme": meta["theme"], "tier": meta["tier"],
+                     "person": person_map.get(k, False)})
+    n_people = sum(1 for p in pool if p["person"])
+    print(f"locked={len(locked)} candidates={len(pool)} "
+          f"(people={n_people}, realia_floor={REALIA_FLOOR}, person_cap={PERSON_CAP}/day) "
           f"(tiers={Counter(p['tier'] for p in pool)})", file=sys.stderr)
 
     days, relaxed = compose(pool, args.seed)
@@ -217,13 +256,16 @@ def main():
         if p["title"] not in seen_titles:
             leftover.append(p)
 
-    def take_spare(tier, day_themes):
-        # prefer same tier whose theme is still under its per-day cap
+    def take_spare(tier, day_themes, day_people):
+        def usable(sp):
+            return (day_themes.get(sp["theme"], 0) < cap_for(sp["theme"])
+                    and not (sp.get("person") and day_people >= PERSON_CAP))
+        # prefer same tier whose theme + person cap are still ok
         for i, sp in enumerate(leftover):
-            if sp["tier"] == tier and day_themes.get(sp["theme"], 0) < cap_for(sp["theme"]):
+            if sp["tier"] == tier and usable(sp):
                 return leftover.pop(i)
         for i, sp in enumerate(leftover):
-            if day_themes.get(sp["theme"], 0) < cap_for(sp["theme"]):
+            if usable(sp):
                 return leftover.pop(i)
         return None
 
@@ -233,17 +275,21 @@ def main():
         puzzles = []
         used_keys = set()
         day_themes = {}
+        day_people = 0
         queue = list(day)
         while queue and len(puzzles) < PER_DAY:
             c = queue.pop(0)
-            # theme-cap guard (e.g. sport=1): if the day is already at the cap
-            # for this theme, swap for a spare of another theme
-            if day_themes.get(c["theme"], 0) >= cap_for(c["theme"]):
-                repl = take_spare(c["tier"], day_themes)
+            # theme-cap (sport=1) / person-cap guard: if the day is already at the
+            # cap for this theme or for people, swap for a balance-safe spare
+            over_theme = day_themes.get(c["theme"], 0) >= cap_for(c["theme"])
+            over_people = c.get("person") and day_people >= PERSON_CAP
+            if over_theme or over_people:
+                repl = take_spare(c["tier"], day_themes, day_people)
                 if repl:
                     queue.append(repl)
-                print(f"  day{idx} cap {c['theme']}: {c['title']!r} "
-                      f"-> {repl['title'] if repl else 'NO SPARE'}", file=sys.stderr)
+                print(f"  day{idx} cap {'people' if over_people else c['theme']}: "
+                      f"{c['title']!r} -> {repl['title'] if repl else 'NO SPARE'}",
+                      file=sys.stderr)
                 continue
             try:
                 strict, n, status = build_strict(c["title"], c["tier"])
@@ -259,8 +305,10 @@ def main():
                 used_keys.add(k)
                 puzzles.append({"title": c["title"], "strict": strict})
                 day_themes[c["theme"]] = day_themes.get(c["theme"], 0) + 1
+                if c.get("person"):
+                    day_people += 1
             else:
-                repl = take_spare(c["tier"], day_themes)
+                repl = take_spare(c["tier"], day_themes, day_people)
                 if repl:
                     queue.append(repl)
                 print(f"  day{idx} skip {excl or status}: {c['title']!r} "
