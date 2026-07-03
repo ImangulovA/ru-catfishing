@@ -171,16 +171,24 @@ def main():
                 continue
             new_theme, new_title = theme_of(cls, forced_title.strip()), forced_title.strip()
         else:
-            pick = pick_spare(spares, used, tier, old_theme, day_theme_counts,
-                              forced_theme=forced_theme.strip() if forced_theme else None)
-            if not pick:
-                print(f"!! no {tier} spare for '{old_title}' "
+            # try spares in order; skip any that fail the build or are excluded
+            # (blogger/leak/military) by marking them used and re-picking
+            new_theme = new_title = strict = None
+            for _try in range(12):
+                pick = pick_spare(spares, used, tier, old_theme, day_theme_counts,
+                                  forced_theme=forced_theme.strip() if forced_theme else None)
+                if not pick:
+                    break
+                cand_theme, cand_title = pick
+                cand_strict, _, status = build_strict(cand_title, tier)
+                if status == "ok" and not is_excluded(cand_strict["categories"]):
+                    new_theme, new_title, strict = cand_theme, cand_title, cand_strict
+                    break
+                print(f"   .. spare '{cand_title}' {status}/excluded -> next")
+                used.add(norm(cand_title))  # don't offer this one again
+            if not new_title:
+                print(f"!! no usable {tier} spare for '{old_title}' "
                       f"(theme {old_theme}); expand the pool")
-                continue
-            new_theme, new_title = pick
-            strict, _, status = build_strict(new_title, tier)
-            if status != "ok" or is_excluded(strict["categories"]):
-                print(f"!! spare '{new_title}' build status={status} / excluded -> skip")
                 continue
 
         used.add(norm(new_title))
