@@ -12,6 +12,10 @@
   });
 </script>
 
+<nav class="hubbar">
+  <a href="https://imangulova.github.io/games/">◂ Все игры</a>
+</nav>
+
 {@render children()}
 
 <footer class="madeby">
@@ -41,6 +45,21 @@
   footer.madeby a:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
   footer.madeby a:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
   footer.madeby .en { font-weight: 600; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* Single link back to the Daily Games hub (the only hub link in the app). */
+  nav.hubbar {
+    position: relative; z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 14px 16px 0;
+  }
+  nav.hubbar a {
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 14px;
+  }
+  nav.hubbar a:hover { color: var(--text); }
 
   /* ============================================================
      NEOBRUTALISM design tokens — shared across all routes.
