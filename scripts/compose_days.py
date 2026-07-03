@@ -43,7 +43,7 @@ PER_DAY = 10
 DEFAULT_CAP = 2     # max puzzles of one theme per day
 THEME_CAP = {"sport": 1}    # sport must not repeat in a day (no 2 footballers)
 PERSON_CAP = 5      # max puzzles about a person per day (rest are "realia")
-REALIA_FLOOR = 3000  # realia are famous enough lower than people (people: PV_FLOOR)
+REALIA_FLOOR = 2000  # realia are famous enough lower than people (people: PV_FLOOR)
 
 _CATS_CACHE = os.path.join(DATA, "_cats_cache.json")
 _REALIA = os.path.join(DATA, "_realia_titles.json")
@@ -83,13 +83,18 @@ def dedup_key(title):
     return norm(title)
 
 
-def gather_locked_keys():
+def gather_locked_keys(upto):
+    """Lock (never reuse) every title in a day we are KEEPING, i.e. any day index
+    below `upto` (the recompose start). Guarantees no dups vs preserved days."""
     keys = set()
-    for n in range(-1, LOCKED_MAX + 1):
-        path = os.path.join(DAYS_DIR, f"day{n}.json")
-        if not os.path.exists(path):
+    for f in glob.glob(os.path.join(DAYS_DIR, "day*.json")):
+        try:
+            n = int(os.path.basename(f)[3:-5])
+        except ValueError:
             continue
-        d = json.load(open(path, encoding="utf-8"))
+        if n >= upto:
+            continue
+        d = json.load(open(f, encoding="utf-8"))
         for p in d.get("puzzles", []):
             keys.add(dedup_key(reveal_title(p["reveal"])))
     return keys
@@ -196,7 +201,7 @@ def main():
     args = ap.parse_args()
 
     cls = json.load(open(CLASSIFIED, encoding="utf-8"))
-    locked = gather_locked_keys()
+    locked = gather_locked_keys(args.start)
     banned_path = os.path.join(DATA, "_banned.json")
     if os.path.exists(banned_path):
         banned = {dedup_key(t) for t in json.load(open(banned_path, encoding="utf-8"))}

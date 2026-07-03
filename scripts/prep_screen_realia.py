@@ -28,7 +28,7 @@ SOLVABLE = os.path.join(DATA, "_solvable.json")
 OUT = "/tmp/screen_realia"
 LOCKED_MAX = 25
 BATCH = 20
-REALIA_FLOOR = 3000
+REALIA_FLOOR = 2000
 
 
 def rt(b):

@@ -20,7 +20,7 @@ DATA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                     "prototype", "data")
 CLASSIFIED = os.path.join(DATA, "_classified.json")
 REALIA = os.path.join(DATA, "_realia_titles.json")
-REALIA_FLOOR = 3000
+REALIA_FLOOR = 2000
 
 
 def main():
