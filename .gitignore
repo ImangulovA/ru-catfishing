@@ -14,3 +14,16 @@ prototype/data/pool*.json
 
 # Bulk-build scratch (seed title list + resume progress, plaintext titles). Author-only.
 prototype/data/_*.json
+
+# ...but PUBLISH the curation pools (public repo; anti-cheat spoiler accepted by
+# the team). Wikipedia-derived title/category/pageview pools, no per-day answer
+# mapping (that lives in the gitignored *.txt sources) and no personal data.
+!prototype/data/_realia_raw.json
+!prototype/data/_realia_titles.json
+!prototype/data/_classified.json
+!prototype/data/_solvable.json
+!prototype/data/_spares.json
+!prototype/data/_banned.json
+!prototype/data/_top_titles.json
+!prototype/data/_pageviews_cache.json
+!prototype/data/_cats_cache.json
