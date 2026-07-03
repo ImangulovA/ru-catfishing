@@ -197,6 +197,11 @@ def main():
 
     cls = json.load(open(CLASSIFIED, encoding="utf-8"))
     locked = gather_locked_keys()
+    banned_path = os.path.join(DATA, "_banned.json")
+    if os.path.exists(banned_path):
+        banned = {dedup_key(t) for t in json.load(open(banned_path, encoding="utf-8"))}
+        locked |= banned  # never re-offer titles the user explicitly removed
+        print(f"banned filter: {len(banned)} titles", file=sys.stderr)
     realia = load_realia()          # dedup keys of non-person "вещи"
     person_map = build_person_map()  # dedup key -> is_person
     # solvable filter: if the screen has run, only LLM-solvable titles qualify
