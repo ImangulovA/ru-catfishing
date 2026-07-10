@@ -18,14 +18,6 @@ export function clientId() {
 
 export const statsEnabled = () => !!STATS_API;
 
-// Fire-and-forget POST. Uses sendBeacon when available (survives page unload).
-// Returns true if the send was at least dispatched, false otherwise.
-//
-// IMPORTANT: the body is sent as text/plain, NOT application/json. text/plain is
-// a CORS-safelisted content type, so the cross-origin POST is a "simple request"
-// with no preflight. navigator.sendBeacon CANNOT send preflighted requests and
-// silently drops application/json beacons -> results never reach the Worker. The
-// Worker parses the body with request.json() regardless of the Content-Type.
 // Best-effort POST that AWAITS the Worker's response. Uses fetch with keepalive
 // (survives page unload) and returns r.ok, so callers know the write actually
 // landed (not just that it was queued). Previously this used navigator.sendBeacon
