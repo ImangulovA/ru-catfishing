@@ -198,16 +198,23 @@
   }
 
   // Transition to the end screen + fire the celebration on a great score.
-  function goEnd() {
+  async function goEnd() {
     stats = computeStats();
     view = 'end';
-    // submit the finished day to the global-stats backend (idempotent: api.js
-    // guards with a per-day localStorage flag, so resuming a done day won't dupe)
-    submitResult(dayIdx, points, rawCells());
+    // submit the finished day to the global-stats backend and WAIT for the
+    // Worker to confirm the write (idempotent: api.js guards with a per-day
+    // localStorage flag, so resuming a done day won't dupe) before reading the
+    // aggregate, so the read-after-write includes the player's own solve.
+    await submitResult(dayIdx, points, rawCells());
     // подтянуть глобальную стату по этому дню для показа «% угадавших» на загадку
-    fetchAgg([dayIdx]).then((a) => {
-      if (a && a.ok) agg = a;
-    });
+    const a = await fetchAgg([dayIdx]);
+    if (a && a.ok) agg = a;
+    // а если чтение чуть отстало от записи, повторяем через ~1.2с, чтобы
+    // добить наш собственный результат в агрегат
+    setTimeout(async () => {
+      const a2 = await fetchAgg([dayIdx]);
+      if (a2 && a2.ok) agg = a2;
+    }, 1200);
     if (points >= WOOHOO) celebrate();
   }
 
@@ -363,13 +370,45 @@
     return (location.host + location.pathname).replace(/\/$/, '');
   }
 
-  function share() {
+  // Off-screen textarea + execCommand('copy') fallback for when the async
+  // Clipboard API is missing (http/file://, older desktop browsers) or rejected.
+  // Returns true on success.
+  function legacyCopy(text) {
+    if (!browser) return false;
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '-9999px';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  async function share() {
     const badge = points >= WOOHOO ? ' 🎉 WOOHOO' : '';
     const txt = `${shareUrl()}\n#${dayIdx} - ${scoreLabel}/${N}${badge}\n${emojiRows.join('\n')}`;
-    navigator.clipboard.writeText(txt).then(() => {
+    let ok = false;
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(txt);
+        ok = true;
+      } catch (e) {
+        ok = false;
+      }
+    }
+    if (!ok) ok = legacyCopy(txt); // fall back to the hidden-textarea copy
+    if (ok) {
       copied = true;
       setTimeout(() => (copied = false), 1500);
-    });
+    }
   }
 
   const wikiUrl = (t) => 'https://ru.wikipedia.org/wiki/' + encodeURIComponent((t || '').replace(/ /g, '_'));
