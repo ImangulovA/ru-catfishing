@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ru-catfishing — сборка дней</title>
+<style>
+  :root {
+    --bg: #f7f6f3; --card: #fff; --ink: #1c1b19; --dim: #6b6862;
+    --line: #ddd9d2; --accent: #2f6f4f; --warn: #a8410f; --bad: #b3261e;
+    --chip: #eeece7; --chipoff: #f7f6f3;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 14px/1.5 -apple-system, "Segoe UI", system-ui, sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; background: var(--card);
+           border-bottom: 1px solid var(--line); padding: 10px 16px;
+           display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  h1 { font-size: 15px; margin: 0 8px 0 0; font-weight: 600; }
+  main { max-width: 1080px; margin: 0 auto; padding: 16px; }
+  button, select, input { font: inherit; color: inherit; }
+  button { background: var(--card); border: 1px solid var(--line); border-radius: 6px;
+           padding: 5px 11px; cursor: pointer; }
+  button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+  button:disabled { opacity: .45; cursor: default; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button.primary:hover:not(:disabled) { color: #fff; filter: brightness(1.1); }
+  input[type=text] { background: var(--card); border: 1px solid var(--line);
+                     border-radius: 6px; padding: 5px 9px; }
+  input[type=text]:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .dim { color: var(--dim); }
+  .warn { color: var(--warn); }
+  .bad { color: var(--bad); }
+  .spacer { flex: 1; }
+
+  .slot { background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+          padding: 12px 14px; margin-bottom: 10px; }
+  /* NB: never dim an empty slot with opacity — the autocomplete dropdown is a
+     child of the slot and would inherit the transparency. */
+  .slot.empty { background: #fbfaf8; border-style: dashed; }
+  .slot > .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .num { width: 22px; color: var(--dim); font-variant-numeric: tabular-nums; }
+  .title-in { flex: 1; min-width: 220px; }
+  .sub { margin: 8px 0 0 30px; }
+  .lbl { font-size: 12px; color: var(--dim); text-transform: uppercase;
+         letter-spacing: .04em; margin: 10px 0 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .chip { border: 1px solid var(--line); background: var(--chip); border-radius: 20px;
+          padding: 3px 10px; cursor: pointer; font-size: 13px; }
+  .chip.off { background: var(--chipoff); color: var(--dim);
+              text-decoration: line-through; text-decoration-thickness: 1px; }
+  .chip.auto { border-style: dashed; }
+  .chip .x { color: var(--dim); margin-left: 6px; }
+  .ans { background: #eaf2ec; border-color: #cadbd0; cursor: default; }
+  .status { margin-top: 8px; font-size: 13px; }
+  .sug { position: relative; }
+  .sug-list { position: absolute; z-index: 9; left: 0; right: 0; top: 100%;
+              background: var(--card); border: 1px solid var(--line);
+              border-radius: 6px; margin-top: 2px; max-height: 260px; overflow: auto; }
+  .sug-list div { padding: 5px 10px; cursor: pointer; }
+  .sug-list div:hover, .sug-list div.sel { background: var(--chip); }
+  .curve { font-variant-numeric: tabular-nums; }
+  pre.log { background: #1c1b19; color: #e8e6e1; padding: 12px; border-radius: 8px;
+            white-space: pre-wrap; font-size: 12.5px; max-height: 320px; overflow: auto; }
+</style>
+</head>
+<body>
+<header>
+  <h1>ru-catfishing</h1>
+  <label>День <select id="daysel"></select></label>
+  <button id="newday">+ новый день</button>
+  <span id="daydate" class="dim"></span>
+  <span class="spacer"></span>
+  <span id="curve" class="curve dim"></span>
+  <span id="saved" class="dim"></span>
+  <button id="build" class="primary">Собрать день</button>
+  <button id="buildall">Собрать все готовые</button>
+</header>
+<main>
+  <div id="banner" class="dim" style="margin-bottom:12px"></div>
+  <div id="slots"></div>
+  <pre class="log" id="log" hidden></pre>
+</main>
+
+<script>
+const PER_DAY = 10;
+let STATE = null, DRAFTS = { version: 1, days: {} }, DAY = null, saveTimer = null;
+
+const $ = (s) => document.querySelector(s);
+const api = async (path, opts) => {
+  const r = await fetch(path, opts);
+  const j = await r.json();
+  if (j.error) throw new Error(j.error);
+  return j;
+};
+const emptyPuzzle = () => ({ title: '', categories: [], hidden: [], accept: [], difficulty: '' });
+
+function dayOf(idx) {
+  const d = DRAFTS.days[String(idx)];
+  if (!d) return null;
+  while (d.puzzles.length < PER_DAY) d.puzzles.push(emptyPuzzle());
+  return d;
+}
+
+function dateOf(idx) {
+  const a = new Date(STATE.anchor + 'T00:00:00');
+  a.setDate(a.getDate() + idx);
+  return a.toLocaleDateString('ru-RU', { weekday: 'short', day: 'numeric', month: 'long' });
+}
+
+// ---------------------------------------------------------------- persistence
+function markDirty() {
+  $('#saved').textContent = 'сохраняю…';
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(save, 600);
+}
+
+async function save() {
+  const res = await api('/api/drafts', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(DRAFTS)
+  });
+  STATE = res.state;
+  $('#saved').textContent = 'сохранено ' + new Date().toLocaleTimeString('ru-RU');
+  renderHeader();
+}
+
+// ---------------------------------------------------------------- rendering
+function renderHeader() {
+  const sel = $('#daysel');
+  const keys = Object.keys(DRAFTS.days).map(Number).sort((a, b) => a - b);
+  sel.innerHTML = keys.map((k) =>
+    `<option value="${k}"${k === DAY ? ' selected' : ''}>${k}${STATE.draft_ready[k] ? ' ✓' : ''}</option>`
+  ).join('');
+  $('#daydate').textContent = DAY == null ? '' : dateOf(DAY);
+
+  const d = DAY == null ? null : dayOf(DAY);
+  if (d) {
+    const c = { easy: 0, medium: 0, hard: 0 };
+    let people = 0, filled = 0;
+    for (const p of d.puzzles) {
+      if (p.title) filled++;
+      if (c[p.difficulty] !== undefined) c[p.difficulty]++;
+      if (p.is_person) people++;
+    }
+    const off = (got, want) => got === want ? '' : ' class="warn"';
+    $('#curve').innerHTML =
+      `заполнено ${filled}/${PER_DAY} · ` +
+      `<span${off(c.easy, 3)}>easy ${c.easy}/3</span> ` +
+      `<span${off(c.medium, 4)}>medium ${c.medium}/4</span> ` +
+      `<span${off(c.hard, 3)}>hard ${c.hard}/3</span> · ` +
+      `<span${people > 5 ? ' class="warn"' : ''}>людей ${people}/5</span>`;
+  }
+
+  const end = STATE.year_end_day;
+  const built = STATE.built_last;
+  $('#banner').innerHTML =
+    `Собрано до дня <b>${built}</b> (${STATE.built_last_date}). ` +
+    `До 31 декабря нужен день <b>${end}</b> — осталось собрать <b>${Math.max(0, end - built)}</b> дней. ` +
+    `Ручные дни: с ${STATE.manual_from}.`;
+}
+
+function render() {
+  renderHeader();
+  const d = DAY == null ? null : dayOf(DAY);
+  const box = $('#slots');
+  box.innerHTML = '';
+  if (!d) return;
+  d.puzzles.forEach((p, i) => box.appendChild(renderSlot(p, i)));
+}
+
+function renderSlot(p, i) {
+  const el = document.createElement('section');
+  el.className = 'slot' + (p.title ? '' : ' empty');
+
+  const row = document.createElement('div');
+  row.className = 'row';
+  row.innerHTML = `<span class="num">${i + 1}</span>`;
+
+  const wrap = document.createElement('div');
+  wrap.className = 'sug title-in';
+  const inp = document.createElement('input');
+  inp.type = 'text';
+  inp.value = p.title || '';
+  inp.placeholder = 'заголовок статьи ru.wikipedia';
+  inp.style.width = '100%';
+  wrap.appendChild(inp);
+  row.appendChild(wrap);
+  attachSearch(inp, wrap, (title) => { inp.value = title; doLookup(p, i, title); });
+
+  const find = document.createElement('button');
+  find.textContent = 'Подтянуть';
+  find.onclick = () => doLookup(p, i, inp.value.trim());
+  row.appendChild(find);
+
+  const diff = document.createElement('select');
+  diff.innerHTML = '<option value="">сложность</option>' +
+    ['easy', 'medium', 'hard'].map((v) =>
+      `<option value="${v}"${p.difficulty === v ? ' selected' : ''}>${v}</option>`).join('');
+  diff.onchange = () => { p.difficulty = diff.value; markDirty(); renderHeader(); };
+  row.appendChild(diff);
+
+  if (p.wiki_url) {
+    const a = document.createElement('a');
+    a.href = p.wiki_url; a.target = '_blank'; a.textContent = 'вики'; a.className = 'dim';
+    row.appendChild(a);
+  }
+
+  const del = document.createElement('button');
+  del.textContent = '×';
+  del.title = 'очистить слот';
+  del.onclick = () => { Object.assign(p, emptyPuzzle()); markDirty(); render(); };
+  row.appendChild(del);
+  el.appendChild(row);
+
+  if (!p.title) return el;
+
+  const sub = document.createElement('div');
+  sub.className = 'sub';
+
+  // ---- categories: click a chip to hide/show it
+  const hidden = new Set(p.hidden || []);
+  sub.insertAdjacentHTML('beforeend',
+    '<div class="lbl">категории — кликни, чтобы убрать слишком очевидную</div>');
+  const cats = document.createElement('div');
+  cats.className = 'chips';
+  (p.categories || []).forEach((c) => {
+    const chip = document.createElement('span');
+    const isOff = hidden.has(c);
+    chip.className = 'chip' + (isOff ? ' off' : '') + (p.auto_hidden?.includes(c) ? ' auto' : '');
+    chip.textContent = c;
+    if (p.reasons && p.reasons[c]) chip.title = 'фильтр: ' + p.reasons[c];
+    chip.onclick = () => {
+      const h = new Set(p.hidden || []);
+      h.has(c) ? h.delete(c) : h.add(c);
+      p.hidden = [...h];
+      markDirty();
+      render();
+    };
+    cats.appendChild(chip);
+  });
+  sub.appendChild(cats);
+
+  // ---- accepted answers
+  sub.insertAdjacentHTML('beforeend', '<div class="lbl">зачёты</div>');
+  const ans = document.createElement('div');
+  ans.className = 'chips';
+  (p.accept || []).forEach((a) => {
+    const chip = document.createElement('span');
+    chip.className = 'chip ans';
+    chip.innerHTML = `${escapeHtml(a)}<span class="x">×</span>`;
+    chip.querySelector('.x').onclick = () => {
+      p.accept = p.accept.filter((x) => x !== a);
+      markDirty(); render();
+    };
+    ans.appendChild(chip);
+  });
+  const add = document.createElement('input');
+  add.type = 'text';
+  add.placeholder = '+ ещё зачёт';
+  add.size = 18;
+  add.onkeydown = (e) => {
+    if (e.key === 'Enter' && add.value.trim()) {
+      p.accept = [...new Set([...(p.accept || []), add.value.trim()])];
+      add.value = ''; markDirty(); render();
+    }
+  };
+  ans.appendChild(add);
+  sub.appendChild(ans);
+
+  // ---- per-slot verdict, same rules as build_from_drafts.check_puzzle
+  const visible = (p.categories || []).filter((c) => !hidden.has(c));
+  const problems = [];
+  if (visible.length < STATE.min_categories)
+    problems.push(`видимых категорий ${visible.length}, нужно ≥ ${STATE.min_categories}`);
+  const leak = visible.find((c) => c.includes(p.title));
+  if (leak) problems.push('заголовок виден в категории: ' + leak);
+  if (!(p.accept || []).length) problems.push('нет зачётов');
+  if (!p.difficulty) problems.push('не задана сложность');
+  const st = document.createElement('div');
+  st.className = 'status ' + (problems.length ? 'bad' : 'dim');
+  st.textContent = problems.length
+    ? '⚠ ' + problems.join(' · ')
+    : `готово — ${visible.length} категорий, ${p.accept.length} зачётов`;
+  sub.appendChild(st);
+
+  el.appendChild(sub);
+  return el;
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+
+// ---------------------------------------------------------------- wiki lookup
+async function doLookup(p, i, title) {
+  if (!title) return;
+  const slot = $('#slots').children[i];
+  slot.style.opacity = .5;
+  try {
+    const r = await api('/api/lookup?title=' + encodeURIComponent(title));
+    p.title = r.title;
+    p.categories = r.categories.map((c) => c.cat);
+    p.hidden = r.categories.filter((c) => c.auto_hide).map((c) => c.cat);
+    p.auto_hidden = [...p.hidden];
+    p.reasons = Object.fromEntries(r.categories.filter((c) => c.reason).map((c) => [c.cat, c.reason]));
+    p.accept = r.accept;
+    p.is_person = r.is_person;
+    p.wiki_url = r.wiki_url;
+    markDirty();
+  } catch (e) {
+    alert('не получилось подтянуть «' + title + '»:\n' + e.message);
+  } finally {
+    render();
+  }
+}
+
+function attachSearch(input, wrap, pick) {
+  let list = null, timer = null, sel = -1;
+  const close = () => { if (list) { list.remove(); list = null; sel = -1; } };
+  input.addEventListener('input', () => {
+    clearTimeout(timer);
+    const q = input.value.trim();
+    if (q.length < 3) return close();
+    timer = setTimeout(async () => {
+      let res;
+      try { res = (await api('/api/search?q=' + encodeURIComponent(q))).results; }
+      catch { return; }
+      close();
+      if (!res.length) return;
+      list = document.createElement('div');
+      list.className = 'sug-list';
+      res.forEach((t) => {
+        const d = document.createElement('div');
+        d.textContent = t;
+        d.onmousedown = (e) => { e.preventDefault(); close(); pick(t); };
+        list.appendChild(d);
+      });
+      wrap.appendChild(list);
+    }, 260);
+  });
+  input.addEventListener('keydown', (e) => {
+    if (!list) return;
+    const items = [...list.children];
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      items[sel]?.classList.remove('sel');
+      sel = (sel + (e.key === 'ArrowDown' ? 1 : items.length - 1)) % items.length;
+      items[sel].classList.add('sel');
+    } else if (e.key === 'Enter' && sel >= 0) {
+      e.preventDefault();
+      const t = items[sel].textContent; close(); pick(t);
+    } else if (e.key === 'Escape') close();
+  });
+  input.addEventListener('blur', () => setTimeout(close, 120));
+}
+
+// ---------------------------------------------------------------- actions
+$('#daysel').onchange = (e) => { DAY = Number(e.target.value); render(); };
+
+$('#newday').onclick = () => {
+  const keys = Object.keys(DRAFTS.days).map(Number);
+  const next = Math.max(STATE.built_last, STATE.manual_from - 1, ...keys) + 1;
+  DRAFTS.days[String(next)] = { puzzles: Array.from({ length: PER_DAY }, emptyPuzzle) };
+  DAY = next;
+  markDirty();
+  render();
+};
+
+async function build(day) {
+  const log = $('#log');
+  log.hidden = false;
+  log.textContent = 'собираю…';
+  const r = await api('/api/build', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ day })
+  });
+  STATE = r.state;
+  log.textContent = (r.stdout || '') + (r.stderr || '');
+  renderHeader();
+}
+
+$('#build').onclick = () => build(DAY);
+$('#buildall').onclick = () => build(null);
+
+// ---------------------------------------------------------------- boot
+(async () => {
+  STATE = await api('/api/state');
+  DRAFTS = await api('/api/drafts');
+  if (!DRAFTS.days) DRAFTS = { version: 1, days: {} };
+  const keys = Object.keys(DRAFTS.days).map(Number).sort((a, b) => a - b);
+  DAY = keys.length ? keys[keys.length - 1] : null;
+  if (DAY == null) $('#newday').click(); else render();
+})();
+</script>
+</body>
+</html>
