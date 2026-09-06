@@ -27,3 +27,6 @@ prototype/data/_*.json
 !prototype/data/_top_titles.json
 !prototype/data/_pageviews_cache.json
 !prototype/data/_cats_cache.json
+
+# Локальная сборка витрины (генерируется, в репозитории не нужна).
+dist/
